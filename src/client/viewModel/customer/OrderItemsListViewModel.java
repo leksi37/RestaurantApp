@@ -16,7 +16,7 @@ public class OrderItemsListViewModel {
     private StringProperty note;
     private ObservableList<ItemQuantity> items = FXCollections.observableArrayList();
 
-    public OrderItemsListViewModel(CustomerModel model, ViewHandler viewHandler){
+    public OrderItemsListViewModel(CustomerModel model, ViewHandler viewHandler) {
         this.model = model;
         this.viewHandler = viewHandler;
         note = new SimpleStringProperty();
