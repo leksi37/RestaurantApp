@@ -26,8 +26,8 @@ public class ViewModelProvider {
         this.model=model;
     }
 
-    public void instantiateViewModels(ViewHandler viewHandler) {
-        this.viewHandler=viewHandler;
+    public void instantiateViewModels(ViewHandler viewHan) {
+        this.viewHandler=viewHan;
         menuFrontViewModel= new MenuFrontViewModel(model, viewHandler);
         categoryListItemsViewModel = new CategoryListItemsViewModel(model, viewHandler);
         categoryListViewModel = new CategoryListViewModel(model, viewHandler);
