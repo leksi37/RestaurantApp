@@ -1,25 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="850.0" style="-fx-background-color: #ffcccc;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.customer.categoryListItems.CategoryListItems">
+<AnchorPane prefHeight="500.0" prefWidth="850.0" style="-fx-background-color: #ffcccc;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.customer.categoryListItems.CategoryListItems">
    <children>
-      <Button fx:id="goToOrder" layoutX="674.0" layoutY="408.0" mnemonicParsing="false" onAction="#seeOrder" prefHeight="23.0" prefWidth="104.0" style="-fx-background-color: #ffe6e6;" text="Check order" />
-      <ImageView fitHeight="336.0" fitWidth="144.0" layoutX="654.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="goToOrder" layoutX="622.0" layoutY="304.0" mnemonicParsing="false" onAction="#seeOrder" prefHeight="78.0" prefWidth="150.0" style="-fx-background-color: #ffe6e6;" text="View order">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <ImageView fitHeight="336.0" fitWidth="144.0" layoutX="625.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../images/chef-holding-menu.png" />
          </image>
       </ImageView>
-      <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" layoutX="65.0" layoutY="54.0" prefHeight="393.0" prefWidth="555.0" style="-fx-background-color: #ffe6e6;" vbarPolicy="ALWAYS">
+      <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" layoutX="28.0" layoutY="78.0" prefHeight="393.0" prefWidth="555.0" style="-fx-background-color: #ffe6e6;" vbarPolicy="ALWAYS">
          <content>
             <VBox fx:id="list" prefHeight="391.0" prefWidth="536.0" style="-fx-background-color: #ffe6e6;" />
          </content>
       </ScrollPane>
-      <Button fx:id="backButton" mnemonicParsing="false" onAction="#back" text="&lt;" />
+      <Button fx:id="backButton" layoutX="28.0" layoutY="16.0" mnemonicParsing="false" onAction="#back" prefHeight="53.0" prefWidth="83.0" style="-fx-background-color: #ffe6e6;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <ImageView fitHeight="78.0" fitWidth="150.0" layoutX="31.0" layoutY="4.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../images/back.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

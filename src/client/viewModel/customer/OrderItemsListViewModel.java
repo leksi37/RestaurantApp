@@ -2,9 +2,11 @@ package client.viewModel.customer;
 
 import BasicClasses.ItemQuantity;
 import BasicClasses.Order;
+import BasicClasses.Views;
 import client.model.customer.CustomerModel;
 import client.networking.Client;
 import client.view.ViewHandler;
+import client.viewModel.ViewModels;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -13,7 +15,7 @@ import javafx.collections.ObservableList;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-public class OrderItemsListViewModel {
+public class OrderItemsListViewModel implements ViewModels {
     private CustomerModel model;
     private ViewHandler viewHandler;
     private StringProperty note;
@@ -24,6 +26,11 @@ public class OrderItemsListViewModel {
         this.viewHandler = viewHandler;
         note = new SimpleStringProperty();
         model.addListeners("orderChanged", this :: orderChanged);
+        model.addListeners("orderAdded", this :: orderAdded);
+    }
+
+    private void orderAdded(PropertyChangeEvent propertyChangeEvent) {
+        viewHandler.openView(Views.MENU_FRONT);
     }
 
     private void orderChanged(PropertyChangeEvent propertyChangeEvent) {
@@ -43,12 +50,12 @@ public class OrderItemsListViewModel {
         return note;
     }
 
-    public void sendOrder(Order order) {
-        model.addOrderToServer(order);
+    public void sendOrder() {
+        model.addOrderToServer();
     }
 
     public void sendToFrontMenu() {
-        viewHandler.openMenuFront();
+        viewHandler.openView(Views.MENU_FRONT);
     }
 
     public ObservableList<ItemQuantity> getItems() {
@@ -60,6 +67,6 @@ public class OrderItemsListViewModel {
     }
 
     public void backToMenu() {
-        viewHandler.openCategoryList();
+        viewHandler.openView(Views.CATEGORIES);
     }
 }

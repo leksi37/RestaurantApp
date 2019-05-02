@@ -12,8 +12,8 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" style="-fx-background-color: #ffcccc;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.customer.orderItemsList.OrderItemList">
    <children>
-      <ListView fx:id="orderItems" layoutX="40.0" layoutY="67.0" prefHeight="377.0" prefWidth="433.0" />
-      <Button layoutX="501.0" layoutY="358.0" mnemonicParsing="false" onAction="#removeSelected" prefHeight="86.0" prefWidth="141.0" style="-fx-background-color: #ffe6e6;" text="Remove">
+      <ListView fx:id="orderItems" layoutX="37.0" layoutY="67.0" prefHeight="408.0" prefWidth="437.0" />
+      <Button layoutX="493.0" layoutY="388.0" mnemonicParsing="false" onAction="#removeSelected" prefHeight="86.0" prefWidth="141.0" style="-fx-background-color: #ffe6e6;" text="Remove">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -21,7 +21,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button layoutX="653.0" layoutY="358.0" mnemonicParsing="false" onAction="#placeOrder" prefHeight="86.0" prefWidth="179.0" style="-fx-background-color: #ffe6e6;" text="Order">
+      <Button layoutX="643.0" layoutY="388.0" mnemonicParsing="false" onAction="#placeOrder" prefHeight="86.0" prefWidth="179.0" style="-fx-background-color: #ffe6e6;" text="Order">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -29,18 +29,18 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label layoutX="501.0" layoutY="59.0" prefHeight="43.0" prefWidth="331.0" text="Note:">
+      <Label layoutX="493.0" layoutY="55.0" prefHeight="43.0" prefWidth="331.0" text="Note:">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <TextArea fx:id="note" layoutX="501.0" layoutY="112.0" prefHeight="235.0" prefWidth="331.0" />
-      <Button layoutX="40.0" layoutY="16.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="109.0" style="-fx-background-color: #ffe6e6;">
+      <TextArea fx:id="note" layoutX="493.0" layoutY="99.0" prefHeight="266.0" prefWidth="331.0" />
+      <Button layoutX="37.0" layoutY="10.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="51.0" prefWidth="62.0" style="-fx-background-color: #ffe6e6;">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <ImageView fitHeight="43.0" fitWidth="120.0" layoutX="40.0" layoutY="16.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="62.0" fitWidth="72.0" layoutX="37.0" layoutY="4.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../images/back.png" />
          </image>

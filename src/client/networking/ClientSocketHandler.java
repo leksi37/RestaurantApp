@@ -41,6 +41,11 @@ public class ClientSocketHandler implements Runnable {
                         case GET_TABLE_ID:
                         {
                             client.returnTableId((String)r.getObj());
+                            break;
+                        }
+                        case ADD_ORDER:
+                        {
+                            client.orderAdded();
                         }
                     }
                 } catch (IOException | ClassNotFoundException e) {

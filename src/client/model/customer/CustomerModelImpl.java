@@ -41,8 +41,9 @@ public class CustomerModelImpl implements CustomerModel {
     }
 
     @Override
-    public void addOrderToServer(Order order) {
+    public void addOrderToServer() {
         client.addOrderToServer(order);
+        order = new Order(tableId);
     }
 
     @Override
@@ -99,5 +100,10 @@ public class CustomerModelImpl implements CustomerModel {
     public void removeItem(ItemQuantity focusedItem) {
         order.removeItem(focusedItem.getId(), focusedItem.getQuantity());
         support.firePropertyChange("orderChanged", null, order);
+    }
+
+    @Override
+    public void orderAdded() {
+        support.firePropertyChange("orderAdded", null, null);
     }
 }

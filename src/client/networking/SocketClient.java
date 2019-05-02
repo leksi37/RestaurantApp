@@ -65,4 +65,9 @@ public class SocketClient implements Client {
         model.gotTableId(str);
     }
 
+    @Override
+    public void orderAdded() {
+        model.orderAdded();
+    }
+
 }
