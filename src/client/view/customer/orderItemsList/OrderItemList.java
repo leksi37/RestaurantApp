@@ -21,13 +21,15 @@ public class OrderItemList {
     @FXML
     TextArea note;
 
-    @FXML
     public void placeOrder(){
-//        oilvm.sendOrder();
-//        oilvm.sendToFrontMenu();
+        oilvm.sendOrder();
     }
 
-    public void init(ViewModelProvider viewModelProvider) {
+    public void init(OrderItemsListViewModel o)
+    {
+        oilvm = o;
+        oilvm.setOrderItems();
+        orderItems.setItems(oilvm.getItems());
         note.textProperty().bindBidirectional(oilvm.noteProperty());
     }
 
@@ -35,6 +37,6 @@ public class OrderItemList {
 
     @FXML
     public void removeSelected(){
-//        deliverItem((ItemQuantity) orderItems.getFocusModel().getFocusedItem());
+        oilvm.remove(orderItems.getFocusModel().getFocusedItem());
     }
 }

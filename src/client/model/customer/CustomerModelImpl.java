@@ -1,5 +1,6 @@
 package client.model.customer;
 
+import BasicClasses.ItemQuantity;
 import BasicClasses.MenuItem;
 import BasicClasses.Order;
 import client.networking.Client;
@@ -40,8 +41,9 @@ public class CustomerModelImpl implements CustomerModel {
     }
 
     @Override
-    public void addOrderToServer(Order order) {
+    public void addOrderToServer() {
         client.addOrderToServer(order);
+        order = new Order(tableId);
     }
 
     @Override
@@ -61,6 +63,9 @@ public class CustomerModelImpl implements CustomerModel {
         {
             client.requestMenuCategory(type);
         }
+        else
+            gotMenuItems(menuCategory);
+
     }
 
     @Override
@@ -89,5 +94,16 @@ public class CustomerModelImpl implements CustomerModel {
     public Order getOrder()
     {
         return order;
+    }
+
+    @Override
+    public void removeItem(ItemQuantity focusedItem) {
+        order.removeItem(focusedItem.getId(), focusedItem.getQuantity());
+        support.firePropertyChange("orderChanged", null, order);
+    }
+
+    @Override
+    public void orderAdded() {
+        support.firePropertyChange("orderAdded", null, null);
     }
 }

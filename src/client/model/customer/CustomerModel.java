@@ -1,5 +1,6 @@
 package client.model.customer;
 
+import BasicClasses.ItemQuantity;
 import BasicClasses.MenuItem;
 import BasicClasses.Order;
 import client.networking.Client;
@@ -11,7 +12,7 @@ public interface CustomerModel {
     void addListeners(String name, PropertyChangeListener listener);
     void addClient(Client client);
 
-    void addOrderToServer(Order order);
+    void addOrderToServer();
 
     //this one is only for testing
     void getFromServer();
@@ -28,4 +29,8 @@ public interface CustomerModel {
     void removeItem(String id, int i);
 
     Order getOrder();
+
+    void removeItem(ItemQuantity focusedItem);
+
+    void orderAdded();
 }

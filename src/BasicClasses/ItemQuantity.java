@@ -52,9 +52,16 @@ public class ItemQuantity implements Serializable {
         quantity++;
     }
 
-    public String toString()
+    public String orderDisplay()
     {
         return "id " + id + ", quantity " + quantity + ", state " + state.name();
+    }
+
+
+    public String toString()
+    {
+        MenuItem item = getItem();
+        return item.getName() + ", " + quantity + " pieces, " + item.getPrice() + "kr";
     }
 
     public String dbFormat() {
