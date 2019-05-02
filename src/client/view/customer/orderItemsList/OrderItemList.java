@@ -38,6 +38,6 @@ public class OrderItemList {
 
     @FXML
     public void removeSelected(){
-//        deliverItem((ItemQuantity) orderItems.getFocusModel().getFocusedItem());
+        oilvm.remove(orderItems.getFocusModel().getFocusedItem());
     }
 }

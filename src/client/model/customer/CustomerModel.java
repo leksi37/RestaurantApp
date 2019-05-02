@@ -1,5 +1,6 @@
 package client.model.customer;
 
+import BasicClasses.ItemQuantity;
 import BasicClasses.MenuItem;
 import BasicClasses.Order;
 import client.networking.Client;
@@ -28,4 +29,6 @@ public interface CustomerModel {
     void removeItem(String id, int i);
 
     Order getOrder();
+
+    void removeItem(ItemQuantity focusedItem);
 }
