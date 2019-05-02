@@ -23,7 +23,8 @@ public class OrderItemList {
     TextArea note;
 
     public void placeOrder(){
-        oilvm.sendOrder();
+//        oilvm.sendOrder();
+//        oilvm.sendToFrontMenu();
     }
 
     public void init(OrderItemsListViewModel o)

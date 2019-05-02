@@ -22,7 +22,7 @@ public class CategoryList {
     }
 
     public void openDesserts() {
-        viewModel.openCategoryListItems("dessert");
+        viewModel.openCategoryListItems("desserts");
     }
 
     public void openBreakfast() {
@@ -45,7 +45,7 @@ public class CategoryList {
         viewModel.openCategoryListItems("sideDish");
     }
 
-    public void init(CategoryListViewModel vm){
-        viewModel = vm;
+    public void init(ViewModelProvider vmp){
+        viewModel = vmp.getCategoryListViewModel();
     }
 }

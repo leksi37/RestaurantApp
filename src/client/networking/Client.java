@@ -17,6 +17,4 @@ public interface Client {
      void getTableId();
 
     void returnTableId(String obj);
-
-    void orderAdded();
 }

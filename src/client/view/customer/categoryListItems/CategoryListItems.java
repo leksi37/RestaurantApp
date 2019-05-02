@@ -1,7 +1,6 @@
 package client.view.customer.categoryListItems;
 
 import BasicClasses.MenuItem;
-import BasicClasses.type;
 import client.viewModel.ViewModelProvider;
 import client.viewModel.customer.CategoryListItemsViewModel;
 import javafx.application.Platform;
@@ -36,11 +35,10 @@ public class CategoryListItems {
     @FXML
     private Button goToOrder;
 
-    public void init(CategoryListItemsViewModel vm, type category) {
-        categoryListItemsViewModel = vm;
+    public void init(ViewModelProvider viewModelProvider) {
+        categoryListItemsViewModel = viewModelProvider.getCategoryListItemsViewModel();
         categoryListItemsViewModel.addListener("gotItems", this::setItems);
         scrollPane = new ScrollPane();
-        categoryListItemsViewModel.getItems(category.name());
 //        list = new VBox();
         scrollPane.vvalueProperty().bind(list.heightProperty());
     }

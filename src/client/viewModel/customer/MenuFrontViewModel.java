@@ -1,12 +1,10 @@
 package client.viewModel.customer;
 
-import BasicClasses.Views;
 import client.model.customer.CustomerModel;
 import client.view.ViewHandler;
-import client.viewModel.ViewModels;
 
 
-public class MenuFrontViewModel implements ViewModels {
+public class MenuFrontViewModel {
 
     private CustomerModel model;
     private ViewHandler viewHandler;
@@ -18,7 +16,7 @@ public class MenuFrontViewModel implements ViewModels {
     }
 
     public void openCategoryList() {
-       viewHandler.openView(Views.CATEGORIES);
+       viewHandler.openCategoryList();
        //ConnectionPool?
        //model.addClient();
        // model.addOrderToServer(new Order("some text"));

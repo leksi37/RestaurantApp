@@ -1,6 +1,5 @@
 package client.viewModel;
 
-import BasicClasses.Views;
 import client.model.customer.CustomerModel;
 import client.view.ViewHandler;
 import client.viewModel.customer.CategoryListItemsViewModel;
@@ -49,25 +48,5 @@ public class ViewModelProvider {
 
     public OrderItemsListViewModel getOrderItemsListViewModel() {
         return orderItemsListViewModel;
-    }
-
-    public ViewModels getViewModel(Views viewToOpen) {
-        switch(viewToOpen)
-        {
-            case MENU_FRONT:{
-                return menuFrontViewModel;
-            }
-            case CATEGORIES:{
-                return categoryListViewModel;
-            }
-            case ITEMS:{
-                return categoryListItemsViewModel;
-            }
-            case ORDER:{
-                return orderItemsListViewModel;
-            }
-            default:
-                return null;
-        }
     }
 }

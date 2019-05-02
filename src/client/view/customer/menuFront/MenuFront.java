@@ -23,7 +23,7 @@ public class MenuFront {
     }
 
 
-    public void init(MenuFrontViewModel vm) {
-        menuFrontViewModel = vm;
+    public void init(ViewModelProvider vmp) {
+        menuFrontViewModel = vmp.getMenuFrontViewModel();
     }
 }

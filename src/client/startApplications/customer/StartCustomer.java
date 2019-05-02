@@ -1,6 +1,5 @@
 package client.startApplications.customer;
 
-import BasicClasses.Views;
 import client.model.customer.CustomerModel;
 import client.model.customer.CustomerModelImpl;
 import client.networking.Client;
@@ -16,6 +15,6 @@ public class StartCustomer extends Application {
         Client client= new SocketClient(model);
         model.addClient(client);
         ViewHandler viewHandler = new ViewHandler(primaryStage, model);
-        viewHandler.openView(Views.MENU_FRONT);
+        viewHandler.openMenuFront();
     }
 }
