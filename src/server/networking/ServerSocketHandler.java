@@ -3,6 +3,8 @@ package server.networking;
 import BasicClasses.*;
 import JDBC.MenuItemsReader;
 
+import JDBC.OrderReader;
+import com.sun.org.apache.xpath.internal.operations.Or;
 import server.model.ServerModel;
 
 import java.beans.PropertyChangeEvent;
@@ -22,9 +24,11 @@ public class ServerSocketHandler implements Runnable {
 
     private String connectionId;
     private MenuItemsReader reader;
+    private OrderReader orderReader;
 
     public ServerSocketHandler(ServerModel model, Socket socket){
         reader = MenuItemsReader.getInstance();
+        orderReader = OrderReader.getInstance();
         this.model=model;
         try{
             inFromClient=new ObjectInputStream(socket.getInputStream());
@@ -77,6 +81,15 @@ public class ServerSocketHandler implements Runnable {
                     setConnectionId(s);
                     try {
                         outToClient.writeObject(new Request(RequestType.GET_TABLE_ID, s));
+                    }catch (IOException e){
+                        e.printStackTrace();
+                    }
+                }
+                else if(r.getType() == RequestType.ADD_ORDER)
+                {
+                    orderReader.addOrder((Order) r.getObj());
+                    try {
+                        outToClient.writeObject(new Request(RequestType.ADD_ORDER, null));
                     }catch (IOException e){
                         e.printStackTrace();
                     }

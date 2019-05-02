@@ -12,7 +12,7 @@ public interface CustomerModel {
     void addListeners(String name, PropertyChangeListener listener);
     void addClient(Client client);
 
-    void addOrderToServer(Order order);
+    void addOrderToServer();
 
     //this one is only for testing
     void getFromServer();
@@ -31,4 +31,6 @@ public interface CustomerModel {
     Order getOrder();
 
     void removeItem(ItemQuantity focusedItem);
+
+    void orderAdded();
 }

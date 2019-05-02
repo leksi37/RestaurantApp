@@ -1,18 +1,17 @@
 package client.viewModel.customer;
 
 import BasicClasses.MenuItem;
-import BasicClasses.Order;
+import BasicClasses.Views;
 import client.model.customer.CustomerModel;
 import client.view.ViewHandler;
-import javafx.collections.ObservableList;
+import client.viewModel.ViewModels;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
-import java.util.List;
 
-public class CategoryListItemsViewModel {
+public class CategoryListItemsViewModel implements ViewModels {
     //IT'S ABOUT STORING DATA, IT'S NOT SUPPOSED TO BE IN THE VIEW MODEL, BUT IN THE MODEL
 //    private Order currentOrder;
 
@@ -64,10 +63,11 @@ public class CategoryListItemsViewModel {
     }
 
     public void back() {
-        viewHandler.openCategoryList();
+        viewHandler.openView(Views.CATEGORIES);
     }
 
-    public void seeOrder() {
-        viewHandler.openOrderItemsList(model.getOrder());
+    public void seeOrder()
+    {
+        viewHandler.openView(Views.ORDER);
     }
 }
