@@ -1,16 +1,15 @@
 package client.viewModel.customer;
 
 import BasicClasses.MenuItem;
+import BasicClasses.Views;
+import BasicClasses.type;
 import client.model.customer.CustomerModel;
 import client.view.ViewHandler;
-import client.viewModel.MenuProxy;
-import javafx.application.Platform;
+import client.viewModel.ViewModels;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
-public class CategoryListViewModel {
+public class CategoryListViewModel implements ViewModels {
 
     public ViewHandler viewHandler;
     public CustomerModel model;
@@ -26,8 +25,8 @@ public class CategoryListViewModel {
 
     public void openCategoryListItems(String category) {
 
-        viewHandler.openCategoryListItems(category);
-
+        viewHandler.setCategory(type.valueOf(category));
+        viewHandler.openView(Views.ITEMS);
     }
 
 
