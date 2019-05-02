@@ -58,4 +58,8 @@ public class OrderItemsListViewModel {
     public void remove(Object focusedItem) {
         model.removeItem((ItemQuantity) focusedItem);
     }
+
+    public void backToMenu() {
+        viewHandler.openCategoryList();
+    }
 }

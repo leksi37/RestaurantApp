@@ -35,7 +35,7 @@
          </font>
       </Label>
       <TextArea fx:id="note" layoutX="501.0" layoutY="112.0" prefHeight="235.0" prefWidth="331.0" />
-      <Button layoutX="40.0" layoutY="16.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="109.0" style="-fx-background-color: #ffe6e6;">
+      <Button layoutX="40.0" layoutY="16.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="43.0" prefWidth="109.0" style="-fx-background-color: #ffe6e6;">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
