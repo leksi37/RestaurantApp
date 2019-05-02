@@ -21,13 +21,16 @@ public class OrderItemList {
     @FXML
     TextArea note;
 
-    @FXML
     public void placeOrder(){
 //        oilvm.sendOrder();
 //        oilvm.sendToFrontMenu();
     }
 
-    public void init(ViewModelProvider viewModelProvider) {
+    public void init(OrderItemsListViewModel o)
+    {
+        oilvm = o;
+        oilvm.setOrderItems();
+        orderItems.setItems(oilvm.getItems());
         note.textProperty().bindBidirectional(oilvm.noteProperty());
     }
 

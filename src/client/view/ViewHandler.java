@@ -99,7 +99,7 @@ public class ViewHandler {
         catch(IOException e){e.printStackTrace();}
 
         OrderItemList view= loader.getController();
-        view.init(viewModelProvider);
+        view.init(viewModelProvider.getOrderItemsListViewModel());
 
         scene= new Scene(root);
         stage.setTitle("Order");
