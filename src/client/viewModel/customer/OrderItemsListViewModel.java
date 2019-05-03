@@ -32,7 +32,7 @@ public class OrderItemsListViewModel implements ViewModels {
 
     private void orderAdded(PropertyChangeEvent propertyChangeEvent) {
         Platform.runLater(() ->
-                viewHandler.openView(Views.MENU_FRONT)
+                viewHandler.openView(Views.MENU_FRONT_LABEL)
         );
     }
 

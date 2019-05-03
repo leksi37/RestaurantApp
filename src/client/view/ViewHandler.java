@@ -95,6 +95,17 @@ public class ViewHandler {
                 view.init((MenuFrontViewModel) viewModelProvider.getViewModel(viewToOpen));
                 break;
             }
+            case MENU_FRONT_LABEL:
+            {
+                loader.setLocation(getClass().getResource("customer/menuFront/MenuFront.fxml"));
+                try{ root=loader.load();}
+                catch(IOException e){e.printStackTrace();}
+
+                MenuFront view= loader.getController();
+                view.init((MenuFrontViewModel) viewModelProvider.getViewModel(viewToOpen));
+                view.setOrderStatus("Your order is now being prepared.");
+                break;
+            }
             case CATEGORIES:
             {
                 loader.setLocation(getClass().getResource("customer/categoryList/CategoryList.fxml"));

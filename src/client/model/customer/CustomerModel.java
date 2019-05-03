@@ -33,4 +33,5 @@ public interface CustomerModel {
     void removeItem(ItemQuantity focusedItem);
 
     void orderAdded();
+
 }

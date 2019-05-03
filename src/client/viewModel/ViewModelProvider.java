@@ -57,6 +57,9 @@ public class ViewModelProvider {
             case MENU_FRONT:{
                 return menuFrontViewModel;
             }
+            case MENU_FRONT_LABEL:{
+                return menuFrontViewModel;
+            }
             case CATEGORIES:{
                 return categoryListViewModel;
             }
