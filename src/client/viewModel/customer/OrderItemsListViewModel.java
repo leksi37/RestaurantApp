@@ -4,7 +4,6 @@ import BasicClasses.ItemQuantity;
 import BasicClasses.Order;
 import BasicClasses.Views;
 import client.model.customer.CustomerModel;
-import client.networking.Client;
 import client.view.ViewHandler;
 import client.viewModel.ViewModels;
 import javafx.application.Platform;
@@ -14,7 +13,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 
 public class OrderItemsListViewModel implements ViewModels {
     private CustomerModel model;
