@@ -13,7 +13,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 
 public class OrderItemsListViewModel implements ViewModels {
     private CustomerModel model;
@@ -30,7 +29,8 @@ public class OrderItemsListViewModel implements ViewModels {
     }
 
     private void orderAdded(PropertyChangeEvent propertyChangeEvent) {
-        viewHandler.openView(Views.MENU_FRONT);
+       viewHandler.openView(Views.MENU_FRONT);
+
     }
 
     private void orderChanged(PropertyChangeEvent propertyChangeEvent) {
@@ -54,9 +54,9 @@ public class OrderItemsListViewModel implements ViewModels {
         model.addOrderToServer();
     }
 
-    public void sendToFrontMenu() {
-        viewHandler.openView(Views.MENU_FRONT);
-    }
+//    public void sendToFrontMenu() {
+//        viewHandler.openView(Views.MENU_FRONT);
+//    }
 
     public ObservableList<ItemQuantity> getItems() {
         return items;
@@ -68,5 +68,9 @@ public class OrderItemsListViewModel implements ViewModels {
 
     public void backToMenu() {
         viewHandler.openView(Views.CATEGORIES);
+    }
+
+    public void openFront() {
+        viewHandler.openView(Views.MENU_FRONT);
     }
 }

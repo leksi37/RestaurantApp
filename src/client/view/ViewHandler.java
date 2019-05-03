@@ -80,58 +80,63 @@ public class ViewHandler {
 
     public void openView(Views viewToOpen)
     {
-        Scene scene= null;
-        FXMLLoader loader= new FXMLLoader();
-        Parent root= null;
-        switch(viewToOpen)
-        {
-            case MENU_FRONT:
+        Platform.runLater(() -> {
+            Scene scene= null;
+            FXMLLoader loader= new FXMLLoader();
+            Parent root= null;
+
+
+            switch(viewToOpen)
             {
-                loader.setLocation(getClass().getResource("customer/menuFront/MenuFront.fxml"));
-                try{ root=loader.load();}
-                catch(IOException e){e.printStackTrace();}
+                case MENU_FRONT:
+                {
+                    loader.setLocation(getClass().getResource("customer/menuFront/MenuFront.fxml"));
+                    try{ root=loader.load();}
+                    catch(IOException e){e.printStackTrace();}
 
-                MenuFront view= loader.getController();
-                view.init((MenuFrontViewModel) viewModelProvider.getViewModel(viewToOpen));
-                break;
+                    MenuFront view= loader.getController();
+                    view.init((MenuFrontViewModel) viewModelProvider.getViewModel(viewToOpen));
+                    break;
+                }
+                case CATEGORIES:
+                {
+                    loader.setLocation(getClass().getResource("customer/categoryList/CategoryList.fxml"));
+                    try{ root=loader.load();}
+                    catch(IOException e){e.printStackTrace();}
+
+                    CategoryList view= loader.getController();
+                    view.init((CategoryListViewModel) viewModelProvider.getViewModel(viewToOpen));
+                    break;
+                }
+                case ITEMS:
+                {
+                    loader.setLocation(getClass().getResource("customer/categoryListItems/CategoryListItems.fxml"));
+                    try{ root=loader.load();}
+                    catch(IOException e){e.printStackTrace();}
+
+                    CategoryListItems view= loader.getController();
+                    view.init((CategoryListItemsViewModel) viewModelProvider.getViewModel(viewToOpen), categoryToOpen);
+                    break;
+                }
+                case ORDER:
+                {
+                    loader.setLocation(getClass().getResource("customer/orderItemsList/OrderItemList.fxml"));
+                    try{ root=loader.load();}
+                    catch(IOException e){e.printStackTrace();}
+
+                    OrderItemList view= loader.getController();
+                    view.init((OrderItemsListViewModel) viewModelProvider.getViewModel(viewToOpen));
+                    break;
+                }
             }
-            case CATEGORIES:
-            {
-                loader.setLocation(getClass().getResource("customer/categoryList/CategoryList.fxml"));
-                try{ root=loader.load();}
-                catch(IOException e){e.printStackTrace();}
-
-                CategoryList view= loader.getController();
-                view.init((CategoryListViewModel) viewModelProvider.getViewModel(viewToOpen));
-                break;
-            }
-            case ITEMS:
-            {
-                loader.setLocation(getClass().getResource("customer/categoryListItems/CategoryListItems.fxml"));
-                try{ root=loader.load();}
-                catch(IOException e){e.printStackTrace();}
-
-                CategoryListItems view= loader.getController();
-                view.init((CategoryListItemsViewModel) viewModelProvider.getViewModel(viewToOpen), categoryToOpen);
-                break;
-            }
-            case ORDER:
-            {
-                loader.setLocation(getClass().getResource("customer/orderItemsList/OrderItemList.fxml"));
-                try{ root=loader.load();}
-                catch(IOException e){e.printStackTrace();}
-
-                OrderItemList view= loader.getController();
-                view.init((OrderItemsListViewModel) viewModelProvider.getViewModel(viewToOpen));
-                break;
-            }
-        }
 
 
-        scene= new Scene(root);
-        stage.setTitle("MLP");
-        stage.setScene(scene);
-        stage.show();
+            scene= new Scene(root);
+            stage.setTitle("Order");
+            stage.setScene(scene);
+            stage.show();
+        });
+
     }
 
 

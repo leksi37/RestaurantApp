@@ -3,6 +3,7 @@ package client.model.customer;
 import BasicClasses.ItemQuantity;
 import BasicClasses.MenuItem;
 import BasicClasses.Order;
+import BasicClasses.Views;
 import client.networking.Client;
 import client.viewModel.MenuProxy;
 
