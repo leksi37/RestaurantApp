@@ -7,6 +7,7 @@ import client.viewModel.ViewModelProvider;
 import client.viewModel.customer.OrderItemsListViewModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
@@ -38,5 +39,9 @@ public class OrderItemList {
     @FXML
     public void removeSelected(){
         oilvm.remove(orderItems.getFocusModel().getFocusedItem());
+    }
+
+    public void backToMenu() {
+        oilvm.backToMenu();
     }
 }

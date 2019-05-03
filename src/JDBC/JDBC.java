@@ -1,5 +1,7 @@
 package JDBC;
 
+import org.postgresql.util.PSQLException;
+
 import java.sql.*;
 
 public class JDBC {
@@ -33,15 +35,11 @@ public class JDBC {
         return instance;
     }
 
-    public void insert(String tableName, String values)
+    public void insert(String tableName, String values) throws SQLException
     {
         String com = "insert into \"menu\"." + tableName + " values ( " + values + ");";
-        try {
-            st = c.createStatement();
             st.executeUpdate(com);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
     }
 
     public void remove(String tableName, String condition)

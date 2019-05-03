@@ -5,6 +5,7 @@ import JDBC.MenuItemsReader;
 
 import JDBC.OrderReader;
 import com.sun.org.apache.xpath.internal.operations.Or;
+import org.postgresql.util.PSQLException;
 import server.model.ServerModel;
 
 import java.beans.PropertyChangeEvent;
@@ -12,6 +13,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ServerSocketHandler implements Runnable {
@@ -60,13 +62,6 @@ public class ServerSocketHandler implements Runnable {
             try{
                 Request r = (Request) inFromClient.readObject();
 
-                //Receiving an order
-//                if (obj instanceof Order) {
-//                    Order o = (Order) inFromClient.readObject();
-//                    model.addOrder(o);
-//                }
-
-                //Returning ArrayList with menuItems for a requested category
                 if(r.getType() == RequestType.GET_MENU_ITEMS){
                     ArrayList<MenuItem> menuItems = reader.getCategory(type.valueOf((String)r.getObj()));
                     try {
@@ -87,7 +82,8 @@ public class ServerSocketHandler implements Runnable {
                 }
                 else if(r.getType() == RequestType.ADD_ORDER)
                 {
-                    orderReader.addOrder((Order) r.getObj());
+                        orderReader.addOrder((Order) r.getObj());
+
                     try {
                         outToClient.writeObject(new Request(RequestType.ADD_ORDER, null));
                     }catch (IOException e){

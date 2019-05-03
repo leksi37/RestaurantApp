@@ -7,6 +7,7 @@ import client.model.customer.CustomerModel;
 import client.networking.Client;
 import client.view.ViewHandler;
 import client.viewModel.ViewModels;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -30,7 +31,9 @@ public class OrderItemsListViewModel implements ViewModels {
     }
 
     private void orderAdded(PropertyChangeEvent propertyChangeEvent) {
-        viewHandler.openView(Views.MENU_FRONT);
+        Platform.runLater(() ->
+                viewHandler.openView(Views.MENU_FRONT)
+        );
     }
 
     private void orderChanged(PropertyChangeEvent propertyChangeEvent) {
@@ -64,5 +67,9 @@ public class OrderItemsListViewModel implements ViewModels {
 
     public void remove(Object focusedItem) {
         model.removeItem((ItemQuantity) focusedItem);
+    }
+
+    public void backToMenu() {
+        viewHandler.openView(Views.CATEGORIES);
     }
 }
