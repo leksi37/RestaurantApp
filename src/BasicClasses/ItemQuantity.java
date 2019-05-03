@@ -35,9 +35,6 @@ public class ItemQuantity implements Serializable {
     {
         this.state = state;
     }
-//    public void setId(String id) {
-//        this.id = id;
-//    }
 
     public int getQuantity() {
         return quantity;
