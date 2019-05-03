@@ -138,7 +138,6 @@ public class ViewHandler {
     public void setCategory(type category)
     {
         categoryToOpen = category;
-        System.out.println("category is " + category);
     }
 
 

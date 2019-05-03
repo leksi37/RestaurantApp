@@ -19,7 +19,6 @@ public class CategoryList {
         viewModel.openCategoryListItems(type.alcohol);
     }
     public void openSalads() {
-        System.out.println("view");
         viewModel.openCategoryListItems(type.salads);
     }
 
