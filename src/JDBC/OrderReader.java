@@ -3,6 +3,7 @@ package JDBC;
 import BasicClasses.ItemQuantity;
 import BasicClasses.ItemState;
 import BasicClasses.Order;
+import org.postgresql.util.PSQLException;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,7 +31,14 @@ public class OrderReader {
         ArrayList<String> orderItems = order.dbFormat();
         for(int i = 0; i < orderItems.size(); ++i)
         {
-            db.insert("orders", orderItems.get(i));
+            try {
+                db.insert("orders", orderItems.get(i));
+            } catch(SQLException e)
+            {
+                addToOrder(order);
+                break;
+            }
+
         }
     }
 
@@ -130,11 +138,23 @@ public class OrderReader {
     public void addToOrder(Order order)
     {
         Order o = readOrder(order.getTableId());
-        remove(o.getTableId());
-        for(int i = 0; i < order.getItemsWithQuantity().size(); ++i)
-        {
-            o.addItem(order.getItemsWithQuantity().get(i));
+        if(o == null)
+            o = order;
+        else {
+            for(int i = 0; i < order.getItemsWithQuantity().size(); ++i)
+            {
+                o.addItem(order.getItemsWithQuantity().get(i));
+            }
         }
+
+        remove(o.getTableId());
         addOrder(o);
+    }
+
+
+    public static void main(String[] args) {
+        OrderReader reader = OrderReader.getInstance();
+        JDBC db = JDBC.getInstance();
+        reader.remove("table0");
     }
 }

@@ -2,6 +2,7 @@ package JDBC;
 
 import BasicClasses.type;
 import BasicClasses.MenuItem;
+import org.postgresql.util.PSQLException;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,7 +26,11 @@ public class MenuItemsReader {
 
     public void add(MenuItem item)
     {
-        db.insert("Menu", item.dbFormat());
+        try {
+            db.insert("Menu", item.dbFormat());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void remove(String id)
@@ -82,7 +87,11 @@ public class MenuItemsReader {
     public void change(MenuItem item)
     {
         db.remove("Menu", "id = '" + item.getId() + "'");
-        db.insert("Menu", item.dbFormat());
+        try {
+            db.insert("Menu", item.dbFormat());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private MenuItem get(ResultSet rs)
