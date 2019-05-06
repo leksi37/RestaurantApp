@@ -44,8 +44,8 @@ public class ChefModelImpl implements ChefModel {
         orders.remove(order);
     }
 
-    public void orderDoneChef(Order order){
-        client.markOrderAsDone(order);
-    }
+    //public void orderDoneChef(Order order){
+     //   client.markOrderAsDone(order);
+    //}
 
 }

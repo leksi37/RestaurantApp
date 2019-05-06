@@ -11,23 +11,21 @@ import java.util.ArrayList;
 
 public class CategoryListViewModel implements ViewModels {
 
-    public ViewHandler viewHandler;
     public CustomerModel model;
     private ArrayList<MenuItem> menuItems;
 
 
-    public CategoryListViewModel(CustomerModel model, ViewHandler viewHandler) {
+    public CategoryListViewModel(CustomerModel model) {
         this.model=model;
-        this.viewHandler = viewHandler;
         menuItems = new ArrayList();
 
     }
 
-    public void openCategoryListItems(type category) {
-        System.out.println("viewModel");
-        viewHandler.setCategory(category);
-        viewHandler.openView(Views.ITEMS);
-    }
+//    public void openCategoryListItems(type category) {
+//        System.out.println("viewModel");
+//       viewHandler.setCategory(category);
+//       viewHandler.openView(Views.ITEMS);
+//    }
 
 
 }

@@ -10,18 +10,16 @@ import javafx.application.Platform;
 public class MenuFrontViewModel implements ViewModels {
 
     private CustomerModel model;
-    private ViewHandler viewHandler;
 
-    public MenuFrontViewModel(CustomerModel model, ViewHandler viewHandler)
+    public MenuFrontViewModel(CustomerModel model)
     {
         this.model = model;
-        this.viewHandler = viewHandler;
     }
 
-    public void openCategoryList() {
-        Platform.runLater(() -> viewHandler.openView(Views.CATEGORIES));
-       //ConnectionPool?
-       //model.addClient();
-       // model.addOrderToServer(new Order("some text"));
-    }
+//    public void openCategoryList() {
+//        Platform.runLater(() -> viewHandler.openView(Views.CATEGORIES));
+//       //ConnectionPool?
+//       //model.addClient();
+//       // model.addOrderToServer(new Order("some text"));
+//    }
 }

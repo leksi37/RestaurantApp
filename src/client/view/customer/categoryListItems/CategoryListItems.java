@@ -1,7 +1,9 @@
 package client.view.customer.categoryListItems;
 
 import BasicClasses.MenuItem;
+import BasicClasses.Views;
 import BasicClasses.type;
+import client.view.ViewHandler;
 import client.viewModel.ViewModelProvider;
 import client.viewModel.customer.CategoryListItemsViewModel;
 import javafx.application.Platform;
@@ -19,6 +21,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import javax.swing.text.View;
 import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
 import java.util.ArrayList;
@@ -26,6 +29,11 @@ import java.util.ArrayList;
 public class CategoryListItems {
     private CategoryListItemsViewModel categoryListItemsViewModel;
     private ObservableList<Integer> quantityOfItem = FXCollections.observableArrayList(1,2,3,4,5, 6, 7, 8, 9, 10, 11);
+    private ViewHandler viewHandler;
+
+    public CategoryListItems(ViewHandler viewHandler){
+        this.viewHandler = viewHandler;
+    }
 
     @FXML
     private Button backButton;
@@ -47,7 +55,9 @@ public class CategoryListItems {
 
     public void back()
     {
-        categoryListItemsViewModel.back();
+        Platform.runLater(() -> {
+            viewHandler.openView(Views.CATEGORIES);
+        });
     }
 
 
@@ -122,6 +132,9 @@ public class CategoryListItems {
     }
 
     public void seeOrder(ActionEvent actionEvent) {
-        categoryListItemsViewModel.seeOrder();
+        Platform.runLater(() -> {
+            viewHandler.openView(Views.ORDER);
+        });
+
     }
 }

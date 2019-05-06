@@ -15,13 +15,12 @@ public class CategoryListItemsViewModel implements ViewModels {
     //IT'S ABOUT STORING DATA, IT'S NOT SUPPOSED TO BE IN THE VIEW MODEL, BUT IN THE MODEL
 //    private Order currentOrder;
 
-    private ViewHandler viewHandler;
     private CustomerModel model;
     private ArrayList<MenuItem> items;
     private PropertyChangeSupport changeSupport;
 
-    public CategoryListItemsViewModel(CustomerModel model, ViewHandler viewHandler){
-        this.viewHandler = viewHandler;
+    public CategoryListItemsViewModel(CustomerModel model){
+
 //        currentOrder = null;
         changeSupport = new PropertyChangeSupport(this);
         this.model = model;
@@ -62,12 +61,4 @@ public class CategoryListItemsViewModel implements ViewModels {
         model.removeItem(id, i);
     }
 
-    public void back() {
-        viewHandler.openView(Views.CATEGORIES);
-    }
-
-    public void seeOrder()
-    {
-        viewHandler.openView(Views.ORDER);
-    }
 }

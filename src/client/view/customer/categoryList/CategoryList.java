@@ -1,50 +1,55 @@
 package client.view.customer.categoryList;
 
 import BasicClasses.type;
-import client.viewModel.ViewModelProvider;
+import client.view.ViewHandler;
 import client.viewModel.customer.CategoryListViewModel;
 
 public class CategoryList {
 
     private CategoryListViewModel viewModel;
+    private ViewHandler viewHandler;
+
+    public CategoryList(ViewHandler viewHandler){
+        this.viewHandler = viewHandler;
+    }
 
     public void openAppetizers() {
-        viewModel.openCategoryListItems(type.appetizers);
+        viewHandler.setCategory(type.appetizers);
     }
 
     public void openDrinks() {
-        viewModel.openCategoryListItems(type.nonAlcoholic);
+        viewHandler.setCategory(type.nonAlcoholic);
     }
     public void openAlcohol() {
-        viewModel.openCategoryListItems(type.alcohol);
+        viewHandler.setCategory(type.alcohol);
     }
     public void openSalads() {
         System.out.println("view");
-        viewModel.openCategoryListItems(type.salads);
+        viewHandler.setCategory(type.salads);
     }
 
     public void openDesserts() {
-        viewModel.openCategoryListItems(type.dessert);
+        viewHandler.setCategory(type.dessert);
     }
 
     public void openBreakfast() {
-        viewModel.openCategoryListItems(type.breakfast);
+        viewHandler.setCategory(type.breakfast);
     }
 
     public void openPasta() {
-        viewModel.openCategoryListItems(type.pasta);
+        viewHandler.setCategory(type.pasta);
     }
 
     public void openPizza() {
-        viewModel.openCategoryListItems(type.pizza);
+        viewHandler.setCategory(type.pizza);
     }
 
     public void openSoup() {
-        viewModel.openCategoryListItems(type.soup);
+        viewHandler.setCategory(type.soup);
     }
 
     public void openSideDish() {
-        viewModel.openCategoryListItems(type.sideDish);
+        viewHandler.setCategory(type.sideDish);
     }
 
     public void init(CategoryListViewModel vm){

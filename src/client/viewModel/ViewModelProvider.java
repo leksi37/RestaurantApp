@@ -30,12 +30,12 @@ public class ViewModelProvider {
     public ViewModelProvider(ChefModel model){
         this.chefModel=model;
     }
-    public void instantiateViewModels(ViewHandler viewHandler) {
-        this.viewHandler=viewHandler;
-        menuFrontViewModel= new MenuFrontViewModel(model, viewHandler);
-        categoryListItemsViewModel = new CategoryListItemsViewModel(model, viewHandler);
-        categoryListViewModel = new CategoryListViewModel(model, viewHandler);
-        orderItemsListViewModel = new OrderItemsListViewModel(model,viewHandler);
+
+    public void instantiateViewModels() {
+        menuFrontViewModel= new MenuFrontViewModel(model);
+        categoryListItemsViewModel = new CategoryListItemsViewModel(model);
+        categoryListViewModel = new CategoryListViewModel(model);
+        orderItemsListViewModel = new OrderItemsListViewModel(model);
     }
 
     public MenuFrontViewModel getMenuFrontViewModel() {
