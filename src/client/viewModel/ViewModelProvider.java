@@ -26,9 +26,11 @@ public class ViewModelProvider {
 
     public ViewModelProvider(CustomerModel model){
         this.model=model;
+        instantiateViewModels();
     }
     public ViewModelProvider(ChefModel model){
         this.chefModel=model;
+        instantiateViewModels();
     }
 
     public void instantiateViewModels() {
