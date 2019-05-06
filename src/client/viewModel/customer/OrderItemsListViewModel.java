@@ -52,7 +52,6 @@ public class OrderItemsListViewModel implements ViewModels {
         model.addOrderToServer();
     }
 
-
     public ObservableList<ItemQuantity> getItems() {
         return items;
     }

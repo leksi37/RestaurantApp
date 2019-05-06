@@ -29,13 +29,13 @@ public class ViewHandler {
     public ViewHandler(Stage stage, CustomerModel model){
         this.stage=stage;
         this.viewModelProvider=new ViewModelProvider(model);
-        viewModelProvider.instantiateViewModels(this);
+        viewModelProvider.instantiateViewModels();
     }
 
     public ViewHandler(Stage stage, ChefModel chefModel){
         this.stage=stage;
         this.viewModelProvider=new ViewModelProvider(chefModel);
-        viewModelProvider.instantiateViewModels(this);
+        viewModelProvider.instantiateViewModels();
     }
 
 //    public void openMenuFront(){
