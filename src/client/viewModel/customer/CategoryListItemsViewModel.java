@@ -12,8 +12,6 @@ import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
 public class CategoryListItemsViewModel implements ViewModels {
-    //IT'S ABOUT STORING DATA, IT'S NOT SUPPOSED TO BE IN THE VIEW MODEL, BUT IN THE MODEL
-//    private Order currentOrder;
 
     private ViewHandler viewHandler;
     private CustomerModel model;

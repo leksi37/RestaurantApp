@@ -4,7 +4,7 @@ import BasicClasses.ItemQuantity;
 import BasicClasses.MenuItem;
 import BasicClasses.Order;
 import client.networking.Client;
-import client.viewModel.MenuProxy;
+import BasicClasses.MenuProxy;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -42,8 +42,12 @@ public class CustomerModelImpl implements CustomerModel {
 
     @Override
     public void addOrderToServer() {
-        client.addOrderToServer(order);
-        order = new Order(tableId);
+        if(order.getItemsWithQuantity().size() != 0)
+        {
+            client.addOrderToServer(order);
+            order = new Order(tableId);
+        }
+
     }
 
     @Override
@@ -98,7 +102,8 @@ public class CustomerModelImpl implements CustomerModel {
 
     @Override
     public void removeItem(ItemQuantity focusedItem) {
-        order.removeItem(focusedItem.getId(), focusedItem.getQuantity());
+        if(focusedItem != null)
+            order.removeItem(focusedItem.getId(), focusedItem.getQuantity());
         support.firePropertyChange("orderChanged", null, order);
     }
 

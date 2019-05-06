@@ -25,8 +25,6 @@ import java.util.ArrayList;
 
 public class CategoryListItems {
     private CategoryListItemsViewModel categoryListItemsViewModel;
-    private ObservableList<Integer> quantityOfItem = FXCollections.observableArrayList(1,2,3,4,5, 6, 7, 8, 9, 10, 11);
-
     @FXML
     private Button backButton;
     @FXML
@@ -55,7 +53,6 @@ public class CategoryListItems {
         ArrayList<MenuItem> items = (ArrayList<MenuItem>) propertyChangeEvent.getNewValue();
         for(int i = 0; i < items.size(); ++i)
         {
-//            System.out.println(items.get(i));
             HBox box = new HBox();
             box.setId(items.get(i).getId());
 
@@ -114,11 +111,6 @@ public class CategoryListItems {
             });
 
         }
-    }
-
-
-    public void setMenu(String type) {
-        categoryListItemsViewModel.getItems(type);
     }
 
     public void seeOrder(ActionEvent actionEvent) {

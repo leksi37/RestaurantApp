@@ -19,8 +19,5 @@ public class MenuFrontViewModel implements ViewModels {
 
     public void openCategoryList() {
        viewHandler.openView(Views.CATEGORIES);
-       //ConnectionPool?
-       //model.addClient();
-       // model.addOrderToServer(new Order("some text"));
     }
 }

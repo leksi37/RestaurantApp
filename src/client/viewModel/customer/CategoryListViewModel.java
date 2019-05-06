@@ -13,13 +13,11 @@ public class CategoryListViewModel implements ViewModels {
 
     public ViewHandler viewHandler;
     public CustomerModel model;
-    private ArrayList<MenuItem> menuItems;
 
 
     public CategoryListViewModel(CustomerModel model, ViewHandler viewHandler) {
         this.model=model;
         this.viewHandler = viewHandler;
-        menuItems = new ArrayList();
 
     }
 

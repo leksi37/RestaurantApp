@@ -1,6 +1,5 @@
 package client.view;
 
-import BasicClasses.Order;
 import BasicClasses.Views;
 import BasicClasses.type;
 import client.model.customer.CustomerModel;
@@ -8,21 +7,17 @@ import client.view.customer.categoryList.CategoryList;
 import client.view.customer.categoryListItems.CategoryListItems;
 import client.view.customer.menuFront.MenuFront;
 import client.view.customer.orderItemsList.OrderItemList;
-import client.viewModel.MenuProxy;
 import client.viewModel.ViewModelProvider;
 import client.viewModel.customer.CategoryListItemsViewModel;
 import client.viewModel.customer.CategoryListViewModel;
 import client.viewModel.customer.MenuFrontViewModel;
 import client.viewModel.customer.OrderItemsListViewModel;
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class ViewHandler {
 

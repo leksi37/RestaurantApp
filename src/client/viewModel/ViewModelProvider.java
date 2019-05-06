@@ -10,7 +10,7 @@ import client.viewModel.customer.OrderItemsListViewModel;
 
 public class ViewModelProvider {
 
-    private ViewHandler viewHandler;
+//    private ViewHandler viewHandler;
 
     //models
     private CustomerModel model;
@@ -28,28 +28,28 @@ public class ViewModelProvider {
     }
 
     public void instantiateViewModels(ViewHandler viewHandler) {
-        this.viewHandler=viewHandler;
+//        this.viewHandler=viewHandler;
         menuFrontViewModel= new MenuFrontViewModel(model, viewHandler);
         categoryListItemsViewModel = new CategoryListItemsViewModel(model, viewHandler);
         categoryListViewModel = new CategoryListViewModel(model, viewHandler);
         orderItemsListViewModel = new OrderItemsListViewModel(model,viewHandler);
     }
 
-    public MenuFrontViewModel getMenuFrontViewModel() {
-        return menuFrontViewModel;
-    }
-
-    public CategoryListViewModel getCategoryListViewModel() {
-        return categoryListViewModel;
-    }
-
-    public CategoryListItemsViewModel getCategoryListItemsViewModel() {
-        return categoryListItemsViewModel;
-    }
-
-    public OrderItemsListViewModel getOrderItemsListViewModel() {
-        return orderItemsListViewModel;
-    }
+//    public MenuFrontViewModel getMenuFrontViewModel() {
+//        return menuFrontViewModel;
+//    }
+//
+//    public CategoryListViewModel getCategoryListViewModel() {
+//        return categoryListViewModel;
+//    }
+//
+//    public CategoryListItemsViewModel getCategoryListItemsViewModel() {
+//        return categoryListItemsViewModel;
+//    }
+//
+//    public OrderItemsListViewModel getOrderItemsListViewModel() {
+//        return orderItemsListViewModel;
+//    }
 
     public ViewModels getViewModel(Views viewToOpen) {
         switch(viewToOpen)

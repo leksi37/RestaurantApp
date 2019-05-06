@@ -1,4 +1,4 @@
-package client.viewModel;
+package BasicClasses;
 
 import java.util.ArrayList;
 import java.util.HashMap;
