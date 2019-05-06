@@ -32,13 +32,20 @@ public class ChefModelImpl implements ChefModel {
 
     public void addOrder(Order order){
         orders.add(order);
+        orderAdded();
+    }
+
+    @Override
+    public void addClient(Client client) {
+
     }
 
     public void removeOrder(Order order){
         orders.remove(order);
     }
 
-    public void orderDoneChef(){
-        client.markOrderAsDone();
+    public void orderDoneChef(Order order){
+        client.markOrderAsDone(order);
     }
+
 }

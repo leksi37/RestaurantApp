@@ -19,4 +19,8 @@ public interface Client {
     void returnTableId(String obj);
 
     void orderAdded();
+//
+//    void markOrderAsDone(Order order);
+//
+//    void orderReceived(Order obj);
 }

@@ -1,6 +1,7 @@
 package client.viewModel;
 
 import BasicClasses.Views;
+import client.model.chef.ChefModel;
 import client.model.customer.CustomerModel;
 import client.view.ViewHandler;
 import client.viewModel.customer.CategoryListItemsViewModel;
@@ -14,7 +15,7 @@ public class ViewModelProvider {
 
     //models
     private CustomerModel model;
-
+    private ChefModel chefModel;
     //viewModels
     private MenuFrontViewModel menuFrontViewModel;
     private CategoryListViewModel categoryListViewModel;
@@ -26,7 +27,9 @@ public class ViewModelProvider {
     public ViewModelProvider(CustomerModel model){
         this.model=model;
     }
-
+    public ViewModelProvider(ChefModel model){
+        this.chefModel=model;
+    }
     public void instantiateViewModels(ViewHandler viewHandler) {
         this.viewHandler=viewHandler;
         menuFrontViewModel= new MenuFrontViewModel(model, viewHandler);

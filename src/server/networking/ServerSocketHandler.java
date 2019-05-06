@@ -86,6 +86,7 @@ public class ServerSocketHandler implements Runnable {
 
                     try {
                         outToClient.writeObject(new Request(RequestType.ADD_ORDER, null));
+                      ////////  outToClient.writeObject(new Request(RequestType.GET_ORDER, r.getType()));
                     }catch (IOException e){
                         e.printStackTrace();
                     }

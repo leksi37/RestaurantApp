@@ -2,6 +2,7 @@ package client.view;
 
 import BasicClasses.Views;
 import BasicClasses.type;
+import client.model.chef.ChefModel;
 import client.model.customer.CustomerModel;
 import client.view.customer.categoryList.CategoryList;
 import client.view.customer.categoryListItems.CategoryListItems;
@@ -31,6 +32,11 @@ public class ViewHandler {
         viewModelProvider.instantiateViewModels(this);
     }
 
+    public ViewHandler(Stage stage, ChefModel chefModel){
+        this.stage=stage;
+        this.viewModelProvider=new ViewModelProvider(chefModel);
+        viewModelProvider.instantiateViewModels(this);
+    }
 
 //    public void openMenuFront(){
 //        Scene scene= null;
@@ -130,6 +136,10 @@ public class ViewHandler {
                 OrderItemList view= loader.getController();
                 view.init((OrderItemsListViewModel) viewModelProvider.getViewModel(viewToOpen));
                 break;
+            }
+            case CHEF_FRONT:
+            {
+                loader.setLocation(getClass().getResource("chef/chef.fxml"));
             }
         }
 

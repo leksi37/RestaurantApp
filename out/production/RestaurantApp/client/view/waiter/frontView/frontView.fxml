@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
@@ -31,10 +32,14 @@
                   <Button layoutX="429.0" layoutY="393.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="86.0" text="16" />
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="144.0" prefWidth="0.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="144.0" prefWidth="0.0" style="-fx-background-color: #ffcccc;">
                <children>
-                  <ListView fx:id="notifications" layoutY="39.0" prefHeight="459.0" prefWidth="258.0" />
-                  <Label fx:id="update" layoutY="-1.0" prefHeight="38.0" prefWidth="258.0" text="Label" />
+                  <ListView fx:id="notifications" layoutX="7.0" layoutY="76.0" prefHeight="414.0" prefWidth="242.0" />
+                  <Label fx:id="update" alignment="CENTER" layoutY="-1.0" prefHeight="78.0" prefWidth="258.0" text="Waiting for update">
+                     <font>
+                        <Font name="System Bold Italic" size="22.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
         </items>
