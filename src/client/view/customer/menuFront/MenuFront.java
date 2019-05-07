@@ -12,9 +12,6 @@ public class MenuFront {
     private MenuFrontViewModel menuFrontViewModel;
     private ViewHandler viewHandler;
 
-    public MenuFront(ViewHandler viewHandler){
-        this.viewHandler = viewHandler;
-    }
 
     @FXML
     private Label orderStatus;
@@ -33,7 +30,8 @@ public class MenuFront {
     }
 
 
-    public void init(MenuFrontViewModel vm) {
+    public void init(MenuFrontViewModel vm, ViewHandler viewHandler) {
+        this.viewHandler = viewHandler;
         menuFrontViewModel = vm;
     }
 }

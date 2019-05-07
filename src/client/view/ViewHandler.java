@@ -32,7 +32,7 @@ public class ViewHandler {
     private OrderItemList orderItemList;
 
     public ViewHandler(Stage stage, CustomerModel model){
-        instantiateViews();
+//        instantiateViews();
         this.stage=stage;
         this.viewModelProvider=new ViewModelProvider(model);
 
@@ -83,14 +83,6 @@ public class ViewHandler {
 //    }
 
 
-
-    public void instantiateViews(){
-       menuFront = new MenuFront(this);
-       categoryList = new CategoryList(this);
-       categoryListItems = new CategoryListItems(this);
-       orderItemList = new OrderItemList(this);
-    }
-
     public MenuFront getMenuFront(){
         return menuFront;
     }
@@ -123,7 +115,7 @@ public class ViewHandler {
                 catch(IOException e){e.printStackTrace();}
 
                 menuFront = loader.getController();
-                menuFront.init((MenuFrontViewModel) viewModelProvider.getViewModel(viewToOpen));
+                menuFront.init((MenuFrontViewModel) viewModelProvider.getViewModel(viewToOpen), this);
                 break;
             }
             case MENU_FRONT_LABEL:
@@ -133,7 +125,7 @@ public class ViewHandler {
                 catch(IOException e){e.printStackTrace();}
 
                 menuFront= loader.getController();
-                menuFront.init((MenuFrontViewModel) viewModelProvider.getViewModel(viewToOpen));
+                menuFront.init((MenuFrontViewModel) viewModelProvider.getViewModel(viewToOpen), this);
                 menuFront.setOrderStatus("Your order is now being prepared.");
                 break;
             }
@@ -144,7 +136,7 @@ public class ViewHandler {
                 catch(IOException e){e.printStackTrace();}
 
                 categoryList= loader.getController();
-                categoryList.init((CategoryListViewModel) viewModelProvider.getViewModel(viewToOpen));
+                categoryList.init((CategoryListViewModel) viewModelProvider.getViewModel(viewToOpen), this);
                 break;
             }
             case ITEMS:
@@ -154,7 +146,7 @@ public class ViewHandler {
                 catch(IOException e){e.printStackTrace();}
 
                 categoryListItems= loader.getController();
-                categoryListItems.init((CategoryListItemsViewModel) viewModelProvider.getViewModel(viewToOpen), categoryToOpen);
+                categoryListItems.init((CategoryListItemsViewModel) viewModelProvider.getViewModel(viewToOpen), categoryToOpen, this);
                 break;
             }
             case ORDER:
@@ -164,7 +156,7 @@ public class ViewHandler {
                 catch(IOException e){e.printStackTrace();}
 
                 orderItemList= loader.getController();
-                orderItemList.init((OrderItemsListViewModel) viewModelProvider.getViewModel(viewToOpen));
+                orderItemList.init((OrderItemsListViewModel) viewModelProvider.getViewModel(viewToOpen), this);
                 break;
             }
             case CHEF_FRONT:
@@ -184,7 +176,7 @@ public class ViewHandler {
     public void setCategory(type category)
     {
         categoryToOpen = category;
-        System.out.println("category is " + category);
+        openView(Views.ITEMS);
     }
 
 

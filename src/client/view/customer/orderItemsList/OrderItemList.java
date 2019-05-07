@@ -23,10 +23,6 @@ public class OrderItemList {
     private OrderItemsListViewModel oilvm;
     private ViewHandler viewHandler;
 
-    public OrderItemList(ViewHandler viewHandler){
-        this.viewHandler = viewHandler;
-    }
-
     @FXML
     ListView orderItems;
 
@@ -39,8 +35,9 @@ public class OrderItemList {
         });
     }
 
-    public void init(OrderItemsListViewModel o)
+    public void init(OrderItemsListViewModel o, ViewHandler viewHandler)
     {
+        this.viewHandler = viewHandler;
         oilvm = o;
         oilvm.setOrderItems();
         orderItems.setItems(oilvm.getItems());

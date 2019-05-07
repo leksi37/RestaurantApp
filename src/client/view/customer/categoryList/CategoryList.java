@@ -4,14 +4,12 @@ import BasicClasses.type;
 import client.view.ViewHandler;
 import client.viewModel.customer.CategoryListViewModel;
 
+import javax.swing.text.View;
+
 public class CategoryList {
 
     private CategoryListViewModel viewModel;
     private ViewHandler viewHandler;
-
-    public CategoryList(ViewHandler viewHandler){
-        this.viewHandler = viewHandler;
-    }
 
     public void openAppetizers() {
         viewHandler.setCategory(type.appetizers);
@@ -52,7 +50,8 @@ public class CategoryList {
         viewHandler.setCategory(type.sideDish);
     }
 
-    public void init(CategoryListViewModel vm){
+    public void init(CategoryListViewModel vm, ViewHandler viewHandler){
+        this.viewHandler = viewHandler;
         viewModel = vm;
     }
 }

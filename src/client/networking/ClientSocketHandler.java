@@ -68,11 +68,8 @@ public class ClientSocketHandler implements Runnable {
     }
 
     public void requestCategory(String type) {
-        ArrayList categoryItems = null;
         try {
             outToServer.writeObject(new Request(RequestType.GET_MENU_ITEMS, type));
-//            categoryItems = (ArrayList) inFromServer.readObject();
-//            return categoryItems;
         }
         catch (IOException e) {
             e.printStackTrace();
