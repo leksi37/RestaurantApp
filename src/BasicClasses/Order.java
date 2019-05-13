@@ -8,20 +8,18 @@ import java.util.ArrayList;
 public class Order implements Serializable {
     private String tableId;
     private ArrayList<ItemQuantity> items;
-    private String note;
 
     public Order(String tableId) {
         this.tableId = tableId;
-        items = new ArrayList<ItemQuantity>();
-        note = "";
+        items = new ArrayList<>();
     }
 
     public Order(Order order)
     {
-        items = new ArrayList<ItemQuantity>();
+        items = new ArrayList<>();
         if(order != null)
         {
-            tableId = new String(order.tableId);
+            tableId = order.tableId;
             if(order.items != null)
             {
                 for(int i = 0; i < order.items.size(); ++i)
@@ -33,8 +31,6 @@ public class Order implements Serializable {
     private int isInOrder(String itemId)
     {
         for(int i = 0; i < items.size(); ++i) {
-//            System.out.println(items.get(i));
-//            System.out.println(item);
             if (items.get(i).getId().equals(itemId))
                 return i;
         }
@@ -118,9 +114,6 @@ public class Order implements Serializable {
         return null;
     }
 
-    public void deliverItem(ItemQuantity focusedItem) {
-        focusedItem.changeState(ItemState.delivered);
-    }
     public void removeItem(String id, int quantity)
     {
         for(int i = 0; i < items.size(); ++i)

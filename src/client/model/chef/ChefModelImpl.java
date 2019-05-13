@@ -1,7 +1,7 @@
 package client.model.chef;
 
 import BasicClasses.Order;
-import client.networking.Client;
+import client.networking.chef.Client;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -30,6 +30,11 @@ public class ChefModelImpl implements ChefModel {
         changeSupport.firePropertyChange("OrderForChefAdded", null, orders);
     }
 
+    @Override
+    public void sendNotification(String notification) {
+        client.sendNotification(notification);
+    }
+
     public void addOrder(Order order){
         orders.add(order);
         orderAdded();
@@ -37,15 +42,8 @@ public class ChefModelImpl implements ChefModel {
 
     @Override
     public void addClient(Client client) {
-
+        this.client = client;
     }
 
-    public void removeOrder(Order order){
-        orders.remove(order);
-    }
-
-    //public void orderDoneChef(Order order){
-     //   client.markOrderAsDone(order);
-    //}
 
 }

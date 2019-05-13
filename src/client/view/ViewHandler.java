@@ -4,15 +4,15 @@ import BasicClasses.Views;
 import BasicClasses.type;
 import client.model.chef.ChefModel;
 import client.model.customer.CustomerModel;
+import client.view.OnOpen.OnOpen;
+import client.view.chef.Chef;
 import client.view.customer.categoryList.CategoryList;
 import client.view.customer.categoryListItems.CategoryListItems;
 import client.view.customer.menuFront.MenuFront;
 import client.view.customer.orderItemsList.OrderItemList;
-import client.view.waiter.frontView.FrontView;
+import client.viewModel.Chef.ChefViewModel;
 import client.viewModel.ViewModelProvider;
 import client.viewModel.customer.CategoryListItemsViewModel;
-import client.viewModel.customer.CategoryListViewModel;
-import client.viewModel.customer.MenuFrontViewModel;
 import client.viewModel.customer.OrderItemsListViewModel;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -30,9 +30,10 @@ public class ViewHandler {
     private CategoryList categoryList;
     private CategoryListItems categoryListItems;
     private OrderItemList orderItemList;
+    private Chef chef;
+    private OnOpen onOpen;
 
     public ViewHandler(Stage stage, CustomerModel model){
-//        instantiateViews();
         this.stage=stage;
         this.viewModelProvider=new ViewModelProvider(model);
 
@@ -45,60 +46,6 @@ public class ViewHandler {
         viewModelProvider.instantiateViewModels();
     }
 
-//    public void openMenuFront(){
-//        Scene scene= null;
-//        FXMLLoader loader= new FXMLLoader();
-//        loader.setLocation(getClass().getResource("customer/menuFront/MenuFront.fxml"));
-//        Parent root= null;
-//
-//        try{ root=loader.load();}
-//        catch(IOException e){e.printStackTrace();}
-//
-//        MenuFront view= loader.getController();
-//        view.init(viewModelProvider);
-//
-//        scene= new Scene(root);
-//        stage.setTitle("R E S T A U R A N T ");
-//        stage.setScene(scene);
-//        stage.show();
-//    }
-
-//    public void openCategoryList() {
-////        viewModelProvider.instantiateViewModels(this);
-//        Scene scene= null;
-//        FXMLLoader loader= new FXMLLoader();
-//        loader.setLocation(getClass().getResource("customer/categoryList/CategoryList.fxml"));
-//        Parent root= null;
-//
-//        try{ root=loader.load();}
-//        catch(IOException e){e.printStackTrace();}
-//
-//        CategoryList view= loader.getController();
-//        view.init(viewModelProvider);
-//
-//        scene= new Scene(root);
-//        stage.setTitle("Categories");
-//        stage.setScene(scene);
-//        stage.show();
-//    }
-
-
-    public MenuFront getMenuFront(){
-        return menuFront;
-    }
-
-    public CategoryList getCategoryList(){
-        return categoryList;
-    }
-
-    public CategoryListItems getCategoryListItems(){
-        return categoryListItems;
-    }
-
-    public OrderItemList getOrderItemList(){
-        return orderItemList;
-    }
-
     public void openView(Views viewToOpen)
     {
         Scene scene= null;
@@ -106,6 +53,18 @@ public class ViewHandler {
         Parent root= null;
         switch(viewToOpen)
         {
+            case ON_OPEN:
+            {
+                loader.setLocation(getClass().getResource("OnOpen/onOpen.fxml"));
+                try{
+                    root=loader.load();
+                }
+                catch(IOException e){e.printStackTrace();}
+
+                onOpen = loader.getController();
+                onOpen.init(this);
+                break;
+            }
             case MENU_FRONT:
             {
                 loader.setLocation(getClass().getResource("customer/menuFront/MenuFront.fxml"));
@@ -115,7 +74,7 @@ public class ViewHandler {
                 catch(IOException e){e.printStackTrace();}
 
                 menuFront = loader.getController();
-                menuFront.init((MenuFrontViewModel) viewModelProvider.getViewModel(viewToOpen), this);
+                menuFront.init(this);
                 break;
             }
             case MENU_FRONT_LABEL:
@@ -125,7 +84,7 @@ public class ViewHandler {
                 catch(IOException e){e.printStackTrace();}
 
                 menuFront= loader.getController();
-                menuFront.init((MenuFrontViewModel) viewModelProvider.getViewModel(viewToOpen), this);
+                menuFront.init(this);
                 menuFront.setOrderStatus("Your order is now being prepared.");
                 break;
             }
@@ -136,7 +95,7 @@ public class ViewHandler {
                 catch(IOException e){e.printStackTrace();}
 
                 categoryList= loader.getController();
-                categoryList.init((CategoryListViewModel) viewModelProvider.getViewModel(viewToOpen), this);
+                categoryList.init(this);
                 break;
             }
             case ITEMS:
@@ -162,6 +121,12 @@ public class ViewHandler {
             case CHEF_FRONT:
             {
                 loader.setLocation(getClass().getResource("chef/chef.fxml"));
+                try{ root=loader.load();}
+                catch(IOException e){e.printStackTrace();}
+
+                chef= loader.getController();
+                chef.init((ChefViewModel) viewModelProvider.getViewModel(viewToOpen), this);
+                break;
             }
         }
 
@@ -178,48 +143,5 @@ public class ViewHandler {
         categoryToOpen = category;
         openView(Views.ITEMS);
     }
-//hi everyone
 
-
-
-//    public void openCategoryListItems(String name){
-//        Scene scene= null;
-//        FXMLLoader loader= new FXMLLoader();
-//        Parent root= null;
-//        loader.setLocation(getClass().getResource("customer/categoryListItems/CategoryListItems.fxml"));
-//
-//
-//        try{ root=loader.load();}
-//        catch(IOException e){
-//            e.printStackTrace();
-//            System.out.println("cannot load");
-//        }
-//
-//        CategoryListItems view= loader.getController();
-//        view.init(viewModelProvider);
-//        view.setMenu(name);
-//
-//        stage.setTitle(name.toUpperCase());
-//        scene= new Scene(root);
-//        stage.setScene(scene);
-//        stage.show();
-//    }
-
-//    public void openOrderItemsList(Order order){
-//        Scene scene= null;
-//        FXMLLoader loader= new FXMLLoader();
-//        loader.setLocation(getClass().getResource("customer/orderItemsList/OrderItemList.fxml"));
-//        Parent root= null;
-//
-//        try{ root=loader.load();}
-//        catch(IOException e){e.printStackTrace();}
-//
-//        OrderItemList view= loader.getController();
-//        view.init(viewModelProvider.getOrderItemsListViewModel());
-//
-//        scene= new Scene(root);
-//        stage.setTitle("Order");
-//        stage.setScene(scene);
-//        stage.show();
-//    }
 }

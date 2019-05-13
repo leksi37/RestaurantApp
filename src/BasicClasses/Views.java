@@ -6,5 +6,6 @@ public enum Views {
     ITEMS,
     MENU_FRONT_LABEL,
     ORDER,
-    CHEF_FRONT;
+    CHEF_FRONT,
+    ON_OPEN;
 }

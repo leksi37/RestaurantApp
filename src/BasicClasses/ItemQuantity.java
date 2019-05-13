@@ -35,9 +35,7 @@ public class ItemQuantity implements Serializable {
     {
         this.state = state;
     }
-//    public void setId(String id) {
-//        this.id = id;
-//    }
+
 
     public int getQuantity() {
         return quantity;
@@ -46,17 +44,6 @@ public class ItemQuantity implements Serializable {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-
-    public void increaseQuantity()
-    {
-        quantity++;
-    }
-
-    public String orderDisplay()
-    {
-        return "id " + id + ", quantity " + quantity + ", state " + state.name();
-    }
-
 
     public String toString()
     {

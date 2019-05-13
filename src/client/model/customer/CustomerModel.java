@@ -3,7 +3,7 @@ package client.model.customer;
 import BasicClasses.ItemQuantity;
 import BasicClasses.MenuItem;
 import BasicClasses.Order;
-import client.networking.Client;
+import client.networking.customer.Client;
 
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
@@ -14,10 +14,6 @@ public interface CustomerModel {
 
     void addOrderToServer();
 
-    //this one is only for testing
-    void getFromServer();
-
-    void menuCategory(ArrayList a);
     void requestMenuCategory(String type);
 
     void gotMenuItems(ArrayList<MenuItem> mi);

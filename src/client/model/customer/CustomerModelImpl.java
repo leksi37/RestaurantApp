@@ -3,7 +3,7 @@ package client.model.customer;
 import BasicClasses.ItemQuantity;
 import BasicClasses.MenuItem;
 import BasicClasses.Order;
-import client.networking.Client;
+import client.networking.customer.Client;
 import client.viewModel.MenuProxy;
 
 import java.beans.PropertyChangeListener;
@@ -44,16 +44,6 @@ public class CustomerModelImpl implements CustomerModel {
     public void addOrderToServer() {
         client.addOrderToServer(order);
         order = new Order(tableId);
-    }
-
-    @Override
-    public void getFromServer() {
-        System.out.println("Something came from the server to the client");
-    }
-
-    @Override
-    public void menuCategory(ArrayList a) {
-
     }
 
     @Override

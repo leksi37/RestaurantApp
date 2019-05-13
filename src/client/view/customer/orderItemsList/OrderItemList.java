@@ -31,8 +31,10 @@ public class OrderItemList {
 
     public void placeOrder(){
         Platform.runLater(() -> {
+            oilvm.sendOrder();
             viewHandler.openView(Views.MENU_FRONT_LABEL);
         });
+
     }
 
     public void init(OrderItemsListViewModel o, ViewHandler viewHandler)

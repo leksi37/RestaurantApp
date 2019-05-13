@@ -97,16 +97,13 @@ public class CategoryListItems {
                 }
             });
 
-            minus.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    int k = Integer.parseInt(quantity.getText());
-                    if(k > 0) {
-                        categoryListItemsViewModel.removeFromOrder(box.getId(), 1);
-                        --k;
-                    }
-                    quantity.setText("" + k);
+            minus.setOnAction(event -> {
+                int k = Integer.parseInt(quantity.getText());
+                if(k > 0) {
+                    categoryListItemsViewModel.removeFromOrder(box.getId(), 1);
+                    --k;
                 }
+                quantity.setText("" + k);
             });
 
             Platform.runLater(()->{

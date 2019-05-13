@@ -15,14 +15,6 @@ public class Passwords implements Serializable {
         return name;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String dbFormat()
     {
         return "'" + name + "', '" + password + "'";

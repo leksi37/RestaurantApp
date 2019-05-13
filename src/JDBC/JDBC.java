@@ -39,6 +39,7 @@ public class JDBC {
     {
         String com = "insert into \"menu\"." + tableName + " values ( " + values + ");";
             st.executeUpdate(com);
+        System.out.println("New order received");
 
     }
 

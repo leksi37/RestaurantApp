@@ -1,10 +1,11 @@
-package client.networking;
+package client.networking.customer;
 
 
 import BasicClasses.MenuItem;
 import BasicClasses.Order;
 import BasicClasses.Request;
 import BasicClasses.RequestType;
+import client.networking.customer.Client;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -47,10 +48,6 @@ public class ClientSocketHandler implements Runnable {
                         {
                             client.orderAdded();
                         }
-//                        case GET_ORDER:
-//                        {
-//                            client.orderReceived((Order)r.getObj());
-//                        }
                     }
                 } catch (IOException | ClassNotFoundException e) {
                     e.printStackTrace();
@@ -82,14 +79,6 @@ public class ClientSocketHandler implements Runnable {
 
         }
         catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void requestOrderRemoval(Order order) {
-        try {
-            outToServer.writeObject(new Request(RequestType.REMOVE_ORDER, order));
-        }catch (IOException e){
             e.printStackTrace();
         }
     }

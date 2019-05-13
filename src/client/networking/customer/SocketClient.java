@@ -1,9 +1,10 @@
-package client.networking;
+package client.networking.customer;
 
 import BasicClasses.MenuItem;
 import BasicClasses.Order;
-import client.model.chef.ChefModel;
 import client.model.customer.CustomerModel;
+import client.networking.customer.Client;
+import client.networking.customer.ClientSocketHandler;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -42,11 +43,6 @@ public class SocketClient implements Client {
     }
 
     @Override
-    public void orderAddedToServer(Order order) {
-        model.getFromServer();
-    }
-
-    @Override
     public void requestMenuCategory(String type) {
         clientSocketHandler.requestCategory(type);
     }
@@ -70,15 +66,5 @@ public class SocketClient implements Client {
     public void orderAdded() {
         model.orderAdded();
     }
-//
-//    @Override
-//    public void markOrderAsDone(Order order) {
-//        clientSocketHandler.requestOrderRemoval(order);
-//    }
-//
-//    @Override
-//    public void orderReceived(Order order) {
-//        chefModel.addOrder(order);
-//    }
 
 }

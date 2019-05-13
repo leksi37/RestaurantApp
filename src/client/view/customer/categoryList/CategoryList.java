@@ -8,7 +8,6 @@ import javax.swing.text.View;
 
 public class CategoryList {
 
-    private CategoryListViewModel viewModel;
     private ViewHandler viewHandler;
 
     public void openAppetizers() {
@@ -50,8 +49,7 @@ public class CategoryList {
         viewHandler.setCategory(type.sideDish);
     }
 
-    public void init(CategoryListViewModel vm, ViewHandler viewHandler){
+    public void init( ViewHandler viewHandler){
         this.viewHandler = viewHandler;
-        viewModel = vm;
     }
 }

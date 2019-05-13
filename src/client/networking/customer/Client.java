@@ -1,4 +1,4 @@
-package client.networking;
+package client.networking.customer;
 
 
 import BasicClasses.MenuItem;
@@ -9,7 +9,6 @@ import java.util.ArrayList;
 public interface Client {
 
     void addOrderToServer(Order order);
-    void orderAddedToServer(Order order);
     void requestMenuCategory(String type);
 
     void gotMenuItems(ArrayList<MenuItem> mi);
@@ -19,8 +18,5 @@ public interface Client {
     void returnTableId(String obj);
 
     void orderAdded();
-//
-//    void markOrderAsDone(Order order);
-//
-//    void orderReceived(Order obj);
+
 }
