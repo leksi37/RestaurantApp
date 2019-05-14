@@ -7,25 +7,25 @@ import client.model.customer.CustomerModel;
 import client.view.ViewHandler;
 import client.viewModel.ViewModels;
 
+import javax.swing.text.View;
 import java.util.ArrayList;
 
 public class CategoryListViewModel implements ViewModels {
 
     public CustomerModel model;
-    private ArrayList<MenuItem> menuItems;
+    private ViewHandler viewHandler;
 
-
-    public CategoryListViewModel(CustomerModel model) {
-        this.model=model;
-        menuItems = new ArrayList();
+    public CategoryListViewModel(ViewHandler viewHandler, CustomerModel model) {
+        this.model = model;
+        this.viewHandler = viewHandler;
 
     }
 
-//    public void openCategoryListItems(type category) {
-//        System.out.println("viewModel");
-//       viewHandler.setCategory(category);
-//       viewHandler.openView(Views.ITEMS);
-//    }
+    public void openCategory(type category) {
+        System.out.println("viewModel");
+        viewHandler.setCategory(category);
+        viewHandler.openView(Views.ITEMS);
+    }
 
 
 }

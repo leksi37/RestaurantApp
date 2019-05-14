@@ -5,6 +5,7 @@ import BasicClasses.Views;
 import client.model.customer.CustomerModel;
 import client.view.ViewHandler;
 import client.viewModel.ViewModels;
+import javafx.application.Platform;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -12,14 +13,13 @@ import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
 public class CategoryListItemsViewModel implements ViewModels {
-
+    private ViewHandler viewHandler;
     private CustomerModel model;
     private ArrayList<MenuItem> items;
     private PropertyChangeSupport changeSupport;
 
-    public CategoryListItemsViewModel(CustomerModel model){
-
-
+    public CategoryListItemsViewModel(ViewHandler viewHandler, CustomerModel model){
+        this.viewHandler = viewHandler;
         changeSupport = new PropertyChangeSupport(this);
         this.model = model;
         this.model.addListeners("MenuItems", this :: gotItems);
@@ -50,4 +50,15 @@ public class CategoryListItemsViewModel implements ViewModels {
         model.removeItem(id, i);
     }
 
+    public void openOrder() {
+        Platform.runLater(() -> {
+            viewHandler.openView(Views.ORDER);
+        });
+    }
+
+    public void sendBack() {
+        Platform.runLater(() -> {
+            viewHandler.openView(Views.CATEGORIES);
+        });
+    }
 }

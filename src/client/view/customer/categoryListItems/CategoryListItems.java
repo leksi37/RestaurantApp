@@ -47,9 +47,7 @@ public class CategoryListItems {
 
     public void back()
     {
-        Platform.runLater(() -> {
-            viewHandler.openView(Views.CATEGORIES);
-        });
+        categoryListItemsViewModel.sendBack();
     }
 
 
@@ -64,12 +62,12 @@ public class CategoryListItems {
             VBox left  = new VBox();
             VBox right  = new VBox();
 
-            Label name = new Label((String)items.get(i).getName());
+            Label name = new Label(items.get(i).getName());
             Label price = new Label("" + items.get(i).getPrice() + "kr");
             name.setStyle("-fx-font-size: 30;");
 
             left.getChildren().add(name);
-            Label description = new Label((String)items.get(i).getDescription());
+            Label description = new Label(items.get(i).getDescription());
             left.getChildren().add(description);
             right.getChildren().add(price);
 
@@ -87,14 +85,11 @@ public class CategoryListItems {
             right.setStyle("-fx-pref-width: 186;");
             right.setAlignment(Pos.BASELINE_RIGHT);
 
-            plus.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    int k = Integer.parseInt(quantity.getText());
-                    k++;
-                    categoryListItemsViewModel.addToOrder(box.getId(), 1);
-                    quantity.setText("" + k);
-                }
+            plus.setOnAction(event -> {
+                int k = Integer.parseInt(quantity.getText());
+                k++;
+                categoryListItemsViewModel.addToOrder(box.getId(), 1);
+                quantity.setText("" + k);
             });
 
             minus.setOnAction(event -> {
@@ -116,9 +111,7 @@ public class CategoryListItems {
     }
 
     public void seeOrder(ActionEvent actionEvent) {
-        Platform.runLater(() -> {
-            viewHandler.openView(Views.ORDER);
-        });
+        categoryListItemsViewModel.openOrder();
 
     }
 }

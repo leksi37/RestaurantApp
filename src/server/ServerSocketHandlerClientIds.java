@@ -2,21 +2,21 @@ package server;
 
 import server.networking.ServerSocketHandler;
 
-public class SSHIds {
+public class ServerSocketHandlerClientIds {
     private ServerSocketHandler ssh;
     private String id;
 
-    public SSHIds(ServerSocketHandler ssh, String id) {
+    public ServerSocketHandlerClientIds(ServerSocketHandler ssh, String id) {
         this.ssh = ssh;
         this.id = id;
     }
 
-    public SSHIds get(ServerSocketHandler ssh)
+    public ServerSocketHandlerClientIds get(ServerSocketHandler ssh)
     {
         return this;
     }
 
-    public SSHIds get(String id)
+    public ServerSocketHandlerClientIds get(String id)
     {
         return this;
     }

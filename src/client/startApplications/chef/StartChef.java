@@ -16,6 +16,6 @@ public class StartChef extends Application {
             Client client = new SocketClient(model);
             model.addClient(client);
             ViewHandler viewHandler = new ViewHandler(primaryStage, model);
-            viewHandler.openView(Views.CHEF_FRONT);
+            viewHandler.openView(Views.ON_OPEN);
     }
 }

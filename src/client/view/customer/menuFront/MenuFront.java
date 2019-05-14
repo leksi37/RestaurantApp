@@ -10,16 +10,14 @@ import javafx.scene.control.Label;
 
 public class MenuFront {
     private ViewHandler viewHandler;
-
+    private MenuFrontViewModel menuFrontViewModel;
 
     @FXML
     private Label orderStatus;
 
     @FXML
     public void onClick(){
-        Platform.runLater(() -> {
-            viewHandler.openView(Views.CATEGORIES);
-        });
+        menuFrontViewModel.openCategoryList(viewHandler);
     }
 
     public void setOrderStatus(String status){
@@ -27,7 +25,9 @@ public class MenuFront {
     }
 
 
-    public void init( ViewHandler viewHandler) {
+    public void init(MenuFrontViewModel vm, ViewHandler viewHandler) {
         this.viewHandler = viewHandler;
+        menuFrontViewModel = vm;
+
     }
 }

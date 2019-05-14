@@ -1,5 +1,6 @@
 package server.networking;
 
+import BasicClasses.Request;
 import server.model.ServerModel;
 
 import java.io.IOException;

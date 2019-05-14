@@ -13,6 +13,8 @@ import client.view.customer.orderItemsList.OrderItemList;
 import client.viewModel.Chef.ChefViewModel;
 import client.viewModel.ViewModelProvider;
 import client.viewModel.customer.CategoryListItemsViewModel;
+import client.viewModel.customer.CategoryListViewModel;
+import client.viewModel.customer.MenuFrontViewModel;
 import client.viewModel.customer.OrderItemsListViewModel;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -35,14 +37,14 @@ public class ViewHandler {
 
     public ViewHandler(Stage stage, CustomerModel model){
         this.stage=stage;
-        this.viewModelProvider=new ViewModelProvider(model);
+        this.viewModelProvider=new ViewModelProvider(this, model);
 
         viewModelProvider.instantiateViewModels();
     }
 
     public ViewHandler(Stage stage, ChefModel chefModel){
         this.stage=stage;
-        this.viewModelProvider=new ViewModelProvider(chefModel);
+        this.viewModelProvider=new ViewModelProvider(this, chefModel);
         viewModelProvider.instantiateViewModels();
     }
 
@@ -74,7 +76,7 @@ public class ViewHandler {
                 catch(IOException e){e.printStackTrace();}
 
                 menuFront = loader.getController();
-                menuFront.init(this);
+                menuFront.init((MenuFrontViewModel) viewModelProvider.getViewModel(viewToOpen),this);
                 break;
             }
             case MENU_FRONT_LABEL:
@@ -84,7 +86,7 @@ public class ViewHandler {
                 catch(IOException e){e.printStackTrace();}
 
                 menuFront= loader.getController();
-                menuFront.init(this);
+                menuFront.init((MenuFrontViewModel) viewModelProvider.getViewModel(viewToOpen),this);
                 menuFront.setOrderStatus("Your order is now being prepared.");
                 break;
             }
@@ -95,7 +97,7 @@ public class ViewHandler {
                 catch(IOException e){e.printStackTrace();}
 
                 categoryList= loader.getController();
-                categoryList.init(this);
+                categoryList.init((CategoryListViewModel) viewModelProvider.getViewModel(viewToOpen),this);
                 break;
             }
             case ITEMS:

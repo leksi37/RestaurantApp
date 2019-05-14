@@ -9,6 +9,8 @@ import client.viewModel.customer.CategoryListViewModel;
 import client.viewModel.customer.MenuFrontViewModel;
 import client.viewModel.customer.OrderItemsListViewModel;
 
+import javax.swing.text.View;
+
 public class ViewModelProvider {
 
     private ViewHandler viewHandler;
@@ -22,38 +24,22 @@ public class ViewModelProvider {
     private CategoryListItemsViewModel categoryListItemsViewModel;
     private OrderItemsListViewModel orderItemsListViewModel;
 
-
-
-    public ViewModelProvider(CustomerModel model){
+    public ViewModelProvider(ViewHandler viewHandler, CustomerModel model){
         this.model=model;
+        this.viewHandler = viewHandler;
         instantiateViewModels();
     }
-    public ViewModelProvider(ChefModel model){
+    public ViewModelProvider(ViewHandler viewHandler, ChefModel model){
+        this.viewHandler = viewHandler;
         this.chefModel=model;
         instantiateViewModels();
     }
 
     public void instantiateViewModels() {
         menuFrontViewModel= new MenuFrontViewModel(model);
-        categoryListItemsViewModel = new CategoryListItemsViewModel(model);
-        categoryListViewModel = new CategoryListViewModel(model);
+        categoryListItemsViewModel = new CategoryListItemsViewModel(viewHandler, model);
+        categoryListViewModel = new CategoryListViewModel(viewHandler, model);
         orderItemsListViewModel = new OrderItemsListViewModel(model);
-    }
-
-    public MenuFrontViewModel getMenuFrontViewModel() {
-        return menuFrontViewModel;
-    }
-
-    public CategoryListViewModel getCategoryListViewModel() {
-        return categoryListViewModel;
-    }
-
-    public CategoryListItemsViewModel getCategoryListItemsViewModel() {
-        return categoryListItemsViewModel;
-    }
-
-    public OrderItemsListViewModel getOrderItemsListViewModel() {
-        return orderItemsListViewModel;
     }
 
     public ViewModels getViewModel(Views viewToOpen) {

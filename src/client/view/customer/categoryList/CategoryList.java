@@ -4,52 +4,52 @@ import BasicClasses.type;
 import client.view.ViewHandler;
 import client.viewModel.customer.CategoryListViewModel;
 
-import javax.swing.text.View;
-
 public class CategoryList {
 
     private ViewHandler viewHandler;
+    private CategoryListViewModel categoryListViewModel;
 
     public void openAppetizers() {
+        categoryListViewModel.openCategory(type.appetizers);
         viewHandler.setCategory(type.appetizers);
     }
 
     public void openDrinks() {
-        viewHandler.setCategory(type.nonAlcoholic);
+        categoryListViewModel.openCategory(type.nonAlcoholic);
     }
     public void openAlcohol() {
-        viewHandler.setCategory(type.alcohol);
+        categoryListViewModel.openCategory(type.alcohol);
     }
     public void openSalads() {
-        System.out.println("view");
-        viewHandler.setCategory(type.salads);
+        categoryListViewModel.openCategory(type.salads);
     }
 
     public void openDesserts() {
-        viewHandler.setCategory(type.dessert);
+        categoryListViewModel.openCategory(type.dessert);
     }
 
     public void openBreakfast() {
-        viewHandler.setCategory(type.breakfast);
+        categoryListViewModel.openCategory(type.breakfast);
     }
 
     public void openPasta() {
-        viewHandler.setCategory(type.pasta);
+        categoryListViewModel.openCategory(type.pasta);
     }
 
     public void openPizza() {
-        viewHandler.setCategory(type.pizza);
+        categoryListViewModel.openCategory(type.pizza);
     }
 
     public void openSoup() {
-        viewHandler.setCategory(type.soup);
+        categoryListViewModel.openCategory(type.soup);
     }
 
     public void openSideDish() {
-        viewHandler.setCategory(type.sideDish);
+        categoryListViewModel.openCategory(type.sideDish);
     }
 
-    public void init( ViewHandler viewHandler){
+    public void init(CategoryListViewModel vm, ViewHandler viewHandler){
         this.viewHandler = viewHandler;
+        this.categoryListViewModel = vm;
     }
 }
