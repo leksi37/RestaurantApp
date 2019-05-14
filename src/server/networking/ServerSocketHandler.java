@@ -36,6 +36,7 @@ public class ServerSocketHandler implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        this.socket=socket;
 
         model.addListener("AddedOrder", this::addOrder);
     }

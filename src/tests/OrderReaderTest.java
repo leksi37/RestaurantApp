@@ -1,9 +1,11 @@
-package JDBC;
+package tests;
 
 import BasicClasses.ItemQuantity;
 import BasicClasses.ItemState;
 import BasicClasses.MenuItem;
 import BasicClasses.Order;
+import JDBC.MenuItemsReader;
+import JDBC.OrderReader;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,8 +1,10 @@
-package client.networking;
+package client.networking.customer;
 
 import BasicClasses.MenuItem;
 import BasicClasses.Order;
 import client.model.customer.CustomerModel;
+import client.networking.customer.Client;
+import client.networking.customer.ClientSocketHandler;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

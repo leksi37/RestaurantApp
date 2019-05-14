@@ -1,5 +1,7 @@
-package BasicClasses;
+package tests;
 
+import BasicClasses.ItemQuantity;
+import BasicClasses.MenuItem;
 import JDBC.MenuItemsReader;
 import org.junit.Test;
 

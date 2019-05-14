@@ -18,7 +18,9 @@ public class SocketServer {
             System.out.println("Server started...");
             while(true){
                 Socket socket= welcomeSocket.accept();
+                socket.getInputStream()
                 System.out.println("Client connected");
+
                 ServerSocketHandler serverSocketHandler= new ServerSocketHandler(model, socket);
                 Thread thread=new Thread(serverSocketHandler);
                 thread.start();

@@ -1,4 +1,4 @@
-package client.networking;
+package client.networking.customer;
 
 
 import BasicClasses.MenuItem;
@@ -14,7 +14,7 @@ public interface Client {
 
     void gotMenuItems(ArrayList<MenuItem> mi);
 
-     void getTableId();
+    void getTableId();
 
     void returnTableId(String obj);
 

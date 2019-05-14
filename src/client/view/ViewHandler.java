@@ -4,16 +4,19 @@ import BasicClasses.Order;
 import BasicClasses.Views;
 import BasicClasses.type;
 import client.model.customer.CustomerModel;
+import client.model.logIn.LogInModel;
 import client.view.customer.categoryList.CategoryList;
 import client.view.customer.categoryListItems.CategoryListItems;
 import client.view.customer.menuFront.MenuFront;
 import client.view.customer.orderItemsList.OrderItemList;
+import client.view.logIn.LogIn;
 import client.viewModel.MenuProxy;
 import client.viewModel.ViewModelProvider;
 import client.viewModel.customer.CategoryListItemsViewModel;
 import client.viewModel.customer.CategoryListViewModel;
 import client.viewModel.customer.MenuFrontViewModel;
 import client.viewModel.customer.OrderItemsListViewModel;
+import client.viewModel.logIn.LogInViewModel;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -30,9 +33,9 @@ public class ViewHandler {
     private Stage stage;
     private type categoryToOpen;
 
-    public ViewHandler(Stage stage, CustomerModel model){
+    public ViewHandler(Stage stage,LogInModel logInModel){
         this.stage=stage;
-        this.viewModelProvider=new ViewModelProvider(model);
+        this.viewModelProvider=new ViewModelProvider(logInModel);
         viewModelProvider.instantiateViewModels(this);
     }
 
@@ -73,9 +76,6 @@ public class ViewHandler {
 //        stage.setScene(scene);
 //        stage.show();
 //    }
-
-
-
 
 
     public void openView(Views viewToOpen)
@@ -124,6 +124,28 @@ public class ViewHandler {
                 OrderItemList view= loader.getController();
                 view.init((OrderItemsListViewModel) viewModelProvider.getViewModel(viewToOpen));
                 break;
+            }
+            case LOGIN:
+            {
+                loader.setLocation(getClass().getResource("logIn/LogIn.fxml"));
+                try{ root=loader.load();}
+                catch(IOException e){e.printStackTrace();}
+
+                LogIn view= loader.getController();
+                view.init((LogInViewModel) viewModelProvider.getViewModel(viewToOpen));
+                break;
+            }
+
+            // TO BE ADDED !!!!!!!
+
+            case CHEF:{
+
+            }
+            case WAITER:{
+
+            }
+            case ADMIN:{
+
             }
         }
 

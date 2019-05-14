@@ -1,7 +1,8 @@
-package JDBC;
+package tests;
 
 import BasicClasses.MenuItem;
 import BasicClasses.type;
+import JDBC.MenuItemsReader;
 import org.junit.Test;
 
 import java.util.ArrayList;
