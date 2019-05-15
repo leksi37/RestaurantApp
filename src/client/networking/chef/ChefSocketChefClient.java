@@ -9,16 +9,16 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-public class SocketClient implements Client {
+public class ChefSocketChefClient implements ChefClient {
     private ChefModel model;
-    private ClientSocketHandler clientSocketHandler;
+    private ChefClientSocketHandler chefClientSocketHandler;
     private Socket socket;
 
-    public SocketClient(ChefModel model){
+    public ChefSocketChefClient(ChefModel model){
         this.model=model;
         try{
             socket=new Socket("localHost", 2910);
-            clientSocketHandler= new ClientSocketHandler(this,
+            chefClientSocketHandler = new ChefClientSocketHandler(this,
                     new ObjectOutputStream(socket.getOutputStream()),
                     new ObjectInputStream(socket.getInputStream()));
         } catch (UnknownHostException e) {
@@ -27,14 +27,14 @@ public class SocketClient implements Client {
             e.printStackTrace();
         }
 
-        Thread t= new Thread(clientSocketHandler);
+        Thread t= new Thread(chefClientSocketHandler);
         t.setDaemon(true);
         t.start();
     }
 
     @Override
     public void sendNotification(String notification) {
-        clientSocketHandler.sendNotificationToWaiter(notification);
+        chefClientSocketHandler.sendNotificationToWaiter(notification);
     }
 
     @Override

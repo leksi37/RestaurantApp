@@ -8,13 +8,13 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class ClientSocketHandler implements Runnable {
-    private Client client;
+public class ChefClientSocketHandler implements Runnable {
+    private ChefClient chefClient;
     private ObjectOutputStream outToServer;
     private ObjectInputStream inFromServer;
 
-    public ClientSocketHandler(Client client, ObjectOutputStream outputStream, ObjectInputStream inputStream){
-        this.client = client;
+    public ChefClientSocketHandler(ChefClient chefClient, ObjectOutputStream outputStream, ObjectInputStream inputStream){
+        this.chefClient = chefClient;
         this.inFromServer=inputStream;
         this.outToServer=outputStream;
     }
@@ -28,7 +28,7 @@ public class ClientSocketHandler implements Runnable {
                 {
                     case GET_ORDER_CHEF:
                     {
-                        client.gotOrder((Order) r.getObj());
+                        chefClient.gotOrder((Order) r.getObj());
                         break;
                     }
                 }

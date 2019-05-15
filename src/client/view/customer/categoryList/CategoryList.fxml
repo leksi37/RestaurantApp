@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" style="-fx-background-color: #ffcccc;" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.customer.categoryList.CategoryList">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" style="-fx-background-color: #ffcccc;" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="customerClient.view.customer.categoryList.CategoryList">
    <children>
       <Button fx:id="appetizers" alignment="TOP_CENTER" layoutX="226.0" layoutY="67.0" mnemonicParsing="false" onAction="#openAppetizers" prefHeight="116.0" prefWidth="157.0" style="-fx-background-color: #ffe6e6;" text="Appetizers" textAlignment="CENTER">
          <font>

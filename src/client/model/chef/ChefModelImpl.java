@@ -1,19 +1,19 @@
 package client.model.chef;
 
 import BasicClasses.Order;
-import client.networking.chef.Client;
+import client.networking.chef.ChefClient;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
 public class ChefModelImpl implements ChefModel {
-    private Client client;
+    private ChefClient chefClient;
     private PropertyChangeSupport changeSupport;
     private ArrayList<Order> orders;
 
     public ChefModelImpl(){
-        client = null;
+        chefClient = null;
         changeSupport = new PropertyChangeSupport(this);
         orders = new ArrayList<>();
     }
@@ -32,7 +32,7 @@ public class ChefModelImpl implements ChefModel {
 
     @Override
     public void sendNotification(String notification) {
-        client.sendNotification(notification);
+        chefClient.sendNotification(notification);
     }
 
     public void addOrder(Order order){
@@ -41,8 +41,8 @@ public class ChefModelImpl implements ChefModel {
     }
 
     @Override
-    public void addClient(Client client) {
-        this.client = client;
+    public void addClient(ChefClient chefClient) {
+        this.chefClient = chefClient;
     }
 
 

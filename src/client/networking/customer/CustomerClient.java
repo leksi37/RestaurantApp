@@ -6,7 +6,7 @@ import BasicClasses.Order;
 
 import java.util.ArrayList;
 
-public interface Client {
+public interface CustomerClient {
 
     void addOrderToServer(Order order);
     void requestMenuCategory(String type);

@@ -3,8 +3,6 @@ package client.networking.customer;
 import BasicClasses.MenuItem;
 import BasicClasses.Order;
 import client.model.customer.CustomerModel;
-import client.networking.customer.Client;
-import client.networking.customer.ClientSocketHandler;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -13,17 +11,17 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 
-public class SocketClient implements Client {
+public class CustomerSocketCustomerClient implements CustomerClient {
 
     private CustomerModel model;
-    private ClientSocketHandler clientSocketHandler;
+    private CustomerClientSocketHandler customerClientSocketHandler;
     private Socket socket;
 
-    public SocketClient(CustomerModel model){
+    public CustomerSocketCustomerClient(CustomerModel model){
         this.model=model;
         try{
             socket=new Socket("localHost", 2910);
-            clientSocketHandler= new ClientSocketHandler(this,
+            customerClientSocketHandler = new CustomerClientSocketHandler(this,
                     new ObjectOutputStream(socket.getOutputStream()),
                     new ObjectInputStream(socket.getInputStream()));
         } catch (UnknownHostException e) {
@@ -32,19 +30,19 @@ public class SocketClient implements Client {
             e.printStackTrace();
         }
 
-        Thread t= new Thread(clientSocketHandler);
+        Thread t= new Thread(customerClientSocketHandler);
         t.setDaemon(true);
         t.start();
     }
 
     @Override
     public void addOrderToServer(Order order) {
-        clientSocketHandler.addOrderToServer(order);
+        customerClientSocketHandler.addOrderToServer(order);
     }
 
     @Override
     public void requestMenuCategory(String type) {
-        clientSocketHandler.requestCategory(type);
+        customerClientSocketHandler.requestCategory(type);
     }
 
     @Override
@@ -54,7 +52,7 @@ public class SocketClient implements Client {
 
     @Override
     public void getTableId() {
-        clientSocketHandler.getTableId();
+        customerClientSocketHandler.getTableId();
     }
 
     @Override

@@ -3,14 +3,14 @@ package client.model.customer;
 import BasicClasses.ItemQuantity;
 import BasicClasses.MenuItem;
 import BasicClasses.Order;
-import client.networking.customer.Client;
+import client.networking.customer.CustomerClient;
 
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 
 public interface CustomerModel {
     void addListeners(String name, PropertyChangeListener listener);
-    void addClient(Client client);
+    void addClient(CustomerClient customerClient);
 
     void addOrderToServer();
 

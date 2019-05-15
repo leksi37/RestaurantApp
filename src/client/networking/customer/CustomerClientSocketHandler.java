@@ -5,22 +5,21 @@ import BasicClasses.MenuItem;
 import BasicClasses.Order;
 import BasicClasses.Request;
 import BasicClasses.RequestType;
-import client.networking.customer.Client;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-public class ClientSocketHandler implements Runnable {
+public class CustomerClientSocketHandler implements Runnable {
 
-    private Client client;
+    private CustomerClient customerClient;
 
     private ObjectOutputStream outToServer;
     private ObjectInputStream inFromServer;
 
-    public ClientSocketHandler(Client client, ObjectOutputStream outputStream, ObjectInputStream inputStream){
-        this.client=client;
+    public CustomerClientSocketHandler(CustomerClient customerClient, ObjectOutputStream outputStream, ObjectInputStream inputStream){
+        this.customerClient = customerClient;
         this.inFromServer=inputStream;
         this.outToServer=outputStream;
     }
@@ -36,17 +35,17 @@ public class ClientSocketHandler implements Runnable {
                         case GET_MENU_ITEMS:
                         {
                             ArrayList<MenuItem> mi = (ArrayList<MenuItem>)r.getObj();
-                            client.gotMenuItems(mi);
+                            customerClient.gotMenuItems(mi);
                             break;
                         }
                         case GET_TABLE_ID:
                         {
-                            client.returnTableId((String)r.getObj());
+                            customerClient.returnTableId((String)r.getObj());
                             break;
                         }
                         case ADD_ORDER:
                         {
-                            client.orderAdded();
+                            customerClient.orderAdded();
                         }
                     }
                 } catch (IOException | ClassNotFoundException e) {

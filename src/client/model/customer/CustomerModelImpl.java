@@ -3,7 +3,7 @@ package client.model.customer;
 import BasicClasses.ItemQuantity;
 import BasicClasses.MenuItem;
 import BasicClasses.Order;
-import client.networking.customer.Client;
+import client.networking.customer.CustomerClient;
 import client.viewModel.MenuProxy;
 
 import java.beans.PropertyChangeListener;
@@ -13,14 +13,14 @@ import java.util.ArrayList;
 public class CustomerModelImpl implements CustomerModel {
 
     private MenuProxy proxy;
-    private Client client;
+    private CustomerClient customerClient;
     private Order order;
     private String tableId;
 
     private PropertyChangeSupport support;
 
     public CustomerModelImpl() {
-        this.client = null;
+        this.customerClient = null;
         support = new PropertyChangeSupport(this);
         proxy = new MenuProxy();
 
@@ -34,15 +34,15 @@ public class CustomerModelImpl implements CustomerModel {
     }
 
     @Override
-    public void addClient(Client client) {
-        this.client=client;
-        client.getTableId();
+    public void addClient(CustomerClient customerClient) {
+        this.customerClient = customerClient;
+        customerClient.getTableId();
         order = new Order(tableId);
     }
 
     @Override
     public void addOrderToServer() {
-        client.addOrderToServer(order);
+        customerClient.addOrderToServer(order);
         order = new Order(tableId);
     }
 
@@ -51,7 +51,7 @@ public class CustomerModelImpl implements CustomerModel {
         ArrayList menuCategory = proxy.getCategory(type);
         if(menuCategory == null)
         {
-            client.requestMenuCategory(type);
+            customerClient.requestMenuCategory(type);
         }
         else
             gotMenuItems(menuCategory);
