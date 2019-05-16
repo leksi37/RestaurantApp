@@ -1,10 +1,7 @@
 package client.networking.customer;
 
 
-import BasicClasses.MenuItem;
-import BasicClasses.Order;
-import BasicClasses.Request;
-import BasicClasses.RequestType;
+import BasicClasses.*;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -22,6 +19,14 @@ public class CustomerClientSocketHandler implements Runnable {
         this.customerClient = customerClient;
         this.inFromServer=inputStream;
         this.outToServer=outputStream;
+        System.out.println("Before try");
+        try {
+            System.out.println("before sh");
+            outToServer.writeObject(clients.CUSTOMER_CLIENT);
+            System.out.println("after sh");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

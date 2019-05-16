@@ -2,92 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="problem with loader">
-      <change afterPath="$PROJECT_DIR$/src/BasicClasses/clients.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/model/waiter/WaiterModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/model/waiter/WaiterModelImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/networking/ServerSocketHandlers/ChefServerSocketHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/networking/ServerSocketHandlers/CustomerServerSocketHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/networking/ServerSocketHandlers/ManagerServerSocketHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/networking/ServerSocketHandlers/WaiterServerSocketHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/BasicClasses/ItemQuantity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/BasicClasses/MenuItem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/BasicClasses/MenuItemTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/BasicClasses/Order.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/BasicClasses/Passwords.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/BasicClasses/RequestType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/BasicClasses/Views.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/JDBC/JDBC.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/JDBC/MenuItemsReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/JDBC/MenuItemsReaderTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/JDBC/OrderReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/JDBC/OrderReaderTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/JDBC/PasswordReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/model/chef/ChefModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/model/chef/ChefModelImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/model/customer/CustomerModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/model/customer/CustomerModelImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/networking/chef/Client.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/networking/chef/ClientSocketHandler$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/networking/chef/ClientSocketHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/networking/chef/SocketClient.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/networking/customer/Client.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/networking/customer/ClientSocketHandler$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/networking/customer/ClientSocketHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/networking/customer/SocketClient.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/startApplications/chef/StartChef.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/startApplications/chef/StartChefApp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/startApplications/customer/StartCustomer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/OnOpen/OnOpen.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/OnOpen/onOpen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/OnOpen/onOpen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/ViewHandler$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/ViewHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/chef/Chef.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/chef/chef.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/chef/chef.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/customer/categoryList/CategoryList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/customer/categoryList/CategoryList.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/customer/categoryList/CategoryList.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/customer/categoryListItems/CategoryListItems.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/customer/categoryListItems/CategoryListItems.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/customer/categoryListItems/CategoryListItems.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/customer/menuFront/MenuFront.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/customer/menuFront/MenuFront.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/customer/menuFront/MenuFront.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/customer/orderItemsList/OrderItemList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/customer/orderItemsList/orderItemList.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/customer/orderItemsList/orderItemList.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/waiter/WaiterView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/viewModel/Chef/ChefViewModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/viewModel/MenuProxy.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/viewModel/ViewModelProvider$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/viewModel/ViewModelProvider.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/viewModel/ViewModels.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/viewModel/Waiter/FrontViewModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/viewModel/customer/CategoryListItemsViewModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/viewModel/customer/CategoryListViewModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/viewModel/customer/MenuFrontViewModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/viewModel/customer/OrderItemsListViewModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/server/ServerSocketHandlerClientIds.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/server/model/ServerModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/server/networking/ServerSocketHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/server/networking/SocketServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/model/chef/ChefModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/model/chef/ChefModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/model/chef/ChefModelImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/model/chef/ChefModelImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/model/customer/CustomerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/model/customer/CustomerModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/model/customer/CustomerModelImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/model/customer/CustomerModelImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/networking/chef/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/networking/chef/ChefClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/networking/chef/ClientSocketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/networking/chef/ChefClientSocketHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/networking/chef/SocketClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/networking/chef/ChefSocketChefClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/networking/customer/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/networking/customer/CustomerClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/networking/customer/ClientSocketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/networking/customer/CustomerClientSocketHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/networking/customer/SocketClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/networking/customer/CustomerSocketCustomerClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/startApplications/chef/StartChef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/startApplications/chef/StartChef.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/networking/customer/CustomerClientSocketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/networking/customer/CustomerClientSocketHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/networking/customer/CustomerSocketCustomerClient.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/startApplications/customer/StartCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/startApplications/customer/StartCustomer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/view/OnOpen/onOpen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/view/OnOpen/onOpen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/view/chef/chef.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/view/chef/chef.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/view/customer/categoryList/CategoryList.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/view/customer/categoryList/CategoryList.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/view/customer/categoryListItems/CategoryListItems.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/view/customer/categoryListItems/CategoryListItems.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/view/customer/menuFront/MenuFront.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/view/customer/menuFront/MenuFront.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/view/customer/orderItemsList/orderItemList.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/view/customer/orderItemsList/orderItemList.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/ServerSocketHandlerClientIds.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ServerSocketHandlerClientIds.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/model/ServerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/model/ServerModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/networking/ServerSocketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/networking/ServerSocketHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/networking/SocketServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/networking/SocketServer.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -148,13 +65,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/server/networking/ServerSocketHandlers/ManagerServerSocketHandler.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/client/networking/customer/CustomerSocketClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" selection-end-line="20" />
+            <state relative-caret-position="175">
+              <caret line="27" column="45" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
               <folding>
-                <element signature="e#0#452#0" expanded="true" />
+                <element signature="e#1576#1577#0" expanded="true" />
+                <element signature="e#1632#1633#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/client/model/logIn/LogInModelImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/client/model/customer/CustomerModelImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-70">
+              <caret line="44" column="40" selection-start-line="44" selection-start-column="23" selection-end-line="44" selection-end-column="40" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -163,91 +105,68 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/server/networking/ServerSocketHandlers/CustomerServerSocketHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="70" column="42" selection-start-line="70" selection-start-column="42" selection-end-line="70" selection-end-column="42" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="185">
+              <caret line="28" column="41" lean-forward="true" selection-start-line="28" selection-start-column="41" selection-end-line="28" selection-end-column="41" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/server/model/ServerModel.java">
+        <entry file="file://$PROJECT_DIR$/src/client/networking/customer/CustomerClientSocketHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="153">
+              <caret line="17" column="57" lean-forward="true" selection-start-line="17" selection-start-column="57" selection-end-line="17" selection-end-column="57" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/server/ServerSocketHandlerClientIds.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="74" selection-start-line="2" selection-start-column="74" selection-end-line="2" selection-end-column="74" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/networking/waiter/WaiterClientSocketHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/server/networking/SocketServer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-764">
-              <caret line="5" column="74" selection-start-line="5" selection-start-column="74" selection-end-line="5" selection-end-column="74" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/networking/waiter/WaiterSocketWaiterClient.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="37" column="33" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1152#1153#0" expanded="true" />
-                <element signature="e#1208#1209#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/networking/waiter/WaiterClient.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="49" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/server/StartServer.java">
+        <entry file="file://$PROJECT_DIR$/src/client/startApplications/customer/StartCustomerApp.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/server/networking/ServerSocketHandler.java">
+        <entry file="file://$PROJECT_DIR$/src/client/startApplications/customer/StartCustomer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="36" column="56" selection-end-line="103" />
+            <state relative-caret-position="253">
+              <caret line="16" column="62" lean-forward="true" selection-start-line="16" selection-start-column="62" selection-end-line="16" selection-end-column="62" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/client/networking/customer/CustomerClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/server/networking/SocketServer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="185">
+              <caret line="24" column="78" selection-start-line="24" selection-start-column="78" selection-end-line="24" selection-end-column="78" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/BasicClasses/clients.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -275,11 +194,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/client/viewModel/customer/OrderItemsListViewModel.java" />
-        <option value="$PROJECT_DIR$/src/BasicClasses/MenuItem.java" />
-        <option value="$PROJECT_DIR$/src/BasicClasses/Order.java" />
-        <option value="$PROJECT_DIR$/src/client/networking/ClientSocketHandler.java" />
-        <option value="$PROJECT_DIR$/src/BasicClasses/Passwords.java" />
         <option value="$PROJECT_DIR$/src/client/networking/SocketClient.java" />
         <option value="$PROJECT_DIR$/src/client/networking/Client.java" />
         <option value="$PROJECT_DIR$/src/client/networking/customer/Client.java" />
@@ -298,7 +212,6 @@
         <option value="$PROJECT_DIR$/src/client/model/customer/CustomerModel.java" />
         <option value="$PROJECT_DIR$/src/client/view/chef/Chef.java" />
         <option value="$PROJECT_DIR$/src/client/startApplications/chef/StartChef.java" />
-        <option value="$PROJECT_DIR$/src/client/startApplications/customer/StartCustomer.java" />
         <option value="$PROJECT_DIR$/src/client/view/customer/menuFront/MenuFront.java" />
         <option value="$PROJECT_DIR$/src/client/viewModel/customer/MenuFrontViewModel.java" />
         <option value="$PROJECT_DIR$/src/client/view/customer/categoryList/CategoryList.java" />
@@ -325,12 +238,18 @@
         <option value="$PROJECT_DIR$/src/server/networking/ServerSocketHandlers/CustomerServerSocketHandler.java" />
         <option value="$PROJECT_DIR$/src/server/model/ServerModel.java" />
         <option value="$PROJECT_DIR$/src/server/ServerSocketHandlerClientIds.java" />
+        <option value="$PROJECT_DIR$/src/client/networking/customer/CustomerSocketCustomerClient.java" />
+        <option value="$PROJECT_DIR$/src/client/model/logIn/LogInModel.java" />
+        <option value="$PROJECT_DIR$/src/client/model/logIn/LogInModelImpl.java" />
         <option value="$PROJECT_DIR$/src/server/networking/SocketServer.java" />
+        <option value="$PROJECT_DIR$/src/client/startApplications/customer/StartCustomer.java" />
+        <option value="$PROJECT_DIR$/src/client/networking/customer/CustomerClientSocketHandler.java" />
+        <option value="$PROJECT_DIR$/src/client/networking/customer/CustomerSocketClient.java" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="951" />
     <option name="width" value="978" />
     <option name="height" value="1039" />
@@ -344,6 +263,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -380,6 +300,22 @@
               <item name="RestaurantApp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="customer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RestaurantApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RestaurantApp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="logIn" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RestaurantApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RestaurantApp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
               <item name="networking" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -388,14 +324,22 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
               <item name="networking" type="462c0819:PsiDirectoryNode" />
-              <item name="waiter" type="462c0819:PsiDirectoryNode" />
+              <item name="customer" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="RestaurantApp" type="b2602c69:ProjectViewProjectNode" />
               <item name="RestaurantApp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="startApplications" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RestaurantApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RestaurantApp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="startApplications" type="462c0819:PsiDirectoryNode" />
+              <item name="customer" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="RestaurantApp" type="b2602c69:ProjectViewProjectNode" />
@@ -423,7 +367,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -447,7 +390,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556871724401" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/client/networking/waiter" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/client/model" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -456,15 +399,16 @@
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Programming\Java\SEPP\RestaurantApp\src\client\view\waiter\frontView" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Programming\Java\SEPP\RestaurantApp\src\client\networking\waiter" />
-    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="client.model.waiter" />
       <recent name="client.viewModel" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Programming\Java\SEPP\RestaurantApp\src\client\model" />
+      <recent name="D:\Programming\Java\SEPP\RestaurantApp\src\client\networking\waiter" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Programming\Java\SEPP\RestaurantApp\src\client\view\waiter\frontView" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -642,6 +586,7 @@
       <workItem from="1557210633386" duration="1959000" />
       <workItem from="1557816448103" duration="2795000" />
       <workItem from="1557828348510" duration="2570000" />
+      <workItem from="1557947947535" duration="3436000" />
     </task>
     <task id="LOCAL-00001" summary="lalaaaa">
       <created>1556789701091</created>
@@ -668,13 +613,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64027000" />
+    <option name="totallyTimeSpent" value="67463000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.1409396" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.14295302" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -683,7 +628,7 @@
       <window_info id="UI Designer" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3286119" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -694,7 +639,7 @@
       <window_info anchor="bottom" id="Changes" order="10" />
       <window_info anchor="bottom" id="Profiler" order="11" />
       <window_info anchor="bottom" id="Event Log" order="12" weight="0.3286119" />
-      <window_info anchor="bottom" id="Messages" order="13" visible="true" weight="0.3243626" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.3243626" />
       <window_info anchor="bottom" id="Docker" order="14" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="15" />
       <window_info anchor="bottom" id="Terminal" order="16" />
@@ -727,54 +672,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/client/view/waiter/frontView.fxml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/view/waiter/WaiterView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="21" column="9" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/view/OnOpen/OnOpen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-53">
-          <caret line="9" column="36" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#335#336#0" expanded="true" />
-            <element signature="e#361#362#0" expanded="true" />
-            <element signature="e#528#529#0" expanded="true" />
-            <element signature="e#582#583#0" expanded="true" />
-            <element signature="e#693#694#0" expanded="true" />
-            <element signature="e#738#739#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BasicClasses/ItemState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="14" lean-forward="true" selection-start-line="5" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BasicClasses/MenuItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-104">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/BasicClasses/MenuItemTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="49">
@@ -803,23 +700,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/model/chef/ChefModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/networking/customer/CustomerSocketCustomerClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="35" column="26" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/model/chef/ChefModel.java" />
     <entry file="file://$PROJECT_DIR$/src/client/model/customer/CustomerModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -827,76 +708,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/view/chef/Chef.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/startApplications/chef/StartChef.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="46" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/startApplications/chef/StartChefApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="42" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
-          <folding>
-            <element signature="e#151#152#0" expanded="true" />
-            <element signature="e#202#203#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/startApplications/customer/StartCustomer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="42" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/networking/chef/ChefClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="47" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/networking/chef/ChefSocketChefClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="32" column="5" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/model/chef/ChefModelImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="34" column="44" selection-start-line="34" selection-start-column="44" selection-end-line="34" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#974#975#0" expanded="true" />
-            <element signature="e#1027#1028#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/view/chef/Chef.java" />
+    <entry file="file://$PROJECT_DIR$/src/client/startApplications/chef/StartChef.java" />
+    <entry file="file://$PROJECT_DIR$/src/client/startApplications/chef/StartChefApp.java" />
+    <entry file="file://$PROJECT_DIR$/src/client/networking/chef/ChefClient.java" />
+    <entry file="file://$PROJECT_DIR$/src/client/networking/chef/ChefSocketChefClient.java" />
+    <entry file="file://$PROJECT_DIR$/src/client/model/chef/ChefModelImpl.java" />
     <entry file="file://$PROJECT_DIR$/src/client/view/customer/menuFront/MenuFront.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -946,65 +763,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/startApplications/customer/StartCustomerApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/networking/customer/CustomerClientSocketHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="36" column="15" selection-start-line="36" selection-start-column="15" selection-end-line="36" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/networking/customer/CustomerClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/networking/chef/ChefClientSocketHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="28" column="40" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/model/customer/CustomerModelImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="46" column="5" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/model/waiter/WaiterModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="51" selection-start-line="3" selection-start-column="51" selection-end-line="3" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/model/waiter/WaiterModelImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#202#203#0" expanded="true" />
-            <element signature="e#230#231#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/networking/chef/ChefClientSocketHandler.java" />
+    <entry file="file://$PROJECT_DIR$/src/client/model/waiter/WaiterModel.java" />
+    <entry file="file://$PROJECT_DIR$/src/client/model/waiter/WaiterModelImpl.java" />
     <entry file="file://$PROJECT_DIR$/src/BasicClasses/type.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1026,13 +787,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BasicClasses/clients.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="19" lean-forward="true" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/BasicClasses/RequestType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -1047,68 +801,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/networking/ServerSocketHandlers/ChefServerSocketHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/server/networking/ServerSocketHandlers/WaiterServerSocketHandler.java" />
+    <entry file="file://$PROJECT_DIR$/src/client/networking/waiter/WaiterClientSocketHandler.java" />
+    <entry file="file://$PROJECT_DIR$/src/client/networking/waiter/WaiterClient.java" />
+    <entry file="file://$PROJECT_DIR$/src/client/networking/waiter/WaiterSocketWaiterClient.java" />
+    <entry file="file://$PROJECT_DIR$/src/server/model/ServerModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="32" column="35" lean-forward="true" selection-end-line="99" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/networking/ServerSocketHandlers/WaiterServerSocketHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="50" column="11" lean-forward="true" selection-end-line="100" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/networking/ServerSocketHandlers/ManagerServerSocketHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" selection-end-line="20" />
+        <state relative-caret-position="357">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
           <folding>
-            <element signature="e#0#452#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JDBC/OrderReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-901">
+          <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/server/networking/ServerSocketHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="36" column="56" selection-end-line="103" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/networking/ServerSocketHandlers/CustomerServerSocketHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="70" column="42" selection-start-line="70" selection-start-column="42" selection-end-line="70" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/model/ServerModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/networking/waiter/WaiterClientSocketHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/networking/waiter/WaiterClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="49" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="49" />
+        <state relative-caret-position="408">
+          <caret line="43" column="2" lean-forward="true" selection-start-line="43" selection-start-column="2" selection-end-line="43" selection-end-column="2" />
         </state>
       </provider>
     </entry>
@@ -1119,29 +836,123 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/ServerSocketHandlerClientIds.java">
+    <entry file="file://$PROJECT_DIR$/src/server/networking/ServerSocketHandlers/ChefServerSocketHandler.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/networking/ServerSocketHandlers/ManagerServerSocketHandler.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/model/logIn/LogInModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="74" selection-start-line="2" selection-start-column="74" selection-end-line="2" selection-end-column="74" />
+        <state relative-caret-position="85">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/networking/waiter/WaiterSocketWaiterClient.java">
+    <entry file="file://$PROJECT_DIR$/src/client/view/OnOpen/OnOpen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="37" column="33" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1152#1153#0" expanded="true" />
-            <element signature="e#1208#1209#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="68">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/view/OnOpen/onOpen.fxml">
+      <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/ServerSocketHandlerClientIds.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/startApplications/customer/StartCustomerApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/networking/customer/CustomerClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BasicClasses/clients.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/networking/ServerSocketHandlers/CustomerServerSocketHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="28" column="41" lean-forward="true" selection-start-line="28" selection-start-column="41" selection-end-line="28" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/server/networking/SocketServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-764">
-          <caret line="5" column="74" selection-start-line="5" selection-start-column="74" selection-end-line="5" selection-end-column="74" />
+        <state relative-caret-position="185">
+          <caret line="24" column="78" selection-start-line="24" selection-start-column="78" selection-end-line="24" selection-end-column="78" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/startApplications/customer/StartCustomer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="16" column="62" lean-forward="true" selection-start-line="16" selection-start-column="62" selection-end-line="16" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/model/logIn/LogInModelImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/model/customer/CustomerModelImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-70">
+          <caret line="44" column="40" selection-start-line="44" selection-start-column="23" selection-end-line="44" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/networking/customer/CustomerClientSocketHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="17" column="57" lean-forward="true" selection-start-line="17" selection-start-column="57" selection-end-line="17" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/networking/customer/CustomerSocketClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="27" column="45" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
+          <folding>
+            <element signature="e#1576#1577#0" expanded="true" />
+            <element signature="e#1632#1633#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

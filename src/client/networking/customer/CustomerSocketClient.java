@@ -11,19 +11,21 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 
-public class CustomerSocketCustomerClient implements CustomerClient {
+public class CustomerSocketClient implements CustomerClient {
 
     private CustomerModel model;
     private CustomerClientSocketHandler customerClientSocketHandler;
     private Socket socket;
 
-    public CustomerSocketCustomerClient(CustomerModel model){
+    public CustomerSocketClient(CustomerModel model){
         this.model=model;
         try{
             socket=new Socket("localHost", 2910);
+            System.out.println("Client con");
             customerClientSocketHandler = new CustomerClientSocketHandler(this,
                     new ObjectOutputStream(socket.getOutputStream()),
                     new ObjectInputStream(socket.getInputStream()));
+            System.out.println("not making it");
         } catch (UnknownHostException e) {
             e.printStackTrace();
         } catch (IOException e) {

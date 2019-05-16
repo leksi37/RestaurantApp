@@ -1,6 +1,5 @@
 package server.networking;
 
-import BasicClasses.Request;
 import BasicClasses.clients;
 import server.model.ServerModel;
 import server.networking.ServerSocketHandlers.CustomerServerSocketHandler;
@@ -23,14 +22,14 @@ public class SocketServer {
             System.out.println("Server started...");
             while (true) {
                 Socket socket = welcomeSocket.accept();
-                inFromClient = (ObjectInputStream) socket.getInputStream();
-                clients typeOfClient = clients.CUSTOMER_CLIENT;
+                inFromClient = new ObjectInputStream(socket.getInputStream());
+                clients typeOfClient = null;
                 try {
                     typeOfClient = (clients) inFromClient.readObject();
-                } catch (ClassNotFoundException e) {
+                    System.out.println(typeOfClient);
+                    inFromClient.close();
+                } catch (ClassNotFoundException | IOException e) {
                     e.printStackTrace();
-                } catch (IOException ex) {
-                    ex.printStackTrace();
                 }
                 if (typeOfClient.equals(clients.CUSTOMER_CLIENT)) {
                     CustomerServerSocketHandler serverSocketHandler = new CustomerServerSocketHandler(model, socket);
