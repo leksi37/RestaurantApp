@@ -36,7 +36,8 @@ public class JDBC {
     public void insert(String tableName, String values) throws SQLException
     {
         String com = "insert into \"menu\"." + tableName + " values ( " + values + ");";
-            st.executeUpdate(com);
+        st = c.createStatement();
+        st.executeUpdate(com);
         System.out.println("New order received");
 
     }
