@@ -1,8 +1,7 @@
 package JDBC;
 
-import BasicClasses.type;
-import BasicClasses.MenuItem;
-import org.postgresql.util.PSQLException;
+import basicClasses.type;
+import basicClasses.MenuItem;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -75,7 +74,7 @@ public class MenuItemsReader {
     {
         ArrayList<MenuItem> items = new ArrayList<MenuItem>();
         ArrayList<MenuItem> categoryItems;
-        for(BasicClasses.type type : type.values())
+        for(type type : type.values())
         {
             categoryItems = getCategory(type);
             for(int i = 0; i < categoryItems.size(); ++i)

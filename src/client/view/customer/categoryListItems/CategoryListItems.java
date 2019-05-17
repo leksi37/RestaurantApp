@@ -1,8 +1,8 @@
 package client.view.customer.categoryListItems;
 
-import BasicClasses.MenuItem;
-import BasicClasses.Views;
-import BasicClasses.type;
+import basicClasses.MenuItem;
+import basicClasses.Views;
+import basicClasses.type;
 import client.view.ViewHandler;
 import client.viewModel.ViewModelProvider;
 import client.viewModel.customer.CategoryListItemsViewModel;
@@ -38,7 +38,7 @@ public class CategoryListItems {
 
     public void init(CategoryListItemsViewModel vm, type category, ViewHandler viewHandler) {
         this.viewHandler = viewHandler;
-        categoryListItemsViewModel = vm;
+        categoryListItemsViewModel = vm; // D I    OVO    S T V A R A S ?????? ////////
         categoryListItemsViewModel.addListener("gotItems", this::setItems);
         scrollPane = new ScrollPane();
         categoryListItemsViewModel.getItems(category.name());

@@ -1,9 +1,10 @@
 package client.view;
 
-import BasicClasses.Views;
-import BasicClasses.type;
+import basicClasses.Views;
+import basicClasses.type;
 import client.model.chef.ChefModel;
 import client.model.customer.CustomerModel;
+import client.model.logIn.LogInModel;
 import client.view.OnOpen.OnOpen;
 import client.view.chef.Chef;
 import client.view.customer.categoryList.CategoryList;
@@ -16,6 +17,7 @@ import client.viewModel.customer.CategoryListItemsViewModel;
 import client.viewModel.customer.CategoryListViewModel;
 import client.viewModel.customer.MenuFrontViewModel;
 import client.viewModel.customer.OrderItemsListViewModel;
+import client.viewModel.logIn.OnOpenViewModel;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -35,16 +37,10 @@ public class ViewHandler {
     private Chef chef;
     private OnOpen onOpen;
 
-    public ViewHandler(Stage stage, CustomerModel model){
+    public ViewHandler(Stage stage, LogInModel model){
         this.stage=stage;
         this.viewModelProvider=new ViewModelProvider(this, model);
 
-        viewModelProvider.instantiateViewModels();
-    }
-
-    public ViewHandler(Stage stage, ChefModel chefModel){
-        this.stage=stage;
-        this.viewModelProvider=new ViewModelProvider(this, chefModel);
         viewModelProvider.instantiateViewModels();
     }
 
@@ -60,11 +56,12 @@ public class ViewHandler {
                 loader.setLocation(getClass().getResource("OnOpen/onOpen.fxml"));
                 try{
                     root=loader.load();
+                    System.out.println("root: "+root);
                 }
                 catch(IOException e){e.printStackTrace();}
 
                 onOpen = loader.getController();
-                onOpen.init(this);
+                onOpen.init((OnOpenViewModel)viewModelProvider.getViewModel(viewToOpen));
                 break;
             }
             case MENU_FRONT:
@@ -131,7 +128,6 @@ public class ViewHandler {
                 break;
             }
         }
-
 
         scene= new Scene(root);
         stage.setTitle("MLP");

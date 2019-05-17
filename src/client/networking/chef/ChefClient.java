@@ -1,6 +1,6 @@
 package client.networking.chef;
 
-import BasicClasses.Order;
+import basicClasses.Order;
 
 public interface ChefClient {
     void sendNotification(String notification);

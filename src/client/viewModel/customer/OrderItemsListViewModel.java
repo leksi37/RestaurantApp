@@ -1,7 +1,7 @@
 package client.viewModel.customer;
 
-import BasicClasses.ItemQuantity;
-import BasicClasses.Order;
+import basicClasses.ItemQuantity;
+import basicClasses.Order;
 import client.model.customer.CustomerModel;
 import client.viewModel.ViewModels;
 import javafx.beans.property.SimpleStringProperty;

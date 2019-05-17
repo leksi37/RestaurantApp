@@ -1,6 +1,6 @@
 package client.viewModel.Chef;
 
-import BasicClasses.Order;
+import basicClasses.Order;
 import client.model.chef.ChefModel;
 
 import java.beans.PropertyChangeEvent;

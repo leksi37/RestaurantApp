@@ -1,13 +1,12 @@
 package JDBC;
 
-import BasicClasses.ItemQuantity;
-import BasicClasses.ItemState;
-import BasicClasses.MenuItem;
-import BasicClasses.Order;
+import basicClasses.ItemQuantity;
+import basicClasses.ItemState;
+import basicClasses.MenuItem;
+import basicClasses.Order;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.postgresql.util.PSQLException;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

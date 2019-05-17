@@ -1,8 +1,8 @@
 package server.networking.ServerSocketHandlers;
 
-import BasicClasses.*;
-import JDBC.MenuItemsReader;
 import JDBC.OrderReader;
+import basicClasses.*;
+import JDBC.MenuItemsReader;
 import server.model.ServerModel;
 
 import java.beans.PropertyChangeEvent;

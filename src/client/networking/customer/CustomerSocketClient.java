@@ -1,7 +1,6 @@
 package client.networking.customer;
 
-import BasicClasses.MenuItem;
-import BasicClasses.Order;
+import basicClasses.*;
 import client.model.customer.CustomerModel;
 
 import java.io.IOException;
@@ -17,15 +16,14 @@ public class CustomerSocketClient implements CustomerClient {
     private CustomerClientSocketHandler customerClientSocketHandler;
     private Socket socket;
 
-    public CustomerSocketClient(CustomerModel model){
+    public CustomerSocketClient(CustomerModel model, Socket socket){
         this.model=model;
         try{
-            socket=new Socket("localHost", 2910);
-            System.out.println("Client con");
+            this.socket=socket;
+            System.out.println("Client connected");
             customerClientSocketHandler = new CustomerClientSocketHandler(this,
                     new ObjectOutputStream(socket.getOutputStream()),
                     new ObjectInputStream(socket.getInputStream()));
-            System.out.println("not making it");
         } catch (UnknownHostException e) {
             e.printStackTrace();
         } catch (IOException e) {

@@ -1,6 +1,6 @@
 package client.model.chef;
 
-import BasicClasses.Order;
+import basicClasses.Order;
 import client.networking.chef.ChefClient;
 
 import java.beans.PropertyChangeListener;

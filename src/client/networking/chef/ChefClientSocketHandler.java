@@ -1,8 +1,6 @@
 package client.networking.chef;
 
-import BasicClasses.Order;
-import BasicClasses.Request;
-import BasicClasses.RequestType;
+import basicClasses.*;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

@@ -1,7 +1,7 @@
 package client.networking.customer;
 
 
-import BasicClasses.*;
+import basicClasses.*;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

@@ -1,31 +1,32 @@
 package client.view.OnOpen;
 
-import BasicClasses.Views;
+import basicClasses.Views;
 import client.view.ViewHandler;
+import client.viewModel.logIn.OnOpenViewModel;
 import javafx.event.ActionEvent;
 
 import javax.swing.text.View;
 
 public class OnOpen {
-    private ViewHandler viewHandler;
 
-    public void openCustomer(ActionEvent actionEvent) {
-        viewHandler.openView(Views.MENU_FRONT);
+    private OnOpenViewModel viewModel;
+
+    public void init(OnOpenViewModel viewModel) {
+       this.viewModel=viewModel;
     }
 
-    public void openManager(ActionEvent actionEvent) {
-
+    public void openCustomer(ActionEvent actionEvent) {
+        viewModel.openCustomer();
     }
 
     public void openChef(ActionEvent actionEvent) {
-        viewHandler.openView(Views.CHEF_FRONT);
+        viewModel.openChef();
     }
 
     public void openWaiter(ActionEvent actionEvent) {
-
+        viewModel.openWaiter();
     }
 
-    public void init(ViewHandler viewHandler) {
-        this.viewHandler = viewHandler;
+    public void openManager(ActionEvent actionEvent) {
     }
 }

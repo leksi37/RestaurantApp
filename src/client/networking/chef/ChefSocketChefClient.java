@@ -1,6 +1,6 @@
 package client.networking.chef;
 
-import BasicClasses.Order;
+import basicClasses.Order;
 import client.model.chef.ChefModel;
 
 import java.io.IOException;

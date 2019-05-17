@@ -1,9 +1,9 @@
 package client.view.customer.orderItemsList;
 
-import BasicClasses.ItemQuantity;
-import BasicClasses.MenuItem;
-import BasicClasses.Order;
-import BasicClasses.Views;
+import basicClasses.ItemQuantity;
+import basicClasses.MenuItem;
+import basicClasses.Order;
+import basicClasses.Views;
 import client.view.ViewHandler;
 import client.viewModel.ViewModelProvider;
 import client.viewModel.customer.OrderItemsListViewModel;

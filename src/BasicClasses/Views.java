@@ -1,4 +1,4 @@
-package BasicClasses;
+package basicClasses;
 
 public enum Views {
     MENU_FRONT,

@@ -1,8 +1,8 @@
 package client.viewModel.customer;
 
-import BasicClasses.MenuItem;
-import BasicClasses.Views;
-import BasicClasses.type;
+import basicClasses.MenuItem;
+import basicClasses.Views;
+import basicClasses.type;
 import client.model.customer.CustomerModel;
 import client.view.ViewHandler;
 import client.viewModel.ViewModels;

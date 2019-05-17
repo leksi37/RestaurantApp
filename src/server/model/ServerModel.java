@@ -1,6 +1,6 @@
 package server.model;
 
-import BasicClasses.Order;
+import basicClasses.Order;
 import server.ServerSocketHandlerClientIds;
 import server.networking.ServerSocketHandlers.CustomerServerSocketHandler;
 

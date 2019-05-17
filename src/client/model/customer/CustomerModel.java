@@ -1,8 +1,9 @@
 package client.model.customer;
 
-import BasicClasses.ItemQuantity;
-import BasicClasses.MenuItem;
-import BasicClasses.Order;
+
+import basicClasses.ItemQuantity;
+import basicClasses.MenuItem;
+import basicClasses.Order;
 import client.networking.customer.CustomerClient;
 
 import java.beans.PropertyChangeListener;

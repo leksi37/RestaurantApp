@@ -1,13 +1,15 @@
 package client.viewModel;
 
-import BasicClasses.Views;
+import basicClasses.Views;
 import client.model.chef.ChefModel;
 import client.model.customer.CustomerModel;
+import client.model.logIn.LogInModel;
 import client.view.ViewHandler;
 import client.viewModel.customer.CategoryListItemsViewModel;
 import client.viewModel.customer.CategoryListViewModel;
 import client.viewModel.customer.MenuFrontViewModel;
 import client.viewModel.customer.OrderItemsListViewModel;
+import client.viewModel.logIn.OnOpenViewModel;
 
 import javax.swing.text.View;
 
@@ -16,35 +18,46 @@ public class ViewModelProvider {
     private ViewHandler viewHandler;
 
     //models
-    private CustomerModel model;
+    private LogInModel mainModel;
+    private CustomerModel customerModel;
     private ChefModel chefModel;
+
     //viewModels
+    private OnOpenViewModel onOpenViewModel;
+
     private MenuFrontViewModel menuFrontViewModel;
     private CategoryListViewModel categoryListViewModel;
     private CategoryListItemsViewModel categoryListItemsViewModel;
     private OrderItemsListViewModel orderItemsListViewModel;
 
-    public ViewModelProvider(ViewHandler viewHandler, CustomerModel model){
-        this.model=model;
+
+    public ViewModelProvider(ViewHandler viewHandler, LogInModel model){
+        this.mainModel=model;
         this.viewHandler = viewHandler;
-        instantiateViewModels();
-    }
-    public ViewModelProvider(ViewHandler viewHandler, ChefModel model){
-        this.viewHandler = viewHandler;
-        this.chefModel=model;
         instantiateViewModels();
     }
 
-    public void instantiateViewModels() {
-        menuFrontViewModel= new MenuFrontViewModel(model);
-        categoryListItemsViewModel = new CategoryListItemsViewModel(viewHandler, model);
-        categoryListViewModel = new CategoryListViewModel(viewHandler, model);
-        orderItemsListViewModel = new OrderItemsListViewModel(model);
+    public void instantiateViewModels()
+    {
+        customerModel= mainModel.getCustomerModel();
+        chefModel= mainModel.getChefModel();
+
+        onOpenViewModel= new OnOpenViewModel(mainModel, viewHandler);
+
+        menuFrontViewModel= new MenuFrontViewModel(customerModel);
+        categoryListItemsViewModel = new CategoryListItemsViewModel(viewHandler, customerModel);
+        categoryListViewModel = new CategoryListViewModel(viewHandler, customerModel);
+        orderItemsListViewModel = new OrderItemsListViewModel(customerModel);
+
+
     }
 
     public ViewModels getViewModel(Views viewToOpen) {
         switch(viewToOpen)
         {
+            case ON_OPEN:{
+                return onOpenViewModel;
+            }
             case MENU_FRONT:{
                 return menuFrontViewModel;
             }

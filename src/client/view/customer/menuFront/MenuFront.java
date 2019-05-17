@@ -1,6 +1,6 @@
 package client.view.customer.menuFront;
 
-import BasicClasses.Views;
+import basicClasses.Views;
 import client.view.ViewHandler;
 import client.viewModel.ViewModelProvider;
 import client.viewModel.customer.MenuFrontViewModel;

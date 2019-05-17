@@ -1,7 +1,5 @@
 package JDBC;
 
-import org.postgresql.util.PSQLException;
-
 import java.sql.*;
 
 public class JDBC {

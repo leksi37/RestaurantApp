@@ -1,8 +1,8 @@
 package client.networking.customer;
 
 
-import BasicClasses.MenuItem;
-import BasicClasses.Order;
+import basicClasses.MenuItem;
+import basicClasses.Order;
 
 import java.util.ArrayList;
 

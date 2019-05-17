@@ -1,6 +1,6 @@
 package client.startApplications.customer;
 
-import BasicClasses.Views;
+import basicClasses.Views;
 import client.model.customer.CustomerModel;
 import client.model.customer.CustomerModelImpl;
 import client.networking.customer.CustomerClient;
@@ -14,9 +14,9 @@ public class StartCustomer extends Application {
     public void start(Stage primaryStage) throws Exception {
         CustomerModel model= new CustomerModelImpl();
         System.out.println("Start");
-        CustomerClient customerClient = new CustomerSocketClient(model);
+    /*CustomerClient customerClient = new CustomerSocketClient(model);
         model.addClient(customerClient);
         ViewHandler viewHandler = new ViewHandler(primaryStage, model);
-        viewHandler.openView(Views.MENU_FRONT);
+        viewHandler.openView(Views.MENU_FRONT);*/
     }
 }

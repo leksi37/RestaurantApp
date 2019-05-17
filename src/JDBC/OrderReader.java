@@ -1,9 +1,8 @@
 package JDBC;
 
-import BasicClasses.ItemQuantity;
-import BasicClasses.ItemState;
-import BasicClasses.Order;
-import org.postgresql.util.PSQLException;
+import basicClasses.ItemQuantity;
+import basicClasses.ItemState;
+import basicClasses.Order;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

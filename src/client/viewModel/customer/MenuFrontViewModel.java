@@ -1,6 +1,6 @@
 package client.viewModel.customer;
 
-import BasicClasses.Views;
+import basicClasses.Views;
 import client.model.customer.CustomerModel;
 import client.view.ViewHandler;
 import client.viewModel.ViewModels;

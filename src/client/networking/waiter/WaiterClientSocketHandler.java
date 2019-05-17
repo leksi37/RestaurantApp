@@ -1,14 +1,18 @@
 package client.networking.waiter;
 
-import BasicClasses.Request;
+import basicClasses.Request;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class WaiterClientSocketHandler implements Runnable {
-    private WaiterClient waiterClient;
-    private ObjectOutputStream outToServer;
+    @Override
+    public void run() {
+
+    }
+    /*private WaiterClient waiterClient;
+    pr+ivate ObjectOutputStream outToServer;
     private ObjectInputStream inFromServer;
 
     public WaiterClientSocketHandler(WaiterClient waiterClient, ObjectOutputStream outputStream, ObjectInputStream inputStream){
@@ -30,7 +34,7 @@ public class WaiterClientSocketHandler implements Runnable {
                 e.printStackTrace();
             }
         }
-    }
+    }*/
 
 
 }

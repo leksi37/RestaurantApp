@@ -1,6 +1,6 @@
 package client.view.chef;
 
-import BasicClasses.Order;
+import basicClasses.Order;
 import client.view.ViewHandler;
 import client.viewModel.Chef.ChefViewModel;
 import javafx.collections.FXCollections;

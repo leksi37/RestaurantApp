@@ -1,7 +1,6 @@
 package JDBC;
 
-import BasicClasses.Passwords;
-import org.postgresql.util.PSQLException;
+import basicClasses.Passwords;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

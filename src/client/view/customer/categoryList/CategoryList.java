@@ -1,6 +1,6 @@
 package client.view.customer.categoryList;
 
-import BasicClasses.type;
+import basicClasses.type;
 import client.view.ViewHandler;
 import client.viewModel.customer.CategoryListViewModel;
 
