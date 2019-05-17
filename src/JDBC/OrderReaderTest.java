@@ -42,9 +42,12 @@ public class OrderReaderTest {
     @Test
     public void testAddOrder()
     {
-        Order o = new Order("table5");
-        MenuItem i1 = menuItemsReader.getById("d5");
+        Order o = new Order("table4");
+        MenuItem i1 = menuItemsReader.getById("f1");
+        MenuItem i2 = menuItemsReader.getById("d2");
+        o.setNote("Tra la la nota mea");
         o.addItem(i1.getId());
+        o.addItem(i2.getId());
         reader.addOrder(o);
     }
 
@@ -57,13 +60,13 @@ public class OrderReaderTest {
     @Test
     public void testRemove()
     {
-        reader.remove("table1");
+        reader.remove("table5");
     }
 
     @Test
     public void testChangeState()
     {
-        reader.changeState("table1", "d1", ItemState.delivered);
+        reader.changeState("table4", "d3", ItemState.delivered);
     }
 
     @Test
