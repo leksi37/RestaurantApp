@@ -1,6 +1,6 @@
 //package server.networking;
 //
-//import BasicClasses.*;
+//import basicClasses.*;
 //import JDBC.MenuItemsReader;
 //
 //import JDBC.OrderReader;

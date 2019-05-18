@@ -1,6 +1,6 @@
 //package JDBC;
 //
-//import BasicClasses.Passwords;
+//import basicClasses.Passwords;
 //import org.junit.Before;
 //import org.junit.Test;
 //import org.postgresql.util.PSQLException;
