@@ -1,10 +1,10 @@
 package client.startApplications.customer;
 
-import BasicClasses.Views;
+import basicClasses.Views;
 import client.model.customer.CustomerModel;
 import client.model.customer.CustomerModelImpl;
-import client.networking.customer.Client;
-import client.networking.customer.SocketClient;
+import client.networking.customer.CustomerClient;
+import client.networking.customer.CustomerSocketClient;
 import client.view.ViewHandler;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -13,10 +13,10 @@ public class StartCustomer extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         CustomerModel model= new CustomerModelImpl();
-        Client client= new SocketClient(model);
-        model.addClient(client);
-        // needs log in model
-        //ViewHandler viewHandler = new ViewHandler(primaryStage, model);
-        //viewHandler.openView(Views.MENU_FRONT);
+        System.out.println("Start");
+    /*CustomerClient customerClient = new CustomerSocketClient(model);
+        model.addClient(customerClient);
+        ViewHandler viewHandler = new ViewHandler(primaryStage, model);
+        viewHandler.openView(Views.MENU_FRONT);*/
     }
 }

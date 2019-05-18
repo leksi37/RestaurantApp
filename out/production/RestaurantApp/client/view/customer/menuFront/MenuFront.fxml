@@ -10,7 +10,10 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" style="-fx-background-color: #ffcccc;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.customer.menuFront.MenuFront">
    <children>
-      <Label fx:id="orderStatus" layoutX="201.0" layoutY="418.0" prefHeight="45.0" prefWidth="467.0" />
+      <Label fx:id="orderStatus" alignment="CENTER" layoutX="201.0" layoutY="418.0" prefHeight="45.0" prefWidth="467.0" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold Italic" size="23.0" />
+         </font></Label>
       <ImageView fitHeight="183.0" fitWidth="467.0" layoutX="200.0" layoutY="62.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../images/welcome.png" />

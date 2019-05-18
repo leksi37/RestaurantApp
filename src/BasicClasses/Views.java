@@ -1,12 +1,11 @@
-package BasicClasses;
+package basicClasses;
 
 public enum Views {
     MENU_FRONT,
     CATEGORIES,
     ITEMS,
+    MENU_FRONT_LABEL,
     ORDER,
-    CHEF,
-    WAITER,
-    ADMIN,
-    LOGIN
+    CHEF_FRONT,
+    ON_OPEN;
 }

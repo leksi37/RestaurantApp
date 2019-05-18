@@ -15,7 +15,7 @@ public class JDBC {
 
             c = DriverManager
                     .getConnection("jdbc:postgresql://localhost:5432/postgres",
-                            "postgres", "2791");
+                            "postgres", "qaz88x99");
 
 
             System.out.println("Database open ok");
@@ -33,15 +33,13 @@ public class JDBC {
         return instance;
     }
 
-    public void insert(String tableName, String values)
+    public void insert(String tableName, String values) throws SQLException
     {
         String com = "insert into \"menu\"." + tableName + " values ( " + values + ");";
-        try {
-            st = c.createStatement();
-            st.executeUpdate(com);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        st = c.createStatement();
+        st.executeUpdate(com);
+        System.out.println("New order received");
+
     }
 
     public void remove(String tableName, String condition)
