@@ -1,6 +1,6 @@
 //package server.networking.ServerSocketHandlers;
 //
-//import basicClasses.*;
+//import BasicClasses.*;
 //import JDBC.MenuItemsReader;
 //import JDBC.OrderReader;
 //import server.model.ServerModel;
