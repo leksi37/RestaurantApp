@@ -1,4 +1,4 @@
-package basicClasses;
+package BasicClasses;
 
 import JDBC.MenuItemsReader;
 
@@ -8,18 +8,21 @@ import java.util.ArrayList;
 public class Order implements Serializable {
     private String tableId;
     private ArrayList<ItemQuantity> items;
+    private String note;
 
     public Order(String tableId) {
         this.tableId = tableId;
-        items = new ArrayList<>();
+        items = new ArrayList<ItemQuantity>();
+        note = "";
     }
 
     public Order(Order order)
     {
-        items = new ArrayList<>();
+        items = new ArrayList<ItemQuantity>();
+        note = "";
         if(order != null)
         {
-            tableId = order.tableId;
+            tableId = new String(order.tableId);
             if(order.items != null)
             {
                 for(int i = 0; i < order.items.size(); ++i)
@@ -32,6 +35,15 @@ public class Order implements Serializable {
     {
         for(int i = 0; i < items.size(); ++i) {
             if (items.get(i).getId().equals(itemId))
+                return i;
+        }
+        return -1;
+    }
+
+    private int isInOrder(ItemQuantity item)
+    {
+        for(int i = 0; i < items.size(); ++i) {
+            if (items.get(i).equals(item))
                 return i;
         }
         return -1;
@@ -81,7 +93,7 @@ public class Order implements Serializable {
         return mi;
     }
 
-    public ArrayList<String> dbFormat()
+    public ArrayList<String> dbFormatItems()
     {
         ArrayList<String> strings = new ArrayList<String>();
         String s;
@@ -95,16 +107,20 @@ public class Order implements Serializable {
 
     public String toString()
     {
-        String s = tableId + "\n(";
-        for(int i = 0; i < items.size()-1; ++i)
+        String s = tableId + ", " + note + "\n";
+        if(items.size() > 0)
         {
-            s += "item: " + items.get(i) + "\n";
+            s += "(";
+            for(int i = 0; i < items.size()-1; ++i)
+            {
+                s += "item: " + items.get(i) + "\n";
+            }
+            s += "item: " + items.get(items.size()-1) + ")";
         }
-        s += "item: " + items.get(items.size()-1) + ")";
         return s;
     }
 
-    public ItemQuantity getItemWithQuantityById(String id)
+    public ItemQuantity getItemWithQuantity(String id)
     {
         for(int i = 0; i < items.size(); ++i)
         {
@@ -114,6 +130,16 @@ public class Order implements Serializable {
         return null;
     }
 
+    public ItemQuantity getItemWithQuantity(int index)
+    {
+        if(index < items.size())
+            return items.get(index);
+        return null;
+    }
+
+    public void deliverItem(ItemQuantity focusedItem) {
+        focusedItem.changeState(ItemState.delivered);
+    }
     public void removeItem(String id, int quantity)
     {
         for(int i = 0; i < items.size(); ++i)
@@ -121,5 +147,23 @@ public class Order implements Serializable {
             if(items.get(i).getId().equals(id))
                 items.remove(i);
         }
+    }
+
+    public String dbFormat()
+    {
+        return "'" + tableId + "', '" + note + "'";
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public int getNumberOfItems()
+    {
+        return items.size();
     }
 }

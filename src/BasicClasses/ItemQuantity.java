@@ -1,4 +1,4 @@
-package basicClasses;
+package BasicClasses;
 
 import JDBC.MenuItemsReader;
 
@@ -36,7 +36,6 @@ public class ItemQuantity implements Serializable {
         this.state = state;
     }
 
-
     public int getQuantity() {
         return quantity;
     }
@@ -44,6 +43,17 @@ public class ItemQuantity implements Serializable {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    public void increaseQuantity()
+    {
+        quantity++;
+    }
+
+    public String orderDisplay()
+    {
+        return "id " + id + ", quantity " + quantity + ", state " + state.name();
+    }
+
 
     public String toString()
     {
@@ -53,5 +63,13 @@ public class ItemQuantity implements Serializable {
 
     public String dbFormat() {
         return "'" + id + "', '" + quantity + "', '" + state.name() + "'";
+    }
+
+    public boolean equals(Object obj)
+    {
+        if(!(obj instanceof ItemQuantity))
+            return false;
+        ItemQuantity q = (ItemQuantity) obj;
+        return id.equals(q.id) && quantity == q.quantity && state == q.state;
     }
 }
