@@ -1,0 +1,81 @@
+package client.networking.logIn;
+
+import basicClasses.clients;
+import client.model.customer.CustomerModel;
+import client.model.logIn.LogInModel;
+import client.networking.customer.CustomerSocketClient;
+
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+
+public class LogInSocket {
+
+    private Socket socket;
+    private LogInModel model;
+
+    private ObjectOutputStream outToServer;
+
+    public LogInSocket(LogInModel model) {
+        try {
+            this.model = model;
+            this.socket = new Socket("localHost", 2910);
+            outToServer= new ObjectOutputStream(socket.getOutputStream());
+        }catch(IOException e){e.printStackTrace();}
+    }
+
+    public void connectCustomer(){
+        try {
+            outToServer.writeObject(clients.CUSTOMER_CLIENT);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Trying to connect first");
+        startCustomer();
+    }
+
+    public void startCustomer(){
+        CustomerModel customerModel= model.getCustomerModel();
+        CustomerSocketClient customerSocketClient= new CustomerSocketClient(customerModel, socket);
+        customerModel.addClient(customerSocketClient);
+
+    }
+
+
+    //just for show     fix later
+
+    public void connectChef(){
+        try {
+            outToServer.writeObject(clients.CUSTOMER_CLIENT);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Trying to connect first");
+        startCustomer();
+    }
+
+    public void startChef(){
+        CustomerModel customerModel= model.getCustomerModel();
+        CustomerSocketClient customerSocketClient= new CustomerSocketClient(customerModel, socket);
+        customerModel.addClient(customerSocketClient);
+
+    }
+
+
+    public void connectWaiter(){
+        try {
+            outToServer.writeObject(clients.CUSTOMER_CLIENT);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Trying to connect first");
+        startCustomer();
+    }
+
+    public void startWaiter(){
+        CustomerModel customerModel= model.getCustomerModel();
+        CustomerSocketClient customerSocketClient= new CustomerSocketClient(customerModel, socket);
+        customerModel.addClient(customerSocketClient);
+
+    }
+}

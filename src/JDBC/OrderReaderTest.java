@@ -1,9 +1,9 @@
 package JDBC;
 
-import BasicClasses.ItemQuantity;
-import BasicClasses.ItemState;
-import BasicClasses.MenuItem;
-import BasicClasses.Order;
+import basicClasses.ItemQuantity;
+import basicClasses.ItemState;
+import basicClasses.MenuItem;
+import basicClasses.Order;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -60,7 +60,7 @@ public class OrderReaderTest {
     @Test
     public void testRemove()
     {
-        reader.remove("table5");
+        reader.remove("table4");
     }
 
     @Test

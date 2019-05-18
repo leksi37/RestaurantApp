@@ -1,25 +1,24 @@
 package server.model;
 
-import BasicClasses.Order;
-import server.SSHIds;
-import server.networking.ServerSocketHandler;
+import basicClasses.Order;
+import server.ServerSocketHandlerClientIds;
+import server.networking.ServerSocketHandlers.CustomerServerSocketHandler;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class ServerModel {
 
     private ArrayList<Order> orders;
     private PropertyChangeSupport support= new PropertyChangeSupport(this);
-    private ArrayList<SSHIds> connections;
+    private ArrayList<ServerSocketHandlerClientIds> connections;
     private int counter;
 
     public ServerModel() {
-        orders= new ArrayList<Order>();
+        orders= new ArrayList<>();
         counter = 0;
-        connections = new ArrayList<SSHIds>();
+        connections = new ArrayList<>();
     }
 
     public void addListener(String name, PropertyChangeListener listener) {
@@ -33,8 +32,8 @@ public class ServerModel {
         support.firePropertyChange("AddedOrder", null, order);
     }
 
-    public String newId(ServerSocketHandler serverSocketHandler) {
-        connections.add(new SSHIds(serverSocketHandler, "table" + counter));
+    public String newId(CustomerServerSocketHandler customerServerSocketHandler) {
+        connections.add(new ServerSocketHandlerClientIds(customerServerSocketHandler, "table" + counter));
         counter++;
         return "table" + (counter-1);
     }
