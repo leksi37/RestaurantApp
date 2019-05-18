@@ -1,6 +1,6 @@
 package JDBC;
 
-import BasicClasses.ItemQuantity;
+import basicClasses.ItemQuantity;
 import basicClasses.ItemState;
 import basicClasses.MenuItem;
 import basicClasses.Order;
