@@ -1,68 +1,130 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" style="-fx-background-color: #ffcccc;" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.customer.categoryList.CategoryList">
    <children>
-      <Button fx:id="appetizers" alignment="TOP_CENTER" layoutX="226.0" layoutY="67.0" mnemonicParsing="false" onAction="#openAppetizers" prefHeight="116.0" prefWidth="157.0" style="-fx-background-color: #ffe6e6;" text="Appetizers" textAlignment="CENTER" />
-      <Button fx:id="drinks" alignment="TOP_CENTER" layoutX="433.0" layoutY="67.0" mnemonicParsing="false" onAction="#openDrinks" prefHeight="116.0" prefWidth="157.0" style="-fx-background-color: #ffe6e6;" text="Nonalcoholic drinks" />
-      <Button alignment="TOP_CENTER" layoutX="47.0" layoutY="215.0" mnemonicParsing="false" prefHeight="116.0" prefWidth="157.0" style="-fx-background-color: #ffe6e6;" text="Salads" />
-      <Button fx:id="breakfast" alignment="TOP_CENTER" layoutX="226.0" layoutY="215.0" mnemonicParsing="false" onAction="#openBreakfast" prefHeight="116.0" prefWidth="157.0" style="-fx-background-color: #ffe6e6;" text="Breakfast" />
-      <Button fx:id="pasta" alignment="TOP_CENTER" layoutX="433.0" layoutY="215.0" mnemonicParsing="false" onAction="#openPasta" prefHeight="116.0" prefWidth="157.0" style="-fx-background-color: #ffe6e6;" text="Pasta" />
-      <Button fx:id="alcohol" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="613.0" layoutY="67.0" mnemonicParsing="false" onAction="#openAlcohol" prefHeight="116.0" prefWidth="157.0" style="-fx-background-color: #ffe6e6;" text="Alcohol" textAlignment="CENTER" />
-      <Button fx:id="desserts" alignment="TOP_CENTER" layoutX="429.0" layoutY="361.0" mnemonicParsing="false" onAction="#openDesserts" prefHeight="116.0" prefWidth="157.0" style="-fx-background-color: #ffe6e6;" text="Desserts" />
-      <Button fx:id="pizza" alignment="TOP_CENTER" layoutX="613.0" layoutY="215.0" mnemonicParsing="false" onAction="#openPizza" prefHeight="116.0" prefWidth="157.0" style="-fx-background-color: #ffe6e6;" text="Pizza" />
-      <Button fx:id="soup" alignment="TOP_CENTER" layoutX="226.0" layoutY="361.0" mnemonicParsing="false" onAction="#openSoup" prefHeight="116.0" prefWidth="157.0" style="-fx-background-color: #ffe6e6;" text="Soup" />
-      <Button fx:id="sideDish" alignment="TOP_CENTER" layoutX="47.0" layoutY="361.0" mnemonicParsing="false" onAction="#openSideDish" prefHeight="116.0" prefWidth="157.0" style="-fx-background-color: #ffe6e6;" text="Side dish" />
+      <Button fx:id="appetizers" alignment="TOP_CENTER" layoutX="226.0" layoutY="67.0" mnemonicParsing="false" onAction="#openAppetizers" prefHeight="116.0" prefWidth="157.0" style="-fx-background-color: #ffe6e6;" text="Appetizers" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="drinks" alignment="TOP_CENTER" layoutX="433.0" layoutY="67.0" mnemonicParsing="false" onAction="#openDrinks" prefHeight="116.0" prefWidth="157.0" style="-fx-background-color: #ffe6e6;" text="Nonalcoholic drinks">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button alignment="TOP_CENTER" layoutX="47.0" layoutY="215.0" mnemonicParsing="false" prefHeight="116.0" prefWidth="157.0" style="-fx-background-color: #ffe6e6;" text="Salads" onAction="#openSalads">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="breakfast" alignment="TOP_CENTER" layoutX="226.0" layoutY="215.0" mnemonicParsing="false" onAction="#openBreakfast" prefHeight="116.0" prefWidth="157.0" style="-fx-background-color: #ffe6e6;" text="Breakfast">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="pasta" alignment="TOP_CENTER" layoutX="433.0" layoutY="215.0" mnemonicParsing="false" onAction="#openPasta" prefHeight="116.0" prefWidth="157.0" style="-fx-background-color: #ffe6e6;" text="Pasta">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="alcohol" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="613.0" layoutY="67.0" mnemonicParsing="false" onAction="#openAlcohol" prefHeight="116.0" prefWidth="157.0" style="-fx-background-color: #ffe6e6;" text="Alcohol" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="desserts" alignment="TOP_CENTER" layoutX="429.0" layoutY="361.0" mnemonicParsing="false" onAction="#openDesserts" prefHeight="116.0" prefWidth="157.0" style="-fx-background-color: #ffe6e6;" text="Desserts">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="pizza" alignment="TOP_CENTER" layoutX="613.0" layoutY="215.0" mnemonicParsing="false" onAction="#openPizza" prefHeight="116.0" prefWidth="157.0" style="-fx-background-color: #ffe6e6;" text="Pizza">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="soup" alignment="TOP_CENTER" layoutX="226.0" layoutY="361.0" mnemonicParsing="false" onAction="#openSoup" prefHeight="116.0" prefWidth="157.0" style="-fx-background-color: #ffe6e6;" text="Soup">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="sideDish" alignment="TOP_CENTER" layoutX="47.0" layoutY="361.0" mnemonicParsing="false" onAction="#openSideDish" prefHeight="116.0" prefWidth="157.0" style="-fx-background-color: #ffe6e6;" text="Side dish">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <ImageView fitHeight="141.0" fitWidth="144.0" layoutX="47.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../images/smiling-chef-wall-sticker-6138.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="107.0" fitWidth="157.0" layoutX="226.0" layoutY="87.0" preserveRatio="true">
+      <ImageView fitHeight="107.0" fitWidth="157.0" layoutX="226.0" layoutY="87.0" mouseTransparent="true" preserveRatio="true">
          <image>
             <Image url="@../../../../images/appetizer.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="97.0" fitWidth="89.0" layoutX="468.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="97.0" fitWidth="89.0" layoutX="468.0" layoutY="88.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../images/drinks.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="97.0" fitWidth="91.0" layoutX="647.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="97.0" fitWidth="91.0" layoutX="647.0" layoutY="84.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../images/cocktails.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="salads" fitHeight="125.0" fitWidth="137.0" layoutX="56.0" layoutY="223.0" onDragDetected="#openSalads" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="salads" fitHeight="125.0" fitWidth="137.0" layoutX="56.0" layoutY="223.0" mouseTransparent="true" onDragDetected="#openSalads" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../images/salads2.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="97.0" fitWidth="137.0" layoutX="439.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="97.0" fitWidth="137.0" layoutX="439.0" layoutY="242.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../images/pasta.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="85.0" fitWidth="157.0" layoutX="429.0" layoutY="386.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="85.0" fitWidth="157.0" layoutX="429.0" layoutY="386.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../images/deserti.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="84.0" fitWidth="157.0" layoutX="619.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="84.0" fitWidth="157.0" layoutX="619.0" layoutY="240.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../images/pizza-png-5.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="84.0" fitWidth="137.0" layoutX="61.0" layoutY="386.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="84.0" fitWidth="137.0" layoutX="61.0" layoutY="386.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../images/side-dish.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="97.0" fitWidth="137.0" layoutX="236.0" layoutY="387.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="97.0" fitWidth="137.0" layoutX="236.0" layoutY="387.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../images/soup.png" />
          </image>
@@ -72,7 +134,7 @@
             <Image url="@../../../../images/chef.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="79.0" fitWidth="122.0" layoutX="244.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="79.0" fitWidth="122.0" layoutX="244.0" layoutY="244.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../images/breakfast.png" />
          </image>

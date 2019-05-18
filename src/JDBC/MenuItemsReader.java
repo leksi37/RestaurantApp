@@ -1,7 +1,7 @@
 package JDBC;
 
-import BasicClasses.type;
-import BasicClasses.MenuItem;
+import basicClasses.type;
+import basicClasses.MenuItem;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,7 +25,11 @@ public class MenuItemsReader {
 
     public void add(MenuItem item)
     {
-        db.insert("Menu", item.dbFormat());
+        try {
+            db.insert("Menu", item.dbFormat());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void remove(String id)
@@ -70,7 +74,7 @@ public class MenuItemsReader {
     {
         ArrayList<MenuItem> items = new ArrayList<MenuItem>();
         ArrayList<MenuItem> categoryItems;
-        for(BasicClasses.type type : type.values())
+        for(type type : type.values())
         {
             categoryItems = getCategory(type);
             for(int i = 0; i < categoryItems.size(); ++i)
@@ -82,7 +86,11 @@ public class MenuItemsReader {
     public void change(MenuItem item)
     {
         db.remove("Menu", "id = '" + item.getId() + "'");
-        db.insert("Menu", item.dbFormat());
+        try {
+            db.insert("Menu", item.dbFormat());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private MenuItem get(ResultSet rs)

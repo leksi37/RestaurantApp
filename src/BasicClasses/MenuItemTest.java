@@ -1,4 +1,4 @@
-package BasicClasses;
+package basicClasses;
 
 import JDBC.MenuItemsReader;
 import org.junit.Test;

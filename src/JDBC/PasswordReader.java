@@ -1,6 +1,6 @@
 package JDBC;
 
-import BasicClasses.Passwords;
+import basicClasses.Passwords;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,7 +27,11 @@ public class PasswordReader {
 
     public void add(Passwords p)
     {
-        db.insert("passwords", p.dbFormat());
+        try {
+            db.insert("passwords", p.dbFormat());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private Passwords toPassword(ResultSet rs)
@@ -53,7 +57,11 @@ public class PasswordReader {
         ResultSet rs = db.get("passwords", "name = '" + password.getName() + "'");
         Passwords p = toPassword(rs);
         db.remove("passwords", "name = '" + p.getName() + "'");
-        db.insert("passwords", password.dbFormat());
+        try {
+            db.insert("passwords", password.dbFormat());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 //    public void deleteAll()

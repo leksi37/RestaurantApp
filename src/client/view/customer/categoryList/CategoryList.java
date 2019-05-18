@@ -1,51 +1,55 @@
 package client.view.customer.categoryList;
 
-import client.viewModel.ViewModelProvider;
+import basicClasses.type;
+import client.view.ViewHandler;
 import client.viewModel.customer.CategoryListViewModel;
 
 public class CategoryList {
 
-    private CategoryListViewModel viewModel;
+    private ViewHandler viewHandler;
+    private CategoryListViewModel categoryListViewModel;
 
     public void openAppetizers() {
-        viewModel.openCategoryListItems("appetizers");
+        categoryListViewModel.openCategory(type.appetizers);
+        viewHandler.setCategory(type.appetizers);
     }
 
     public void openDrinks() {
-        viewModel.openCategoryListItems("nonAlcoholic");
+        categoryListViewModel.openCategory(type.nonAlcoholic);
     }
     public void openAlcohol() {
-        viewModel.openCategoryListItems("alcohol");
+        categoryListViewModel.openCategory(type.alcohol);
     }
     public void openSalads() {
-        viewModel.openCategoryListItems("salads");
+        categoryListViewModel.openCategory(type.salads);
     }
 
     public void openDesserts() {
-        viewModel.openCategoryListItems("dessert");
+        categoryListViewModel.openCategory(type.dessert);
     }
 
     public void openBreakfast() {
-        viewModel.openCategoryListItems("breakfast");
+        categoryListViewModel.openCategory(type.breakfast);
     }
 
     public void openPasta() {
-        viewModel.openCategoryListItems("pasta");
+        categoryListViewModel.openCategory(type.pasta);
     }
 
     public void openPizza() {
-        viewModel.openCategoryListItems("pizza");
+        categoryListViewModel.openCategory(type.pizza);
     }
 
     public void openSoup() {
-        viewModel.openCategoryListItems("soup");
+        categoryListViewModel.openCategory(type.soup);
     }
 
     public void openSideDish() {
-        viewModel.openCategoryListItems("sideDish");
+        categoryListViewModel.openCategory(type.sideDish);
     }
 
-    public void init(CategoryListViewModel vm){
-        viewModel = vm;
+    public void init(CategoryListViewModel vm, ViewHandler viewHandler){
+        this.viewHandler = viewHandler;
+        this.categoryListViewModel = vm;
     }
 }

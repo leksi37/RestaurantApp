@@ -1,7 +1,7 @@
 package JDBC;
 
-import BasicClasses.MenuItem;
-import BasicClasses.type;
+import basicClasses.MenuItem;
+import basicClasses.type;
 import org.junit.Test;
 
 import java.util.ArrayList;
