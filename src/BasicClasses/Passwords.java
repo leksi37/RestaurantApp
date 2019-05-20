@@ -1,4 +1,4 @@
-package basicClasses;
+package BasicClasses;
 
 import java.io.Serializable;
 
@@ -13,6 +13,14 @@ public class Passwords implements Serializable {
 
     public String getName() {
         return name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String dbFormat()

@@ -1,4 +1,4 @@
-package basicClasses;
+package BasicClasses;
 
 import JDBC.MenuItemsReader;
 
@@ -19,7 +19,6 @@ public class Order implements Serializable {
     public Order(Order order)
     {
         items = new ArrayList<ItemQuantity>();
-        note = "";
         if(order != null)
         {
             tableId = new String(order.tableId);
@@ -34,16 +33,9 @@ public class Order implements Serializable {
     private int isInOrder(String itemId)
     {
         for(int i = 0; i < items.size(); ++i) {
+//            System.out.println(items.get(i));
+//            System.out.println(item);
             if (items.get(i).getId().equals(itemId))
-                return i;
-        }
-        return -1;
-    }
-
-    private int isInOrder(ItemQuantity item)
-    {
-        for(int i = 0; i < items.size(); ++i) {
-            if (items.get(i).equals(item))
                 return i;
         }
         return -1;
@@ -93,7 +85,7 @@ public class Order implements Serializable {
         return mi;
     }
 
-    public ArrayList<String> dbFormatItems()
+    public ArrayList<String> dbFormat()
     {
         ArrayList<String> strings = new ArrayList<String>();
         String s;
@@ -107,33 +99,22 @@ public class Order implements Serializable {
 
     public String toString()
     {
-        String s = tableId + ", " + note + "\n";
-        if(items.size() > 0)
+        String s = tableId + "\n(";
+        for(int i = 0; i < items.size()-1; ++i)
         {
-            s += "(";
-            for(int i = 0; i < items.size()-1; ++i)
-            {
-                s += "item: " + items.get(i) + "\n";
-            }
-            s += "item: " + items.get(items.size()-1) + ")";
+            s += "item: " + items.get(i) + "\n";
         }
+        s += "item: " + items.get(items.size()-1) + ")";
         return s;
     }
 
-    public ItemQuantity getItemWithQuantity(String id)
+    public ItemQuantity getItemWithQuantityById(String id)
     {
         for(int i = 0; i < items.size(); ++i)
         {
             if(items.get(i).getId().equals(id))
                 return items.get(i);
         }
-        return null;
-    }
-
-    public ItemQuantity getItemWithQuantity(int index)
-    {
-        if(index < items.size())
-            return items.get(index);
         return null;
     }
 
@@ -147,23 +128,5 @@ public class Order implements Serializable {
             if(items.get(i).getId().equals(id))
                 items.remove(i);
         }
-    }
-
-    public String dbFormat()
-    {
-        return "'" + tableId + "', '" + note + "'";
-    }
-
-    public String getNote() {
-        return note;
-    }
-
-    public void setNote(String note) {
-        this.note = note;
-    }
-
-    public int getNumberOfItems()
-    {
-        return items.size();
     }
 }

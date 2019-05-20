@@ -1,4 +1,4 @@
-package basicClasses;
+package BasicClasses;
 
 import java.io.Serializable;
 
@@ -25,8 +25,16 @@ public class MenuItem implements Serializable {
         this.name = name;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public void setType(type type) {
         this.type = type;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public String getId() {

@@ -1,34 +1,39 @@
 package client.viewModel.customer;
 
-import basicClasses.ItemQuantity;
-import basicClasses.Order;
+import BasicClasses.ItemQuantity;
+import BasicClasses.Order;
+import BasicClasses.Views;
 import client.model.customer.CustomerModel;
+import client.networking.Client;
+import client.view.ViewHandler;
 import client.viewModel.ViewModels;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeSupport;
+import java.beans.PropertyChangeListener;
 
 public class OrderItemsListViewModel implements ViewModels {
     private CustomerModel model;
+    private ViewHandler viewHandler;
     private StringProperty note;
     private ObservableList<ItemQuantity> items = FXCollections.observableArrayList();
-    PropertyChangeSupport support;
 
-    public OrderItemsListViewModel(CustomerModel model) {
+    public OrderItemsListViewModel(CustomerModel model, ViewHandler viewHandler) {
         this.model = model;
-        support = new PropertyChangeSupport(this);
+        this.viewHandler = viewHandler;
         note = new SimpleStringProperty();
         model.addListeners("orderChanged", this :: orderChanged);
         model.addListeners("orderAdded", this :: orderAdded);
     }
 
-    //If we can call PropertyChangeSupport in the view then we can leave it if not this should be removed! and every submethod also
     private void orderAdded(PropertyChangeEvent propertyChangeEvent) {
-        support.firePropertyChange("orderAddedForChange", null, null);
+        Platform.runLater(() ->
+                viewHandler.openView(Views.MENU_FRONT)
+        );
     }
 
     private void orderChanged(PropertyChangeEvent propertyChangeEvent) {
@@ -52,6 +57,10 @@ public class OrderItemsListViewModel implements ViewModels {
         model.addOrderToServer();
     }
 
+    public void sendToFrontMenu() {
+        viewHandler.openView(Views.MENU_FRONT);
+    }
+
     public ObservableList<ItemQuantity> getItems() {
         return items;
     }
@@ -60,4 +69,7 @@ public class OrderItemsListViewModel implements ViewModels {
         model.removeItem((ItemQuantity) focusedItem);
     }
 
+    public void backToMenu() {
+        viewHandler.openView(Views.CATEGORIES);
+    }
 }

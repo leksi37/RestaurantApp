@@ -1,9 +1,9 @@
 package client.model.customer;
 
-import basicClasses.ItemQuantity;
-import basicClasses.MenuItem;
-import basicClasses.Order;
-import client.networking.customer.CustomerClient;
+import BasicClasses.ItemQuantity;
+import BasicClasses.MenuItem;
+import BasicClasses.Order;
+import client.networking.Client;
 import client.viewModel.MenuProxy;
 
 import java.beans.PropertyChangeListener;
@@ -13,14 +13,14 @@ import java.util.ArrayList;
 public class CustomerModelImpl implements CustomerModel {
 
     private MenuProxy proxy;
-    private CustomerClient customerClient;
+    private Client client;
     private Order order;
     private String tableId;
 
     private PropertyChangeSupport support;
 
     public CustomerModelImpl() {
-        this.customerClient = null;
+        this.client = null;
         support = new PropertyChangeSupport(this);
         proxy = new MenuProxy();
 
@@ -33,31 +33,35 @@ public class CustomerModelImpl implements CustomerModel {
         else support.addPropertyChangeListener(name, listener);
     }
 
-    @Override //taken from ClientModelInterface in modelFactory
-    public void addClient(Object object) {
-        System.out.println(object instanceof CustomerClient);
-        if(object instanceof CustomerClient)
-        {
-            this.customerClient = (CustomerClient) object;
-            customerClient.getTableId();
-            order = new Order(tableId);
-        }
+    @Override
+    public void addClient(Client client) {
+        this.client=client;
+        client.getTableId();
+        order = new Order(tableId);
     }
 
     @Override
     public void addOrderToServer() {
-        customerClient.addOrderToServer(order);
+        client.addOrderToServer(order);
         order = new Order(tableId);
+    }
+
+    @Override
+    public void getFromServer() {
+        System.out.println("Something came from the server to the client");
+    }
+
+    @Override
+    public void menuCategory(ArrayList a) {
+
     }
 
     @Override
     public void requestMenuCategory(String type) {
         ArrayList menuCategory = proxy.getCategory(type);
-        System.out.println("menu proxy check" );
         if(menuCategory == null)
         {
-            System.out.println("customer model: "+ customerClient==null);
-            customerClient.requestMenuCategory(type);
+            client.requestMenuCategory(type);
         }
         else
             gotMenuItems(menuCategory);
@@ -102,6 +106,4 @@ public class CustomerModelImpl implements CustomerModel {
     public void orderAdded() {
         support.firePropertyChange("orderAdded", null, null);
     }
-
-
 }

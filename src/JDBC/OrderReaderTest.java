@@ -1,12 +1,13 @@
 package JDBC;
 
-import basicClasses.ItemQuantity;
-import basicClasses.ItemState;
-import basicClasses.MenuItem;
-import basicClasses.Order;
+import BasicClasses.ItemQuantity;
+import BasicClasses.ItemState;
+import BasicClasses.MenuItem;
+import BasicClasses.Order;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.postgresql.util.PSQLException;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -41,12 +42,9 @@ public class OrderReaderTest {
     @Test
     public void testAddOrder()
     {
-        Order o = new Order("table4");
-        MenuItem i1 = menuItemsReader.getById("f1");
-        MenuItem i2 = menuItemsReader.getById("d2");
-        o.setNote("Tra la la nota mea");
+        Order o = new Order("table5");
+        MenuItem i1 = menuItemsReader.getById("d5");
         o.addItem(i1.getId());
-        o.addItem(i2.getId());
         reader.addOrder(o);
     }
 
@@ -59,13 +57,13 @@ public class OrderReaderTest {
     @Test
     public void testRemove()
     {
-        reader.remove("table4");
+        reader.remove("table1");
     }
 
     @Test
     public void testChangeState()
     {
-        reader.changeState("table4", "d3", ItemState.delivered);
+        reader.changeState("table1", "d1", ItemState.delivered);
     }
 
     @Test

@@ -1,20 +1,23 @@
 package client.model.customer;
 
-
-import basicClasses.ItemQuantity;
-import basicClasses.MenuItem;
-import basicClasses.Order;
-import client.model.modelFactory.ClientModel;
-import client.networking.customer.CustomerClient;
+import BasicClasses.ItemQuantity;
+import BasicClasses.MenuItem;
+import BasicClasses.Order;
+import client.networking.Client;
 
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 
-public interface CustomerModel extends ClientModel {
+public interface CustomerModel {
     void addListeners(String name, PropertyChangeListener listener);
+    void addClient(Client client);
 
     void addOrderToServer();
 
+    //this one is only for testing
+    void getFromServer();
+
+    void menuCategory(ArrayList a);
     void requestMenuCategory(String type);
 
     void gotMenuItems(ArrayList<MenuItem> mi);
@@ -30,5 +33,4 @@ public interface CustomerModel extends ClientModel {
     void removeItem(ItemQuantity focusedItem);
 
     void orderAdded();
-
 }

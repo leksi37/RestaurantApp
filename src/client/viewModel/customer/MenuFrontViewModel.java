@@ -1,22 +1,26 @@
 package client.viewModel.customer;
 
-import basicClasses.Views;
+import BasicClasses.Views;
 import client.model.customer.CustomerModel;
 import client.view.ViewHandler;
 import client.viewModel.ViewModels;
-import javafx.application.Platform;
 
 
 public class MenuFrontViewModel implements ViewModels {
 
     private CustomerModel model;
+    private ViewHandler viewHandler;
 
-    public MenuFrontViewModel(CustomerModel model)
+    public MenuFrontViewModel(CustomerModel model, ViewHandler viewHandler)
     {
         this.model = model;
+        this.viewHandler = viewHandler;
     }
 
-    public void openCategoryList(ViewHandler viewHandler) {
-        Platform.runLater(() -> viewHandler.openView(Views.CATEGORIES));
+    public void openCategoryList() {
+       viewHandler.openView(Views.CATEGORIES);
+       //ConnectionPool?
+       //model.addClient();
+       // model.addOrderToServer(new Order("some text"));
     }
 }

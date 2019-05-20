@@ -1,55 +1,53 @@
 package client.view.customer.categoryList;
 
-import basicClasses.type;
-import client.view.ViewHandler;
+import BasicClasses.type;
+import client.viewModel.ViewModelProvider;
 import client.viewModel.customer.CategoryListViewModel;
 
 public class CategoryList {
 
-    private ViewHandler viewHandler;
-    private CategoryListViewModel categoryListViewModel;
+    private CategoryListViewModel viewModel;
 
     public void openAppetizers() {
-        categoryListViewModel.openCategory(type.appetizers);
-        viewHandler.setCategory(type.appetizers);
+        viewModel.openCategoryListItems(type.appetizers);
     }
 
     public void openDrinks() {
-        categoryListViewModel.openCategory(type.nonAlcoholic);
+        viewModel.openCategoryListItems(type.nonAlcoholic);
     }
     public void openAlcohol() {
-        categoryListViewModel.openCategory(type.alcohol);
+        viewModel.openCategoryListItems(type.alcohol);
     }
     public void openSalads() {
-        categoryListViewModel.openCategory(type.salads);
+        System.out.println("view");
+        viewModel.openCategoryListItems(type.salads);
     }
 
     public void openDesserts() {
-        categoryListViewModel.openCategory(type.dessert);
+        viewModel.openCategoryListItems(type.dessert);
     }
 
     public void openBreakfast() {
-        categoryListViewModel.openCategory(type.breakfast);
+        viewModel.openCategoryListItems(type.breakfast);
     }
 
     public void openPasta() {
-        categoryListViewModel.openCategory(type.pasta);
+        viewModel.openCategoryListItems(type.pasta);
     }
 
     public void openPizza() {
-        categoryListViewModel.openCategory(type.pizza);
+        viewModel.openCategoryListItems(type.pizza);
     }
 
     public void openSoup() {
-        categoryListViewModel.openCategory(type.soup);
+        viewModel.openCategoryListItems(type.soup);
     }
 
     public void openSideDish() {
-        categoryListViewModel.openCategory(type.sideDish);
+        viewModel.openCategoryListItems(type.sideDish);
     }
 
-    public void init(CategoryListViewModel vm, ViewHandler viewHandler){
-        this.viewHandler = viewHandler;
-        this.categoryListViewModel = vm;
+    public void init(CategoryListViewModel vm){
+        viewModel = vm;
     }
 }

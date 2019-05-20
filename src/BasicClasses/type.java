@@ -1,4 +1,4 @@
-package basicClasses;
+package BasicClasses;
 
 import java.io.Serializable;
 

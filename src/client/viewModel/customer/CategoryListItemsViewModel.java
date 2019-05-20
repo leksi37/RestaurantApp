@@ -1,11 +1,10 @@
 package client.viewModel.customer;
 
-import basicClasses.MenuItem;
-import basicClasses.Views;
+import BasicClasses.MenuItem;
+import BasicClasses.Views;
 import client.model.customer.CustomerModel;
 import client.view.ViewHandler;
 import client.viewModel.ViewModels;
-import javafx.application.Platform;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -13,13 +12,17 @@ import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
 public class CategoryListItemsViewModel implements ViewModels {
+    //IT'S ABOUT STORING DATA, IT'S NOT SUPPOSED TO BE IN THE VIEW MODEL, BUT IN THE MODEL
+//    private Order currentOrder;
+
     private ViewHandler viewHandler;
     private CustomerModel model;
     private ArrayList<MenuItem> items;
     private PropertyChangeSupport changeSupport;
 
-    public CategoryListItemsViewModel(ViewHandler viewHandler, CustomerModel model){
+    public CategoryListItemsViewModel(CustomerModel model, ViewHandler viewHandler){
         this.viewHandler = viewHandler;
+//        currentOrder = null;
         changeSupport = new PropertyChangeSupport(this);
         this.model = model;
         this.model.addListeners("MenuItems", this :: gotItems);
@@ -42,6 +45,15 @@ public class CategoryListItemsViewModel implements ViewModels {
         model.addItem(id, quantity);
     }
 
+//    public Order getOrder(){
+//        return currentOrder;
+//    }
+
+//    public void openOrderItemListView(Order order){
+//        if (currentOrder != null)
+//            viewHandler.openOrderItemsList(order);
+//    }
+
     public void getItems(String type) {
         model.requestMenuCategory(type);
     }
@@ -50,15 +62,12 @@ public class CategoryListItemsViewModel implements ViewModels {
         model.removeItem(id, i);
     }
 
-    public void openOrder() {
-        Platform.runLater(() -> {
-            viewHandler.openView(Views.ORDER);
-        });
+    public void back() {
+        viewHandler.openView(Views.CATEGORIES);
     }
 
-    public void sendBack() {
-        Platform.runLater(() -> {
-            viewHandler.openView(Views.CATEGORIES);
-        });
+    public void seeOrder()
+    {
+        viewHandler.openView(Views.ORDER);
     }
 }

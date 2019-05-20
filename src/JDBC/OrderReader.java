@@ -1,9 +1,9 @@
 package JDBC;
 
-import basicClasses.ItemQuantity;
-import basicClasses.ItemState;
-import basicClasses.Order;
-
+import BasicClasses.ItemQuantity;
+import BasicClasses.ItemState;
+import BasicClasses.Order;
+import org.postgresql.util.PSQLException;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -28,17 +28,17 @@ public class OrderReader {
 
     public void addOrder(Order order)
     {
-        try {
-            db.insert("Orders", order.dbFormat());
-            ArrayList<String> orderItems = order.dbFormatItems();
-            for(int i = 0; i < orderItems.size(); ++i)
-            {
-                db.insert("OrderItem", orderItems.get(i));
-            }
-        }
-        catch (SQLException e)
+        ArrayList<String> orderItems = order.dbFormat();
+        for(int i = 0; i < orderItems.size(); ++i)
         {
-            addToOrder(order);
+            try {
+                db.insert("orders", orderItems.get(i));
+            } catch(SQLException e)
+            {
+                addToOrder(order);
+                break;
+            }
+
         }
     }
 
@@ -77,29 +77,10 @@ public class OrderReader {
         return  null;
     }
 
-    private Order convertToOrder(ResultSet rs)
-    {
-        Order o;
-        try {
-            if(rs.next())
-            {
-                o = new Order(rs.getString("tableId"));
-                o.setNote(rs.getString("note"));
-                return o;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
     public Order readOrder(String tableId)
     {
-        ResultSet rs = db.get("Orders", "tableid = '" + tableId + "'");
-        Order o = convertToOrder(rs);
-        rs = db.get("OrderItem", "tableid = '" + tableId + "'");
-        if(o == null)
-            return null;
+        ResultSet rs = db.get("orders", "tableid = '" + tableId + "'");
+        Order o = new Order(tableId);
         Order aux = getRow(rs);
         while(aux != null)
         {
@@ -111,20 +92,14 @@ public class OrderReader {
 
     public ArrayList<Order> readAllOrders()
     {
-        ResultSet rs = db.get("Orders");
+        ResultSet rs = db.get("orders");
         ArrayList<Order> orders = new ArrayList<Order>();
         Order aux;
-        aux = convertToOrder(rs);
-        while(aux != null)
-        {
-            orders.add(aux);
-            aux = convertToOrder(rs);
-        }
-        int i;
-        rs = db.get("OrderItem");
         aux = getRow(rs);
+        int i;
         while(aux != null)
         {
+            i = 0;
             for(i = 0; i < orders.size(); ++i)
             {
                 if(orders.get(i).getTableId().equals(aux.getTableId()))
@@ -133,6 +108,10 @@ public class OrderReader {
                     break;
                 }
             }
+            if(i == orders.size())
+            {
+                orders.add(aux);
+            }
             aux = getRow(rs);
         }
         return orders;
@@ -140,38 +119,42 @@ public class OrderReader {
 
     public void remove(String orderId)
     {
-        db.remove("OrderItem", "tableid = '" + orderId + "'");
-        db.remove("Orders", "tableid = '" + orderId + "'");
+        db.remove("orders", "tableid = '" + orderId + "'");
     }
 
     public void removeAll()
     {
-        db.removeAll("OrderItem");
-        db.removeAll("Orders");
+        db.removeAll("orders");
     }
 
     public void changeState(String tableId, String itemId, ItemState state)
     {
         Order o = readOrder(tableId);
-        o.getItemWithQuantity(itemId).changeState(state);
-        remove(tableId);
+        o.getItemWithQuantityById(itemId).changeState(state);
+        remove(o.getTableId());
         addOrder(o);
     }
 
     public void addToOrder(Order order)
     {
         Order o = readOrder(order.getTableId());
-
-        if(!order.getNote().equals("") && !order.getNote().equals(o.getNote()))
-            o.setNote(order.getNote());
-
-        int k = order.getNumberOfItems();
-        for(int i = 0; i < k; ++i)
-        {
-            o.addItem(order.getItemWithQuantity(i));
+        if(o == null)
+            o = order;
+        else {
+            for(int i = 0; i < order.getItemsWithQuantity().size(); ++i)
+            {
+                o.addItem(order.getItemsWithQuantity().get(i));
+            }
         }
 
         remove(o.getTableId());
         addOrder(o);
+    }
+
+
+    public static void main(String[] args) {
+        OrderReader reader = OrderReader.getInstance();
+        JDBC db = JDBC.getInstance();
+        reader.remove("table0");
     }
 }

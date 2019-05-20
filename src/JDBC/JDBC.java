@@ -1,5 +1,7 @@
 package JDBC;
 
+import org.postgresql.util.PSQLException;
+
 import java.sql.*;
 
 public class JDBC {
@@ -15,7 +17,7 @@ public class JDBC {
 
             c = DriverManager
                     .getConnection("jdbc:postgresql://localhost:5432/postgres",
-                            "postgres", "JKarla2017");
+                            "postgres", "2791");
 
 
             System.out.println("Database open ok");
@@ -36,9 +38,7 @@ public class JDBC {
     public void insert(String tableName, String values) throws SQLException
     {
         String com = "insert into \"menu\"." + tableName + " values ( " + values + ");";
-        st = c.createStatement();
-        st.executeUpdate(com);
-        System.out.println("New order received");
+            st.executeUpdate(com);
 
     }
 
