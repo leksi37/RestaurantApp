@@ -3,7 +3,7 @@ package JDBC;
 import basicClasses.ItemQuantity;
 import basicClasses.ItemState;
 import basicClasses.Order;
-import org.postgresql.util.PSQLException;
+
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

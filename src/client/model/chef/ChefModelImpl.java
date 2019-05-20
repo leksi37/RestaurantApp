@@ -19,6 +19,14 @@ public class ChefModelImpl implements ChefModel {
     }
 
     @Override
+    public void addClient(Object object) {
+        if(object instanceof ChefClient)
+        {
+            this.chefClient=(ChefClient)object;
+        }
+    }
+
+    @Override
     public void addListeners(String name, PropertyChangeListener listener) {
         if (name == null)
             changeSupport.addPropertyChangeListener(listener);
@@ -39,11 +47,5 @@ public class ChefModelImpl implements ChefModel {
         orders.add(order);
         orderAdded();
     }
-
-    @Override
-    public void addClient(ChefClient chefClient) {
-        this.chefClient = chefClient;
-    }
-
 
 }

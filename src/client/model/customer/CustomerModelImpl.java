@@ -33,11 +33,15 @@ public class CustomerModelImpl implements CustomerModel {
         else support.addPropertyChangeListener(name, listener);
     }
 
-    @Override
-    public void addClient(CustomerClient customerClient) {
-        this.customerClient = customerClient;
-        customerClient.getTableId();
-        order = new Order(tableId);
+    @Override //taken from ClientModelInterface in modelFactory
+    public void addClient(Object object) {
+        System.out.println(object instanceof CustomerClient);
+        if(object instanceof CustomerClient)
+        {
+            this.customerClient = (CustomerClient) object;
+            customerClient.getTableId();
+            order = new Order(tableId);
+        }
     }
 
     @Override
@@ -49,8 +53,10 @@ public class CustomerModelImpl implements CustomerModel {
     @Override
     public void requestMenuCategory(String type) {
         ArrayList menuCategory = proxy.getCategory(type);
+        System.out.println("menu proxy check" );
         if(menuCategory == null)
         {
+            System.out.println("customer model: "+ customerClient==null);
             customerClient.requestMenuCategory(type);
         }
         else
@@ -96,4 +102,6 @@ public class CustomerModelImpl implements CustomerModel {
     public void orderAdded() {
         support.firePropertyChange("orderAdded", null, null);
     }
+
+
 }

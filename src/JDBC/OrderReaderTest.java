@@ -7,7 +7,6 @@ import basicClasses.Order;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.postgresql.util.PSQLException;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
