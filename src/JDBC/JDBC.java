@@ -15,7 +15,7 @@ public class JDBC {
 
             c = DriverManager
                     .getConnection("jdbc:postgresql://localhost:5432/postgres",
-                            "postgres", "qaz88x99");
+                            "postgres", "JKarla2017");
 
 
             System.out.println("Database open ok");
