@@ -38,7 +38,7 @@ public class CategoryListItems {
 
     public void init(CategoryListItemsViewModel vm, type category, ViewHandler viewHandler) {
         this.viewHandler = viewHandler;
-        categoryListItemsViewModel = vm; // D I    OVO    S T V A R A S ?????? ////////
+        categoryListItemsViewModel = vm;
         categoryListItemsViewModel.addListener("gotItems", this::setItems);
         scrollPane = new ScrollPane();
         categoryListItemsViewModel.getItems(category.name());
