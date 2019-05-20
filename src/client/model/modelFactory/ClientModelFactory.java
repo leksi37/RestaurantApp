@@ -13,11 +13,12 @@ public class ClientModelFactory {
 
     public static Object getModel(clients clientName){
         Object model=null;
-           model=models.get(clientName);
+           model=models.get(clientName.toString());
         if(model==null)
         {
             if(clientName==clients.CUSTOMER_CLIENT){
                 model= new CustomerModelImpl();
+                System.out.println("customer model created");
                 models.put(String.valueOf(clients.CUSTOMER_CLIENT), model);
             }
             else if(clientName==clients.CHEF_CLIENT){
@@ -31,7 +32,6 @@ public class ClientModelFactory {
 
                 // ADD ONE FOR MANAGER
             }
-        System.out.println("clientName = [" + clientName + "]    "+ model==null);
         return model;
     }
 }

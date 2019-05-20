@@ -40,7 +40,7 @@ public class ViewModelProvider {
     public void instantiateViewModels()
     {
         customerModel= mainModel.getCustomerModel();
-        chefModel= mainModel.getChefModel();
+        System.out.println("customer model, provider: "+customerModel);
 
         onOpenViewModel= new OnOpenViewModel(mainModel, viewHandler);
 

@@ -42,6 +42,7 @@ public class CustomerSocketClient implements CustomerClient {
 
     @Override
     public void requestMenuCategory(String type) {
+        System.out.println("type = [" + type + "]");
         customerClientSocketHandler.requestCategory(type);
     }
 
@@ -58,6 +59,7 @@ public class CustomerSocketClient implements CustomerClient {
     @Override
     public void returnTableId(String str) {
         model.gotTableId(str);
+        System.out.println("sent id to model     -> "+str);
     }
 
     @Override

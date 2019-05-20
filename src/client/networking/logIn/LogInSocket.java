@@ -36,7 +36,7 @@ public class LogInSocket {
 
     public void startCustomer(){
         CustomerModel customerModel= model.getCustomerModel();
-        System.out.println("customer model null "+ customerModel==null);
+        System.out.println("customer model, socket: "+customerModel);
         CustomerSocketClient customerSocketClient= new CustomerSocketClient(customerModel, socket);
         customerModel.addClient(customerSocketClient);
         System.out.println("Connected customer client");
