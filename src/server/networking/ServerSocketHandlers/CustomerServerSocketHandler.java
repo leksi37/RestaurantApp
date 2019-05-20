@@ -56,12 +56,16 @@ import java.util.ArrayList;
 
             while(true){
                 try{
+                    if(!(inFromClient.readObject() instanceof Request))
+                        System.out.println("Not working");
                     Request r = (Request) inFromClient.readObject();
 
                     if(r.getType() == RequestType.GET_MENU_ITEMS){
                         ArrayList<MenuItem> menuItems = reader.getCategory(type.valueOf((String)r.getObj()));
                         try {
+                            System.out.println("got here ");
                             outToClient.writeObject(new Request(RequestType.GET_MENU_ITEMS, menuItems));
+
                         }catch (IOException e){
                             e.printStackTrace();
                         }

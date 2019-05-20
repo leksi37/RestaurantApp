@@ -1,6 +1,8 @@
 package client.model.waiter;
 
-public interface WaiterModel {
+import client.model.modelFactory.ClientModel;
+
+public interface WaiterModel extends ClientModel {
 
     void notificationReceived(String notification);
 }

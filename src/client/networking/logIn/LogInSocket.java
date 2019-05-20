@@ -30,14 +30,16 @@ public class LogInSocket {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("Trying to connect first");
+        System.out.println("Trying to connect customer");
         startCustomer();
     }
 
     public void startCustomer(){
         CustomerModel customerModel= model.getCustomerModel();
+        System.out.println("customer model null "+ customerModel==null);
         CustomerSocketClient customerSocketClient= new CustomerSocketClient(customerModel, socket);
         customerModel.addClient(customerSocketClient);
+        System.out.println("Connected customer client");
 
     }
 
