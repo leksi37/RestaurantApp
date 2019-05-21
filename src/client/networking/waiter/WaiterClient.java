@@ -1,7 +1,8 @@
 package client.networking.waiter;
 
-public interface WaiterClient {
-  void gotNotification(String notification);
+import basicClasses.Notification;
 
-  void addClient(Object object);
+public interface WaiterClient {
+  void gotNotification(Notification notification);
+
 }

@@ -1,5 +1,6 @@
 package server.model;
 
+import basicClasses.Notification;
 import basicClasses.Order;
 import server.ServerSocketHandlerClientIds;
 import server.networking.ServerSocketHandlers.CustomerServerSocketHandler;
@@ -36,6 +37,11 @@ public class ServerModel {
         connections.add(new ServerSocketHandlerClientIds(customerServerSocketHandler, "table" + counter));
         counter++;
         return "table" + (counter-1);
+    }
+
+    //FOR WAITER
+    public void sendNotification(Notification notification){
+        support.firePropertyChange("Notification added", null, notification);
     }
 
     public void removeConnection(String tableId) {

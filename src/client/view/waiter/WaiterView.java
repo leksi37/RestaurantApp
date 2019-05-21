@@ -1,9 +1,13 @@
 package client.view.waiter;
 
+import basicClasses.Notification;
 import client.view.ViewHandler;
-import client.viewModel.Waiter.FrontViewModel;
+import client.viewModel.ViewModels;
+import client.viewModel.Waiter.WaiterViewModel;
+import javafx.beans.property.ListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -14,7 +18,7 @@ import java.beans.PropertyChangeSupport;
 
 
 public class WaiterView {
-    private FrontViewModel viewModel;
+    private WaiterViewModel viewModel;
     private ObservableList<String> news = FXCollections.observableArrayList();
     private ViewHandler viewHandler;
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
@@ -35,13 +39,6 @@ public class WaiterView {
     @FXML
     private ListView displayPanel;
 
-    public void init(FrontViewModel viewModel){
-        this.viewModel = viewModel;
-        this.viewHandler = viewHandler;
-        notifications.itemsProperty().bindBidirectional(viewModel.getNotifications());
-        support.addPropertyChangeListener("Notification in veiw model", this::newNotification);
-    }
-
     @FXML
     public void notificationSelected(){
         displayPanel.setItems(null);
@@ -54,7 +51,8 @@ public class WaiterView {
     }
 
     public void newNotification(PropertyChangeEvent changeEvent){
-        switch (changeEvent.getNewValue().toString()){
+        Notification newOne = (Notification)changeEvent.getNewValue();
+        switch (newOne.getTableId()){
             case ("1"): {
                 tableOne.setStyle(style);
                 break;
@@ -114,6 +112,65 @@ public class WaiterView {
 
     }
 
-    
 
+    public void init(WaiterViewModel viewModel, ViewHandler viewHandler) {
+        this.viewModel = viewModel;
+        this.viewHandler = viewHandler;
+        notifications.itemsProperty().bindBidirectional(viewModel.getNotifications());
+        support.addPropertyChangeListener("Notification in veiw model", this::newNotification);
+
+    }
+
+    public void one(ActionEvent actionEvent) {
+        tableOne.setStyle(normal);
+    }
+    public void two(ActionEvent actionEvent) {
+        tableTwo.setStyle(normal);
+    }
+    public void three(ActionEvent actionEvent) {
+        tableThree.setStyle(normal);
+    }
+    public void four(ActionEvent actionEvent) {
+        tableFour.setStyle(normal);
+    }
+    public void five(ActionEvent actionEvent) {
+        tableFive.setStyle(normal);
+    }
+    public void six(ActionEvent actionEvent) {
+        tableSix.setStyle(normal);
+    }
+    public void seven(ActionEvent actionEvent) {
+        tableSeven.setStyle(normal);
+    }
+    public void eight(ActionEvent actionEvent) {
+        tableEight.setStyle(normal);
+    }
+    public void nine(ActionEvent actionEvent) {
+        tableNine.setStyle(normal);
+    }
+    public void ten(ActionEvent actionEvent) {
+        tableTen.setStyle(normal);
+    }
+    public void eleven(ActionEvent actionEvent) {
+        tableEleven.setStyle(normal);
+    }
+    public void twelve(ActionEvent actionEvent) {
+        tableTwelve.setStyle(normal);
+    }
+    public void thirteen(ActionEvent actionEvent) {
+        tableThirteen.setStyle(normal);
+    }
+    public void fourteen(ActionEvent actionEvent) {
+        tableFourteen.setStyle(normal);
+    }
+    public void fifteen(ActionEvent actionEvent) {
+        tableFifteen.setStyle(normal);
+    }
+    public void sixteen(ActionEvent actionEvent){
+        tableSixteen.setStyle(normal);
+    }
+
+    public void closeOrder(ActionEvent actionEvent) {
+        //viewModel.requestClose();
+    }
 }

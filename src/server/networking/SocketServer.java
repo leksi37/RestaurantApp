@@ -4,6 +4,7 @@ import basicClasses.clients;
 import basicClasses.type;
 import server.model.ServerModel;
 import server.networking.ServerSocketHandlers.CustomerServerSocketHandler;
+import server.networking.ServerSocketHandlers.WaiterServerSocketHandler;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -49,13 +50,13 @@ public class SocketServer {
             System.out.println("Customer client connected");
             thread.start();
         }
-//                   else if(typeOfClient.equals(clients.WAITER_CLIENT)){
-//                        WaiterServerSocketHandler serverSocketHandler= new WaiterServerSocketHandler(model, socket);
-//                        Thread thread=new Thread(serverSocketHandler);
-//                        System.out.println("Waiter client connected");
-//                        thread.start();
-//                   }
-//                   else if(typeOfClient.equals(clients.CHEF_CLIENT)){
+                   else if(type.equals(clients.WAITER_CLIENT)){
+                        WaiterServerSocketHandler serverSocketHandler= new WaiterServerSocketHandler(model, socket);
+                        Thread thread=new Thread(serverSocketHandler);
+                        System.out.println("Waiter client connected");
+                        thread.start();
+                   }
+//                   else if(type.equals(clients.CHEF_CLIENT)){
 //                        ChefServerSocketHandler serverSocketHandler= new ChefServerSocketHandler(model, socket);
 //                        Thread thread = new Thread(serverSocketHandler);
 //                        System.out.println("Chef client connected");

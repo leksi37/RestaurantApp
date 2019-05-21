@@ -11,8 +11,10 @@ import client.view.customer.categoryList.CategoryList;
 import client.view.customer.categoryListItems.CategoryListItems;
 import client.view.customer.menuFront.MenuFront;
 import client.view.customer.orderItemsList.OrderItemList;
+import client.view.waiter.WaiterView;
 import client.viewModel.Chef.ChefViewModel;
 import client.viewModel.ViewModelProvider;
+import client.viewModel.Waiter.WaiterViewModel;
 import client.viewModel.customer.CategoryListItemsViewModel;
 import client.viewModel.customer.CategoryListViewModel;
 import client.viewModel.customer.MenuFrontViewModel;
@@ -36,6 +38,7 @@ public class ViewHandler {
     private OrderItemList orderItemList;
     private Chef chef;
     private OnOpen onOpen;
+    private WaiterView waiterView;
 
     public ViewHandler(Stage stage, LogInModel model){
         this.stage=stage;
@@ -127,10 +130,23 @@ public class ViewHandler {
                 chef.init((ChefViewModel) viewModelProvider.getViewModel(viewToOpen), this);
                 break;
             }
+            case WAITER:
+            {
+                loader.setLocation(getClass().getResource("waiter/waiter.fxml"));
+                try {
+                    root = loader.load();
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+
+                waiterView = loader.getController();
+                waiterView.init((WaiterViewModel)viewModelProvider.getViewModel(viewToOpen),this);
+                break;
+            }
         }
 
         scene= new Scene(root);
-        stage.setTitle("MLP");
+        stage.setTitle("My little restaurant");
         stage.setScene(scene);
         stage.show();
     }

@@ -4,7 +4,10 @@ import basicClasses.Views;
 import client.model.chef.ChefModel;
 import client.model.customer.CustomerModel;
 import client.model.logIn.LogInModel;
+import client.model.waiter.WaiterModel;
+import client.networking.waiter.WaiterSocketClient;
 import client.view.ViewHandler;
+import client.viewModel.Waiter.WaiterViewModel;
 import client.viewModel.customer.CategoryListItemsViewModel;
 import client.viewModel.customer.CategoryListViewModel;
 import client.viewModel.customer.MenuFrontViewModel;
@@ -20,6 +23,7 @@ public class ViewModelProvider {
     //models
     private LogInModel mainModel;
     private CustomerModel customerModel;
+    private WaiterModel waiterModel;
     private ChefModel chefModel;
 
     //viewModels
@@ -29,6 +33,8 @@ public class ViewModelProvider {
     private CategoryListViewModel categoryListViewModel;
     private CategoryListItemsViewModel categoryListItemsViewModel;
     private OrderItemsListViewModel orderItemsListViewModel;
+
+    private WaiterViewModel waiterViewModel;
 
 
     public ViewModelProvider(ViewHandler viewHandler, LogInModel model){
@@ -40,6 +46,8 @@ public class ViewModelProvider {
     public void instantiateViewModels()
     {
         customerModel= mainModel.getCustomerModel();
+        waiterModel = mainModel.getWaiterModel();
+
         System.out.println("customer model, provider: "+customerModel);
 
         onOpenViewModel= new OnOpenViewModel(mainModel, viewHandler);
@@ -49,6 +57,7 @@ public class ViewModelProvider {
         categoryListViewModel = new CategoryListViewModel(viewHandler, customerModel);
         orderItemsListViewModel = new OrderItemsListViewModel(customerModel);
 
+        waiterViewModel = new WaiterViewModel(waiterModel);
 
     }
 
@@ -72,6 +81,9 @@ public class ViewModelProvider {
             }
             case ORDER:{
                 return orderItemsListViewModel;
+            }
+            case WAITER:{
+                return waiterViewModel;
             }
             default:
                 return null;

@@ -7,5 +7,6 @@ public enum RequestType implements Serializable {
     GET_MENU_ITEMS,
     GET_TABLE_ID,
     GET_ORDER_CHEF,
-    SEND_NOTIFICATION;
+    SEND_NOTIFICATION,
+    PRESENCE_REQUIRED;
 }

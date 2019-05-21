@@ -1,6 +1,6 @@
 package client.model.waiter;
 
-import client.networking.customer.CustomerClient;
+import basicClasses.Notification;
 import client.networking.waiter.WaiterClient;
 
 import java.beans.PropertyChangeListener;
@@ -11,6 +11,7 @@ public class WaiterModelImpl implements WaiterModel {
     private WaiterClient waiterClient;
 
     public WaiterModelImpl(){
+        this.waiterClient = null;
         support = new PropertyChangeSupport(this);
     }
 
@@ -30,7 +31,12 @@ public class WaiterModelImpl implements WaiterModel {
     }
 
     @Override
-    public void notificationReceived(String notification) {
+    public void notificationReceived(Notification notification) {
          support.firePropertyChange("Notification received", null, notification);
+    }
+
+    @Override
+    public void presenceRequested(Notification presenceNotification) {
+        support.firePropertyChange("Presence notification received", null, presenceNotification);
     }
 }

@@ -93,6 +93,7 @@ import java.util.ArrayList;
 
                 } catch (ClassNotFoundException e) {
 
+
                 } catch (IOException e)
                 {
                     model.removeConnection(connectionId);
