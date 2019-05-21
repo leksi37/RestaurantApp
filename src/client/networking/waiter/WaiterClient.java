@@ -1,5 +1,7 @@
 package client.networking.waiter;
 
 public interface WaiterClient {
-  public void gotNotification(String notification);
+  void gotNotification(String notification);
+
+  void addClient(Object object);
 }

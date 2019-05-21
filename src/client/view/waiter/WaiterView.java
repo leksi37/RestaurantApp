@@ -9,32 +9,111 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeSupport;
+
 
 public class WaiterView {
     private FrontViewModel viewModel;
-    private ObservableList<String> orderItems = FXCollections.observableArrayList();
+    private ObservableList<String> news = FXCollections.observableArrayList();
     private ViewHandler viewHandler;
-
-    public WaiterView(ViewHandler viewHandler){
-    this.viewHandler = viewHandler;
-    }
+    private PropertyChangeSupport support = new PropertyChangeSupport(this);
+    private String style = "-fx-background-color: rgb(112, 219, 112);";
+    private String normal = "-fx-background-color: rgb(255, 230, 230);";
 
     @FXML
-    private Button one;
+    private Button tableOne, tableTwo, tableThree, tableFour, tableFive,
+    tableSix, tableSeven, tableEight, tableNine, tableTen, tableEleven,
+    tableTwelve, tableThirteen, tableFourteen, tableFifteen, tableSixteen;
 
     @FXML
     private ListView notifications;
 
     @FXML
-    private Label update;
+    private Label updateLabel;
+
+    @FXML
+    private ListView displayPanel;
 
     public void init(FrontViewModel viewModel){
         this.viewModel = viewModel;
+        this.viewHandler = viewHandler;
+        notifications.itemsProperty().bindBidirectional(viewModel.getNotifications());
+        support.addPropertyChangeListener("Notification in veiw model", this::newNotification);
     }
 
-    public void getOrderDetails(){
-        update.setText("An order is ready to be delivered:");
-        notifications.setItems(orderItems);
+    @FXML
+    public void notificationSelected(){
+        displayPanel.setItems(null);
+        displayPanel.setItems(notifications.getItems());
     }
+
+    @FXML
+    public void takeOver(){
+        notifications.getFocusModel().getFocusedItem().getClass().getName().toUpperCase().replace("Waiting" , "Taken");
+    }
+
+    public void newNotification(PropertyChangeEvent changeEvent){
+        switch (changeEvent.getNewValue().toString()){
+            case ("1"): {
+                tableOne.setStyle(style);
+                break;
+            }
+            case ("2"): {
+                tableTwo.setStyle(style);
+                break;
+            }
+            case ("3"): {
+                tableThree.setStyle(style);
+                break;
+            }
+            case ("4"): {
+                tableFour.setStyle(style);
+                break;
+            }case ("5"): {
+                tableFive.setStyle(style);
+                break;
+            }case ("6"): {
+                tableSix.setStyle(style);
+                break;
+            }case ("7"): {
+                tableSeven.setStyle(style);
+                break;
+            }case ("8"): {
+                tableEight.setStyle(style);
+                break;
+            }case ("9"): {
+                tableNine.setStyle(style);
+                break;
+            }
+            case ("10"): {
+                tableTen.setStyle(style);
+                break;
+            }
+            case ("11"): {
+                tableEleven.setStyle(style);
+                break;
+            }case ("12"): {
+                tableTwelve.setStyle(style);
+                break;
+            }case ("13"): {
+                tableThirteen.setStyle(style);
+                break;
+            }case ("14"): {
+                tableFourteen.setStyle(style);
+                break;
+            }case ("15"): {
+                tableFifteen.setStyle(style);
+                break;
+            }
+            case ("16"): {
+                tableSixteen.setStyle(style);
+                break;
+            }
+        }
+
+    }
+
+    
 
 }
