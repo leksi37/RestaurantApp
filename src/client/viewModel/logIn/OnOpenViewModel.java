@@ -36,7 +36,7 @@ public class OnOpenViewModel implements ViewModels {
     }
 
     public void openChef(){
-        viewHandler.openView(Views.CHEF_FRONT);
+        viewHandler.openView(Views.CHEF_LOG_IN);
         model.connectChef();
     }
 }

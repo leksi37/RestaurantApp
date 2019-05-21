@@ -1,8 +1,10 @@
 package client.networking.logIn;
 
 import basicClasses.clients;
+import client.model.chef.ChefModel;
 import client.model.customer.CustomerModel;
 import client.model.logIn.LogInModel;
+import client.networking.chef.ChefSocketChefClient;
 import client.networking.customer.CustomerSocketClient;
 
 import java.io.IOException;
@@ -36,7 +38,7 @@ public class LogInSocket {
 
     public void startCustomer(){
         CustomerModel customerModel= model.getCustomerModel();
-        System.out.println("customer model null "+ customerModel==null);
+        System.out.println("customer model, socket: "+customerModel);
         CustomerSocketClient customerSocketClient= new CustomerSocketClient(customerModel, socket);
         customerModel.addClient(customerSocketClient);
         System.out.println("Connected customer client");
@@ -48,18 +50,18 @@ public class LogInSocket {
 
     public void connectChef(){
         try {
-            outToServer.writeObject(clients.CUSTOMER_CLIENT);
+            outToServer.writeObject(clients.CHEF_CLIENT);
         } catch (IOException e) {
             e.printStackTrace();
         }
         System.out.println("Trying to connect first");
-        startCustomer();
+        startChef();
     }
 
     public void startChef(){
-        CustomerModel customerModel= model.getCustomerModel();
-        CustomerSocketClient customerSocketClient= new CustomerSocketClient(customerModel, socket);
-        customerModel.addClient(customerSocketClient);
+        ChefModel chefModel = model.getChefModel();
+        ChefSocketChefClient chefSocketChefClient = new ChefSocketChefClient(chefModel, socket);
+        chefModel.addClient(chefSocketChefClient);
 
     }
 

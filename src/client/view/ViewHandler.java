@@ -7,10 +7,12 @@ import client.model.customer.CustomerModel;
 import client.model.logIn.LogInModel;
 import client.view.OnOpen.OnOpen;
 import client.view.chef.Chef;
+import client.view.chef.LogInChef;
 import client.view.customer.categoryList.CategoryList;
 import client.view.customer.categoryListItems.CategoryListItems;
 import client.view.customer.menuFront.MenuFront;
 import client.view.customer.orderItemsList.OrderItemList;
+import client.viewModel.Chef.ChefLogInViewModel;
 import client.viewModel.Chef.ChefViewModel;
 import client.viewModel.ViewModelProvider;
 import client.viewModel.customer.CategoryListItemsViewModel;
@@ -36,6 +38,7 @@ public class ViewHandler {
     private OrderItemList orderItemList;
     private Chef chef;
     private OnOpen onOpen;
+    private LogInChef logInchef;
 
     public ViewHandler(Stage stage, LogInModel model){
         this.stage=stage;
@@ -117,14 +120,24 @@ public class ViewHandler {
                 orderItemList.init((OrderItemsListViewModel) viewModelProvider.getViewModel(viewToOpen), this);
                 break;
             }
-            case CHEF_FRONT:
+            case CHEF:
             {
                 loader.setLocation(getClass().getResource("chef/chef.fxml"));
                 try{ root=loader.load();}
                 catch(IOException e){e.printStackTrace();}
 
                 chef= loader.getController();
-                chef.init((ChefViewModel) viewModelProvider.getViewModel(viewToOpen), this);
+                chef.init((ChefViewModel) viewModelProvider.getViewModel(viewToOpen));
+                break;
+            }
+            case CHEF_LOG_IN:
+            {
+                loader.setLocation(getClass().getResource("chef/logInChef.fxml"));
+                try{ root=loader.load();}
+                catch(IOException e){e.printStackTrace();}
+
+                logInchef= loader.getController();
+                logInchef.init((ChefLogInViewModel) viewModelProvider.getViewModel(viewToOpen));
                 break;
             }
         }

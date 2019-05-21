@@ -12,7 +12,7 @@
 //import java.net.Socket;
 //import java.util.ArrayList;
 //
-//public class WaiterServerSocketHandler implements Runnable {
+//public class WaiterServerSocketHandler implements ServerSocketHandler, Runnable {
 //    private ServerModel model;
 //    private Socket socket;
 //

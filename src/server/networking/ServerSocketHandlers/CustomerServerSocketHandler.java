@@ -13,7 +13,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 
-    public class CustomerServerSocketHandler implements Runnable {
+    public class CustomerServerSocketHandler implements ServerSocketHandler, Runnable {
 
         private ServerModel model;
 
@@ -53,12 +53,10 @@ import java.util.ArrayList;
 
         @Override
         public void run() {
-
             while(true){
                 try{
-                    if(!(inFromClient.readObject() instanceof Request))
-                        System.out.println("Not working");
-                    Request r = (Request) inFromClient.readObject();
+                        Request r = (Request) inFromClient.readObject();
+                        System.out.println("REQUEST: "+ r.getType().toString());
 
                     if(r.getType() == RequestType.GET_MENU_ITEMS){
                         ArrayList<MenuItem> menuItems = reader.getCategory(type.valueOf((String)r.getObj()));
@@ -72,7 +70,9 @@ import java.util.ArrayList;
                     }
                     else if(r.getType() == RequestType.GET_TABLE_ID)
                     {
+                        System.out.println(" requesting table id");
                         String s = model.newId(this);
+                        System.out.println("table id: "+s);
                         setConnectionId(s);
                         try {
                             outToClient.writeObject(new Request(RequestType.GET_TABLE_ID, s));
@@ -90,6 +90,7 @@ import java.util.ArrayList;
                             e.printStackTrace();
                         }
                     }
+
                 } catch (ClassNotFoundException e) {
 
                 } catch (IOException e)
@@ -98,6 +99,11 @@ import java.util.ArrayList;
                 }
             }
 
+        }
+
+        @Override
+        public String getId() {
+            return connectionId;
         }
     }
 

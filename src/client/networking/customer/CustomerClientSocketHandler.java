@@ -37,7 +37,9 @@ public class CustomerClientSocketHandler implements Runnable {
                         }
                         case GET_TABLE_ID:
                         {
+                            String s=(String)r.getObj();
                             customerClient.returnTableId((String)r.getObj());
+                            System.out.println("reading table id  "+s);
                             break;
                         }
                         case ADD_ORDER:
@@ -61,6 +63,7 @@ public class CustomerClientSocketHandler implements Runnable {
     }
 
     public void requestCategory(String type) {
+        System.out.println(" \n\n requested menu items   "+type);
         try {
             outToServer.writeObject(new Request(RequestType.GET_MENU_ITEMS, type));
         }
@@ -72,7 +75,7 @@ public class CustomerClientSocketHandler implements Runnable {
     public void getTableId() {
         try {
             outToServer.writeObject(new Request(RequestType.GET_TABLE_ID, null));
-
+            System.out.println("  requested id ");
         }
         catch (IOException e) {
             e.printStackTrace();

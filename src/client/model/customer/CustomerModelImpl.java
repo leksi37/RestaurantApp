@@ -35,12 +35,10 @@ public class CustomerModelImpl implements CustomerModel {
 
     @Override //taken from ClientModelInterface in modelFactory
     public void addClient(Object object) {
-        System.out.println(object instanceof CustomerClient);
         if(object instanceof CustomerClient)
         {
             this.customerClient = (CustomerClient) object;
             customerClient.getTableId();
-            order = new Order(tableId);
         }
     }
 
@@ -56,7 +54,7 @@ public class CustomerModelImpl implements CustomerModel {
         System.out.println("menu proxy check" );
         if(menuCategory == null)
         {
-            System.out.println("customer model: "+ customerClient==null);
+            System.out.println("entered in if");
             customerClient.requestMenuCategory(type);
         }
         else
@@ -77,6 +75,7 @@ public class CustomerModelImpl implements CustomerModel {
 
     @Override
     public void gotTableId(String str) {
+        System.out.println("GOT TO THE TABLE NUMBER str = [" + str + "]");
         tableId = str;
         order = new Order(tableId);
     }

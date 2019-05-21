@@ -32,7 +32,7 @@ public class Chef {
         orderList.setItems(orders);
     }
 
-    public void init(ChefViewModel viewModel, ViewHandler viewHandler) {
+    public void init(ChefViewModel viewModel) {
         this.viewModel = viewModel;
         viewModel.addListener("NewOrderChef", this::setItems);
     }

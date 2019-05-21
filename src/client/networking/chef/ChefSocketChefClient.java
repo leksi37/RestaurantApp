@@ -14,7 +14,7 @@ public class ChefSocketChefClient implements ChefClient {
     private ChefClientSocketHandler chefClientSocketHandler;
     private Socket socket;
 
-    public ChefSocketChefClient(ChefModel model){
+    public ChefSocketChefClient(ChefModel model, Socket socket){
         this.model=model;
         try{
             socket=new Socket("localHost", 2910);
@@ -40,5 +40,20 @@ public class ChefSocketChefClient implements ChefClient {
     @Override
     public void gotOrder(Order order) {
         model.orderAdded();
+    }
+
+    @Override
+    public void checkPassword(String value) {
+        chefClientSocketHandler.checkPassword(value);
+    }
+
+    @Override
+    public void passwordApproved() {
+        model.passwordApproved();
+    }
+
+    @Override
+    public void passwordDisapproved() {
+        model.passwordDisapproved();
     }
 }

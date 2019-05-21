@@ -3,6 +3,7 @@ package server.networking;
 import basicClasses.clients;
 import basicClasses.type;
 import server.model.ServerModel;
+import server.networking.ServerSocketHandlers.ChefServerSocketHandler;
 import server.networking.ServerSocketHandlers.CustomerServerSocketHandler;
 
 import java.io.IOException;
@@ -55,12 +56,12 @@ public class SocketServer {
 //                        System.out.println("Waiter client connected");
 //                        thread.start();
 //                   }
-//                   else if(typeOfClient.equals(clients.CHEF_CLIENT)){
-//                        ChefServerSocketHandler serverSocketHandler= new ChefServerSocketHandler(model, socket);
-//                        Thread thread = new Thread(serverSocketHandler);
-//                        System.out.println("Chef client connected");
-//                        thread.start();
-//                    }
+                   else if(type == clients.CHEF_CLIENT){
+                        ChefServerSocketHandler serverSocketHandler= new ChefServerSocketHandler(model, socket);
+                        Thread thread = new Thread(serverSocketHandler);
+                        System.out.println("Chef client connected");
+                        thread.start();
+                    }
 //                    else if(typeOfClient.equals(clients.MANAGER_CLIENT)){
 //                        ManagerServerSocketHandler serverSocketHandler= new ManagerServerSocketHandler(model, socket);
 //                        Thread thread=new Thread(serverSocketHandler);
