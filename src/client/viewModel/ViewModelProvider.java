@@ -8,6 +8,7 @@ import client.model.waiter.WaiterModel;
 import client.networking.waiter.WaiterSocketClient;
 import client.view.ViewHandler;
 import client.viewModel.Chef.ChefLogInViewModel;
+import client.viewModel.Chef.ChefViewModel;
 import client.viewModel.Waiter.WaiterViewModel;
 import client.viewModel.customer.CategoryListItemsViewModel;
 import client.viewModel.customer.CategoryListViewModel;
@@ -37,6 +38,7 @@ public class ViewModelProvider {
 
     private WaiterViewModel waiterViewModel;
     private ChefLogInViewModel chefLogInViewModel;
+    private ChefViewModel chefViewModel;
 
     public ViewModelProvider(ViewHandler viewHandler, LogInModel model){
         this.mainModel=model;
@@ -62,7 +64,7 @@ public class ViewModelProvider {
         waiterViewModel = new WaiterViewModel(waiterModel);
 
         chefLogInViewModel = new ChefLogInViewModel(viewHandler, chefModel);
-
+        chefViewModel= new ChefViewModel(chefModel);
     }
 
     public ViewModels getViewModel(Views viewToOpen) {
@@ -88,6 +90,9 @@ public class ViewModelProvider {
             }
             case WAITER:{
                 return waiterViewModel;
+            }
+            case CHEF_FRONT:{
+                return chefViewModel;
             }
             case CHEF_LOG_IN:{
                 return chefLogInViewModel;

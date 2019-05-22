@@ -2,13 +2,14 @@ package client.viewModel.Chef;
 
 import basicClasses.Order;
 import client.model.chef.ChefModel;
+import client.viewModel.ViewModels;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
-public class ChefViewModel {
+public class ChefViewModel implements ViewModels {
     ChefModel model;
     private PropertyChangeSupport changeSupport;
     ArrayList<Order> orders = new ArrayList<>();

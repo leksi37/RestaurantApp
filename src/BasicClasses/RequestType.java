@@ -12,5 +12,6 @@ public enum RequestType implements Serializable {
     WAITER_PASSWORD_CHECK,
     CHEF_PASSWORD_CHECK,
     CHEF_APPROVED,
+    PRESENCE_REQUIRED,
     CHEF_DISAPPROVED;
 }
