@@ -45,6 +45,7 @@ public class ChefModelImpl implements ChefModel {
 
     @Override
     public void checkLogIn(String value) {
+        System.out.println("model" + value);
         chefClient.checkPassword(value);
     }
 

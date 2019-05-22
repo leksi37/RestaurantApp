@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.ArrayList;
 
 public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
@@ -35,9 +36,9 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
             inFromClient=new ObjectInputStream(socket.getInputStream());
             outToClient= new ObjectOutputStream(socket.getOutputStream());
         } catch (IOException e) {
-            e.printStackTrace();
+            model.removeConnection(connectionId);
         }
-
+        System.out.println("chef socket handler created");
         model.addListener("AddedOrder", this::addOrder);
     }
 
@@ -64,6 +65,7 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
                 if(r.getType() == RequestType.CHEF_PASSWORD_CHECK){
                     RequestType t;
                     Passwords password = passwordReader.getPassword("chef");
+                    System.out.println("chef ssh, in db: " + password + "you typed: " + (String)r.getObj());
                     if(password.equals(r.getObj()))
                         t = RequestType.CHEF_APPROVED;
                     else
@@ -86,14 +88,13 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
                 }
                 else if(r.getType() == RequestType.ADD_ORDER)
                 {
-                    orderReader.addOrder((Order) r.getObj());
-
-                    try {
-                        outToClient.writeObject(new Request(RequestType.ADD_ORDER, null));
-                        ////////  outToClient.writeObject(new Request(RequestType.GET_ORDER, r.getType()));
-                    }catch (IOException e){
-                        e.printStackTrace();
-                    }
+//                    orderReader.addOrder((Order) r.getObj());
+//
+//                    try {
+//                        outToClient.writeObject(new Request(RequestType.ADD_ORDER, null));
+//                    }catch (IOException e){
+//                        e.printStackTrace();
+//                    }
                 }
             } catch (ClassNotFoundException e) {
 

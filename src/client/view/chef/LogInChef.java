@@ -21,6 +21,7 @@ public class LogInChef {
 
     public void logIn()
     {
+        System.out.println("log in view");
         viewModel.logIn();
     }
 }

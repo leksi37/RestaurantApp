@@ -52,6 +52,7 @@ public class ChefClientSocketHandler implements Runnable {
 
     public void checkPassword(String value) {
         try {
+            System.out.println("csh" + value);
             outToServer.writeObject(new Request(RequestType.CHEF_PASSWORD_CHECK, value));
         } catch (IOException e) {
             e.printStackTrace();

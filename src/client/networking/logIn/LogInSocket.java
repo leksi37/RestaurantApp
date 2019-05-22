@@ -21,7 +21,7 @@ public class LogInSocket {
     public LogInSocket(LogInModel model) {
         try {
             this.model = model;
-            this.socket = new Socket("localHost", 2910);
+            this.socket = new Socket("localhost", 2910);
             outToServer= new ObjectOutputStream(socket.getOutputStream());
         }catch(IOException e){e.printStackTrace();}
     }
@@ -60,7 +60,9 @@ public class LogInSocket {
 
     public void startChef(){
         ChefModel chefModel = model.getChefModel();
+        System.out.println("got the chef model");
         ChefSocketChefClient chefSocketChefClient = new ChefSocketChefClient(chefModel, socket);
+
         chefModel.addClient(chefSocketChefClient);
 
     }
