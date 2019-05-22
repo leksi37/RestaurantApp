@@ -22,11 +22,9 @@ import java.util.ArrayList;
 
         private String connectionId;
         private MenuItemsReader reader;
-        private OrderReader orderReader;
 
         public CustomerServerSocketHandler(ServerModel model, Socket socket){
             reader = MenuItemsReader.getInstance();
-            orderReader = OrderReader.getInstance();
             this.model=model;
             try{
                 inFromClient=new ObjectInputStream(socket.getInputStream());
@@ -45,7 +43,7 @@ import java.util.ArrayList;
 
         private void addOrder(PropertyChangeEvent propertyChangeEvent) {
             try{
-                outToClient.writeObject(propertyChangeEvent.getNewValue());
+                outToClient.writeObject(new Request(RequestType.ADD_ORDER, null));
             }catch (IOException e) {
                 e.printStackTrace();
             }
@@ -82,13 +80,7 @@ import java.util.ArrayList;
                     }
                     else if(r.getType() == RequestType.ADD_ORDER)
                     {
-                        orderReader.addOrder((Order) r.getObj());
-
-                        try {
-                            outToClient.writeObject(new Request(RequestType.ADD_ORDER, null));
-                        }catch (IOException e){
-                            e.printStackTrace();
-                        }
+                        model.addOrder((Order) r.getObj());
                     }
 
                 } catch (ClassNotFoundException e) {

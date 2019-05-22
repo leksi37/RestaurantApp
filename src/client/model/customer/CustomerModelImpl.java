@@ -43,9 +43,9 @@ public class CustomerModelImpl implements CustomerModel {
     }
 
     @Override
-    public void addOrderToServer() {
+    public void addOrderToServer(String note) {
+        order.setNote(note);
         customerClient.addOrderToServer(order);
-        order = new Order(tableId);
     }
 
     @Override
@@ -67,6 +67,7 @@ public class CustomerModelImpl implements CustomerModel {
         support.firePropertyChange("MenuItems", null, mi);
         proxy.addCategory(mi.get(0).getType().name(), mi);
     }
+
     public void addItem(String itemId, int quantity)
     {
         order.addItem(itemId, quantity);
@@ -99,6 +100,7 @@ public class CustomerModelImpl implements CustomerModel {
 
     @Override
     public void orderAdded() {
+        order = new Order(tableId);
         support.firePropertyChange("orderAdded", null, null);
     }
 

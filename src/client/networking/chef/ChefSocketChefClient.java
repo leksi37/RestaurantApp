@@ -9,6 +9,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 
 public class ChefSocketChefClient implements ChefClient {
     private ChefModel model;
@@ -53,7 +54,7 @@ public class ChefSocketChefClient implements ChefClient {
 
     @Override
     public void gotOrder(Order order) {
-        model.orderAdded();
+        model.orderAdded(order);
     }
 
     @Override
@@ -69,6 +70,19 @@ public class ChefSocketChefClient implements ChefClient {
 
     @Override
     public void passwordDisapproved() {
+        System.out.println("password disapproved");
         model.passwordDisapproved();
+    }
+
+    @Override
+    public void fetchOrders() {
+        System.out.println("chef client");
+        chefClientSocketHandler.fetchOrders();
+    }
+
+    @Override
+    public void gotOrders(ArrayList<Order> obj) {
+        System.out.println("chef client " + obj.size());
+        model.gotOrders(obj);
     }
 }

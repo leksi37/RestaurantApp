@@ -4,6 +4,7 @@ import JDBC.MenuItemsReader;
 import JDBC.OrderReader;
 import JDBC.PasswordReader;
 import basicClasses.*;
+import com.sun.org.apache.xpath.internal.operations.Or;
 import javafx.scene.control.PasswordField;
 import server.model.ServerModel;
 
@@ -49,7 +50,7 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
 
     private void addOrder(PropertyChangeEvent propertyChangeEvent) {
         try{
-            outToClient.writeObject((Order)propertyChangeEvent.getNewValue());
+            outToClient.writeObject(new Request(RequestType.NEW_ORDER, (Order)propertyChangeEvent.getNewValue()));
         }catch (IOException e) {
             e.printStackTrace();
         }
@@ -65,36 +66,23 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
                 if(r.getType() == RequestType.CHEF_PASSWORD_CHECK){
                     RequestType t;
                     Passwords password = passwordReader.getPassword("chef");
-                    System.out.println("chef ssh, in db: " + password + "you typed: " + (String)r.getObj());
-                    if(password.equals(r.getObj()))
+                    System.out.println("chef ssh, in db: " + password.getPassword() + "you typed: " + (String)r.getObj());
+                    if(password.getPassword().equals(r.getObj()))
                         t = RequestType.CHEF_APPROVED;
                     else
                         t = RequestType.CHEF_DISAPPROVED;
-                    try {
+
                         outToClient.writeObject(new Request(t, null));
-                    }catch (IOException e){
-                        e.printStackTrace();
-                    }
                 }
                 else if(r.getType() == RequestType.GET_CONNECTION_ID)
                 {
                     String s = model.newId(this);
                     setConnectionId(s);
-                    try {
                         outToClient.writeObject(new Request(RequestType.GET_CONNECTION_ID, s));
-                    }catch (IOException e){
-                        e.printStackTrace();
-                    }
                 }
-                else if(r.getType() == RequestType.ADD_ORDER)
+                else if(r.getType() == RequestType.FETCH_ORDERS)
                 {
-//                    orderReader.addOrder((Order) r.getObj());
-//
-//                    try {
-//                        outToClient.writeObject(new Request(RequestType.ADD_ORDER, null));
-//                    }catch (IOException e){
-//                        e.printStackTrace();
-//                    }
+                    outToClient.writeObject(new Request(RequestType.FETCH_ORDERS, model.getOrders()));
                 }
             } catch (ClassNotFoundException e) {
 

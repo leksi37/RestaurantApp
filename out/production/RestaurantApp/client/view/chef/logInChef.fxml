@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" style="-fx-background-color: #ffcccc;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.chef.LogInChef">
    <children>
       <ImageView fitHeight="173.0" fitWidth="197.0" layoutX="627.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
@@ -24,6 +23,9 @@
       <PasswordField fx:id="passwordField" layoutX="332.0" layoutY="250.0" />
       <Label layoutX="225.0" layoutY="255.0" text="Password:" />
       <Button layoutX="597.0" layoutY="330.0" mnemonicParsing="false" onAction="#logIn" text="Log in" />
-      <Label fx:id="oops" layoutX="470.0" layoutY="294.0" />
+      <Label fx:id="oops" layoutX="470.0" layoutY="294.0" textFill="RED">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
    </children>
 </AnchorPane>

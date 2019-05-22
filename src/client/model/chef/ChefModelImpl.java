@@ -34,7 +34,8 @@ public class ChefModelImpl implements ChefModel {
     }
 
     @Override
-    public void orderAdded(){
+    public void orderAdded(Order order){
+        orders.add(order);
         changeSupport.firePropertyChange("OrderForChefAdded", null, orders);
     }
 
@@ -59,9 +60,26 @@ public class ChefModelImpl implements ChefModel {
         changeSupport.firePropertyChange("chefPasswordApproved", null, null);
     }
 
-    public void addOrder(Order order){
-        orders.add(order);
-        orderAdded();
+    @Override
+    public void fetchOrders() {
+        System.out.println("chef model");
+        chefClient.fetchOrders();
     }
+
+    @Override
+    public void gotOrders(ArrayList<Order> obj) {
+        orders = obj;
+        changeSupport.firePropertyChange("gotOrders", null, obj);
+    }
+
+    @Override
+    public Order getOrder(int selectedIndex) {
+        return orders.get(selectedIndex);
+    }
+
+//    public void addOrder(Order order){
+//        orders.add(order);
+//        orderAdded();
+//    }
 
 }

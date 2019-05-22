@@ -162,7 +162,7 @@ public class OrderReader {
     {
         Order o = readOrder(order.getTableId());
 
-        if(!order.getNote().equals("") && !order.getNote().equals(o.getNote()))
+        if(!(order.getNote() == null) && !order.getNote().equals("") && !order.getNote().equals(o.getNote()))
             o.setNote(order.getNote());
 
         int k = order.getNumberOfItems();

@@ -6,6 +6,7 @@ import client.model.customer.CustomerModel;
 import client.model.logIn.LogInModel;
 import client.view.ViewHandler;
 import client.viewModel.Chef.ChefLogInViewModel;
+import client.viewModel.Chef.ChefViewModel;
 import client.viewModel.customer.CategoryListItemsViewModel;
 import client.viewModel.customer.CategoryListViewModel;
 import client.viewModel.customer.MenuFrontViewModel;
@@ -32,6 +33,7 @@ public class ViewModelProvider {
     private OrderItemsListViewModel orderItemsListViewModel;
 
     private ChefLogInViewModel chefLogInViewModel;
+    private ChefViewModel chefViewModel;
 
 
     public ViewModelProvider(ViewHandler viewHandler, LogInModel model){
@@ -54,6 +56,7 @@ public class ViewModelProvider {
         orderItemsListViewModel = new OrderItemsListViewModel(customerModel);
 
         chefLogInViewModel = new ChefLogInViewModel(viewHandler, chefModel);
+        chefViewModel = new ChefViewModel(chefModel);
     }
 
     public ViewModels getViewModel(Views viewToOpen) {
@@ -79,6 +82,9 @@ public class ViewModelProvider {
             }
             case CHEF_LOG_IN:{
                 return chefLogInViewModel;
+            }
+            case CHEF:{
+                return chefViewModel;
             }
             default:
                 return null;

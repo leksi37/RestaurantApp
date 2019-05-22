@@ -2,6 +2,8 @@ package client.networking.chef;
 
 import basicClasses.Order;
 
+import java.util.ArrayList;
+
 public interface ChefClient {
     void sendNotification(String notification);
     void gotOrder(Order order);
@@ -11,4 +13,8 @@ public interface ChefClient {
     void passwordApproved();
 
     void passwordDisapproved();
+
+    void fetchOrders();
+
+    void gotOrders(ArrayList<Order> obj);
 }

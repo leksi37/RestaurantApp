@@ -20,6 +20,7 @@ import client.viewModel.customer.CategoryListViewModel;
 import client.viewModel.customer.MenuFrontViewModel;
 import client.viewModel.customer.OrderItemsListViewModel;
 import client.viewModel.logIn.OnOpenViewModel;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -49,8 +50,9 @@ public class ViewHandler {
 
     public void openView(Views viewToOpen)
     {
-        Scene scene= null;
         FXMLLoader loader= new FXMLLoader();
+
+        Platform.runLater(() ->{
         Parent root= null;
         switch(viewToOpen)
         {
@@ -142,10 +144,12 @@ public class ViewHandler {
             }
         }
 
-        scene= new Scene(root);
         stage.setTitle("MLP");
-        stage.setScene(scene);
-        stage.show();
+            Scene scene= new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        });
+
     }
 
 

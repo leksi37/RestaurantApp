@@ -1,5 +1,6 @@
 package server.model;
 
+import JDBC.OrderReader;
 import basicClasses.Order;
 import server.ServerSocketHandlerClientIds;
 import server.networking.ServerSocketHandlers.ChefServerSocketHandler;
@@ -19,6 +20,7 @@ public class ServerModel {
     private int customerCounter;
     private int chefCounter;
     private int waiterCounter;
+    private OrderReader orderReader;
 
     public ServerModel() {
         orders= new ArrayList<>();
@@ -26,6 +28,7 @@ public class ServerModel {
         chefCounter = 0;
         waiterCounter = 0;
         connections = new ArrayList<ServerSocketHandler>();
+        orderReader = OrderReader.getInstance();
     }
 
     public void addListener(String name, PropertyChangeListener listener) {
@@ -36,6 +39,7 @@ public class ServerModel {
 
     public void addOrder(Order order){
         orders.add(order);
+        orderReader.addOrder(order);
         support.firePropertyChange("AddedOrder", null, order);
     }
 
@@ -60,5 +64,11 @@ public class ServerModel {
                 break;
             }
         }
+    }
+
+    public ArrayList<Order> getOrders() {
+        ArrayList<Order> orders = orderReader.readAllOrders();
+        System.out.println(orders.size());
+        return orders;
     }
 }

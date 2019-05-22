@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public interface CustomerModel extends ClientModel {
     void addListeners(String name, PropertyChangeListener listener);
 
-    void addOrderToServer();
+    void addOrderToServer(String note);
 
     void requestMenuCategory(String type);
 

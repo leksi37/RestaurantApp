@@ -72,4 +72,8 @@ public class ItemQuantity implements Serializable {
         ItemQuantity q = (ItemQuantity) obj;
         return id.equals(q.id) && quantity == q.quantity && state == q.state;
     }
+
+    public ItemState getState() {
+        return state;
+    }
 }
