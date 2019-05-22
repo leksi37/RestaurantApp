@@ -47,6 +47,8 @@ public class WaiterServerSocketHandler implements Runnable {
     @Override
     public void run() {
 
+        // for now we are never sending anything to the server from waiter
+
         while (true) {
 //            try{
 //                Request r = (Request) inFromClient.readObject();
