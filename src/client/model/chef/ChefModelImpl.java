@@ -43,9 +43,26 @@ public class ChefModelImpl implements ChefModel {
         chefClient.sendNotification(notification);
     }
 
+    @Override
+    public void checkLogIn(String value) {
+        System.out.println("model" + value);
+        chefClient.checkPassword(value);
+    }
+
+    @Override
+    public void passwordDisapproved() {
+        changeSupport.firePropertyChange("chefPasswordDisapproved", null, null);
+    }
+
+    @Override
+    public void passwordApproved() {
+        changeSupport.firePropertyChange("chefPasswordApproved", null, null);
+    }
+
     public void addOrder(Order order){
         orders.add(order);
         orderAdded();
     }
+
 
 }

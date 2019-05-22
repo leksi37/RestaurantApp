@@ -9,4 +9,7 @@ public interface ChefModel extends ClientModel {
     void addListeners(String name, PropertyChangeListener listener);
     void orderAdded();
     void sendNotification(String notification);
+    void passwordDisapproved();
+    void passwordApproved();
+    void checkLogIn(String value);
 }

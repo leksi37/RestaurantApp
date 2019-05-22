@@ -29,6 +29,12 @@ public class ChefClientSocketHandler implements Runnable {
                         chefClient.gotOrder((Order) r.getObj());
                         break;
                     }
+                    case CHEF_APPROVED:{
+                        chefClient.passwordApproved();
+                    }
+                    case CHEF_DISAPPROVED:{
+                        chefClient.passwordDisapproved();
+                    }
                 }
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
@@ -39,6 +45,15 @@ public class ChefClientSocketHandler implements Runnable {
     public void sendNotificationToWaiter(String notification){
         try{
             outToServer.writeObject(new Request(RequestType.SEND_NOTIFICATION, notification));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void checkPassword(String value) {
+        try {
+            System.out.println("csh" + value);
+            outToServer.writeObject(new Request(RequestType.CHEF_PASSWORD_CHECK, value));
         } catch (IOException e) {
             e.printStackTrace();
         }

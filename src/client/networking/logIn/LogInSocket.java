@@ -1,9 +1,11 @@
 package client.networking.logIn;
 
 import basicClasses.clients;
+import client.model.chef.ChefModel;
 import client.model.customer.CustomerModel;
 import client.model.logIn.LogInModel;
 import client.model.waiter.WaiterModel;
+import client.networking.chef.ChefSocketChefClient;
 import client.networking.customer.CustomerSocketClient;
 import client.networking.waiter.WaiterSocketClient;
 
@@ -45,26 +47,24 @@ public class LogInSocket {
 
     }
 
-
-    //just for show     fix later
-
     public void connectChef(){
         try {
-            outToServer.writeObject(clients.CUSTOMER_CLIENT);
+            outToServer.writeObject(clients.CHEF_CLIENT);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("Trying to connect the chef");
-        startCustomer();
+        System.out.println("Trying to connect first");
+        startChef();
     }
 
     public void startChef(){
-        CustomerModel customerModel= model.getCustomerModel();
-        CustomerSocketClient customerSocketClient= new CustomerSocketClient(customerModel, socket);
-        customerModel.addClient(customerSocketClient);
+        ChefModel chefModel = model.getChefModel();
+        System.out.println("got the chef model");
+        ChefSocketChefClient chefSocketChefClient = new ChefSocketChefClient(chefModel, socket);
+
+        chefModel.addClient(chefSocketChefClient);
 
     }
-
 
     public void connectWaiter(){
         try {

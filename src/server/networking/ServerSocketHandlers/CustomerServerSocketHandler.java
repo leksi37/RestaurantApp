@@ -4,6 +4,7 @@ import JDBC.OrderReader;
 import basicClasses.*;
 import JDBC.MenuItemsReader;
 import server.model.ServerModel;
+import server.networking.ServerSocketHandler;
 
 import java.beans.PropertyChangeEvent;
 import java.io.IOException;
@@ -13,7 +14,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 
-    public class CustomerServerSocketHandler implements Runnable {
+    public class CustomerServerSocketHandler implements ServerSocketHandler, Runnable {
 
         private ServerModel model;
 
@@ -100,6 +101,11 @@ import java.util.ArrayList;
                 }
             }
 
+        }
+
+        @Override
+        public String getId() {
+            return connectionId;
         }
     }
 

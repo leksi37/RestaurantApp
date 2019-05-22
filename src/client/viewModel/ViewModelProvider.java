@@ -7,6 +7,7 @@ import client.model.logIn.LogInModel;
 import client.model.waiter.WaiterModel;
 import client.networking.waiter.WaiterSocketClient;
 import client.view.ViewHandler;
+import client.viewModel.Chef.ChefLogInViewModel;
 import client.viewModel.Waiter.WaiterViewModel;
 import client.viewModel.customer.CategoryListItemsViewModel;
 import client.viewModel.customer.CategoryListViewModel;
@@ -35,7 +36,7 @@ public class ViewModelProvider {
     private OrderItemsListViewModel orderItemsListViewModel;
 
     private WaiterViewModel waiterViewModel;
-
+    private ChefLogInViewModel chefLogInViewModel;
 
     public ViewModelProvider(ViewHandler viewHandler, LogInModel model){
         this.mainModel=model;
@@ -47,6 +48,7 @@ public class ViewModelProvider {
     {
         customerModel= mainModel.getCustomerModel();
         waiterModel = mainModel.getWaiterModel();
+        chefModel = mainModel.getChefModel();
 
         System.out.println("customer model, provider: "+customerModel);
 
@@ -58,6 +60,8 @@ public class ViewModelProvider {
         orderItemsListViewModel = new OrderItemsListViewModel(customerModel);
 
         waiterViewModel = new WaiterViewModel(waiterModel);
+
+        chefLogInViewModel = new ChefLogInViewModel(viewHandler, chefModel);
 
     }
 
@@ -84,6 +88,9 @@ public class ViewModelProvider {
             }
             case WAITER:{
                 return waiterViewModel;
+            }
+            case CHEF_LOG_IN:{
+                return chefLogInViewModel;
             }
             default:
                 return null;

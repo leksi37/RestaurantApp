@@ -8,5 +8,9 @@ public enum RequestType implements Serializable {
     GET_TABLE_ID,
     GET_ORDER_CHEF,
     SEND_NOTIFICATION,
-    PRESENCE_REQUIRED;
+    GET_CONNECTION_ID,
+    WAITER_PASSWORD_CHECK,
+    CHEF_PASSWORD_CHECK,
+    CHEF_APPROVED,
+    CHEF_DISAPPROVED;
 }

@@ -14,10 +14,11 @@ public class ChefSocketChefClient implements ChefClient {
     private ChefClientSocketHandler chefClientSocketHandler;
     private Socket socket;
 
-    public ChefSocketChefClient(ChefModel model){
+    public ChefSocketChefClient(ChefModel model, Socket socket){
         this.model=model;
         try{
-            socket=new Socket("localHost", 2910);
+            this.socket=socket;
+            System.out.println("Chef connected");
             chefClientSocketHandler = new ChefClientSocketHandler(this,
                     new ObjectOutputStream(socket.getOutputStream()),
                     new ObjectInputStream(socket.getInputStream()));
@@ -31,7 +32,6 @@ public class ChefSocketChefClient implements ChefClient {
         t.setDaemon(true);
         t.start();
     }
-
     @Override
     public void sendNotification(String notification) {
         chefClientSocketHandler.sendNotificationToWaiter(notification);
@@ -40,5 +40,21 @@ public class ChefSocketChefClient implements ChefClient {
     @Override
     public void gotOrder(Order order) {
         model.orderAdded();
+    }
+
+    @Override
+    public void checkPassword(String value) {
+        System.out.println("client" + value);
+        chefClientSocketHandler.checkPassword(value);
+    }
+
+    @Override
+    public void passwordApproved() {
+        model.passwordApproved();
+    }
+
+    @Override
+    public void passwordDisapproved() {
+        model.passwordDisapproved();
     }
 }

@@ -3,6 +3,8 @@ package server.model;
 import basicClasses.Notification;
 import basicClasses.Order;
 import server.ServerSocketHandlerClientIds;
+import server.networking.ServerSocketHandler;
+import server.networking.ServerSocketHandlers.ChefServerSocketHandler;
 import server.networking.ServerSocketHandlers.CustomerServerSocketHandler;
 
 import java.beans.PropertyChangeListener;
@@ -13,13 +15,17 @@ public class ServerModel {
 
     private ArrayList<Order> orders;
     private PropertyChangeSupport support= new PropertyChangeSupport(this);
-    private ArrayList<ServerSocketHandlerClientIds> connections;
-    private int counter;
+    private ArrayList<ServerSocketHandler> connections;
+    private int customerCounter;
+    private int chefCounter;
+    private int waiterCounter;
 
     public ServerModel() {
         orders= new ArrayList<>();
-        counter = 0;
-        connections = new ArrayList<>();
+        customerCounter = 0;
+        chefCounter = 0;
+        waiterCounter = 0;
+        connections = new ArrayList<ServerSocketHandler>();
     }
 
     public void addListener(String name, PropertyChangeListener listener) {
@@ -34,9 +40,15 @@ public class ServerModel {
     }
 
     public String newId(CustomerServerSocketHandler customerServerSocketHandler) {
-        connections.add(new ServerSocketHandlerClientIds(customerServerSocketHandler, "table" + counter));
-        counter++;
-        return "table" + (counter-1);
+        connections.add(customerServerSocketHandler);
+        customerCounter++;
+        return "table" + (customerCounter-1);
+    }
+
+    public String newId(ChefServerSocketHandler chefServerSocketHandler) {
+        connections.add(chefServerSocketHandler);
+        chefCounter++;
+        return "chef" + (chefCounter-1);
     }
 
     //FOR WAITER

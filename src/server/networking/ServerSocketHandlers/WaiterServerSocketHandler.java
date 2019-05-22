@@ -3,6 +3,7 @@ package server.networking.ServerSocketHandlers;
 import basicClasses.Request;
 import basicClasses.RequestType;
 import server.model.ServerModel;
+import server.networking.ServerSocketHandler;
 
 import java.beans.PropertyChangeEvent;
 import java.io.IOException;
@@ -10,7 +11,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-public class WaiterServerSocketHandler implements Runnable {
+public class WaiterServerSocketHandler implements ServerSocketHandler, Runnable {
     private ServerModel model;
     private Socket socket;
 
@@ -70,6 +71,10 @@ public class WaiterServerSocketHandler implements Runnable {
         }
     }
 
+    @Override
+    public String getId() {
+        return connectionId;
+    }
 }
 
 
