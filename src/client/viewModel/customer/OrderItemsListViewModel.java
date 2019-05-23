@@ -56,8 +56,9 @@ public class OrderItemsListViewModel implements ViewModels {
         return items;
     }
 
-    public void remove(Object focusedItem) {
-        model.removeItem((ItemQuantity) focusedItem);
+    public void remove(int index, ItemQuantity focusedItem) {
+        if(index != -1)
+            model.removeItem(focusedItem);
     }
 
 }

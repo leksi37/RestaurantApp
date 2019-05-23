@@ -166,4 +166,20 @@ public class Order implements Serializable {
     {
         return items.size();
     }
+
+    public void addToOrder(Order order) {
+        System.out.println(this);
+
+        if(order.note != null)
+            if (note == null)
+                note = order.note;
+            else
+                note = note + "\n" + order.note;
+        int k;
+        for (int i = 0; i < order.items.size(); ++i)
+        {
+            addItem(order.items.get(i));
+        }
+        System.out.println(this);
+    }
 }

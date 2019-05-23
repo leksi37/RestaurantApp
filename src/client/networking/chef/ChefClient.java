@@ -17,4 +17,6 @@ public interface ChefClient {
     void fetchOrders();
 
     void gotOrders(ArrayList<Order> obj);
+
+    void addedToOrder(Order obj);
 }

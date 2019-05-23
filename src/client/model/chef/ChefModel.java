@@ -23,4 +23,6 @@ public interface ChefModel extends ClientModel {
     void gotOrders(ArrayList<Order> obj);
 
     Order getOrder(int selectedIndex);
+
+    void addedToOrder(Order obj);
 }

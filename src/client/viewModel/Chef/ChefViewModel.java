@@ -3,6 +3,7 @@ package client.viewModel.Chef;
 import basicClasses.Order;
 import client.model.chef.ChefModel;
 import client.viewModel.ViewModels;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -15,16 +16,37 @@ public class ChefViewModel implements ViewModels {
     private ChefModel model;
 //    private PropertyChangeSupport changeSupport;
     private ObservableList<String> orders = FXCollections.observableArrayList();
+    private PropertyChangeSupport changeSupport;
 
     public ChefViewModel(ChefModel model){
         this.model = model;
 //        changeSupport = new PropertyChangeSupport(this);
         this.model.addListeners("OrderForChefAdded", this :: getOrderUpdate);
         this.model.addListeners("gotOrders", this :: gotOrders);
+        this.model.addListeners("gotOrder", this :: gotOrder);
+        changeSupport = new PropertyChangeSupport(this);
+    }
+
+    public void addListener(String name, PropertyChangeListener listener) {
+        if (name == null)
+            changeSupport.addPropertyChangeListener(listener);
+        else changeSupport.addPropertyChangeListener(name, listener);
+    }
+
+    private void gotOrder(PropertyChangeEvent propertyChangeEvent) {
+        Order o = (Order)propertyChangeEvent.getNewValue();
+        int i = orders.indexOf(o.getTableId());
+        Platform.runLater(() -> {
+            orders.remove(o.getTableId());
+            orders.add(i, o.getTableId());
+        });
+        changeSupport.firePropertyChange("refresh", null, null);
     }
 
     private void gotOrders(PropertyChangeEvent propertyChangeEvent) {
-        setOrders((ArrayList<Order>) propertyChangeEvent.getNewValue());
+        Platform.runLater(() -> {
+            setOrders((ArrayList<Order>) propertyChangeEvent.getNewValue());
+        });
     }
 
     private void setOrders(ArrayList<Order> list)
@@ -61,6 +83,6 @@ public class ChefViewModel implements ViewModels {
     }
 
     public Order getOrder(int selectedIndex) {
-        return model.getOrder(selectedIndex-1);
+        return model.getOrder(selectedIndex);
     }
 }

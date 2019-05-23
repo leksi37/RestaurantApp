@@ -42,6 +42,10 @@ public class ChefClientSocketHandler implements Runnable {
                         chefClient.gotOrders((ArrayList<Order>) r.getObj());
                         break;
                     }
+                    case ADDED_TO_ORDER:{
+                        chefClient.addedToOrder((Order) r.getObj());
+                        break;
+                    }
                 }
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();

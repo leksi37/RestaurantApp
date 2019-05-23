@@ -41,6 +41,15 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
         }
         System.out.println("chef socket handler created");
         model.addListener("AddedOrder", this::addOrder);
+        model.addListener("AddedToOrder", this::addToOrder);
+    }
+
+    private void addToOrder(PropertyChangeEvent propertyChangeEvent) {
+        try{
+            outToClient.writeObject(new Request(RequestType.ADDED_TO_ORDER, (Order)propertyChangeEvent.getNewValue()));
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void setConnectionId(String id)

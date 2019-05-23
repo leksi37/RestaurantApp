@@ -13,5 +13,6 @@ public enum RequestType implements Serializable {
     CHEF_APPROVED,
     CHEF_DISAPPROVED,
     NEW_ORDER,
+    ADDED_TO_ORDER,
     FETCH_ORDERS;
 }

@@ -38,7 +38,8 @@ public class OrderReader {
         }
         catch (SQLException e)
         {
-            addToOrder(order);
+            remove(order.getTableId());
+            addOrder(order);
         }
     }
 

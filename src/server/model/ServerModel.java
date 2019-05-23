@@ -29,6 +29,7 @@ public class ServerModel {
         waiterCounter = 0;
         connections = new ArrayList<ServerSocketHandler>();
         orderReader = OrderReader.getInstance();
+        orders = orderReader.readAllOrders();
     }
 
     public void addListener(String name, PropertyChangeListener listener) {
@@ -38,9 +39,23 @@ public class ServerModel {
     }
 
     public void addOrder(Order order){
-        orders.add(order);
-        orderReader.addOrder(order);
-        support.firePropertyChange("AddedOrder", null, order);
+        int i = 0;
+        for(i = 0; i < orders.size(); ++i)
+        {
+            if(orders.get(i).getTableId().equals(order.getTableId())) {
+                orders.get(i).addToOrder(order);
+                orderReader.addOrder(orders.get(i));
+                support.firePropertyChange("AddedToOrder", null, orders.get(i));
+                break;
+            }
+        }
+        if(i == orders.size())
+        {
+            orders.add(order);
+            orderReader.addOrder(order);
+            support.firePropertyChange("AddedOrder", null, order);
+        }
+
     }
 
     public String newId(CustomerServerSocketHandler customerServerSocketHandler) {
@@ -56,9 +71,14 @@ public class ServerModel {
     }
 
     public void removeConnection(String id) {
+        if(id.charAt(0) == 'c')
+            chefCounter--;
+        else if(id.charAt(0) == 't')
+            customerCounter--;
+        else waiterCounter--;
         for(int i = 0; i < connections.size(); ++i)
         {
-            if(connections.get(i).getId().equals(id))
+            if(connections.get(i).equals(id))
             {
                 connections.remove(i);
                 break;
@@ -67,8 +87,6 @@ public class ServerModel {
     }
 
     public ArrayList<Order> getOrders() {
-        ArrayList<Order> orders = orderReader.readAllOrders();
-        System.out.println(orders.size());
         return orders;
     }
 }

@@ -74,12 +74,19 @@ public class ChefModelImpl implements ChefModel {
 
     @Override
     public Order getOrder(int selectedIndex) {
+        System.out.println("" + selectedIndex + "," + orders.size());
         return orders.get(selectedIndex);
     }
 
-//    public void addOrder(Order order){
-//        orders.add(order);
-//        orderAdded();
-//    }
+    @Override
+    public void addedToOrder(Order obj) {
+        for(int i = 0; i < orders.size(); ++i)
+            if(orders.get(i).getTableId().equals(obj.getTableId()))
+            {
+                orders.remove(i);
+                orders.add(i, obj);
+            }
+        changeSupport.firePropertyChange("gotOrder", null, obj);
+    }
 
 }
