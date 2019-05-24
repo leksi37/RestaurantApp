@@ -45,6 +45,7 @@ public class ServerModel {
             if(orders.get(i).getTableId().equals(order.getTableId())) {
                 orders.get(i).addToOrder(order);
                 orderReader.addOrder(orders.get(i));
+                System.out.println(orders.get(i));
                 support.firePropertyChange("AddedToOrder", null, orders.get(i));
                 break;
             }

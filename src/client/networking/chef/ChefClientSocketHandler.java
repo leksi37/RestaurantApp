@@ -43,6 +43,8 @@ public class ChefClientSocketHandler implements Runnable {
                         break;
                     }
                     case ADDED_TO_ORDER:{
+                        Order o = new Order((Order)r.getObj());
+                        System.out.println(o);
                         chefClient.addedToOrder((Order) r.getObj());
                         break;
                     }

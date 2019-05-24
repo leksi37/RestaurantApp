@@ -46,7 +46,9 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
 
     private void addToOrder(PropertyChangeEvent propertyChangeEvent) {
         try{
-            outToClient.writeObject(new Request(RequestType.ADDED_TO_ORDER, (Order)propertyChangeEvent.getNewValue()));
+            Order o = new Order((Order)propertyChangeEvent.getNewValue());
+            System.out.println(o);
+            outToClient.writeObject(new Request(RequestType.ADDED_TO_ORDER, o));
         }catch (IOException e) {
             e.printStackTrace();
         }

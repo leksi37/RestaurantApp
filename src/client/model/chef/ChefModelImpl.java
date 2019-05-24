@@ -86,6 +86,7 @@ public class ChefModelImpl implements ChefModel {
                 orders.remove(i);
                 orders.add(i, obj);
             }
+        System.out.println(obj);
         changeSupport.firePropertyChange("gotOrder", null, obj);
     }
 

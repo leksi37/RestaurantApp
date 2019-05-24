@@ -86,6 +86,8 @@ public class OrderReader {
             {
                 o = new Order(rs.getString("tableId"));
                 o.setNote(rs.getString("note"));
+                if(o.getNote().equals("null"))
+                    o.setNote("");
                 return o;
             }
         } catch (SQLException e) {

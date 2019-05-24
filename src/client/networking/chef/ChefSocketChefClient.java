@@ -88,6 +88,7 @@ public class ChefSocketChefClient implements ChefClient {
 
     @Override
     public void addedToOrder(Order obj) {
+        System.out.println(obj);
         model.addedToOrder(obj);
     }
 }

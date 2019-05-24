@@ -50,18 +50,23 @@ public class Chef {
         orderList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                lastSelected = orderList.getSelectionModel().getSelectedIndex();
-                Platform.runLater(() ->
+                if(orderList.getSelectionModel().getSelectedIndex() >= 0)
+                {
+                    lastSelected = orderList.getSelectionModel().getSelectedIndex();
+                    Platform.runLater(() ->
                         viewItems()
-                );
+                    );
+                }
+
             }
         });
     }
 
     private void refresh(PropertyChangeEvent propertyChangeEvent) {
-        Platform.runLater(() ->
-                viewItems()
-                );
+        Platform.runLater(() ->{
+                    orderList.getSelectionModel().select(lastSelected);
+                    viewItems();
+                });
     }
 
     private void viewItems()
