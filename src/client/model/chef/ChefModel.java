@@ -2,7 +2,6 @@ package client.model.chef;
 
 import basicClasses.Order;
 import client.model.modelFactory.ClientModel;
-import client.networking.chef.ChefClient;
 
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
@@ -25,4 +24,12 @@ public interface ChefModel extends ClientModel {
     Order getOrder(int selectedIndex);
 
     void addedToOrder(Order obj);
+
+//    void itemAddedToPartialOrder(String id, int selectedIndex);
+
+    void sendPartial(int i);
+
+    void nextState(String id, int selectedIndex);
+
+    void orderChanged(Order order);
 }

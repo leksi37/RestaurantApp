@@ -48,6 +48,12 @@ public class ChefClientSocketHandler implements Runnable {
                         chefClient.addedToOrder((Order) r.getObj());
                         break;
                     }
+                    case ITEM_STATE_CHANGED:{
+                        Order o = new Order((Order)r.getObj());
+                        System.out.println(o);
+                        chefClient.orderChanged((Order) r.getObj());
+                        break;
+                    }
                 }
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
@@ -76,6 +82,14 @@ public class ChefClientSocketHandler implements Runnable {
         try {
             System.out.println("chef csh");
             outToServer.writeObject(new Request(RequestType.FETCH_ORDERS, null));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void stateChanged(Order order) {
+        try {
+            outToServer.writeObject(new Request(RequestType.ITEM_STATE_CHANGED, order));
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -28,16 +28,6 @@ public class Chef {
     @FXML
     private TextArea note;
 
-    @FXML
-    private void sendPartial(){
-
-    }
-
-    @FXML
-    private void closeOrder(){
-
-    }
-
     private int lastSelected;
 
     public void init(ChefViewModel v) {
@@ -53,6 +43,7 @@ public class Chef {
                 if(orderList.getSelectionModel().getSelectedIndex() >= 0)
                 {
                     lastSelected = orderList.getSelectionModel().getSelectedIndex();
+                    System.out.println("last selected " + lastSelected + " calling from the changing code ");
                     Platform.runLater(() ->
                         viewItems()
                     );
@@ -63,17 +54,20 @@ public class Chef {
     }
 
     private void refresh(PropertyChangeEvent propertyChangeEvent) {
-        Platform.runLater(() ->{
-                    orderList.getSelectionModel().select(lastSelected);
-                    viewItems();
-                });
+            System.out.println("calling from refresh");
+//            orderList.getSelectionModel().select(lastSelected);
+        Platform.runLater(() ->
+                viewItems()
+                );
     }
 
     private void viewItems()
     {
+        System.out.println("clearing");
         vBox.getChildren().clear();
         Order order = viewModel.getOrder(lastSelected);
         note.setText(order.getNote());
+        System.out.println("chef view, number of items in order " + order.getNumberOfItems());
         for(int i = 0; i < order.getNumberOfItems(); ++i)
         {
             ItemQuantity iq = order.getItemWithQuantity(i);
@@ -85,16 +79,36 @@ public class Chef {
             Label description = new Label(iq.getItem().getDescription());
             Button button = new Button();
             button.setId(iq.getId());
-            if(iq.getState() == ItemState.notStarted)
-                button.setText("Start");
+            button.setText(viewModel.getButtonText(iq.getId(), lastSelected).getValue());
+            if(button.getText().equals("Selected for waiter"))
+                button.setDisable(true);
+            button.setOnAction(event -> {
+                viewModel.nextState(button.getId(), lastSelected);
+//                if(button.getText().equals("Start"))
+//                {
+//                    viewModel.itemStarted(button.getId(), orderList.getSelectionModel().getSelectedIndex());
+//                    button.setText("In progress");
+//                }
+//                else if(button.getText().equals("In progress"))
+//                {
+//                    viewModel.itemDone(button.getId(), orderList.getSelectionModel().getSelectedIndex());
+//                    button.setText("Send to waiter");
+//                }
+//                else if(button.getText().equals("Send to waiter"))
+//                {
+//                    viewModel.itemAddedToPartialOrder(button.getId(), orderList.getSelectionModel().getSelectedIndex());
+//                    button.setText("Selected");
+//                    button.setDisable(true);
+//                }
+            });
             Platform.runLater(() -> {
                 itemDetails.getChildren().add(name);
                 itemDetails.getChildren().add(description);
                 left.getChildren().add(itemDetails);
-                left.setStyle("-fx-pref-width: 280px");
+                left.setStyle("-fx-pref-width: 200px");
                 right.getChildren().add(button);
                 right.setAlignment(Pos.BASELINE_RIGHT);
-                right.setStyle("-fx-pref-width: 80px");
+                right.setStyle("-fx-pref-width: 150px");
                 oneItem.getChildren().add(left);
                 oneItem.getChildren().add(right);
                 vBox.getChildren().add(oneItem);
@@ -102,6 +116,11 @@ public class Chef {
             });
 
         }
+    }
+
+    @FXML
+    private void sendPartial() {
+        viewModel.sendPartial((int)orderList.getSelectionModel().getSelectedIndex());
     }
 
 }

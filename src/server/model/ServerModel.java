@@ -45,7 +45,7 @@ public class ServerModel {
             if(orders.get(i).getTableId().equals(order.getTableId())) {
                 orders.get(i).addToOrder(order);
                 orderReader.addOrder(orders.get(i));
-                System.out.println(orders.get(i));
+                System.out.println("server model " + orders.get(i));
                 support.firePropertyChange("AddedToOrder", null, orders.get(i));
                 break;
             }
@@ -89,5 +89,18 @@ public class ServerModel {
 
     public ArrayList<Order> getOrders() {
         return orders;
+    }
+
+    public void itemStateChanged(Order obj) {
+        for(int i = 0; i < orders.size(); ++i)
+        {
+            if(orders.get(i).getTableId().equals(obj.getTableId()))
+            {
+                orders.remove(i);
+                orders.add(i, obj);
+                System.out.println(obj);
+                support.firePropertyChange("ChangedState", null, orders.get(i));
+            }
+        }
     }
 }

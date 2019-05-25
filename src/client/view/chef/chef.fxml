@@ -27,7 +27,7 @@
                         <Image url="@../../../images/chefView.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="456.0" layoutY="447.0" mnemonicParsing="false" onAction="#closeOrder" prefHeight="42.0" prefWidth="104.0" style="-fx-background-color: #ffe6e6;" text="Close order" />
+                  <Button layoutX="456.0" layoutY="447.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="104.0" style="-fx-background-color: #ffe6e6;" text="Close order" />
                   <Button layoutX="456.0" layoutY="392.0" mnemonicParsing="false" onAction="#sendPartial" prefHeight="42.0" prefWidth="104.0" style="-fx-background-color: #ffe6e6;" text="Send" />
                   <TextArea fx:id="note" layoutX="404.0" layoutY="200.0" prefHeight="173.0" prefWidth="208.0" style="-fx-background-color: #ffffe6;" />
                   <ScrollPane fx:id="orderItems" layoutX="24.0" layoutY="50.0" prefHeight="418.0" prefWidth="367.0">

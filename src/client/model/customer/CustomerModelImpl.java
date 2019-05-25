@@ -45,6 +45,7 @@ public class CustomerModelImpl implements CustomerModel {
     @Override
     public void addOrderToServer(String note) {
         order.setNote(note);
+        System.out.println("customer model, sending order " + order);
         customerClient.addOrderToServer(order);
     }
 
@@ -101,6 +102,7 @@ public class CustomerModelImpl implements CustomerModel {
     @Override
     public void orderAdded() {
         order = new Order(tableId);
+        System.out.println("Customer model + order added " + order);
         support.firePropertyChange("orderAdded", null, null);
     }
 

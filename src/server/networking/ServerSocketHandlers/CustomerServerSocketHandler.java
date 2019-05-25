@@ -34,6 +34,7 @@ import java.util.ArrayList;
             }
 
             model.addListener("AddedOrder", this::addOrder);
+            model.addListener("AddedToOrder", this::addOrder);
         }
 
         private void setConnectionId(String id)
@@ -80,6 +81,7 @@ import java.util.ArrayList;
                     }
                     else if(r.getType() == RequestType.ADD_ORDER)
                     {
+                        System.out.println("customer ssh " + (Order) r.getObj());
                         model.addOrder((Order) r.getObj());
                     }
 

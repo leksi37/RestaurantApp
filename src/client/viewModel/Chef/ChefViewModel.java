@@ -4,6 +4,8 @@ import basicClasses.Order;
 import client.model.chef.ChefModel;
 import client.viewModel.ViewModels;
 import javafx.application.Platform;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -84,5 +86,50 @@ public class ChefViewModel implements ViewModels {
 
     public Order getOrder(int selectedIndex) {
         return model.getOrder(selectedIndex);
+    }
+
+//    public void itemStarted(String id, int selectedIndex) {
+//        model.itemStarted(id, selectedIndex);
+//    }
+
+//    public void itemDone(String id, int selectedIndex) {
+//        model.itemDone(id, selectedIndex);
+//    }
+
+//    public void itemAddedToPartialOrder(String id, int selectedIndex) {
+//        model.itemAddedToPartialOrder(id, selectedIndex);
+//    }
+
+    public void sendPartial(int i) {
+        model.sendPartial(i);
+    }
+
+    public StringProperty getButtonText(String id, int i)
+    {
+        StringProperty text = new SimpleStringProperty();
+        switch(model.getOrder(i).getItemWithQuantity(id).getState())
+        {
+            case notStarted:{
+                text.setValue("Start");
+                break;
+            }
+            case inProgress:{
+                text.setValue("Done");
+                break;
+            }
+            case done:{
+                text.setValue("Send to waiter");
+                break;
+            }
+            case toWaiter: {
+                text.setValue("Selected for waiter");
+                break;
+            }
+        }
+        return text;
+    }
+
+    public void nextState(String id, int selectedIndex) {
+        model.nextState(id, selectedIndex);
     }
 }

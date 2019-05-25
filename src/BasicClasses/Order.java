@@ -19,14 +19,15 @@ public class Order implements Serializable {
     public Order(Order order)
     {
         items = new ArrayList<ItemQuantity>();
-        note = "";
+        if(order.note != null && !order.note.equals("null"))
+            note = order.note;
         if(order != null)
         {
             tableId = new String(order.tableId);
             if(order.items != null)
             {
                 for(int i = 0; i < order.items.size(); ++i)
-                    items.add(new ItemQuantity(order.items.get(0).getId(), order.items.get(0).getQuantity()));
+                    items.add(new ItemQuantity(order.items.get(i).getId(), order.items.get(i).getQuantity()));
             }
         }
     }
@@ -113,7 +114,7 @@ public class Order implements Serializable {
             s += "(";
             for(int i = 0; i < items.size()-1; ++i)
             {
-                s += "item: " + items.get(i) + "\n";
+                s += "item: " + items.get(i).orderDisplay() + "\n";
             }
             s += "item: " + items.get(items.size()-1) + ")";
         }
@@ -168,18 +169,18 @@ public class Order implements Serializable {
     }
 
     public void addToOrder(Order order) {
-        System.out.println(this);
+        System.out.println("Order class " + this);
 
         if(order.note != null)
             if (note == null)
                 note = order.note;
             else
                 note = note + "\n" + order.note;
-        int k;
+//        int k;
         for (int i = 0; i < order.items.size(); ++i)
         {
             addItem(order.items.get(i));
         }
-        System.out.println(this);
+        System.out.println("Order class " + this);
     }
 }

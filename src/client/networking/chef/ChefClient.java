@@ -19,4 +19,8 @@ public interface ChefClient {
     void gotOrders(ArrayList<Order> obj);
 
     void addedToOrder(Order obj);
+
+    void itemStateChanged(Order order);
+
+    void orderChanged(Order obj);
 }

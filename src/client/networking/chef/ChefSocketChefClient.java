@@ -91,4 +91,14 @@ public class ChefSocketChefClient implements ChefClient {
         System.out.println(obj);
         model.addedToOrder(obj);
     }
+
+    @Override
+    public void itemStateChanged(Order order) {
+        chefClientSocketHandler.stateChanged(order);
+    }
+
+    @Override
+    public void orderChanged(Order obj) {
+        model.addedToOrder(obj);
+    }
 }

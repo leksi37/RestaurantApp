@@ -50,6 +50,7 @@ public class OrderItemsListViewModel implements ViewModels {
 
     public void sendOrder() {
         model.addOrderToServer(note.getValue());
+        items.clear();
     }
 
     public ObservableList<ItemQuantity> getItems() {

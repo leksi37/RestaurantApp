@@ -56,7 +56,9 @@ public class CustomerClientSocketHandler implements Runnable {
 
     public void addOrderToServer(Order order){
         try{
-            outToServer.writeObject(new Request(RequestType.ADD_ORDER, order));
+            System.out.println("csh " + order);
+            Order o = new Order(order);
+            outToServer.writeObject(new Request(RequestType.ADD_ORDER, o));
         } catch (IOException e) {
             e.printStackTrace();
         }
