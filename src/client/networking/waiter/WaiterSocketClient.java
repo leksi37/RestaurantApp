@@ -38,8 +38,8 @@ public class WaiterSocketClient implements WaiterClient{
         waiterModel.notificationReceived(notification);
     }
 
-
-    public void gotPresenceRequest(Notification presenceNotification) {
-        waiterModel.presenceRequested(presenceNotification);
+    @Override
+    public void gotPresenceRequest(Notification notification) {
+        waiterModel.presenceRequested(notification);
     }
 }

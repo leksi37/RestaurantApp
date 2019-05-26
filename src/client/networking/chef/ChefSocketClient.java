@@ -9,12 +9,12 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-public class ChefSocketChefClient implements ChefClient {
+public class ChefSocketClient implements ChefClient {
     private ChefModel model;
     private ChefClientSocketHandler chefClientSocketHandler;
     private Socket socket;
 
-    public ChefSocketChefClient(ChefModel model, Socket socket){
+    public ChefSocketClient(ChefModel model, Socket socket){
         this.model=model;
         try{
             this.socket=socket;

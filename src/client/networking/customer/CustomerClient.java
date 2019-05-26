@@ -15,7 +15,7 @@ public interface CustomerClient {
 
      void getTableId();
 
-    void returnTableId(String obj);
+    void returnTableId(String id);
 
     void orderAdded();
 

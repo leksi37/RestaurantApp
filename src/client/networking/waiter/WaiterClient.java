@@ -4,5 +4,5 @@ import basicClasses.Notification;
 
 public interface WaiterClient {
   void gotNotification(Notification notification);
-
+  void gotPresenceRequest(Notification notification);
 }

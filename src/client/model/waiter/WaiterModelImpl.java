@@ -36,7 +36,7 @@ public class WaiterModelImpl implements WaiterModel {
     }
 
     @Override
-    public void presenceRequested(Notification presenceNotification) {
-        support.firePropertyChange("Presence notification received", null, presenceNotification);
+    public void presenceRequested(Notification notification) {
+        support.firePropertyChange("Presence notification received", null, notification);
     }
 }

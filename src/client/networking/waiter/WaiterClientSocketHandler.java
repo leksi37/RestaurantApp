@@ -8,14 +8,14 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class WaiterClientSocketHandler implements Runnable {
-    private WaiterSocketClient waiterSocketClient;
+    private WaiterClient waiterClient;
     private ObjectInputStream inFromServer;
     private ObjectOutputStream outToServer;
 
-    public WaiterClientSocketHandler(WaiterSocketClient waiterSocketClient, ObjectOutputStream objectOutputStream, ObjectInputStream objectInputStream) {
-        this.waiterSocketClient = waiterSocketClient;
-        inFromServer = objectInputStream;
-        outToServer = objectOutputStream;
+    public WaiterClientSocketHandler(WaiterClient waiterClient, ObjectOutputStream outputStream, ObjectInputStream inputStream) {
+        this.waiterClient = waiterClient;
+        inFromServer = inputStream;
+        outToServer = outputStream;
     }
 
     @Override
@@ -25,11 +25,11 @@ public class WaiterClientSocketHandler implements Runnable {
                 Request r = (Request) inFromServer.readObject();
                 switch (r.getType()) {
                     case SEND_NOTIFICATION: {
-                        waiterSocketClient.gotNotification((Notification) r.getObj());
+                        waiterClient.gotNotification((Notification) r.getObj());
                         break;
                     }
                     case PRESENCE_REQUIRED: {
-                        waiterSocketClient.gotPresenceRequest((Notification) r.getObj());
+                        waiterClient.gotPresenceRequest((Notification) r.getObj());
                         break;
                     }
                 }

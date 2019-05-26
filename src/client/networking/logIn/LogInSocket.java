@@ -1,11 +1,11 @@
 package client.networking.logIn;
 
-import basicClasses.clients;
+import basicClasses.ClientType;
 import client.model.chef.ChefModel;
 import client.model.customer.CustomerModel;
 import client.model.logIn.LogInModel;
 import client.model.waiter.WaiterModel;
-import client.networking.chef.ChefSocketChefClient;
+import client.networking.chef.ChefSocketClient;
 import client.networking.customer.CustomerSocketClient;
 import client.networking.waiter.WaiterSocketClient;
 
@@ -30,7 +30,7 @@ public class LogInSocket {
 
     public void connectCustomer(){
         try {
-            outToServer.writeObject(clients.CUSTOMER_CLIENT);
+            outToServer.writeObject(ClientType.CUSTOMER_CLIENT);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -49,7 +49,7 @@ public class LogInSocket {
 
     public void connectChef(){
         try {
-            outToServer.writeObject(clients.CHEF_CLIENT);
+            outToServer.writeObject(ClientType.CHEF_CLIENT);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -60,15 +60,15 @@ public class LogInSocket {
     public void startChef(){
         ChefModel chefModel = model.getChefModel();
         System.out.println("got the chef model");
-        ChefSocketChefClient chefSocketChefClient = new ChefSocketChefClient(chefModel, socket);
+        ChefSocketClient chefSocketClient = new ChefSocketClient(chefModel, socket);
 
-        chefModel.addClient(chefSocketChefClient);
+        chefModel.addClient(chefSocketClient);
 
     }
 
     public void connectWaiter(){
         try {
-            outToServer.writeObject(clients.WAITER_CLIENT);
+            outToServer.writeObject(ClientType.WAITER_CLIENT);
         } catch (IOException e) {
             e.printStackTrace();
         }

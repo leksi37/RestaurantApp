@@ -59,6 +59,8 @@ public class ChefModelImpl implements ChefModel {
         changeSupport.firePropertyChange("chefPasswordApproved", null, null);
     }
 
+
+    // THIS IS NEVER CALLED???
     public void addOrder(Order order){
         orders.add(order);
         orderAdded();

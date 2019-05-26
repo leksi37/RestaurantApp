@@ -2,8 +2,6 @@ package client.view;
 
 import basicClasses.Views;
 import basicClasses.type;
-import client.model.chef.ChefModel;
-import client.model.customer.CustomerModel;
 import client.model.logIn.LogInModel;
 import client.view.OnOpen.OnOpen;
 import client.view.chef.Chef;
