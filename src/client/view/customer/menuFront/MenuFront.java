@@ -4,6 +4,7 @@ package client.view.customer.menuFront;
 import client.view.ViewHandler;
 import client.viewModel.customer.MenuFrontViewModel;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class MenuFront {
@@ -14,6 +15,9 @@ public class MenuFront {
     private Label orderStatus;
 
     @FXML
+    private Button waiterButton;
+
+    @FXML
     public void onClick(){
         menuFrontViewModel.openCategoryList(viewHandler);
     }
@@ -21,6 +25,7 @@ public class MenuFront {
     @FXML
     public void requestWaiter(){
         menuFrontViewModel.requestWaiter();
+        waiterButton.setDisable(true);
     }
 
     public void setOrderStatus(String status){
