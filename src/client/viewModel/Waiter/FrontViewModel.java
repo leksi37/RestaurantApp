@@ -1,4 +1,4 @@
-package client.viewModel.Waiter;
+package client.viewModel.waiter;
 
 public class FrontViewModel {
 

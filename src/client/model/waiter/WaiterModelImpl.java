@@ -2,6 +2,7 @@ package client.model.waiter;
 
 import client.networking.waiter.WaiterClient;
 
+import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 public class WaiterModelImpl implements WaiterModel {
@@ -18,6 +19,11 @@ public class WaiterModelImpl implements WaiterModel {
         {
             this.waiterClient=(WaiterClient)object;
         }
+    }
+
+    @Override
+    public void addListeners(String name, PropertyChangeListener listener) {
+
     }
 
     @Override

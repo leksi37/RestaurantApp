@@ -50,7 +50,8 @@ public class OrderItemList {
 
     @FXML
     public void removeSelected(){
-        oilvm.remove(orderItems.getFocusModel().getFocusedItem());
+        oilvm.remove(orderItems.getSelectionModel().getSelectedIndex(), (ItemQuantity) orderItems.getFocusModel().getFocusedItem());
+
     }
 
     public void backToMenu() {

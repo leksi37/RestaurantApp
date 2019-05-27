@@ -5,6 +5,7 @@ import client.model.chef.ChefModel;
 import client.model.customer.CustomerModel;
 import client.model.logIn.LogInModel;
 import client.view.ViewHandler;
+import client.viewModel.Chef.ChefViewModel;
 import client.viewModel.customer.CategoryListItemsViewModel;
 import client.viewModel.customer.CategoryListViewModel;
 import client.viewModel.customer.MenuFrontViewModel;
@@ -31,15 +32,19 @@ public class ViewModelProvider {
     private OrderItemsListViewModel orderItemsListViewModel;
 
 
+    private ChefViewModel chefViewModel;
+
+
     public ViewModelProvider(ViewHandler viewHandler, LogInModel model){
         this.mainModel=model;
         this.viewHandler = viewHandler;
-        instantiateViewModels();
+        //instantiateViewModels();
     }
 
     public void instantiateViewModels()
     {
         customerModel= mainModel.getCustomerModel();
+        chefModel = mainModel.getChefModel();
         System.out.println("customer model, provider: "+customerModel);
 
         onOpenViewModel= new OnOpenViewModel(mainModel, viewHandler);
@@ -49,7 +54,8 @@ public class ViewModelProvider {
         categoryListViewModel = new CategoryListViewModel(viewHandler, customerModel);
         orderItemsListViewModel = new OrderItemsListViewModel(customerModel);
 
-
+        //chefLogInViewModel = new ChefLogInViewModel(viewHandler, chefModel);
+        chefViewModel = new ChefViewModel(chefModel);
     }
 
     public ViewModels getViewModel(Views viewToOpen) {
@@ -72,6 +78,12 @@ public class ViewModelProvider {
             }
             case ORDER:{
                 return orderItemsListViewModel;
+            }
+            /*case CHEF_LOG_IN:{
+                return chefLogInViewModel;
+            }*/
+            case CHEF:{
+                return chefViewModel;
             }
             default:
                 return null;

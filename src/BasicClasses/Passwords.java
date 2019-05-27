@@ -28,4 +28,8 @@ public class Passwords implements Serializable {
         return p.name.equals(name) && p.password.equals(password);
 
     }
+
+    public String getPassword() {
+        return password;
+    }
 }

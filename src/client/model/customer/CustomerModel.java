@@ -4,16 +4,13 @@ package client.model.customer;
 import basicClasses.ItemQuantity;
 import basicClasses.MenuItem;
 import basicClasses.Order;
-import client.model.modelFactory.ClientModel;
-import client.networking.customer.CustomerClient;
+import client.model.logIn.modelFactory.ClientModel;
 
-import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 
 public interface CustomerModel extends ClientModel {
-    void addListeners(String name, PropertyChangeListener listener);
 
-    void addOrderToServer();
+    void addOrderToServer(String note);
 
     void requestMenuCategory(String type);
 

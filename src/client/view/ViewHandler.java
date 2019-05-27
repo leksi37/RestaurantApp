@@ -18,6 +18,7 @@ import client.viewModel.customer.CategoryListViewModel;
 import client.viewModel.customer.MenuFrontViewModel;
 import client.viewModel.customer.OrderItemsListViewModel;
 import client.viewModel.logIn.OnOpenViewModel;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -46,8 +47,9 @@ public class ViewHandler {
 
     public void openView(Views viewToOpen)
     {
-        Scene scene= null;
         FXMLLoader loader= new FXMLLoader();
+
+        Platform.runLater(() ->{
         Parent root= null;
         switch(viewToOpen)
         {
@@ -117,22 +119,34 @@ public class ViewHandler {
                 orderItemList.init((OrderItemsListViewModel) viewModelProvider.getViewModel(viewToOpen), this);
                 break;
             }
-            case CHEF_FRONT:
+            case CHEF:
             {
                 loader.setLocation(getClass().getResource("chef/chef.fxml"));
                 try{ root=loader.load();}
                 catch(IOException e){e.printStackTrace();}
 
                 chef= loader.getController();
-                chef.init((ChefViewModel) viewModelProvider.getViewModel(viewToOpen), this);
+                chef.init((ChefViewModel) viewModelProvider.getViewModel(viewToOpen));
                 break;
             }
+            /*case CHEF_LOG_IN:
+            {
+                loader.setLocation(getClass().getResource("chef/logInChef.fxml"));
+                try{ root=loader.load();}
+                catch(IOException e){e.printStackTrace();}
+
+                logInchef= loader.getController();
+                logInchef.init((ChefLogInViewModel) viewModelProvider.getViewModel(viewToOpen));
+                break;
+            }*/
         }
 
-        scene= new Scene(root);
         stage.setTitle("MLP");
-        stage.setScene(scene);
-        stage.show();
+            Scene scene= new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        });
+
     }
 
 

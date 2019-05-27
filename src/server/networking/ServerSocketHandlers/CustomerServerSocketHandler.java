@@ -4,6 +4,7 @@ import JDBC.OrderReader;
 import basicClasses.*;
 import JDBC.MenuItemsReader;
 import server.model.ServerModel;
+import server.networking.ServerSocketHandler;
 
 import java.beans.PropertyChangeEvent;
 import java.io.IOException;
@@ -13,7 +14,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 
-    public class CustomerServerSocketHandler implements Runnable {
+    public class CustomerServerSocketHandler implements ServerSocketHandler, Runnable {
 
         private ServerModel model;
 
@@ -22,11 +23,9 @@ import java.util.ArrayList;
 
         private String connectionId;
         private MenuItemsReader reader;
-        private OrderReader orderReader;
 
         public CustomerServerSocketHandler(ServerModel model, Socket socket){
             reader = MenuItemsReader.getInstance();
-            orderReader = OrderReader.getInstance();
             this.model=model;
             try{
                 inFromClient=new ObjectInputStream(socket.getInputStream());
@@ -36,6 +35,7 @@ import java.util.ArrayList;
             }
 
             model.addListener("AddedOrder", this::addOrder);
+            model.addListener("AddedToOrder", this::addOrder);
         }
 
         private void setConnectionId(String id)
@@ -45,7 +45,7 @@ import java.util.ArrayList;
 
         private void addOrder(PropertyChangeEvent propertyChangeEvent) {
             try{
-                outToClient.writeObject(propertyChangeEvent.getNewValue());
+                outToClient.writeObject(new Request(RequestType.ADD_ORDER, null));
             }catch (IOException e) {
                 e.printStackTrace();
             }
@@ -82,13 +82,8 @@ import java.util.ArrayList;
                     }
                     else if(r.getType() == RequestType.ADD_ORDER)
                     {
-                        orderReader.addOrder((Order) r.getObj());
-
-                        try {
-                            outToClient.writeObject(new Request(RequestType.ADD_ORDER, null));
-                        }catch (IOException e){
-                            e.printStackTrace();
-                        }
+                        System.out.println("customer ssh " + (Order) r.getObj());
+                        model.addOrder((Order) r.getObj());
                     }
 
                 } catch (ClassNotFoundException e) {
@@ -99,6 +94,11 @@ import java.util.ArrayList;
                 }
             }
 
+        }
+
+        @Override
+        public String getId() {
+            return connectionId;
         }
     }
 

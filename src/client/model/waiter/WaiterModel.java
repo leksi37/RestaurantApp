@@ -1,6 +1,6 @@
 package client.model.waiter;
 
-import client.model.modelFactory.ClientModel;
+import client.model.logIn.modelFactory.ClientModel;
 
 public interface WaiterModel extends ClientModel {
 

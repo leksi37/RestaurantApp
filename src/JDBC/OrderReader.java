@@ -38,7 +38,8 @@ public class OrderReader {
         }
         catch (SQLException e)
         {
-            addToOrder(order);
+            remove(order.getTableId());
+            addOrder(order);
         }
     }
 
@@ -85,6 +86,8 @@ public class OrderReader {
             {
                 o = new Order(rs.getString("tableId"));
                 o.setNote(rs.getString("note"));
+                if(o.getNote().equals("null"))
+                    o.setNote("");
                 return o;
             }
         } catch (SQLException e) {
@@ -162,7 +165,7 @@ public class OrderReader {
     {
         Order o = readOrder(order.getTableId());
 
-        if(!order.getNote().equals("") && !order.getNote().equals(o.getNote()))
+        if(!(order.getNote() == null) && !order.getNote().equals("") && !order.getNote().equals(o.getNote()))
             o.setNote(order.getNote());
 
         int k = order.getNumberOfItems();

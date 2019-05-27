@@ -37,6 +37,7 @@ public class CustomerSocketClient implements CustomerClient {
 
     @Override
     public void addOrderToServer(Order order) {
+        System.out.println("customer client " + order);
         customerClientSocketHandler.addOrderToServer(order);
     }
 

@@ -1,8 +1,10 @@
 package client.networking.logIn;
 
-import basicClasses.clients;
+import basicClasses.ClientType;
+import client.model.chef.ChefModel;
 import client.model.customer.CustomerModel;
 import client.model.logIn.LogInModel;
+import client.networking.chef.ChefSocketClient;
 import client.networking.customer.CustomerSocketClient;
 
 import java.io.IOException;
@@ -19,14 +21,14 @@ public class LogInSocket {
     public LogInSocket(LogInModel model) {
         try {
             this.model = model;
-            this.socket = new Socket("localHost", 2910);
+            this.socket = new Socket("localhost", 2910);
             outToServer= new ObjectOutputStream(socket.getOutputStream());
         }catch(IOException e){e.printStackTrace();}
     }
 
     public void connectCustomer(){
         try {
-            outToServer.writeObject(clients.CUSTOMER_CLIENT);
+            outToServer.writeObject(ClientType.CUSTOMER_CLIENT);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -43,30 +45,28 @@ public class LogInSocket {
 
     }
 
-
-    //just for show     fix later
-
     public void connectChef(){
         try {
-            outToServer.writeObject(clients.CUSTOMER_CLIENT);
+            outToServer.writeObject(ClientType.CHEF_CLIENT);
         } catch (IOException e) {
             e.printStackTrace();
         }
         System.out.println("Trying to connect first");
-        startCustomer();
+        startChef();
     }
 
     public void startChef(){
-        CustomerModel customerModel= model.getCustomerModel();
-        CustomerSocketClient customerSocketClient= new CustomerSocketClient(customerModel, socket);
-        customerModel.addClient(customerSocketClient);
+        ChefModel chefModel = model.getChefModel();
+        System.out.println("got the chef model");
+        //ChefSocketClient chefSocketChefClient = new ChefSocketClient(chefModel, socket);
+
+        //chefModel.addClient(chefSocketChefClient);
 
     }
 
-
     public void connectWaiter(){
         try {
-            outToServer.writeObject(clients.CUSTOMER_CLIENT);
+            outToServer.writeObject(ClientType.WAITER_CLIENT);
         } catch (IOException e) {
             e.printStackTrace();
         }

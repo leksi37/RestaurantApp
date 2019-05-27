@@ -1,6 +1,5 @@
 package client.model.logIn;
 
-import basicClasses.clients;
 import client.model.chef.ChefModel;
 import client.model.customer.CustomerModel;
 import client.model.waiter.WaiterModel;
