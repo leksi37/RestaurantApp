@@ -34,7 +34,6 @@ public class Chef {
         this.viewModel = v;
         lastSelected = 0;
         viewModel.addListener("refresh", this :: refresh);
-        System.out.println("chef view");
         viewModel.fetchOrders();
         orderList.setItems(viewModel.getOrders());
         orderList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
@@ -55,7 +54,7 @@ public class Chef {
 
     private void refresh(PropertyChangeEvent propertyChangeEvent) {
             System.out.println("calling from refresh");
-//            orderList.getSelectionModel().select(lastSelected);
+            orderList.getSelectionModel().select(lastSelected);
         Platform.runLater(() ->
                 viewItems()
                 );
@@ -67,7 +66,6 @@ public class Chef {
         vBox.getChildren().clear();
         Order order = viewModel.getOrder(lastSelected);
         note.setText(order.getNote());
-        System.out.println("chef view, number of items in order " + order.getNumberOfItems());
         for(int i = 0; i < order.getNumberOfItems(); ++i)
         {
             ItemQuantity iq = order.getItemWithQuantity(i);

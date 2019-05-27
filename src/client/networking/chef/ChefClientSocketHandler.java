@@ -44,14 +44,12 @@ public class ChefClientSocketHandler implements Runnable {
                     }
                     case ADDED_TO_ORDER:{
                         Order o = new Order((Order)r.getObj());
-                        System.out.println(o);
                         chefClient.addedToOrder((Order) r.getObj());
                         break;
                     }
                     case ITEM_STATE_CHANGED:{
                         Order o = new Order((Order)r.getObj());
-                        System.out.println(o);
-                        chefClient.orderChanged((Order) r.getObj());
+//                        chefClient.orderChanged((Order) r.getObj());
                         break;
                     }
                 }
@@ -71,7 +69,6 @@ public class ChefClientSocketHandler implements Runnable {
 
     public void checkPassword(String value) {
         try {
-            System.out.println("csh" + value);
             outToServer.writeObject(new Request(RequestType.CHEF_PASSWORD_CHECK, value));
         } catch (IOException e) {
             e.printStackTrace();
@@ -80,7 +77,6 @@ public class ChefClientSocketHandler implements Runnable {
 
     public void fetchOrders() {
         try {
-            System.out.println("chef csh");
             outToServer.writeObject(new Request(RequestType.FETCH_ORDERS, null));
         } catch (IOException e) {
             e.printStackTrace();
@@ -88,8 +84,9 @@ public class ChefClientSocketHandler implements Runnable {
     }
 
     public void stateChanged(Order order) {
+        System.out.println("chef csh " + order);
         try {
-            outToServer.writeObject(new Request(RequestType.ITEM_STATE_CHANGED, order));
+            outToServer.writeObject(new Request(RequestType.ITEM_STATE_CHANGED, new Order(order)));
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -80,7 +80,6 @@ public class ChefViewModel implements ViewModels {
     }
 
     public void fetchOrders() {
-        System.out.println("chef view model");
         model.fetchOrders();
     }
 

@@ -49,7 +49,6 @@ public class ChefModelImpl implements ChefModel {
 
     @Override
     public void checkLogIn(String value) {
-        System.out.println("model" + value);
         chefClient.checkPassword(value);
     }
 
@@ -65,7 +64,6 @@ public class ChefModelImpl implements ChefModel {
 
     @Override
     public void fetchOrders() {
-        System.out.println("chef model");
         chefClient.fetchOrders();
     }
 
@@ -81,7 +79,6 @@ public class ChefModelImpl implements ChefModel {
 
     @Override
     public Order getOrder(int selectedIndex) {
-        System.out.println("" + selectedIndex + "," + orders.size());
         return orders.get(selectedIndex);
     }
 
@@ -93,7 +90,6 @@ public class ChefModelImpl implements ChefModel {
                 orders.remove(i);
                 orders.add(i, obj);
             }
-        System.out.println(obj);
         changeSupport.firePropertyChange("gotOrder", null, obj);
     }
 
@@ -132,7 +128,6 @@ public class ChefModelImpl implements ChefModel {
         {
             case notStarted:{
                 o.getItemWithQuantity(id).changeState(ItemState.inProgress);
-                System.out.println(o.getItemWithQuantity(id).getState());
                 break;
             }
             case inProgress:{
@@ -144,11 +139,8 @@ public class ChefModelImpl implements ChefModel {
                 sendToWaiter.get(selectedIndex).addItem(o.getItemWithQuantity(id));
             }
         }
-        System.out.println(o);
+        System.out.println("model " + o);
         chefClient.itemStateChanged(o);
-        orders.remove(selectedIndex);
-        orders.add(selectedIndex, o);
-        changeSupport.firePropertyChange("gotOrder", null, o);
     }
 
     @Override

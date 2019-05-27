@@ -87,7 +87,6 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
                     case CHEF_PASSWORD_CHECK: {
                         RequestType t;
                         Passwords password = passwordReader.getPassword("chef");
-                        System.out.println("chef ssh, in db: " + password.getPassword() + "you typed: " + (String)r.getObj());
                         if(password.getPassword().equals(r.getObj()))
                             t = RequestType.CHEF_APPROVED;
                         else
@@ -107,7 +106,9 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
                         break;
                     }
                     case ITEM_STATE_CHANGED: {
-                        model.itemStateChanged((Order) r.getObj());
+                        Order o = new Order((Order) r.getObj());
+                        System.out.println("chef ssh, run() " + o);
+                        model.itemStateChanged(o);
                         break;
                     }
                 }
