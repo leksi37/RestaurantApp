@@ -1,10 +1,8 @@
 package client.view.customer.menuFront;
 
-import basicClasses.Views;
+
 import client.view.ViewHandler;
-import client.viewModel.ViewModelProvider;
 import client.viewModel.customer.MenuFrontViewModel;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
@@ -20,6 +18,11 @@ public class MenuFront {
         menuFrontViewModel.openCategoryList(viewHandler);
     }
 
+    @FXML
+    public void requestWaiter(){
+        menuFrontViewModel.requestWaiter();
+    }
+
     public void setOrderStatus(String status){
         orderStatus.setText(status);
     }
@@ -28,6 +31,6 @@ public class MenuFront {
     public void init(MenuFrontViewModel vm, ViewHandler viewHandler) {
         this.viewHandler = viewHandler;
         menuFrontViewModel = vm;
-
+        //orderStatus.textProperty().bind(menuFrontViewModel.getLabel());
     }
 }

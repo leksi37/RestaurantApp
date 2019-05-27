@@ -1,12 +1,18 @@
 package basicClasses;
 
-public class Notification {
+import java.io.Serializable;
+
+public class Notification implements Serializable {
     private String notificationText;
     private Order order;
 
     public Notification(String notificationText, Order order){
         this.notificationText = notificationText;
         this.order = order;
+    }
+
+    public Notification(String notificationText){
+        this.notificationText = notificationText;
     }
 
     public String getNotificationText(){

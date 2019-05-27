@@ -102,5 +102,15 @@ public class CustomerModelImpl implements CustomerModel {
         support.firePropertyChange("orderAdded", null, null);
     }
 
+    @Override
+    public void requestWaiter() {
+        customerClient.requestWaiter(tableId);
+    }
+
+    @Override
+    public void notifyCustomer(String msg) {
+        support.firePropertyChange("Waiter requested", null, msg);
+    }
+
 
 }

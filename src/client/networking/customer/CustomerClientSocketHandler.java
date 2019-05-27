@@ -42,6 +42,12 @@ public class CustomerClientSocketHandler implements Runnable {
                             System.out.println("reading table id  "+s);
                             break;
                         }
+                        case SEND_NOTIFICATION:
+                        {
+                            String msg = (String) r.getObj();
+                            customerClient.notifyCustomer(msg);
+                            System.out.println("Waiter is notified!");
+                        }
                         case ADD_ORDER:
                         {
                             customerClient.orderAdded();
@@ -78,6 +84,15 @@ public class CustomerClientSocketHandler implements Runnable {
             System.out.println("  requested id ");
         }
         catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void requestWaiter(String tableId) {
+        try {
+            outToServer.writeObject(new Request(RequestType.SEND_NOTIFICATION,new Notification(tableId)));
+        }
+        catch (IOException e){
             e.printStackTrace();
         }
     }

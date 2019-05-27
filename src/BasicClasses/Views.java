@@ -10,5 +10,6 @@ public enum Views {
     CHEF_LOG_IN,
     ON_OPEN,
     WAITER ,
-    CHEF;
+    CHEF,
+    MENU_FRONT_LABEL_WAITER ;
 }

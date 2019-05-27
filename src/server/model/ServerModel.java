@@ -66,4 +66,8 @@ public class ServerModel {
             }
         }
     }
+
+    public void informWaiter(Notification tableId) {
+        sendNotification(tableId);
+    }
 }
