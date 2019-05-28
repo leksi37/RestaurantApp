@@ -49,8 +49,15 @@ public class ChefClientSocketHandler implements Runnable {
                     }
                     case ITEM_STATE_CHANGED:{
                         Order o = new Order((Order)r.getObj());
-//                        chefClient.orderChanged((Order) r.getObj());
+                        chefClient.orderChanged((Order) r.getObj());
                         break;
+                    }
+                    case ORDER_FINISHED:{
+                        chefClient.removeOrder((String)r.getObj());
+                        break;
+                    }
+                    case SEND_PARTIAL:{
+                        chefClient.partialSent((Order)r.getObj());
                     }
                 }
             } catch (IOException | ClassNotFoundException e) {
@@ -86,7 +93,31 @@ public class ChefClientSocketHandler implements Runnable {
     public void stateChanged(Order order) {
         System.out.println("chef csh " + order);
         try {
-            outToServer.writeObject(new Request(RequestType.ITEM_STATE_CHANGED, new Order(order)));
+            outToServer.writeObject(new Request(RequestType.ITEM_STATE_CHANGED, order));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void sendPartial(Order order) {
+        try {
+            outToServer.writeObject(new Request(RequestType.SEND_PARTIAL, new Order(order)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void orderFinished(String tableId) {
+        try {
+            outToServer.writeObject(new Request(RequestType.ORDER_FINISHED, tableId));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void requestWaiter() {
+        try {
+            outToServer.writeObject(new Request(RequestType.CHEF_REQUESTS_WAITER, null));
         } catch (IOException e) {
             e.printStackTrace();
         }

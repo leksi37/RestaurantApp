@@ -39,6 +39,7 @@ public class ChefModelImpl implements ChefModel {
     @Override
     public void orderAdded(Order order){
         orders.add(order);
+        sendToWaiter.add(new Order(order.getTableId()));
         changeSupport.firePropertyChange("OrderForChefAdded", null, orders);
     }
 
@@ -93,17 +94,6 @@ public class ChefModelImpl implements ChefModel {
         changeSupport.firePropertyChange("gotOrder", null, obj);
     }
 
-    private void addToSendToWaiter(String id, int selectedIndex)
-    {
-        String tableId = orders.get(selectedIndex).getTableId();
-        for(int i = 0; i < sendToWaiter.size(); ++i)
-        {
-            if(sendToWaiter.get(i).getTableId().equals(tableId))
-            {
-                sendToWaiter.get(i).addItem(orders.get(selectedIndex).getItemWithQuantity(id));
-            }
-        }
-    }
 
     private Order getPartial(int selectedIndex)
     {
@@ -118,7 +108,12 @@ public class ChefModelImpl implements ChefModel {
 
     @Override
     public void sendPartial(int i) {
-//        chefClient.sendPartial(getPartial(i));
+        if(sendToWaiter.get(i).getNumberOfItems() > 0)
+        {
+            chefClient.sendPartial(sendToWaiter.get(i));
+            sendToWaiter.get(i).clearItems();
+        }
+        else changeSupport.firePropertyChange("noItemsSelected", null, null);
     }
 
     @Override
@@ -135,23 +130,63 @@ public class ChefModelImpl implements ChefModel {
                 break;
             }
             case done:{
-                o.getItemWithQuantity(id).changeState(ItemState.toWaiter);
+                o.getItemWithQuantity(id).changeState(ItemState.forWaiter);
                 sendToWaiter.get(selectedIndex).addItem(o.getItemWithQuantity(id));
+                break;
             }
         }
         System.out.println("model " + o);
         chefClient.itemStateChanged(o);
     }
 
+
     @Override
-    public void orderChanged(Order order) {
-//        for(int i = 0; i < orders.size(); ++i)
-//            if(orders.get(i).getTableId().equals(order.getTableId()))
-//            {
-//                orders.remove(i);
-//                orders.add(i, order);
-//            }
-//        changeSupport.firePropertyChange("orderChanged", null, obj);
+    public void orderFinished(int lastSelected) {
+        if(orders.get(lastSelected).isReadyToBeClosed())
+            chefClient.orderFinished(orders.get(lastSelected).getTableId());
+
     }
 
+    public void removeOrder(String id)
+    {
+        for(int i = 0; i < orders.size(); ++i)
+        {
+            if(orders.get(i).getTableId().equals(id))
+            {
+                orders.remove(i);
+                changeSupport.firePropertyChange("orderRemoved", null, i);
+                break;
+            }
+        }
+    }
+
+    @Override
+    public void requestWaiter() {
+        chefClient.requestWaiter();
+    }
+
+    @Override
+    public void partialSent(Order obj) {
+//        for(int i = 0; i < orders.size(); ++i)
+//        {
+//            if(orders.get(i).getTableId().equals(obj.getTableId())){
+//                for(int j = 0; j < obj.getNumberOfItems(); ++i)
+//                {
+//                    orders.get(i).getItemWithQuantity(obj.getItemWithQuantity(j).getId()).changeState(ItemState.toWaiter);
+//                }
+//            }
+//        }
+        System.out.println(obj);
+        addedToOrder(obj);
+    }
+
+    @Override
+    public void sendFinishedItems(int lastSelected) {
+        for(int i = 0; i < orders.get(lastSelected).getNumberOfItems(); ++i)
+        {
+            if(orders.get(lastSelected).getItemWithQuantity(i).getState() == ItemState.forWaiter)
+                sendToWaiter.get(lastSelected).addItem(orders.get(lastSelected).getItemWithQuantity(i));
+        }
+        sendPartial(lastSelected);
+    }
 }

@@ -24,24 +24,50 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
     private ObjectOutputStream outToClient;
 
     private String connectionId;
-    private MenuItemsReader reader;
-    private OrderReader orderReader;
-    private PasswordReader passwordReader;
+//    private PasswordReader passwordReader;
 
     public ChefServerSocketHandler(ServerModel model, Socket socket){
-        reader = MenuItemsReader.getInstance();
-        orderReader = OrderReader.getInstance();
-        passwordReader = PasswordReader.getInstance();
+//        passwordReader = PasswordReader.getInstance();
         this.model=model;
         try{
             inFromClient=new ObjectInputStream(socket.getInputStream());
             outToClient= new ObjectOutputStream(socket.getOutputStream());
         } catch (IOException e) {
-            model.removeConnection(connectionId);
         }
         model.addListener("AddedOrder", this::addOrder);
         model.addListener("AddedToOrder", this::addToOrder);
         model.addListener("ChangedState", this::changedState);
+        model.addListener("orderRemoved", this::orderRemoved);
+        model.addListener("passwordCheck", this::passwordCheck);
+        model.addListener("partialForWaiterSent", this::partialForWaiterSent);
+    }
+
+    private void partialForWaiterSent(PropertyChangeEvent propertyChangeEvent) {
+        try{
+            outToClient.writeObject(new Request(RequestType.SEND_PARTIAL, (Order)propertyChangeEvent.getNewValue()));
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void passwordCheck(PropertyChangeEvent propertyChangeEvent) {
+        RequestType r;
+        if((boolean)propertyChangeEvent.getNewValue())
+            r = RequestType.CHEF_APPROVED;
+        else r = RequestType.CHEF_DISAPPROVED;
+        try{
+            outToClient.writeObject(new Request(r, null));
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void orderRemoved(PropertyChangeEvent propertyChangeEvent) {
+        try{
+            outToClient.writeObject(new Request(RequestType.ORDER_FINISHED, (String)propertyChangeEvent.getNewValue()));
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void changedState(PropertyChangeEvent propertyChangeEvent) {
@@ -85,20 +111,7 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
                 Request r = (Request) inFromClient.readObject();
                 switch (r.getType()){
                     case CHEF_PASSWORD_CHECK: {
-                        RequestType t;
-                        Passwords password = passwordReader.getPassword("chef");
-                        if(password.getPassword().equals(r.getObj()))
-                            t = RequestType.CHEF_APPROVED;
-                        else
-                            t = RequestType.CHEF_DISAPPROVED;
-
-                        outToClient.writeObject(new Request(t, null));
-                        break;
-                    }
-                    case GET_CONNECTION_ID: {
-                        String s = model.newId(this);
-                        setConnectionId(s);
-                        outToClient.writeObject(new Request(RequestType.GET_CONNECTION_ID, s));
+                        model.checkPassword(new Passwords("chef", (String)r.getObj()));
                         break;
                     }
                     case FETCH_ORDERS : {
@@ -111,23 +124,22 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
                         model.itemStateChanged(o);
                         break;
                     }
+                    case SEND_PARTIAL: {
+                        model.sendPartial((Order) r.getObj());
+                        break;
+                    }
+                    case ORDER_FINISHED: {
+                        model.orderFinished((String) r.getObj());
+                        break;
+                    }
+                    case CHEF_REQUESTS_WAITER:{
+                        model.chefRequestsWaiter();
+                    }
                 }
-//                if(r.getType() == RequestType.CHEF_PASSWORD_CHECK){
-//
-//                }
-//                else if(r.getType() == RequestType.)
-//                {
-//
-//                }
-//                else if(r.getType() == RequestType.FETCH_ORDERS)
-//                {
-//
-//                }
             } catch (ClassNotFoundException e) {
 
             } catch (IOException e)
             {
-                model.removeConnection(connectionId);
             }
         }
 

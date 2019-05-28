@@ -38,7 +38,6 @@ public class SocketServer {
 
 
         } catch (IOException ex) {
-            ex.printStackTrace();
         }
 
     }

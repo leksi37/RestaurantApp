@@ -33,6 +33,7 @@ public class OrderReader {
             ArrayList<String> orderItems = order.dbFormatItems();
             for(int i = 0; i < orderItems.size(); ++i)
             {
+                System.out.println(orderItems.get(i));
                 db.insert("OrderItem", orderItems.get(i));
             }
         }

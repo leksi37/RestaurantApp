@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 public class ChefViewModel implements ViewModels {
     private ChefModel model;
+    private boolean initialized = false;
 //    private PropertyChangeSupport changeSupport;
     private ObservableList<String> orders = FXCollections.observableArrayList();
     private PropertyChangeSupport changeSupport;
@@ -26,7 +27,19 @@ public class ChefViewModel implements ViewModels {
         this.model.addListeners("OrderForChefAdded", this :: getOrderUpdate);
         this.model.addListeners("gotOrders", this :: gotOrders);
         this.model.addListeners("gotOrder", this :: gotOrder);
+        this.model.addListeners("orderRemoved", this :: orderRemoved);
+        this.model.addListeners("noItemsSelected", this :: noItemsToSend);
         changeSupport = new PropertyChangeSupport(this);
+    }
+
+    private void noItemsToSend(PropertyChangeEvent propertyChangeEvent) {
+        changeSupport.firePropertyChange("noItemsSelected", null, null);
+    }
+
+    private void orderRemoved(PropertyChangeEvent propertyChangeEvent) {
+        Platform.runLater(() ->
+        orders.remove((int)propertyChangeEvent.getNewValue())
+                );
     }
 
     public void addListener(String name, PropertyChangeListener listener) {
@@ -38,17 +51,25 @@ public class ChefViewModel implements ViewModels {
     private void gotOrder(PropertyChangeEvent propertyChangeEvent) {
         Order o = (Order)propertyChangeEvent.getNewValue();
         int i = orders.indexOf(o.getTableId());
-        Platform.runLater(() -> {
-            orders.remove(o.getTableId());
-            orders.add(i, o.getTableId());
-        });
+        if(!orders.contains(o.getTableId()))
+        {
+            Platform.runLater(() ->
+                    orders.add(o.getTableId())
+                    );
+        }
         changeSupport.firePropertyChange("refresh", null, null);
     }
 
     private void gotOrders(PropertyChangeEvent propertyChangeEvent) {
-        Platform.runLater(() -> {
-            setOrders((ArrayList<Order>) propertyChangeEvent.getNewValue());
-        });
+        if(!initialized)
+        {
+            System.out.println("The number of orders is : " + ((ArrayList<Order>)propertyChangeEvent.getNewValue()).size());
+            Platform.runLater(() -> {
+                setOrders((ArrayList<Order>) propertyChangeEvent.getNewValue());
+            });
+            initialized = true;
+        }
+
     }
 
     private void setOrders(ArrayList<Order> list)
@@ -120,7 +141,7 @@ public class ChefViewModel implements ViewModels {
                 text.setValue("Send to waiter");
                 break;
             }
-            case toWaiter: {
+            case forWaiter: {
                 text.setValue("Selected for waiter");
                 break;
             }
@@ -130,5 +151,17 @@ public class ChefViewModel implements ViewModels {
 
     public void nextState(String id, int selectedIndex) {
         model.nextState(id, selectedIndex);
+    }
+
+    public void orderFinished(int lastSelected) {
+        model.orderFinished(lastSelected);
+    }
+
+    public void requestWaiter() {
+        model.requestWaiter();
+    }
+
+    public void sendFinishedItems(int lastSelected) {
+        model.sendFinishedItems(lastSelected);
     }
 }

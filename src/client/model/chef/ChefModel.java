@@ -31,5 +31,13 @@ public interface ChefModel extends ClientModel {
 
     void nextState(String id, int selectedIndex);
 
-    void orderChanged(Order order);
+    void orderFinished(int lastSelected);
+
+    void removeOrder(String obj);
+
+    void requestWaiter();
+
+    void partialSent(Order obj);
+
+    void sendFinishedItems(int lastSelected);
 }

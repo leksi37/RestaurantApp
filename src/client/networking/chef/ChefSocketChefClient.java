@@ -95,4 +95,29 @@ public class ChefSocketChefClient implements ChefClient {
     public void orderChanged(Order obj) {
         model.addedToOrder(obj);
     }
+
+    @Override
+    public void sendPartial(Order order) {
+        chefClientSocketHandler.sendPartial(order);
+    }
+
+    @Override
+    public void orderFinished(String tableId) {
+        chefClientSocketHandler.orderFinished(tableId);
+    }
+
+    @Override
+    public void removeOrder(String obj) {
+        model.removeOrder(obj);
+    }
+
+    @Override
+    public void requestWaiter() {
+        chefClientSocketHandler.requestWaiter();
+    }
+
+    @Override
+    public void partialSent(Order obj) {
+        model.partialSent(obj);
+    }
 }

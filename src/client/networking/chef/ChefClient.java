@@ -23,4 +23,14 @@ public interface ChefClient {
     void itemStateChanged(Order order);
 
     void orderChanged(Order obj);
+
+    void sendPartial(Order order);
+
+    void orderFinished(String tableId);
+
+    void removeOrder(String obj);
+
+    void requestWaiter();
+
+    void partialSent(Order obj);
 }

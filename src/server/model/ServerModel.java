@@ -1,7 +1,7 @@
 package server.model;
 
 import JDBC.OrderReader;
-import basicClasses.Order;
+import basicClasses.*;
 import server.ServerSocketHandlerClientIds;
 import server.networking.ServerSocketHandlers.ChefServerSocketHandler;
 import server.networking.ServerSocketHandlers.CustomerServerSocketHandler;
@@ -13,23 +13,16 @@ import java.net.ServerSocket;
 import java.util.ArrayList;
 
 public class ServerModel {
-
     private ArrayList<Order> orders;
     private PropertyChangeSupport support= new PropertyChangeSupport(this);
-    private ArrayList<ServerSocketHandler> connections;
     private int customerCounter;
-    private int chefCounter;
-    private int waiterCounter;
-    private OrderReader orderReader;
+    private DBHandler dbHandler;
 
     public ServerModel() {
         orders= new ArrayList<>();
         customerCounter = 0;
-        chefCounter = 0;
-        waiterCounter = 0;
-        connections = new ArrayList<ServerSocketHandler>();
-        orderReader = OrderReader.getInstance();
-        orders = orderReader.readAllOrders();
+        dbHandler = new DBHandler();
+        orders = dbHandler.getAllOrders();
     }
 
     public void addListener(String name, PropertyChangeListener listener) {
@@ -44,8 +37,7 @@ public class ServerModel {
         {
             if(orders.get(i).getTableId().equals(order.getTableId())) {
                 orders.get(i).addToOrder(order);
-                orderReader.addOrder(orders.get(i));
-                System.out.println("server model " + orders.get(i));
+                dbHandler.addOrder(orders.get(i));
                 support.firePropertyChange("AddedToOrder", null, orders.get(i));
                 break;
             }
@@ -53,54 +45,80 @@ public class ServerModel {
         if(i == orders.size())
         {
             orders.add(order);
-            orderReader.addOrder(order);
+            dbHandler.addOrder(order);
             support.firePropertyChange("AddedOrder", null, order);
         }
-
     }
 
-    public String newId(CustomerServerSocketHandler customerServerSocketHandler) {
-        connections.add(customerServerSocketHandler);
+    public String newId() {
         customerCounter++;
         return "table" + (customerCounter-1);
     }
 
-    public String newId(ChefServerSocketHandler chefServerSocketHandler) {
-        connections.add(chefServerSocketHandler);
-        chefCounter++;
-        return "chef" + (chefCounter-1);
+    public void removeConnection() {
+        customerCounter--;
     }
 
-    public void removeConnection(String id) {
-        if(id.charAt(0) == 'c')
-            chefCounter--;
-        else if(id.charAt(0) == 't')
-            customerCounter--;
-        else waiterCounter--;
-        for(int i = 0; i < connections.size(); ++i)
+    public ArrayList<Order> getOrders() {
+        return dbHandler.getAllOrders();
+    }
+
+    public void itemStateChanged(Order obj) {
+        System.out.println(obj.getTableId());
+        for(int i = 0; i < orders.size(); ++i)
         {
-            if(connections.get(i).equals(id))
+            System.out.println(orders.get(i).getTableId());
+            if(orders.get(i).getTableId().equals(obj.getTableId()))
             {
-                connections.remove(i);
+                orders.remove(i);
+                orders.add(i, obj);
+                dbHandler.addOrder(obj);
+                support.firePropertyChange("ChangedState", null, obj);
                 break;
             }
         }
     }
 
-    public ArrayList<Order> getOrders() {
-        return orders;
+    public void sendPartial(Order obj) {
+        Order o = dbHandler.getOrder(obj.getTableId());
+        for(int i = 0; i < obj.getNumberOfItems(); ++i)
+        {
+            o.getItemWithQuantity(obj.getItemWithQuantity(i).getId()).changeState(ItemState.toWaiter);
+        }
+        orders.remove(o);
+        orders.add(o);
+        dbHandler.addOrder(o);
+        System.out.println("waiter receives " + obj);
+        support.firePropertyChange("partialForWaiterSent", obj, o);
     }
 
-    public void itemStateChanged(Order obj) {
+    public void orderFinished(String obj) {
         for(int i = 0; i < orders.size(); ++i)
         {
-            if(orders.get(i).getTableId().equals(obj.getTableId()))
+            if(orders.get(i).getTableId().equals(obj))
             {
+                dbHandler.removeOrder(obj);
                 orders.remove(i);
-                orders.add(i, obj);
-                System.out.println(obj);
-                support.firePropertyChange("ChangedState", null, orders.get(i));
+                break;
             }
         }
+        support.firePropertyChange("orderRemoved", null, obj);
+    }
+
+    public void checkPassword(Passwords password) {
+        Passwords p = dbHandler.getPassword(password.getName());
+        if(password.equals(p))
+            support.firePropertyChange("passwordCheck", null, true);
+        else
+            support.firePropertyChange("passwordCheck", null, false);
+    }
+
+    public ArrayList<MenuItem> getMenuItems(type value) {
+        return dbHandler.getCategory(value);
+    }
+
+    public void chefRequestsWaiter() {
+        System.out.println("WAITEEEEEEER");
+        support.firePropertyChange("chefRequestsWaiter", null, null);
     }
 }
