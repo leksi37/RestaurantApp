@@ -1,15 +1,14 @@
 package server.model;
 
 import JDBC.OrderReader;
+import basicClasses.Notification;
 import basicClasses.Order;
-import server.ServerSocketHandlerClientIds;
 import server.networking.ServerSocketHandler;
 import server.networking.ServerSocketHandlers.ChefServerSocketHandler;
 import server.networking.ServerSocketHandlers.CustomerServerSocketHandler;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.net.ServerSocket;
 import java.util.ArrayList;
 
 public class ServerModel {
@@ -36,6 +35,15 @@ public class ServerModel {
         if (name == null)
             support.addPropertyChangeListener(listener);
         else support.addPropertyChangeListener(name, listener);
+    }
+
+    //FOR WAITER
+    public void sendNotification(Notification notification){
+        support.firePropertyChange("Notification added", null, notification);
+    }
+
+    public void informWaiter(Notification tableId) {
+        sendNotification(tableId);
     }
 
     public void addOrder(Order order){

@@ -165,7 +165,7 @@ public class ViewHandler {
                 catch(IOException e){e.printStackTrace();}
 
                 waiterView= loader.getController();
-                waiterView.init((WaiterViewModel) viewModelProvider.getViewModel(viewToOpen));
+                waiterView.init((WaiterViewModel) viewModelProvider.getViewModel(viewToOpen),this);
                 break;
             }
         }

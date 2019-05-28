@@ -28,4 +28,8 @@ public interface CustomerModel extends ClientModel {
 
     void orderAdded();
 
+    void requestWaiter();
+
+    void notifyCustomer(String msg);
+
 }

@@ -80,6 +80,18 @@ import java.util.ArrayList;
                             e.printStackTrace();
                         }
                     }
+                    else if(r.getType() == RequestType.SEND_NOTIFICATION)
+                    {
+                        System.out.println(" requesting waiter's presence");
+                        Notification not = (Notification)r.getObj();
+                        System.out.println("table id: "+ not.getNotificationText());
+                        model.informWaiter(not);
+                        try {
+                            outToClient.writeObject(new Request(RequestType.SEND_NOTIFICATION, "The waiter is on his way.."));
+                        }catch (IOException e){
+                            e.printStackTrace();
+                        }
+                    }
                     else if(r.getType() == RequestType.ADD_ORDER)
                     {
                         System.out.println("customer ssh " + (Order) r.getObj());

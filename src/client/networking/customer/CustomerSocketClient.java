@@ -68,4 +68,15 @@ public class CustomerSocketClient implements CustomerClient {
         model.orderAdded();
     }
 
+    @Override
+    public void requestWaiter(String tableId) {
+        customerClientSocketHandler.requestWaiter(tableId);
+    }
+
+    @Override
+    public void notifyCustomer(String msg) {
+        model.notifyCustomer(msg);
+    }
+
+
 }

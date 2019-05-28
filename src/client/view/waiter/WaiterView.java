@@ -1,9 +1,7 @@
 package client.view.waiter;
 
-import basicClasses.Notification;
 import client.view.ViewHandler;
 import client.viewModel.waiter.WaiterViewModel;
-import javafx.beans.property.ListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,10 +22,18 @@ public class WaiterView {
     private String style = "-fx-background-color: rgb(112, 219, 112);";
     private String normal = "-fx-background-color: rgb(255, 230, 230);";
 
+    public void init(WaiterViewModel viewModel, ViewHandler viewHandler) {
+        this.viewModel = viewModel;
+        this.viewHandler = viewHandler;
+        notifications.itemsProperty().bindBidirectional(viewModel.getNotifications());
+        support.addPropertyChangeListener("Notification for waiter", this::newNotification);
+
+    }
+
     @FXML
     private Button tableOne, tableTwo, tableThree, tableFour, tableFive,
-    tableSix, tableSeven, tableEight, tableNine, tableTen, tableEleven,
-    tableTwelve, tableThirteen, tableFourteen, tableFifteen, tableSixteen;
+            tableSix, tableSeven, tableEight, tableNine, tableTen, tableEleven,
+            tableTwelve, tableThirteen, tableFourteen, tableFifteen, tableSixteen;
 
     @FXML
     private ListView notifications;
@@ -44,66 +50,68 @@ public class WaiterView {
         displayPanel.setItems(notifications.getItems());
     }
 
+    //NOT WORKING
     @FXML
     public void takeOver(){
-        notifications.getFocusModel().getFocusedItem().getClass().getName().toUpperCase().replace("Waiting" , "Taken");
+        notifications.getFocusModel().getFocusedItem().getClass().getName().toUpperCase();
+        //notifications.placeholderProperty().setValue("Taken");
     }
 
     public void newNotification(PropertyChangeEvent changeEvent){
-        Notification newOne = (Notification)changeEvent.getNewValue();
-        switch (newOne.getTableId()){
-            case ("1"): {
+        int newOne = (Integer)changeEvent.getNewValue();
+        switch (newOne){
+            case (0): {
                 tableOne.setStyle(style);
                 break;
             }
-            case ("2"): {
+            case (2): {
                 tableTwo.setStyle(style);
                 break;
             }
-            case ("3"): {
+            case (3): {
                 tableThree.setStyle(style);
                 break;
             }
-            case ("4"): {
+            case (4): {
                 tableFour.setStyle(style);
                 break;
-            }case ("5"): {
+            }case (5): {
                 tableFive.setStyle(style);
                 break;
-            }case ("6"): {
+            }case (6): {
                 tableSix.setStyle(style);
                 break;
-            }case ("7"): {
+            }case (7): {
                 tableSeven.setStyle(style);
                 break;
-            }case ("8"): {
+            }case (8): {
                 tableEight.setStyle(style);
                 break;
-            }case ("9"): {
+            }case (9): {
                 tableNine.setStyle(style);
                 break;
             }
-            case ("10"): {
+            case (10): {
                 tableTen.setStyle(style);
                 break;
             }
-            case ("11"): {
+            case (11): {
                 tableEleven.setStyle(style);
                 break;
-            }case ("12"): {
+            }case (12): {
                 tableTwelve.setStyle(style);
                 break;
-            }case ("13"): {
+            }case (13): {
                 tableThirteen.setStyle(style);
                 break;
-            }case ("14"): {
+            }case (14): {
                 tableFourteen.setStyle(style);
                 break;
-            }case ("15"): {
+            }case (15): {
                 tableFifteen.setStyle(style);
                 break;
             }
-            case ("16"): {
+            case (16): {
                 tableSixteen.setStyle(style);
                 break;
             }
@@ -112,13 +120,7 @@ public class WaiterView {
     }
 
 
-    public void init(WaiterViewModel viewModel) {
-        this.viewModel = viewModel;
-        //this.viewHandler = viewHandler;
-        notifications.itemsProperty().bindBidirectional(viewModel.getNotifications());
-        support.addPropertyChangeListener("Notification in veiw model", this::newNotification);
 
-    }
 
     public void one(ActionEvent actionEvent) {
         tableOne.setStyle(normal);

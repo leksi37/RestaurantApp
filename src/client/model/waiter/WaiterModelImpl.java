@@ -51,7 +51,6 @@ public class WaiterModelImpl implements WaiterModel {
 
     @Override
     public void passwordApproved() {
-        System.out.println("waiter model knows password is oke");
         support.firePropertyChange("passwordApproved", null, null);
     }
 }

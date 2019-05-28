@@ -12,6 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 
@@ -25,6 +26,9 @@ public class OrderItemList {
 
     @FXML
     ListView orderItems;
+
+    @FXML
+    Label priceLabel;
 
     @FXML
     TextArea note;
@@ -44,14 +48,15 @@ public class OrderItemList {
         oilvm.setOrderItems();
         orderItems.setItems(oilvm.getItems());
         note.textProperty().bindBidirectional(oilvm.noteProperty());
+        priceLabel.setText("" + oilvm.getPriceOfOrder());
+
     }
-
-
 
     @FXML
     public void removeSelected(){
         oilvm.remove(orderItems.getSelectionModel().getSelectedIndex(), (ItemQuantity) orderItems.getFocusModel().getFocusedItem());
-
+        priceLabel.setText("" + oilvm.getPriceOfOrder()); //change price when removed
+        System.out.println("Is price changing correctly???");
     }
 
     public void backToMenu() {
