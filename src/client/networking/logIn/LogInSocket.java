@@ -4,8 +4,10 @@ import basicClasses.ClientType;
 import client.model.chef.ChefModel;
 import client.model.customer.CustomerModel;
 import client.model.logIn.LogInModel;
+import client.model.waiter.WaiterModel;
 import client.networking.chef.ChefSocketClient;
 import client.networking.customer.CustomerSocketClient;
+import client.networking.waiter.WaiterSocketClient;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -58,9 +60,9 @@ public class LogInSocket {
     public void startChef(){
         ChefModel chefModel = model.getChefModel();
         System.out.println("got the chef model");
-        //ChefSocketClient chefSocketChefClient = new ChefSocketClient(chefModel, socket);
+        ChefSocketClient chefSocketChefClient = new ChefSocketClient(chefModel, socket);
 
-        //chefModel.addClient(chefSocketChefClient);
+        chefModel.addClient(chefSocketChefClient);
 
     }
 
@@ -70,14 +72,16 @@ public class LogInSocket {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("Trying to connect first");
-        startCustomer();
+        System.out.println("Trying to connect waiter");
+        startWaiter();
     }
 
     public void startWaiter(){
-        CustomerModel customerModel= model.getCustomerModel();
-        CustomerSocketClient customerSocketClient= new CustomerSocketClient(customerModel, socket);
-        customerModel.addClient(customerSocketClient);
+        WaiterModel waiterModel = model.getWaiterModel();
+        System.out.println("Water model, socket: " + waiterModel);
+        WaiterSocketClient waiterSocketClient= new WaiterSocketClient(waiterModel, socket);
+        waiterModel.addClient(waiterSocketClient);
+        System.out.println("Connected waiter client");
 
     }
 }

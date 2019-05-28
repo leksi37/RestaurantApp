@@ -1,15 +1,11 @@
 package client.view.chef;
 
 import basicClasses.ItemQuantity;
-import basicClasses.ItemState;
 import basicClasses.Order;
-import client.view.ViewHandler;
-import client.viewModel.Chef.ChefViewModel;
+import client.viewModel.chef.ChefViewModel;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;

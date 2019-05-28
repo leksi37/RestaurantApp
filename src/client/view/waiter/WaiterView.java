@@ -112,9 +112,9 @@ public class WaiterView {
     }
 
 
-    public void init(WaiterViewModel viewModel, ViewHandler viewHandler) {
+    public void init(WaiterViewModel viewModel) {
         this.viewModel = viewModel;
-        this.viewHandler = viewHandler;
+        //this.viewHandler = viewHandler;
         notifications.itemsProperty().bindBidirectional(viewModel.getNotifications());
         support.addPropertyChangeListener("Notification in veiw model", this::newNotification);
 

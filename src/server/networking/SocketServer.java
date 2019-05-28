@@ -59,7 +59,7 @@ public class SocketServer {
         else if(type.equals(ClientType.CHEF_CLIENT)){
             ChefServerSocketHandler serverSocketHandler= new ChefServerSocketHandler(model, socket);
             Thread thread = new Thread(serverSocketHandler);
-            System.out.println("Chef client connected");
+            System.out.println("chef client connected");
             thread.start();
         }
 //

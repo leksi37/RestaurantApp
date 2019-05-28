@@ -1,5 +1,7 @@
 package server.networking.ServerSocketHandlers;
 
+import JDBC.PasswordReader;
+import basicClasses.Passwords;
 import basicClasses.Request;
 import basicClasses.RequestType;
 import server.model.ServerModel;
@@ -19,9 +21,11 @@ public class WaiterServerSocketHandler implements ServerSocketHandler, Runnable 
     private ObjectOutputStream outToClient;
 
     private String connectionId;
+    private PasswordReader passwordReader;
 
     public WaiterServerSocketHandler(ServerModel model, Socket socket) {
         this.model = model;
+        passwordReader = PasswordReader.getInstance();
         try {
             inFromClient = new ObjectInputStream(socket.getInputStream());
             outToClient = new ObjectOutputStream(socket.getOutputStream());
@@ -51,23 +55,28 @@ public class WaiterServerSocketHandler implements ServerSocketHandler, Runnable 
         // for now we are never sending anything to the server from waiter
 
         while (true) {
-//            try{
-//                Request r = (Request) inFromClient.readObject();
-//
-//                if(r.getType() == RequestType.SEND_NOTIFICATION{
-//                }
-//            } catch (ClassNotFoundException | IOException e) {
-
-            // model.removeConnection(connectionId);
-
             try {
                 Request r = (Request) inFromClient.readObject();
+                System.out.println(r.getType());
+            switch (r.getType()){
+                case WAITER_PASSWORD_CHECK: {
+                    System.out.println("entered if statement");
+                    RequestType t;
+                    Passwords password = passwordReader.getPassword("waiter");
+                    System.out.println("waiter ssh, in db: " + password.getPassword() + "you typed: " + (String)r.getObj());
+                    if(password.getPassword().equals(r.getObj()))
+                        t = RequestType.WAITER_APPROVED;
+                    else
+                        t = RequestType.WAITER_DISAPPROVED;
 
+                    outToClient.writeObject(new Request(t, null));
+                    break;
+                }
+            }
             } catch (IOException | ClassNotFoundException e) {
                 model.removeConnection(connectionId);
 
             }
-
         }
     }
 

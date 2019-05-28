@@ -19,7 +19,7 @@ public class ChefSocketClient implements ChefClient {
         this.model=model;
         try{
             this.socket=socket;
-            System.out.println("Chef connected");
+            System.out.println("chef connected");
             chefClientSocketHandler = new ChefClientSocketHandler(this,
                     new ObjectOutputStream(socket.getOutputStream()),
                     new ObjectInputStream(socket.getInputStream()));

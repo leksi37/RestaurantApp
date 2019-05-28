@@ -1,5 +1,6 @@
 package client.model.waiter;
 
+import basicClasses.Notification;
 import client.networking.waiter.WaiterClient;
 
 import java.beans.PropertyChangeListener;
@@ -23,11 +24,34 @@ public class WaiterModelImpl implements WaiterModel {
 
     @Override
     public void addListeners(String name, PropertyChangeListener listener) {
-
+        if (name == null)
+            support.addPropertyChangeListener(listener);
+        else support.addPropertyChangeListener(name, listener);
     }
 
     @Override
-    public void notificationReceived(String notification) {
+    public void notificationReceived(Notification notification) {
          support.firePropertyChange("Notification received", null, notification);
+    }
+
+    @Override
+    public void presenceRequested(Notification notification) {
+        support.firePropertyChange("Presence notification received", null, notification);
+    }
+
+    @Override
+    public void checkLogIn(String value) {
+        waiterClient.checkPassword(value);
+    }
+
+    @Override
+    public void passwordDisapproved() {
+        support.firePropertyChange("passwordDisapproved", null, null);
+    }
+
+    @Override
+    public void passwordApproved() {
+        System.out.println("waiter model knows password is oke");
+        support.firePropertyChange("passwordApproved", null, null);
     }
 }

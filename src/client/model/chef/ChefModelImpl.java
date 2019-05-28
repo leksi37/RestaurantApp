@@ -55,12 +55,12 @@ public class ChefModelImpl implements ChefModel {
 
     @Override
     public void passwordDisapproved() {
-        changeSupport.firePropertyChange("chefPasswordDisapproved", null, null);
+        changeSupport.firePropertyChange("passwordDisapproved", null, null);
     }
 
     @Override
     public void passwordApproved() {
-        changeSupport.firePropertyChange("chefPasswordApproved", null, null);
+        changeSupport.firePropertyChange("passwordApproved", null, null);
     }
 
     @Override
