@@ -12,10 +12,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 
 import javax.swing.text.View;
+import java.awt.*;
 import java.awt.image.VolatileImage;
 
 
@@ -25,6 +27,9 @@ public class OrderItemList {
 
     @FXML
     ListView orderItems;
+
+    @FXML
+    Label priceLabel;
 
     @FXML
     TextArea note;
@@ -44,6 +49,7 @@ public class OrderItemList {
         oilvm.setOrderItems();
         orderItems.setItems(oilvm.getItems());
         note.textProperty().bindBidirectional(oilvm.noteProperty());
+        priceLabel.setText("" + oilvm.getPriceOfOrder());
     }
 
 
