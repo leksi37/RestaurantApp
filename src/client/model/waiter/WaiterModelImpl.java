@@ -38,8 +38,8 @@ public class WaiterModelImpl implements WaiterModel {
         System.out.println(notification.getNotificationText());
     }
 
-    @Override
-    public void presenceRequested(Notification notification) {
-        support.firePropertyChange("Presence notification received", notification.getNotificationText(), notification.getNotificationText());
-    }
+//    @Override
+//    public void presenceRequested(Notification notification) {
+//        support.firePropertyChange("Presence notification received", notification.getNotificationText(), notification.getNotificationText());
+//    }
 }

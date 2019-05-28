@@ -22,7 +22,7 @@ public class ServerModel {
 
     public ServerModel() {
         orders= new ArrayList<>();
-        customerCounter = 0;
+        customerCounter = 1;
         chefCounter = 0;
         waiterCounter = 0;
         connections = new ArrayList<ServerSocketHandler>();

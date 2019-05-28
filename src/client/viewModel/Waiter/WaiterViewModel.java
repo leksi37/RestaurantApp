@@ -34,10 +34,10 @@ public class WaiterViewModel implements ViewModels {
     }
 
     public void notificationReceived(PropertyChangeEvent event){
-        notifications.add(((Notification)event.getNewValue()).getNotificationText());
+        notifications.add("Presence requested at " + ((Notification)event.getNewValue()).getNotificationText());
         int tableNum = event.getOldValue().toString().charAt(event.getOldValue().toString().toCharArray().length-1);
 
-       // System.out.println( event.getOldValue().toString().charAt(event.getOldValue().toString().toCharArray().length-1));
+        System.out.println( event.getOldValue().toString().charAt(event.getOldValue().toString().toCharArray().length-1));
         support.firePropertyChange("Notification for waiter", null, tableNum);
     }
 

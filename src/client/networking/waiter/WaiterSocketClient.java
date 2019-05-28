@@ -40,6 +40,6 @@ public class WaiterSocketClient implements WaiterClient{
 
     @Override
     public void gotPresenceRequest(Notification notification) {
-        waiterModel.presenceRequested(notification);
+        waiterModel.notificationReceived(notification);
     }
 }
