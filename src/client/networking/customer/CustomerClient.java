@@ -19,4 +19,5 @@ public interface CustomerClient {
 
     void orderAdded();
 
+    void requestWaiter(String tableId);
 }

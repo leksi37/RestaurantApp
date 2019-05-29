@@ -44,11 +44,6 @@ public class ChefModelImpl implements ChefModel {
     }
 
     @Override
-    public void sendNotification(String notification) {
-        chefClient.sendNotification(notification);
-    }
-
-    @Override
     public void checkLogIn(String value) {
         chefClient.checkPassword(value);
     }
@@ -167,15 +162,6 @@ public class ChefModelImpl implements ChefModel {
 
     @Override
     public void partialSent(Order obj) {
-//        for(int i = 0; i < orders.size(); ++i)
-//        {
-//            if(orders.get(i).getTableId().equals(obj.getTableId())){
-//                for(int j = 0; j < obj.getNumberOfItems(); ++i)
-//                {
-//                    orders.get(i).getItemWithQuantity(obj.getItemWithQuantity(j).getId()).changeState(ItemState.toWaiter);
-//                }
-//            }
-//        }
         System.out.println(obj);
         addedToOrder(obj);
     }

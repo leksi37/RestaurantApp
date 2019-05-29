@@ -54,7 +54,7 @@ import java.util.ArrayList;
 
                     if(r.getType() == RequestType.GET_MENU_ITEMS){
                         try {
-                            outToClient.writeObject(new Request(RequestType.GET_MENU_ITEMS, model.getMenuItems(type.valueOf((String)r.getObj()))));
+                            outToClient.writeObject(new Request(RequestType.GET_MENU_ITEMS, model.getMenuItems(CategoryType.valueOf((String)r.getObj()))));
 
                         }catch (IOException e){
                             e.printStackTrace();

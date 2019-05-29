@@ -7,8 +7,6 @@ public enum RequestType implements Serializable {
     GET_MENU_ITEMS,
     GET_TABLE_ID,
     SEND_NOTIFICATION,
-    GET_CONNECTION_ID,
-    WAITER_PASSWORD_CHECK,
     CHEF_PASSWORD_CHECK,
     CHEF_APPROVED,
     CHEF_DISAPPROVED,
@@ -18,5 +16,9 @@ public enum RequestType implements Serializable {
     SEND_PARTIAL,
     ORDER_FINISHED,
     CHEF_REQUESTS_WAITER,
+    CUSTOMER_REQUESTS_WAITER,
+    WAITER_PASSWORD_CHECK,
+    WAITER_APPROVED,
+    WAITER_DISAPPROVED,
     FETCH_ORDERS;
 }

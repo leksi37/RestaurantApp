@@ -1,25 +1,27 @@
 package client.view;
 
+import basicClasses.CategoryType;
+import basicClasses.ClientType;
 import basicClasses.Views;
-import basicClasses.type;
-import client.model.chef.ChefModel;
-import client.model.customer.CustomerModel;
 import client.model.logIn.LogInModel;
-import client.view.OnOpen.OnOpen;
+import client.view.onOpen.OnOpen;
 import client.view.chef.Chef;
-import client.view.chef.LogInChef;
 import client.view.customer.categoryList.CategoryList;
 import client.view.customer.categoryListItems.CategoryListItems;
 import client.view.customer.menuFront.MenuFront;
 import client.view.customer.orderItemsList.OrderItemList;
-import client.viewModel.Chef.ChefLogInViewModel;
-import client.viewModel.Chef.ChefViewModel;
+import client.view.onOpen.logIn.LogIn;
+import client.view.waiter.WaiterView;
+import client.viewModel.chef.ChefLogInViewModel;
+import client.viewModel.chef.ChefViewModel;
 import client.viewModel.ViewModelProvider;
 import client.viewModel.customer.CategoryListItemsViewModel;
 import client.viewModel.customer.CategoryListViewModel;
 import client.viewModel.customer.MenuFrontViewModel;
 import client.viewModel.customer.OrderItemsListViewModel;
+import client.viewModel.logIn.LogInViewModel;
 import client.viewModel.logIn.OnOpenViewModel;
+import client.viewModel.waiter.WaiterViewModel;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -32,14 +34,15 @@ public class ViewHandler {
 
     private ViewModelProvider viewModelProvider;
     private Stage stage;
-    private type categoryToOpen;
+    private CategoryType categoryToOpen;
     private MenuFront menuFront;
     private CategoryList categoryList;
     private CategoryListItems categoryListItems;
     private OrderItemList orderItemList;
     private Chef chef;
     private OnOpen onOpen;
-    private LogInChef logInchef;
+    private WaiterView waiter;
+    private LogIn logIn;
 
     public ViewHandler(Stage stage, LogInModel model){
         this.stage=stage;
@@ -58,7 +61,7 @@ public class ViewHandler {
         {
             case ON_OPEN:
             {
-                loader.setLocation(getClass().getResource("OnOpen/onOpen.fxml"));
+                loader.setLocation(getClass().getResource("onOpen/onOpen.fxml"));
                 try{
                     root=loader.load();
                     System.out.println("root: "+root);
@@ -89,7 +92,7 @@ public class ViewHandler {
 
                 menuFront= loader.getController();
                 menuFront.init((MenuFrontViewModel) viewModelProvider.getViewModel(viewToOpen),this);
-                menuFront.setOrderStatus("Your order is now being prepared.");
+                menuFront.orderPrepared();
                 break;
             }
             case CATEGORIES:
@@ -134,12 +137,36 @@ public class ViewHandler {
             }
             case CHEF_LOG_IN:
             {
-                loader.setLocation(getClass().getResource("chef/logInChef.fxml"));
+                loader.setLocation(getClass().getResource("onOpen/logIn/logIn.fxml"));
                 try{ root=loader.load();}
                 catch(IOException e){e.printStackTrace();}
 
-                logInchef= loader.getController();
-                logInchef.init((ChefLogInViewModel) viewModelProvider.getViewModel(viewToOpen));
+                logIn= loader.getController();
+                LogInViewModel log= (LogInViewModel) viewModelProvider.getViewModel(viewToOpen);
+                log.setModel(ClientType.CHEF_CLIENT);
+                logIn.init(log);
+                break;
+            }
+            case WAITER_LOG_IN:
+            {
+                loader.setLocation(getClass().getResource("onOpen/logIn/logIn.fxml"));
+                try{ root=loader.load();}
+                catch(IOException e){e.printStackTrace();}
+
+                logIn= loader.getController();
+                LogInViewModel log= (LogInViewModel) viewModelProvider.getViewModel(viewToOpen);
+                log.setModel(ClientType.WAITER_CLIENT);
+                logIn.init(log);
+                break;
+            }
+            case WAITER:
+            {
+                loader.setLocation(getClass().getResource("waiter/waiter.fxml"));
+                try{ root=loader.load();}
+                catch(IOException e){e.printStackTrace();}
+
+                waiter = loader.getController();
+                waiter.init((WaiterViewModel) viewModelProvider.getViewModel(viewToOpen),this);
                 break;
             }
         }
@@ -153,7 +180,7 @@ public class ViewHandler {
     }
 
 
-    public void setCategory(type category)
+    public void setCategory(CategoryType category)
     {
         categoryToOpen = category;
         openView(Views.ITEMS);

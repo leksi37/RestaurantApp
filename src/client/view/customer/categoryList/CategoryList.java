@@ -1,6 +1,6 @@
 package client.view.customer.categoryList;
 
-import basicClasses.type;
+import basicClasses.CategoryType;
 import client.view.ViewHandler;
 import client.viewModel.customer.CategoryListViewModel;
 
@@ -10,42 +10,42 @@ public class CategoryList {
     private CategoryListViewModel categoryListViewModel;
 
     public void openAppetizers() {
-        categoryListViewModel.openCategory(type.appetizers);
-        viewHandler.setCategory(type.appetizers);
+        categoryListViewModel.openCategory(CategoryType.appetizers);
+        viewHandler.setCategory(CategoryType.appetizers);
     }
 
     public void openDrinks() {
-        categoryListViewModel.openCategory(type.nonAlcoholic);
+        categoryListViewModel.openCategory(CategoryType.nonAlcoholic);
     }
     public void openAlcohol() {
-        categoryListViewModel.openCategory(type.alcohol);
+        categoryListViewModel.openCategory(CategoryType.alcohol);
     }
     public void openSalads() {
-        categoryListViewModel.openCategory(type.salads);
+        categoryListViewModel.openCategory(CategoryType.salads);
     }
 
     public void openDesserts() {
-        categoryListViewModel.openCategory(type.dessert);
+        categoryListViewModel.openCategory(CategoryType.dessert);
     }
 
     public void openBreakfast() {
-        categoryListViewModel.openCategory(type.breakfast);
+        categoryListViewModel.openCategory(CategoryType.breakfast);
     }
 
     public void openPasta() {
-        categoryListViewModel.openCategory(type.pasta);
+        categoryListViewModel.openCategory(CategoryType.pasta);
     }
 
     public void openPizza() {
-        categoryListViewModel.openCategory(type.pizza);
+        categoryListViewModel.openCategory(CategoryType.pizza);
     }
 
     public void openSoup() {
-        categoryListViewModel.openCategory(type.soup);
+        categoryListViewModel.openCategory(CategoryType.soup);
     }
 
     public void openSideDish() {
-        categoryListViewModel.openCategory(type.sideDish);
+        categoryListViewModel.openCategory(CategoryType.sideDish);
     }
 
     public void init(CategoryListViewModel vm, ViewHandler viewHandler){

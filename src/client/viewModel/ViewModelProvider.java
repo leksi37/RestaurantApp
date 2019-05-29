@@ -4,16 +4,18 @@ import basicClasses.Views;
 import client.model.chef.ChefModel;
 import client.model.customer.CustomerModel;
 import client.model.logIn.LogInModel;
+import client.model.waiter.WaiterModel;
 import client.view.ViewHandler;
-import client.viewModel.Chef.ChefLogInViewModel;
-import client.viewModel.Chef.ChefViewModel;
+import client.view.waiter.WaiterView;
+import client.viewModel.chef.ChefLogInViewModel;
+import client.viewModel.chef.ChefViewModel;
 import client.viewModel.customer.CategoryListItemsViewModel;
 import client.viewModel.customer.CategoryListViewModel;
 import client.viewModel.customer.MenuFrontViewModel;
 import client.viewModel.customer.OrderItemsListViewModel;
+import client.viewModel.logIn.LogInViewModel;
 import client.viewModel.logIn.OnOpenViewModel;
-
-import javax.swing.text.View;
+import client.viewModel.waiter.WaiterViewModel;
 
 public class ViewModelProvider {
 
@@ -23,14 +25,18 @@ public class ViewModelProvider {
     private LogInModel mainModel;
     private CustomerModel customerModel;
     private ChefModel chefModel;
+    private WaiterModel waiterModel;
 
     //viewModels
     private OnOpenViewModel onOpenViewModel;
+    private LogInViewModel logInViewModel;
 
     private MenuFrontViewModel menuFrontViewModel;
     private CategoryListViewModel categoryListViewModel;
     private CategoryListItemsViewModel categoryListItemsViewModel;
     private OrderItemsListViewModel orderItemsListViewModel;
+
+    private WaiterViewModel waiterViewModel;
 
     private ChefLogInViewModel chefLogInViewModel;
     private ChefViewModel chefViewModel;
@@ -46,14 +52,17 @@ public class ViewModelProvider {
     {
         customerModel= mainModel.getCustomerModel();
         chefModel = mainModel.getChefModel();
-        System.out.println("customer model, provider: "+customerModel);
+        waiterModel = mainModel.getWaiterModel();
 
         onOpenViewModel= new OnOpenViewModel(mainModel, viewHandler);
+        logInViewModel = new LogInViewModel(viewHandler, mainModel);
 
         menuFrontViewModel= new MenuFrontViewModel(customerModel);
         categoryListItemsViewModel = new CategoryListItemsViewModel(viewHandler, customerModel);
         categoryListViewModel = new CategoryListViewModel(viewHandler, customerModel);
         orderItemsListViewModel = new OrderItemsListViewModel(customerModel);
+
+        waiterViewModel = new WaiterViewModel(waiterModel);
 
         chefLogInViewModel = new ChefLogInViewModel(viewHandler, chefModel);
         chefViewModel = new ChefViewModel(chefModel);
@@ -81,10 +90,16 @@ public class ViewModelProvider {
                 return orderItemsListViewModel;
             }
             case CHEF_LOG_IN:{
-                return chefLogInViewModel;
+                return logInViewModel;
             }
             case CHEF:{
                 return chefViewModel;
+            }
+            case WAITER_LOG_IN:{
+                return logInViewModel;
+            }
+            case WAITER: {
+                return waiterViewModel;
             }
             default:
                 return null;

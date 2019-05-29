@@ -32,5 +32,13 @@
             <Image url="@../../../../images/menu-transparent-title-1.png" />
          </image>
       </ImageView>
+      <Button fx:id="waiterButton" alignment="CENTER" layoutX="641.0" layoutY="400.0" mnemonicParsing="false" onAction="#requestWaiter" prefHeight="82.0" prefWidth="195.0" style="-fx-background-color: #ffe6e6;" text="Request waiter" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold Italic" size="22.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </Pane>

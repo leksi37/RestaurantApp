@@ -83,4 +83,13 @@ public class CustomerClientSocketHandler implements Runnable {
             e.printStackTrace();
         }
     }
+
+    public void requestWaiter(String tableId) {
+        try {
+            outToServer.writeObject(new Request(RequestType.SEND_NOTIFICATION,new Notification(tableId)));
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 }

@@ -1,6 +1,6 @@
 package JDBC;
 
-import basicClasses.type;
+import basicClasses.CategoryType;
 import basicClasses.MenuItem;
 
 import java.sql.ResultSet;
@@ -54,7 +54,7 @@ public class MenuItemsReader {
         return get(rs);
     }
 
-    public ArrayList<MenuItem> getCategory(type tp)
+    public ArrayList<MenuItem> getCategory(CategoryType tp)
     {
         ResultSet rs = db.get("Menu", "type = '" + tp + "'");
         MenuItem i;
@@ -74,7 +74,7 @@ public class MenuItemsReader {
     {
         ArrayList<MenuItem> items = new ArrayList<MenuItem>();
         ArrayList<MenuItem> categoryItems;
-        for(type type : type.values())
+        for(CategoryType type : CategoryType.values())
         {
             categoryItems = getCategory(type);
             for(int i = 0; i < categoryItems.size(); ++i)
@@ -108,13 +108,13 @@ public class MenuItemsReader {
     {
         MenuItem i = null;
         String _id, name, description;
-        type t;
+        CategoryType t;
         double price;
         try {
             _id = rs.getString("id");
             name = rs.getString("name");
             description = rs.getString("description");
-            t = type.valueOf(rs.getString("type"));
+            t = CategoryType.valueOf(rs.getString("type"));
             price = rs.getDouble("price");
             i = new MenuItem(_id, name, description, t, price);
         }
