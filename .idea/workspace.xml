@@ -2,127 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="EVERYTHING WORKS">
-      <change afterPath="$PROJECT_DIR$/src/BasicClasses/CategoryType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BasicClasses/Notification.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/model/customer/MenuProxy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/model/logIn/modelFactory/ClientModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/model/logIn/modelFactory/ClientModelFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/networking/waiter/WaiterSocketClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/view/onOpen/logIn/LogIn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/view/waiter/waiter.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/viewModel/logIn/LogInViewModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/viewModel/waiter/WaiterViewModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tests/MenuItemTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/BasicClasses/ItemQuantity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/BasicClasses/ItemQuantity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/BasicClasses/MenuItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/BasicClasses/MenuItem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/BasicClasses/MenuItemTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/BasicClasses/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/BasicClasses/Order.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/BasicClasses/RequestType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/BasicClasses/RequestType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/BasicClasses/Views.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/BasicClasses/Views.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/BasicClasses/type.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/JDBC/MenuItemsReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/JDBC/MenuItemsReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/JDBC/MenuItemsReaderTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/JDBC/OrderReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/JDBC/OrderReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/JDBC/OrderReaderTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/model/chef/ChefModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/model/chef/ChefModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/model/chef/ChefModelImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/model/chef/ChefModelImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/model/customer/CustomerModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/model/customer/CustomerModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/model/customer/CustomerModelImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/model/customer/CustomerModelImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/model/logIn/LogInModelImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/model/logIn/LogInModelImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/model/waiter/WaiterModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/model/waiter/WaiterModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/model/waiter/WaiterModelImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/model/waiter/WaiterModelImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/networking/chef/ChefClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/networking/chef/ChefClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/networking/customer/CustomerClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/networking/customer/CustomerClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/networking/customer/CustomerClientSocketHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/networking/customer/CustomerClientSocketHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/networking/customer/CustomerSocketClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/networking/customer/CustomerSocketClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/networking/logIn/LogInSocket.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/networking/logIn/LogInSocket.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/networking/waiter/WaiterClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/networking/waiter/WaiterClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/networking/waiter/WaiterClientSocketHandler$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/networking/waiter/WaiterClientSocketHandler$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/networking/waiter/WaiterClientSocketHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/networking/waiter/WaiterClientSocketHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/startApplications/chef/StartChef.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/startApplications/chef/StartChef.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/OnOpen/OnOpen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/OnOpen/OnOpen.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/OnOpen/onOpen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/OnOpen/onOpen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/ViewHandler$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/ViewHandler$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/ViewHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/ViewHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/chef/Chef$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/chef/Chef$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/chef/Chef.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/chef/Chef.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/customer/categoryList/CategoryList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/customer/categoryList/CategoryList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/customer/categoryListItems/CategoryListItems.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/customer/categoryListItems/CategoryListItems.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/customer/menuFront/MenuFront.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/customer/menuFront/MenuFront.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/customer/menuFront/MenuFront.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/customer/menuFront/MenuFront.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/waiter/WaiterView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/view/waiter/WaiterView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/viewModel/Chef/ChefLogInViewModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/viewModel/Chef/ChefLogInViewModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/viewModel/Chef/ChefViewModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/viewModel/Chef/ChefViewModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/viewModel/MenuProxy.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/viewModel/ViewModelProvider$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/viewModel/ViewModelProvider$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/viewModel/ViewModelProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/viewModel/ViewModelProvider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/viewModel/Waiter/FrontViewModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/viewModel/customer/CategoryListViewModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/viewModel/customer/CategoryListViewModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/viewModel/customer/MenuFrontViewModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/viewModel/customer/MenuFrontViewModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/viewModel/logIn/OnOpenViewModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/viewModel/logIn/OnOpenViewModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/server/model/ServerModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/server/model/ServerModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/server/networking/ServerSocketHandlers/CustomerServerSocketHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/server/networking/ServerSocketHandlers/CustomerServerSocketHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/server/networking/SocketServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/server/networking/SocketServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BasicClasses/ItemQuantity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BasicClasses/ItemQuantity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BasicClasses/MenuItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BasicClasses/MenuItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BasicClasses/MenuItemTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BasicClasses/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BasicClasses/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BasicClasses/RequestType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BasicClasses/RequestType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BasicClasses/Views.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BasicClasses/Views.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BasicClasses/type.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JDBC/MenuItemsReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JDBC/MenuItemsReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JDBC/MenuItemsReaderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/MenuItemsReaderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JDBC/OrderReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JDBC/OrderReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JDBC/OrderReaderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/OrderReaderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/basicClasses/clients.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BasicClasses/ClientType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/model/chef/ChefModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/model/chef/ChefModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/model/chef/ChefModelImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/model/chef/ChefModelImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/model/customer/CustomerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/model/customer/CustomerModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/model/customer/CustomerModelImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/model/customer/CustomerModelImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/model/logIn/LogInModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/model/logIn/LogInModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/model/logIn/LogInModelImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/model/logIn/LogInModelImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/model/waiter/WaiterModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/model/waiter/WaiterModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/model/waiter/WaiterModelImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/model/waiter/WaiterModelImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/networking/chef/ChefClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/networking/chef/ChefClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/networking/chef/ChefSocketChefClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/networking/chef/ChefSocketClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/networking/customer/CustomerClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/networking/customer/CustomerClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/networking/customer/CustomerClientSocketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/networking/customer/CustomerClientSocketHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/networking/customer/CustomerSocketClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/networking/customer/CustomerSocketClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/networking/logIn/LogInSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/networking/logIn/LogInSocket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/networking/waiter/WaiterClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/networking/waiter/WaiterClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/networking/waiter/WaiterClientSocketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/networking/waiter/WaiterClientSocketHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/startApplications/chef/StartChef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/startApplications/chef/StartChef.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/view/OnOpen/OnOpen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/view/onOpen/OnOpen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/view/OnOpen/onOpen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/view/onOpen/onOpen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/view/ViewHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/view/ViewHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/view/chef/Chef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/view/chef/Chef.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/view/chef/LogInChef.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/view/chef/logInChef.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/view/onOpen/logIn/logIn.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/view/customer/categoryList/CategoryList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/view/customer/categoryList/CategoryList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/view/customer/categoryListItems/CategoryListItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/view/customer/categoryListItems/CategoryListItems.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/view/customer/menuFront/MenuFront.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/view/customer/menuFront/MenuFront.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/view/customer/menuFront/MenuFront.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/view/customer/menuFront/MenuFront.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/view/waiter/WaiterView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/view/waiter/WaiterView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/view/waiter/button.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/view/waiter/frontView.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/viewModel/Chef/ChefLogInViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/viewModel/chef/ChefLogInViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/viewModel/Chef/ChefViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/viewModel/chef/ChefViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/viewModel/MenuProxy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/viewModel/ViewModelProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/viewModel/ViewModelProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/viewModel/Waiter/FrontViewModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/viewModel/customer/CategoryListViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/viewModel/customer/CategoryListViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/viewModel/customer/MenuFrontViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/viewModel/customer/MenuFrontViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/viewModel/logIn/OnOpenViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/viewModel/logIn/OnOpenViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/MVVM &amp; Network.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/MVVM &amp; Observer.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/ServerSocketHandlerClientIds.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/model/DBHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/model/DBHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/model/ServerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/model/ServerModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/networking/ServerSocketHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/networking/ServerSocketHandlers/CustomerServerSocketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/networking/ServerSocketHandlers/CustomerServerSocketHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/networking/ServerSocketHandlers/WaiterServerSocketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/networking/ServerSocketHandlers/WaiterServerSocketHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/networking/SocketServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/networking/SocketServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/model/modelFactory/ClientModelFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/model/modelFactory/ClientModelFactory.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -203,11 +84,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/viewModel/ViewModelProvider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="101" column="39" selection-start-line="101" selection-start-column="39" selection-end-line="101" selection-end-column="39" />
+            <state relative-caret-position="136">
+              <caret line="88" column="6" lean-forward="true" selection-start-line="88" selection-start-column="6" selection-end-line="88" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/client/model/modelFactory/ClientModelFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="62">
+              <caret line="27" column="15" selection-start-line="27" selection-start-column="15" selection-end-line="27" selection-end-column="15" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -217,20 +110,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
               <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/view/customer/categoryList/CategoryList.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="47" column="55" selection-start-line="47" selection-start-column="55" selection-end-line="47" selection-end-column="55" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#806#807#0" expanded="true" />
-                <element signature="e#878#879#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -327,7 +206,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/basicClasses/type.java" />
         <option value="$PROJECT_DIR$/src/basicClasses/MenuItem.java" />
         <option value="$PROJECT_DIR$/src/tests/MenuItemTest.java" />
         <option value="$PROJECT_DIR$/src/basicClasses/Notification.java" />
@@ -378,12 +256,13 @@
         <option value="$PROJECT_DIR$/src/JDBC/OrderReader.java" />
         <option value="$PROJECT_DIR$/src/client/networking/chef/ChefSocketClient.java" />
         <option value="$PROJECT_DIR$/src/client/viewModel/ViewModelProvider.java" />
+        <option value="$PROJECT_DIR$/src/client/model/modelFactory/ClientModelFactory.java" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="952" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-8" />
     <option name="width" value="977" />
     <option name="height" value="1038" />
   </component>
@@ -414,6 +293,12 @@
               <item name="RestaurantApp" type="b2602c69:ProjectViewProjectNode" />
               <item name="RestaurantApp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="basicClasses" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RestaurantApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RestaurantApp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -421,7 +306,15 @@
               <item name="RestaurantApp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="startApplications" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RestaurantApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RestaurantApp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="modelFactory" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -448,12 +341,12 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559123384261" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559135274330" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/SEP2Git/RestaurantApp" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -469,6 +362,7 @@
       <recent name="D:\Programming\Java\SEPP\RestaurantApp\src\client\view\waiter\frontView" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IdeaProjects\RestaurantApp\src\basicClasses" />
       <recent name="D:\IdeaProjects\RestaurantApp\src\client\view\waiter" />
       <recent name="D:\IdeaProjects\RestaurantApp\src\client\view\onOpen\logIn" />
       <recent name="D:\Programming\Java\SEPP\RestaurantApp\src\client\model" />
@@ -698,7 +592,7 @@
       <workItem from="1559027263275" duration="19448000" />
       <workItem from="1559053182181" duration="10957000" />
       <workItem from="1559114274341" duration="1138000" />
-      <workItem from="1559115796299" duration="7482000" />
+      <workItem from="1559115796299" duration="9239000" />
     </task>
     <task id="LOCAL-00001" summary="lalaaaa">
       <created>1556789701091</created>
@@ -763,7 +657,14 @@
       <option name="project" value="LOCAL" />
       <updated>1559064146979</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="EVERYTHING WORKS">
+      <created>1559123424682</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1559123424682</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -775,13 +676,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="191297000" />
+    <option name="totallyTimeSpent" value="193054000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.2557047" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.18590604" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -790,7 +691,7 @@
       <window_info id="UI Designer" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.28186968" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.23796034" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4815864" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3796034" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -839,13 +740,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/client/model/logIn/modelFactory/ClientModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/model/waiter/WaiterModelImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="263">
@@ -1239,8 +1133,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/client/viewModel/ViewModelProvider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="101" column="39" selection-start-line="101" selection-start-column="39" selection-end-line="101" selection-end-column="39" />
+        <state relative-caret-position="136">
+          <caret line="88" column="6" lean-forward="true" selection-start-line="88" selection-start-column="6" selection-end-line="88" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/model/modelFactory/ClientModelFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="62">
+          <caret line="27" column="15" selection-start-line="27" selection-start-column="15" selection-end-line="27" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
