@@ -120,7 +120,7 @@ public class ServerModel {
     }
 
     public void customerRequest(String obj) {
-        Notification n = new Notification("Customer at table " + obj.charAt(5) + " requests assistance.", obj);
+        Notification n = new Notification("Customer at table " + Character.getNumericValue(obj.charAt(5))+1 + " requests assistance.", obj);
         notifications.add(n);
         support.firePropertyChange("customerRequest", null, n);
     }
