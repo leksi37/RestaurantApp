@@ -187,6 +187,7 @@ public class ChefModelImpl implements ChefModel {
             if(orders.get(lastSelected).getItemWithQuantity(i).getState() == ItemState.forWaiter)
                 sendToWaiter.get(lastSelected).addItem(orders.get(lastSelected).getItemWithQuantity(i));
         }
-        sendPartial(lastSelected);
+        if(!orders.get(lastSelected).isReadyToBeClosed())
+            sendPartial(lastSelected);
     }
 }

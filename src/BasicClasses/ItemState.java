@@ -6,6 +6,7 @@ public enum ItemState implements Serializable {
     delivered,
     done,
     inProgress,
+    forWaiter,
     toWaiter,
     notStarted
 }
