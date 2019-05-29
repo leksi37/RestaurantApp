@@ -38,7 +38,6 @@ public class SocketServer {
 
 
         } catch (IOException ex) {
-            ex.printStackTrace();
         }
 
     }
@@ -53,16 +52,21 @@ public class SocketServer {
         else if(type.equals(ClientType.WAITER_CLIENT)){
             WaiterServerSocketHandler serverSocketHandler= new WaiterServerSocketHandler(model, socket);
             Thread thread=new Thread(serverSocketHandler);
-            System.out.println("Waiter client connected");
+            System.out.println("waiter client connected");
             thread.start();
         }
-        else if(type.equals(ClientType.CHEF_CLIENT)){
+        else if(type == ClientType.CHEF_CLIENT){
             ChefServerSocketHandler serverSocketHandler= new ChefServerSocketHandler(model, socket);
             Thread thread = new Thread(serverSocketHandler);
-            System.out.println("Chef client connected");
+            System.out.println("chef client connected");
             thread.start();
         }
-//
+//                    else if(typeOfClient.equals(clients.MANAGER_CLIENT)){
+//                        ManagerServerSocketHandler serverSocketHandler= new ManagerServerSocketHandler(model, socket);
+//                        Thread thread=new Thread(serverSocketHandler);
+//                        System.out.println("Manager client connected");
+//                        thread.start();
+//                    }
         else {
             System.out.println("None of the above client was connected! !ERROR!");
         }

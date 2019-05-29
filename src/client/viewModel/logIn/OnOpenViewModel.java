@@ -31,12 +31,12 @@ public class OnOpenViewModel implements ViewModels {
     }
 
     public void openWaiter(){
-        viewHandler.openView(Views.WAITER);
+        viewHandler.openView(Views.WAITER_LOG_IN); //for now
         model.connectWaiter();
     }
 
     public void openChef(){
-        viewHandler.openView(Views.CHEF_FRONT);
+        viewHandler.openView(Views.CHEF_LOG_IN);
         model.connectChef();
     }
 }

@@ -23,7 +23,7 @@ public class LogInSocket {
     public LogInSocket(LogInModel model) {
         try {
             this.model = model;
-            this.socket = new Socket("localHost", 2910);
+            this.socket = new Socket("localhost", 2910);
             outToServer= new ObjectOutputStream(socket.getOutputStream());
         }catch(IOException e){e.printStackTrace();}
     }
@@ -43,7 +43,7 @@ public class LogInSocket {
         System.out.println("customer model, socket: "+customerModel);
         CustomerSocketClient customerSocketClient= new CustomerSocketClient(customerModel, socket);
         customerModel.addClient(customerSocketClient);
-        System.out.println("Connected customer customer");
+        System.out.println("Connected customer client");
 
     }
 
@@ -60,9 +60,9 @@ public class LogInSocket {
     public void startChef(){
         ChefModel chefModel = model.getChefModel();
         System.out.println("got the chef model");
-        ChefSocketClient chefSocketClient = new ChefSocketClient(chefModel, socket);
+        ChefSocketClient chefSocketChefClient = new ChefSocketClient(chefModel, socket);
 
-        chefModel.addClient(chefSocketClient);
+        chefModel.addClient(chefSocketChefClient);
 
     }
 
@@ -72,7 +72,7 @@ public class LogInSocket {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("Trying to connect the waiter");
+        System.out.println("Trying to connect waiter");
         startWaiter();
     }
 

@@ -5,18 +5,17 @@ import client.model.chef.ChefModel;
 import client.model.customer.CustomerModel;
 import client.model.logIn.LogInModel;
 import client.model.waiter.WaiterModel;
-import client.networking.waiter.WaiterSocketClient;
 import client.view.ViewHandler;
-import client.viewModel.Chef.ChefLogInViewModel;
-import client.viewModel.Chef.ChefViewModel;
-import client.viewModel.Waiter.WaiterViewModel;
+import client.view.waiter.WaiterView;
+import client.viewModel.chef.ChefLogInViewModel;
+import client.viewModel.chef.ChefViewModel;
 import client.viewModel.customer.CategoryListItemsViewModel;
 import client.viewModel.customer.CategoryListViewModel;
 import client.viewModel.customer.MenuFrontViewModel;
 import client.viewModel.customer.OrderItemsListViewModel;
+import client.viewModel.logIn.LogInViewModel;
 import client.viewModel.logIn.OnOpenViewModel;
-
-import javax.swing.text.View;
+import client.viewModel.waiter.WaiterViewModel;
 
 public class ViewModelProvider {
 
@@ -25,11 +24,12 @@ public class ViewModelProvider {
     //models
     private LogInModel mainModel;
     private CustomerModel customerModel;
-    private WaiterModel waiterModel;
     private ChefModel chefModel;
+    private WaiterModel waiterModel;
 
     //viewModels
     private OnOpenViewModel onOpenViewModel;
+    private LogInViewModel logInViewModel;
 
     private MenuFrontViewModel menuFrontViewModel;
     private CategoryListViewModel categoryListViewModel;
@@ -37,24 +37,25 @@ public class ViewModelProvider {
     private OrderItemsListViewModel orderItemsListViewModel;
 
     private WaiterViewModel waiterViewModel;
+
     private ChefLogInViewModel chefLogInViewModel;
     private ChefViewModel chefViewModel;
+
 
     public ViewModelProvider(ViewHandler viewHandler, LogInModel model){
         this.mainModel=model;
         this.viewHandler = viewHandler;
-        instantiateViewModels();
+        //instantiateViewModels();
     }
 
     public void instantiateViewModels()
     {
         customerModel= mainModel.getCustomerModel();
-        waiterModel = mainModel.getWaiterModel();
         chefModel = mainModel.getChefModel();
-
-        System.out.println("customer model, provider: "+customerModel);
+        waiterModel = mainModel.getWaiterModel();
 
         onOpenViewModel= new OnOpenViewModel(mainModel, viewHandler);
+        logInViewModel = new LogInViewModel(viewHandler, mainModel);
 
         menuFrontViewModel= new MenuFrontViewModel(customerModel);
         categoryListItemsViewModel = new CategoryListItemsViewModel(viewHandler, customerModel);
@@ -64,7 +65,7 @@ public class ViewModelProvider {
         waiterViewModel = new WaiterViewModel(waiterModel);
 
         chefLogInViewModel = new ChefLogInViewModel(viewHandler, chefModel);
-        chefViewModel= new ChefViewModel(chefModel);
+        chefViewModel = new ChefViewModel(chefModel);
     }
 
     public ViewModels getViewModel(Views viewToOpen) {
@@ -88,14 +89,17 @@ public class ViewModelProvider {
             case ORDER:{
                 return orderItemsListViewModel;
             }
-            case WAITER:{
-                return waiterViewModel;
+            case CHEF_LOG_IN:{
+                return logInViewModel;
             }
-            case CHEF_FRONT:{
+            case CHEF:{
                 return chefViewModel;
             }
-            case CHEF_LOG_IN:{
-                return chefLogInViewModel;
+            case WAITER_LOG_IN:{
+                return logInViewModel;
+            }
+            case WAITER: {
+                return waiterViewModel;
             }
             default:
                 return null;

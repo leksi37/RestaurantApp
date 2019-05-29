@@ -40,6 +40,37 @@ public class WaiterSocketClient implements WaiterClient{
 
     @Override
     public void gotPresenceRequest(Notification notification) {
-        waiterModel.notificationReceived(notification);
+        waiterModel.presenceRequested(notification);
+    }
+
+    @Override
+    public void checkPassword(String value) {
+        System.out.println("client inputs for waiter password: " + value);
+        waiterClientSocketHandler.checkPassword(value);
+    }
+
+    @Override
+    public void passwordApproved() {
+        waiterModel.passwordApproved();
+    }
+
+    @Override
+    public void passwordDisapproved() {
+        waiterModel.passwordDisapproved();
+    }
+
+    @Override
+    public void partialToDeliver(Notification obj) {
+        waiterModel.partialToDeliver(obj);
+    }
+
+    @Override
+    public void chefRequest(Notification obj) {
+        waiterModel.chefRequest(obj);
+    }
+
+    @Override
+    public void gotReceiptRequest(Notification obj) {
+        waiterModel.receiptRequest(obj);
     }
 }

@@ -5,14 +5,13 @@ import client.model.chef.ChefModel;
 import client.model.logIn.modelFactory.ClientModel;
 import client.model.logIn.modelFactory.ClientModelFactory;
 import client.model.waiter.WaiterModel;
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class ClientModelFactoryTest {
 
-   //because we are testing static method we don't need to initialize an object
+    //because we are testing static method we don't need to initialize an object
 
     @Test
     public void getClientModel(){

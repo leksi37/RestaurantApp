@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="850.0" style="-fx-background-color: #ffcccc;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.OnOpen.OnOpen">
+<AnchorPane prefHeight="500.0" prefWidth="850.0" style="-fx-background-color: #ffcccc;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.onOpen.OnOpen">
    <children>
       <Button alignment="TOP_CENTER" layoutX="477.0" layoutY="39.0" mnemonicParsing="false" onAction="#openCustomer" prefHeight="193.0" prefWidth="286.0" style="-fx-background-color: #ffe6e6;" text="Customer">
          <font>

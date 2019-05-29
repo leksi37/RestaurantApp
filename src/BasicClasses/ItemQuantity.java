@@ -8,15 +8,18 @@ public class ItemQuantity implements Serializable {
     private String id;
     private int quantity;
     private ItemState state;
+    private MenuItem item;
 
-    public ItemQuantity(String id, int quantity) {
-        this.id = id;
+    public ItemQuantity(MenuItem item, int quantity) {
+        this.item = item;
+        this.id = item.getId();
         this.quantity = quantity;
         state = ItemState.notStarted;
     }
 
-    public ItemQuantity(String id, int quantity, ItemState state) {
-        this.id = id;
+    public ItemQuantity(MenuItem item, int quantity, ItemState state) {
+        this.item = item;
+        this.id = item.getId();
         this.quantity = quantity;
         this.state = state;
     }
@@ -27,8 +30,7 @@ public class ItemQuantity implements Serializable {
 
     public MenuItem getItem()
     {
-        MenuItemsReader reader = MenuItemsReader.getInstance();
-        return reader.getById(id);
+        return item;
     }
 
     public void changeState(ItemState state)
@@ -44,11 +46,6 @@ public class ItemQuantity implements Serializable {
         this.quantity = quantity;
     }
 
-    public void increaseQuantity()
-    {
-        quantity++;
-    }
-
     public String orderDisplay()
     {
         return "id " + id + ", quantity " + quantity + ", state " + state.name();
@@ -57,8 +54,7 @@ public class ItemQuantity implements Serializable {
 
     public String toString()
     {
-        MenuItem item = getItem();
-        return item.getName() + ", " + quantity + " pieces, " + item.getPrice() + "kr";
+        return item.getName() + ", " + quantity + " pieces, " + item.getPrice() + "kr, state " + state;
     }
 
     public String dbFormat() {
@@ -71,5 +67,9 @@ public class ItemQuantity implements Serializable {
             return false;
         ItemQuantity q = (ItemQuantity) obj;
         return id.equals(q.id) && quantity == q.quantity && state == q.state;
+    }
+
+    public ItemState getState() {
+        return state;
     }
 }

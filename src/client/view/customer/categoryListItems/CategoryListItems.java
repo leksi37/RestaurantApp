@@ -1,28 +1,20 @@
 package client.view.customer.categoryListItems;
 
+import basicClasses.CategoryType;
 import basicClasses.MenuItem;
-import basicClasses.Views;
-import basicClasses.type;
 import client.view.ViewHandler;
-import client.viewModel.ViewModelProvider;
 import client.viewModel.customer.CategoryListItemsViewModel;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import javax.swing.text.View;
-import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
 import java.util.ArrayList;
 
@@ -36,7 +28,7 @@ public class CategoryListItems {
     private ScrollPane scrollPane;
 
 
-    public void init(CategoryListItemsViewModel vm, type category, ViewHandler viewHandler) {
+    public void init(CategoryListItemsViewModel vm, CategoryType category, ViewHandler viewHandler) {
         this.viewHandler = viewHandler;
         categoryListItemsViewModel = vm;
         categoryListItemsViewModel.addListener("gotItems", this::setItems);

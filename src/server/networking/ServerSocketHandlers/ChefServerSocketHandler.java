@@ -4,9 +4,9 @@ import JDBC.MenuItemsReader;
 import JDBC.OrderReader;
 import JDBC.PasswordReader;
 import basicClasses.*;
+import com.sun.org.apache.xpath.internal.operations.Or;
 import javafx.scene.control.PasswordField;
 import server.model.ServerModel;
-import server.networking.ServerSocketHandler;
 
 import java.beans.PropertyChangeEvent;
 import java.io.IOException;
@@ -24,23 +24,70 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
     private ObjectOutputStream outToClient;
 
     private String connectionId;
-    private MenuItemsReader reader;
-    private OrderReader orderReader;
-    private PasswordReader passwordReader;
+//    private PasswordReader passwordReader;
 
     public ChefServerSocketHandler(ServerModel model, Socket socket){
-        reader = MenuItemsReader.getInstance();
-        orderReader = OrderReader.getInstance();
-        passwordReader = PasswordReader.getInstance();
+//        passwordReader = PasswordReader.getInstance();
         this.model=model;
         try{
             inFromClient=new ObjectInputStream(socket.getInputStream());
             outToClient= new ObjectOutputStream(socket.getOutputStream());
         } catch (IOException e) {
-            model.removeConnection(connectionId);
         }
-        System.out.println("chef socket handler created");
         model.addListener("AddedOrder", this::addOrder);
+        model.addListener("AddedToOrder", this::addToOrder);
+        model.addListener("ChangedState", this::changedState);
+        model.addListener("orderRemoved", this::orderRemoved);
+        model.addListener("passwordCheck", this::passwordCheck);
+        model.addListener("partialForWaiterSent", this::partialForWaiterSent);
+    }
+
+    private void partialForWaiterSent(PropertyChangeEvent propertyChangeEvent) {
+        try{
+            outToClient.writeObject(new Request(RequestType.SEND_PARTIAL, (Order)propertyChangeEvent.getNewValue()));
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void passwordCheck(PropertyChangeEvent propertyChangeEvent) {
+        RequestType r;
+        if((boolean)propertyChangeEvent.getNewValue())
+            r = RequestType.CHEF_APPROVED;
+        else r = RequestType.CHEF_DISAPPROVED;
+        try{
+            outToClient.writeObject(new Request(r, null));
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void orderRemoved(PropertyChangeEvent propertyChangeEvent) {
+        try{
+            outToClient.writeObject(new Request(RequestType.ORDER_FINISHED, (String)propertyChangeEvent.getNewValue()));
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void changedState(PropertyChangeEvent propertyChangeEvent) {
+        try{
+            Order o = new Order((Order)propertyChangeEvent.getNewValue());
+            System.out.println("chef server socket handler " + o);
+            outToClient.writeObject(new Request(RequestType.ITEM_STATE_CHANGED, o));
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void addToOrder(PropertyChangeEvent propertyChangeEvent) {
+        try{
+            Order o = new Order((Order)propertyChangeEvent.getNewValue());
+            System.out.println("chef server socket handler " + o);
+            outToClient.writeObject(new Request(RequestType.ADDED_TO_ORDER, o));
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void setConnectionId(String id)
@@ -50,7 +97,7 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
 
     private void addOrder(PropertyChangeEvent propertyChangeEvent) {
         try{
-            outToClient.writeObject((Order)propertyChangeEvent.getNewValue());
+            outToClient.writeObject(new Request(RequestType.NEW_ORDER, (Order)propertyChangeEvent.getNewValue()));
         }catch (IOException e) {
             e.printStackTrace();
         }
@@ -62,46 +109,37 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
         while(true){
             try{
                 Request r = (Request) inFromClient.readObject();
-
-                if(r.getType() == RequestType.CHEF_PASSWORD_CHECK){
-                    RequestType t;
-                    Passwords password = passwordReader.getPassword("chef");
-                    System.out.println("chef ssh, in db: " + password + "you typed: " + (String)r.getObj());
-                    if(password.equals(r.getObj()))
-                        t = RequestType.CHEF_APPROVED;
-                    else
-                        t = RequestType.CHEF_DISAPPROVED;
-                    try {
-                        outToClient.writeObject(new Request(t, null));
-                    }catch (IOException e){
-                        e.printStackTrace();
+                switch (r.getType()){
+                    case CHEF_PASSWORD_CHECK: {
+                        model.checkPassword(new Passwords("chef", (String)r.getObj()));
+                        break;
                     }
-                }
-                else if(r.getType() == RequestType.GET_CONNECTION_ID)
-                {
-                    String s = model.newId(this);
-                    setConnectionId(s);
-                    try {
-                        outToClient.writeObject(new Request(RequestType.GET_CONNECTION_ID, s));
-                    }catch (IOException e){
-                        e.printStackTrace();
+                    case FETCH_ORDERS : {
+                        outToClient.writeObject(new Request(RequestType.FETCH_ORDERS, model.getOrders()));
+                        break;
                     }
-                }
-                else if(r.getType() == RequestType.ADD_ORDER)
-                {
-//                    orderReader.addOrder((Order) r.getObj());
-//
-//                    try {
-//                        outToClient.writeObject(new Request(RequestType.ADD_ORDER, null));
-//                    }catch (IOException e){
-//                        e.printStackTrace();
-//                    }
+                    case ITEM_STATE_CHANGED: {
+                        Order o = new Order((Order) r.getObj());
+                        System.out.println("chef ssh, run() " + o);
+                        model.itemStateChanged(o);
+                        break;
+                    }
+                    case SEND_PARTIAL: {
+                        model.sendPartial((Order) r.getObj());
+                        break;
+                    }
+                    case ORDER_FINISHED: {
+                        model.orderFinished((String) r.getObj());
+                        break;
+                    }
+                    case CHEF_REQUESTS_WAITER:{
+                        model.chefRequestsWaiter();
+                    }
                 }
             } catch (ClassNotFoundException e) {
 
             } catch (IOException e)
             {
-                model.removeConnection(connectionId);
             }
         }
 

@@ -33,12 +33,14 @@ public class OrderReader {
             ArrayList<String> orderItems = order.dbFormatItems();
             for(int i = 0; i < orderItems.size(); ++i)
             {
+                System.out.println(orderItems.get(i));
                 db.insert("OrderItem", orderItems.get(i));
             }
         }
         catch (SQLException e)
         {
-            addToOrder(order);
+            remove(order.getTableId());
+            addOrder(order);
         }
     }
 
@@ -48,11 +50,12 @@ public class OrderReader {
         String id;
         int quantity;
         ItemState state;
+        MenuItemsReader itemsReader = MenuItemsReader.getInstance();
         try {
             id = rs.getString("id");
             quantity = rs.getInt("quantity");
             state = ItemState.valueOf(rs.getString("state"));
-            iq = new ItemQuantity(id, quantity, state);
+            iq = new ItemQuantity(itemsReader.getById(id), quantity, state);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -85,6 +88,8 @@ public class OrderReader {
             {
                 o = new Order(rs.getString("tableId"));
                 o.setNote(rs.getString("note"));
+                if(o.getNote().equals("null"))
+                    o.setNote("");
                 return o;
             }
         } catch (SQLException e) {
@@ -162,7 +167,7 @@ public class OrderReader {
     {
         Order o = readOrder(order.getTableId());
 
-        if(!order.getNote().equals("") && !order.getNote().equals(o.getNote()))
+        if(!(order.getNote() == null) && !order.getNote().equals("") && !order.getNote().equals(o.getNote()))
             o.setNote(order.getNote());
 
         int k = order.getNumberOfItems();

@@ -9,28 +9,29 @@ import java.util.HashMap;
 
 public class ClientModelFactory {
 
-    private static HashMap<String, ClientModel> models= new HashMap<>();
+    private static HashMap<ClientType, ClientModel> models= new HashMap<>();
 
     public static ClientModel getModel(ClientType clientName){
-        ClientModel model;
-        model=models.get(clientName.toString());
-
+        ClientModel model=null;
+        model=models.get(clientName);
         if(model==null)
         {
             if(clientName.equals(ClientType.CUSTOMER_CLIENT)){
                 model= new CustomerModelImpl();
-                models.put(String.valueOf(ClientType.CUSTOMER_CLIENT), model);
+                System.out.println("customer model created");
+                models.put(ClientType.CUSTOMER_CLIENT, model);
             }
             else if(clientName.equals(ClientType.CHEF_CLIENT)){
                 model = new ChefModelImpl();
-                models.put(String.valueOf(ClientType.CHEF_CLIENT), model);
+                models.put(ClientType.CHEF_CLIENT, model);
             }
             else if(clientName.equals(ClientType.WAITER_CLIENT)){
                 model = new WaiterModelImpl();
-                models.put(String.valueOf(ClientType.WAITER_CLIENT), model);
+                models.put(ClientType.WAITER_CLIENT, model);
             }
-                // ADD ONE FOR MANAGER     MANAGER_CLIENT
-            }
+
+            // ADD ONE FOR MANAGER
+        }
         return model;
     }
 }

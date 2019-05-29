@@ -1,23 +1,17 @@
-package client.viewModel.Waiter;
+package client.viewModel.waiter;
 
 import basicClasses.Notification;
+import basicClasses.Order;
 import client.model.waiter.WaiterModel;
 import client.viewModel.ViewModels;
-import javafx.beans.InvalidationListener;
+import javafx.application.Platform;
 import javafx.beans.property.ListProperty;
-import javafx.beans.property.ReadOnlyBooleanProperty;
-import javafx.beans.property.ReadOnlyIntegerProperty;
 import javafx.beans.property.SimpleListProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableListValue;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeSupport;
-import java.util.ArrayList;
+
 
 public class WaiterViewModel implements ViewModels {
     private ListProperty<String> notifications;
@@ -30,14 +24,37 @@ public class WaiterViewModel implements ViewModels {
         support = new PropertyChangeSupport(this);
         notifications = new SimpleListProperty<>();
         notifications.set(notificationList);
-        waiterModel.addListeners("Notification received", this :: notificationReceived);
+        waiterModel.addListeners("customerRequest", this :: notificationReceived);
+        waiterModel.addListeners("partial", this :: partial);
+        waiterModel.addListeners("chefRequest", this :: chefRequest);
+        waiterModel.addListeners("Receipt request", this::receiptRequest);
+    }
+
+    private void receiptRequest(PropertyChangeEvent changeEvent) {
+        Platform.runLater(() ->
+            notifications.add(((Notification)changeEvent.getNewValue()).getNotificationText())
+                );
+    }
+
+    private void chefRequest(PropertyChangeEvent propertyChangeEvent) {
+        Platform.runLater(() ->
+                notifications.add(((Notification)propertyChangeEvent.getNewValue()).getNotificationText())
+        );
+    }
+
+    private void partial(PropertyChangeEvent propertyChangeEvent) {
+        Notification n = (Notification)propertyChangeEvent.getNewValue();
+        int i = Character.getNumericValue(((Order)n.getObject()).getTableId().charAt(5));
+        Platform.runLater(() ->
+                notifications.add(n.getNotificationText())
+                );
+        support.firePropertyChange("Notification for waiter", null, i);
     }
 
     public void notificationReceived(PropertyChangeEvent event){
-        notifications.add("Presence requested at " + ((Notification)event.getNewValue()).getNotificationText());
-        int tableNum = event.getOldValue().toString().charAt(event.getOldValue().toString().toCharArray().length-1);
-
-        System.out.println( event.getOldValue().toString().charAt(event.getOldValue().toString().toCharArray().length-1));
+        Notification n = (Notification)event.getNewValue();
+        notifications.add(n.getNotificationText());
+        int tableNum = Character.getNumericValue(((String)n.getObject()).charAt(5));
         support.firePropertyChange("Notification for waiter", null, tableNum);
     }
 

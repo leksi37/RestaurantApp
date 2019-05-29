@@ -15,11 +15,11 @@ public interface CustomerClient {
 
      void getTableId();
 
-    void returnTableId(String id);
+    void returnTableId(String obj);
 
     void orderAdded();
 
     void requestWaiter(String tableId);
 
-    void notifyCustomer(String msg);
+    void requestReceipt(String tableId);
 }

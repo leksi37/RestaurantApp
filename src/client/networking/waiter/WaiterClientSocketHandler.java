@@ -1,7 +1,9 @@
 package client.networking.waiter;
 
 import basicClasses.Notification;
+import basicClasses.Order;
 import basicClasses.Request;
+import basicClasses.RequestType;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -28,9 +30,29 @@ public class WaiterClientSocketHandler implements Runnable {
                         waiterClient.gotNotification((Notification) r.getObj());
                         break;
                     }
-                    case PRESENCE_REQUIRED: {
-                        waiterClient.gotNotification((Notification) r.getObj());
+                    case RECEIPT:
+                    {
+                        waiterClient.gotReceiptRequest((Notification) r.getObj());
                         break;
+                    }
+                    case CUSTOMER_REQUESTS_WAITER: {
+                        waiterClient.gotPresenceRequest((Notification) r.getObj());
+                        break;
+                    }
+                    case WAITER_APPROVED: {
+                        waiterClient.passwordApproved();
+                        break;
+                    }
+                    case WAITER_DISAPPROVED: {
+                        waiterClient.passwordDisapproved();
+                        break;
+                    }
+                    case CHEF_REQUESTS_WAITER:{
+                        waiterClient.chefRequest((Notification)r.getObj());
+                        break;
+                    }
+                    case PARTIAL_FOR_WAITER:{
+                        waiterClient.partialToDeliver((Notification)r.getObj());
                     }
                 }
             } catch (IOException | ClassNotFoundException e) {
@@ -40,5 +62,12 @@ public class WaiterClientSocketHandler implements Runnable {
 
     }
 
-
+    public void checkPassword(String value) {
+        try {
+            System.out.println("wsh: " + value);
+            outToServer.writeObject(new Request(RequestType.WAITER_PASSWORD_CHECK, value));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

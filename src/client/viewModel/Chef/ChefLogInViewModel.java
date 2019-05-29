@@ -1,9 +1,10 @@
-package client.viewModel.Chef;
+package client.viewModel.chef;
 
 import basicClasses.Views;
 import client.model.chef.ChefModel;
 import client.view.ViewHandler;
 import client.viewModel.ViewModels;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -41,7 +42,13 @@ public class ChefLogInViewModel implements ViewModels {
 
     public void wrongPassword(PropertyChangeEvent evt)
     {
-        errorText.setValue("Wrong password");
-        password.setValue("");
+        Platform.runLater(() ->{
+            errorText.setValue("Wrong password");
+            password.setValue("");
+                });
+    }
+
+    public StringProperty errorTextProperty() {
+        return errorText;
     }
 }

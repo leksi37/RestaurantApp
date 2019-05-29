@@ -49,24 +49,25 @@ public class OrderItemsListViewModel implements ViewModels {
     }
 
     public void sendOrder() {
-        model.addOrderToServer();
+        model.addOrderToServer(note.getValue());
+        items.clear();
     }
 
     public ObservableList<ItemQuantity> getItems() {
         return items;
     }
 
-    public void remove(Object focusedItem) {
-        model.removeItem((ItemQuantity) focusedItem);
+
+    public void remove(int index, ItemQuantity focusedItem) {
+        if(index != -1)
+            model.removeItem(focusedItem);
     }
 
     public String getPriceOfOrder() {
-        int price = 0;
-        for (int i = 0; i < model.getOrder().getNumberOfItems();i++){
-            for (int f = 0; f < model.getOrder().getItemsWithQuantity().get(i).getQuantity();f++){
-                price+=model.getOrder().getItems().get(i).getPrice();
-            }
-        }
-        return "Price: " + price + " dkk";
+        return model.getPrice();
+    }
+
+    public void remove(Object focusedItem) {
+            model.removeItem((ItemQuantity) focusedItem);
     }
 }

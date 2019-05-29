@@ -6,10 +6,9 @@ public enum Views {
     ITEMS,
     MENU_FRONT_LABEL,
     ORDER,
-    CHEF_FRONT,
-    CHEF_LOG_IN,
-    ON_OPEN,
-    WAITER ,
     CHEF,
-    MENU_FRONT_LABEL_WAITER ;
+    CHEF_LOG_IN,
+    WAITER_LOG_IN,
+    WAITER,
+    ON_OPEN;
 }

@@ -1,10 +1,7 @@
 package client.view.waiter;
 
-import basicClasses.Notification;
 import client.view.ViewHandler;
-import client.viewModel.ViewModels;
-import client.viewModel.Waiter.WaiterViewModel;
-import javafx.beans.property.ListProperty;
+import client.viewModel.waiter.WaiterViewModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,7 +16,6 @@ import java.beans.PropertyChangeSupport;
 
 public class WaiterView {
     private WaiterViewModel viewModel;
-    private ObservableList<String> news = FXCollections.observableArrayList();
     private ViewHandler viewHandler;
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
     private String style = "-fx-background-color: rgb(112, 219, 112);";
@@ -35,8 +31,8 @@ public class WaiterView {
 
     @FXML
     private Button tableOne, tableTwo, tableThree, tableFour, tableFive,
-    tableSix, tableSeven, tableEight, tableNine, tableTen, tableEleven,
-    tableTwelve, tableThirteen, tableFourteen, tableFifteen, tableSixteen;
+            tableSix, tableSeven, tableEight, tableNine, tableTen, tableEleven,
+            tableTwelve, tableThirteen, tableFourteen, tableFifteen, tableSixteen;
 
     @FXML
     private ListView notifications;

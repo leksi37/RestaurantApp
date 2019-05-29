@@ -1,5 +1,6 @@
 package client.startApplications;
 
+import basicClasses.ClientType;
 import basicClasses.Views;
 import client.model.logIn.LogInModel;
 import client.model.logIn.LogInModelImpl;
@@ -8,12 +9,14 @@ import client.view.ViewHandler;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+import java.net.Socket;
+
 public class StartLogIn extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         LogInModel model= new LogInModelImpl();
         System.out.println("Start");
-
+        String.valueOf(ClientType.CUSTOMER_CLIENT);
         LogInSocket socket = new LogInSocket(model);
         model.addSocket(socket);
         ViewHandler viewHandler= new ViewHandler(primaryStage, model);

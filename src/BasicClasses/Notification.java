@@ -4,38 +4,28 @@ import java.io.Serializable;
 
 public class Notification implements Serializable {
     private String notificationText;
-    private Order order;
+    private Object obj;
+    private boolean taken;
 
-    public Notification(String notificationText, Order order){
+    public Notification(String notificationText, Object obj){
         this.notificationText = notificationText;
-        this.order = order;
-    }
-
-    public Notification(String notificationText){
-        this.notificationText = notificationText;
+        this.obj = obj;
+        taken = false;
     }
 
     public String getNotificationText(){
         return notificationText;
     }
 
-    public Order getOrder(){
-        return order;
+    public Object getObject(){
+        return obj;
     }
 
-    public String getTableId(){
-        return order.getTableId();
+    public boolean isTaken() {
+        return taken;
     }
 
-    public int getNumberOfItemsInOrder(){
-        return order.getNumberOfItems();
-    }
-
-    public int getPrice(){
-        int price = 0;
-        for (int i = 0; i < order.getNumberOfItems(); i++){
-            price+= order.getItems().get(i).getPrice();
-        }
-        return price;
+    public void setTaken(boolean taken) {
+        this.taken = taken;
     }
 }

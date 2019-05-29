@@ -5,13 +5,10 @@ import basicClasses.ItemQuantity;
 import basicClasses.MenuItem;
 import basicClasses.Order;
 import client.model.logIn.modelFactory.ClientModel;
-
-import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 
 public interface CustomerModel extends ClientModel {
-
-    void addOrderToServer();
+    void addOrderToServer(String note);
 
     void requestMenuCategory(String type);
 
@@ -31,5 +28,7 @@ public interface CustomerModel extends ClientModel {
 
     void requestWaiter();
 
-    void notifyCustomer(String msg);
+    String getPrice();
+
+    void requestReceipt();
 }
