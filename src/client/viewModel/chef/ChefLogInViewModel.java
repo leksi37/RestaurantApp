@@ -1,4 +1,4 @@
-package client.viewModel.Chef;
+package client.viewModel.chef;
 
 import basicClasses.Views;
 import client.model.chef.ChefModel;

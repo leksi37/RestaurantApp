@@ -11,12 +11,12 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 
-public class ChefSocketChefClient implements ChefClient {
+public class ChefSocketClient implements ChefClient {
     private ChefModel model;
     private ChefClientSocketHandler chefClientSocketHandler;
     private Socket socket;
 
-    public ChefSocketChefClient(ChefModel model, Socket socket){
+    public ChefSocketClient(ChefModel model, Socket socket){
         this.model=model;
         try{
             this.socket=socket;
@@ -44,11 +44,6 @@ public class ChefSocketChefClient implements ChefClient {
         Thread t= new Thread(chefClientSocketHandler);
         t.setDaemon(true);
         t.start();
-    }
-
-    @Override
-    public void sendNotification(String notification) {
-        chefClientSocketHandler.sendNotificationToWaiter(notification);
     }
 
     @Override

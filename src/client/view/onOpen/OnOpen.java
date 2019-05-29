@@ -1,11 +1,7 @@
-package client.view.OnOpen;
+package client.view.onOpen;
 
-import basicClasses.Views;
-import client.view.ViewHandler;
 import client.viewModel.logIn.OnOpenViewModel;
 import javafx.event.ActionEvent;
-
-import javax.swing.text.View;
 
 public class OnOpen {
 

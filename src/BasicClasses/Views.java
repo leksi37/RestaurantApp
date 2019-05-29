@@ -8,5 +8,7 @@ public enum Views {
     ORDER,
     CHEF,
     CHEF_LOG_IN,
+    WAITER_LOG_IN,
+    WAITER,
     ON_OPEN;
 }

@@ -1,14 +1,10 @@
 package client.viewModel.customer;
 
-import basicClasses.MenuItem;
+import basicClasses.CategoryType;
 import basicClasses.Views;
-import basicClasses.type;
 import client.model.customer.CustomerModel;
 import client.view.ViewHandler;
 import client.viewModel.ViewModels;
-
-import javax.swing.text.View;
-import java.util.ArrayList;
 
 public class CategoryListViewModel implements ViewModels {
 
@@ -21,7 +17,7 @@ public class CategoryListViewModel implements ViewModels {
 
     }
 
-    public void openCategory(type category) {
+    public void openCategory(CategoryType category) {
         System.out.println("viewModel");
         viewHandler.setCategory(category);
         viewHandler.openView(Views.ITEMS);

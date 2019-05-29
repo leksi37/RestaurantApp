@@ -1,7 +1,8 @@
-package JDBC;
+package tests;
 
+import JDBC.MenuItemsReader;
+import basicClasses.CategoryType;
 import basicClasses.MenuItem;
-import basicClasses.type;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -44,11 +45,11 @@ public class MenuItemsReaderTest {
     @Test
     public void testAdd()
     {
-        MenuItem i1 = new MenuItem("d1", "lemonade", "water + lemon + sugar", type.nonAlcoholic, 10);
-        MenuItem i2 = new MenuItem("d2", "liquor", "nice alcohol", type.alcohol, 30);
-        MenuItem i3 = new MenuItem("f1", "pancakes", "yummy", type.dessert, 40);
-        MenuItem i4 = new MenuItem("f2", "chicken soup", "chicken water", type.soup, 20);
-        MenuItem i5 = new MenuItem("d3", "kiwi fresh", "kiwi, banana, milk", type.nonAlcoholic, 20);
+        MenuItem i1 = new MenuItem("d1", "lemonade", "water + lemon + sugar", CategoryType.nonAlcoholic, 10);
+        MenuItem i2 = new MenuItem("d2", "liquor", "nice alcohol", CategoryType.alcohol, 30);
+        MenuItem i3 = new MenuItem("f1", "pancakes", "yummy", CategoryType.dessert, 40);
+        MenuItem i4 = new MenuItem("f2", "chicken soup", "chicken water", CategoryType.soup, 20);
+        MenuItem i5 = new MenuItem("d3", "kiwi fresh", "kiwi, banana, milk", CategoryType.nonAlcoholic, 20);
         reader.add(i1);
         reader.add(i2);
         reader.add(i3);
@@ -79,7 +80,7 @@ public class MenuItemsReaderTest {
     @Test
     public void change()
     {
-        MenuItem i = new MenuItem("d12", "lala", "mama", type.soup, 12);
+        MenuItem i = new MenuItem("d12", "lala", "mama", CategoryType.soup, 12);
         reader.add(i);
         i.setName("LALAA");
         reader.change(i);

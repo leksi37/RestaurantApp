@@ -2,7 +2,7 @@ package basicClasses;
 
 import java.io.Serializable;
 
-public enum type implements Serializable {
+public enum CategoryType implements Serializable {
     appetizers,
     salads,
     pizza,

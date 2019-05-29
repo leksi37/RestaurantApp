@@ -50,11 +50,12 @@ public class OrderReader {
         String id;
         int quantity;
         ItemState state;
+        MenuItemsReader itemsReader = MenuItemsReader.getInstance();
         try {
             id = rs.getString("id");
             quantity = rs.getInt("quantity");
             state = ItemState.valueOf(rs.getString("state"));
-            iq = new ItemQuantity(id, quantity, state);
+            iq = new ItemQuantity(itemsReader.getById(id), quantity, state);
         } catch (SQLException e) {
             e.printStackTrace();
         }

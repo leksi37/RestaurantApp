@@ -3,11 +3,10 @@ package server.model;
 import JDBC.MenuItemsReader;
 import JDBC.OrderReader;
 import JDBC.PasswordReader;
+import basicClasses.CategoryType;
 import basicClasses.MenuItem;
 import basicClasses.Order;
 import basicClasses.Passwords;
-import basicClasses.type;
-import sun.security.util.Password;
 
 import java.util.ArrayList;
 
@@ -42,7 +41,7 @@ public class DBHandler {
         return orderReader.readAllOrders();
     }
 
-    public ArrayList<MenuItem> getCategory(type category)
+    public ArrayList<MenuItem> getCategory(CategoryType category)
     {
         return itemsReader.getCategory(category);
     }

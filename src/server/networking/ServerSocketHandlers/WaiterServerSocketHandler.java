@@ -1,100 +1,89 @@
-//package server.networking.ServerSocketHandlers;
-//
-//import BasicClasses.*;
-//import JDBC.MenuItemsReader;
-//import JDBC.OrderReader;
-//import server.model.ServerModel;
-//
-//import java.beans.PropertyChangeEvent;
-//import java.io.IOException;
-//import java.io.ObjectInputStream;
-//import java.io.ObjectOutputStream;
-//import java.net.Socket;
-//import java.util.ArrayList;
-//
-//public class WaiterServerSocketHandler implements ServerSocketHandler, Runnable {
-//    private ServerModel model;
-//    private Socket socket;
-//
-//    private ObjectInputStream inFromClient;
-//    private ObjectOutputStream outToClient;
-//
-//    private String connectionId;
-//    private MenuItemsReader reader;
-//    private OrderReader orderReader;
-//
-//    public WaiterServerSocketHandler(ServerModel model, Socket socket){
-//        reader = MenuItemsReader.getInstance();
-//        orderReader = OrderReader.getInstance();
-//        this.model=model;
-//        try{
-//            inFromClient=new ObjectInputStream(socket.getInputStream());
-//            outToClient= new ObjectOutputStream(socket.getOutputStream());
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        model.addListener("AddedOrder", this::addOrder);
-//    }
-//
-//
-//    private void setConnectionId(String id)
-//    {
-//        connectionId = id;
-//    }
-//
-//    private void addOrder(PropertyChangeEvent propertyChangeEvent) {
-//        try{
-//            outToClient.writeObject((Order)propertyChangeEvent.getNewValue());
-//        }catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    @Override
-//    public void run() {
-//
-//        while(true){
-//            try{
-//                Request r = (Request) inFromClient.readObject();
-//
-//                if(r.getType() == RequestType.GET_MENU_ITEMS){
-//                    ArrayList<MenuItem> menuItems = reader.getCategory(type.valueOf((String)r.getObj()));
-//                    try {
-//                        outToClient.writeObject(new Request(RequestType.GET_MENU_ITEMS, menuItems));
-//                    }catch (IOException e){
-//                        e.printStackTrace();
-//                    }
-//                }
-//                else if(r.getType() == RequestType.GET_TABLE_ID)
-//                {
-//                    String s = model.newId(this);
-//                    setConnectionId(s);
-//                    try {
-//                        outToClient.writeObject(new Request(RequestType.GET_TABLE_ID, s));
-//                    }catch (IOException e){
-//                        e.printStackTrace();
-//                    }
-//                }
-//                else if(r.getType() == RequestType.ADD_ORDER)
-//                {
-//                    orderReader.addOrder((Order) r.getObj());
-//
-//                    try {
-//                        outToClient.writeObject(new Request(RequestType.ADD_ORDER, null));
-//                        ////////  outToClient.writeObject(new Request(RequestType.GET_ORDER, r.getType()));
-//                    }catch (IOException e){
-//                        e.printStackTrace();
-//                    }
-//                }
-//            } catch (ClassNotFoundException e) {
-//
-//            } catch (IOException e)
-//            {
-//                model.removeConnection(connectionId);
-//            }
-//        }
-//
-//    }
-//}
-//}
+package server.networking.ServerSocketHandlers;
+
+import JDBC.PasswordReader;
+import basicClasses.Passwords;
+import basicClasses.Request;
+import basicClasses.RequestType;
+import server.model.ServerModel;
+
+import java.beans.PropertyChangeEvent;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+
+public class WaiterServerSocketHandler implements ServerSocketHandler, Runnable {
+    private ServerModel model;
+    private Socket socket;
+
+    private ObjectInputStream inFromClient;
+    private ObjectOutputStream outToClient;
+
+    private String connectionId;
+
+    public WaiterServerSocketHandler(ServerModel model, Socket socket) {
+        this.model = model;
+        try {
+            inFromClient = new ObjectInputStream(socket.getInputStream());
+            outToClient = new ObjectOutputStream(socket.getOutputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        model.addListener("passwordCheck", this::passwordCheck);
+
+        model.addListener("Notification added", this::sendNotification);
+    }
+
+    private void passwordCheck(PropertyChangeEvent propertyChangeEvent) {
+        RequestType r;
+        if((boolean)propertyChangeEvent.getNewValue())
+            r = RequestType.WAITER_APPROVED;
+        else r = RequestType.WAITER_DISAPPROVED;
+        try{
+            outToClient.writeObject(new Request(r, null));
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void sendNotification(PropertyChangeEvent changeEvent) {
+        try {
+            outToClient.writeObject(new Request(RequestType.SEND_NOTIFICATION, changeEvent.getNewValue()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setConnectionId(String id)
+    {
+        connectionId = id;
+    }
+
+    @Override
+    public void run() {
+
+        // for now we are never sending anything to the server from waiter
+
+        while (true) {
+            try {
+                Request r = (Request) inFromClient.readObject();
+                System.out.println(r.getType());
+                switch (r.getType()){
+                    case WAITER_PASSWORD_CHECK: {
+                        model.checkPassword(new Passwords("waiter", (String)r.getObj()));
+                        break;
+                    }
+                }
+            } catch (IOException | ClassNotFoundException e) {
+
+            }
+        }
+    }
+
+    @Override
+    public String getId() {
+        return connectionId;
+    }
+}
+
+

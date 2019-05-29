@@ -113,12 +113,20 @@ public class ServerModel {
             support.firePropertyChange("passwordCheck", null, false);
     }
 
-    public ArrayList<MenuItem> getMenuItems(type value) {
+    public ArrayList<MenuItem> getMenuItems(CategoryType value) {
         return dbHandler.getCategory(value);
     }
 
     public void chefRequestsWaiter() {
         System.out.println("WAITEEEEEEER");
         support.firePropertyChange("chefRequestsWaiter", null, null);
+    }
+
+    public void sendNotification(Notification notification){
+        support.firePropertyChange("Notification added", null, notification);
+    }
+
+    public void informWaiter(Notification tableId) {
+        sendNotification(tableId);
     }
 }

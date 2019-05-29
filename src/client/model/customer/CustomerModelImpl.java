@@ -1,10 +1,10 @@
 package client.model.customer;
 
+import basicClasses.CategoryType;
 import basicClasses.ItemQuantity;
 import basicClasses.MenuItem;
 import basicClasses.Order;
 import client.networking.customer.CustomerClient;
-import client.viewModel.MenuProxy;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -16,6 +16,7 @@ public class CustomerModelImpl implements CustomerModel {
     private CustomerClient customerClient;
     private Order order;
     private String tableId;
+    private CategoryType lastSelectedCategory;
 
     private PropertyChangeSupport support;
 
@@ -23,7 +24,6 @@ public class CustomerModelImpl implements CustomerModel {
         this.customerClient = null;
         support = new PropertyChangeSupport(this);
         proxy = new MenuProxy();
-
     }
 
     @Override
@@ -52,7 +52,7 @@ public class CustomerModelImpl implements CustomerModel {
     @Override
     public void requestMenuCategory(String type) {
         ArrayList menuCategory = proxy.getCategory(type);
-        System.out.println("menu proxy check" );
+        lastSelectedCategory = CategoryType.valueOf(type);
         if(menuCategory == null)
         {
             System.out.println("entered in if");
@@ -71,13 +71,17 @@ public class CustomerModelImpl implements CustomerModel {
 
     public void addItem(String itemId, int quantity)
     {
-        order.addItem(itemId, quantity);
-        System.out.println(order.dbFormat());
+        ArrayList<MenuItem> menuCategory = proxy.getCategory(lastSelectedCategory.name());
+        for(int i = 0; i < menuCategory.size(); ++i)
+        {
+            if(itemId.equals(menuCategory.get(i).getId()))
+                order.addItem(new ItemQuantity(menuCategory.get(i), quantity));
+
+        }
     }
 
     @Override
     public void gotTableId(String str) {
-        System.out.println("GOT TO THE TABLE NUMBER str = [" + str + "]");
         tableId = str;
         order = new Order(tableId);
     }
@@ -85,7 +89,6 @@ public class CustomerModelImpl implements CustomerModel {
     @Override
     public void removeItem(String id, int i) {
         order.removeItem(id, i);
-        System.out.println(order.dbFormat());
     }
 
     public Order getOrder()
@@ -102,9 +105,12 @@ public class CustomerModelImpl implements CustomerModel {
     @Override
     public void orderAdded() {
         order = new Order(tableId);
-        System.out.println("Customer model + order added " + order);
         support.firePropertyChange("orderAdded", null, null);
     }
 
+    @Override
+    public void requestWaiter() {
+        customerClient.requestWaiter(tableId);
+    }
 
 }

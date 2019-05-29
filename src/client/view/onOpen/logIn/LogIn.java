@@ -1,6 +1,6 @@
-package client.view.chef;
+package client.view.onOpen.logIn;
 
-import client.viewModel.Chef.ChefLogInViewModel;
+import client.viewModel.logIn.LogInViewModel;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -8,15 +8,15 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
-public class LogInChef {
+public class LogIn {
     @FXML
     private PasswordField passwordField;
     @FXML
     private Label oops;
 
-    private ChefLogInViewModel viewModel;
+    private LogInViewModel viewModel;
 
-    public void init(ChefLogInViewModel viewModel)
+    public void init(LogInViewModel viewModel)
     {
         this.viewModel = viewModel;
         passwordField.textProperty().bindBidirectional(viewModel.passwordProperty());

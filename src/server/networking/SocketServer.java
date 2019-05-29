@@ -1,10 +1,10 @@
 package server.networking;
 
-import basicClasses.clients;
-import basicClasses.type;
+import basicClasses.ClientType;
 import server.model.ServerModel;
 import server.networking.ServerSocketHandlers.ChefServerSocketHandler;
 import server.networking.ServerSocketHandlers.CustomerServerSocketHandler;
+import server.networking.ServerSocketHandlers.WaiterServerSocketHandler;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -26,9 +26,9 @@ public class SocketServer {
 
                 Socket socket = welcomeSocket.accept();
                 inFromClient = new ObjectInputStream(socket.getInputStream());
-                clients typeOfClient = null;
+                ClientType typeOfClient = null;
                 try {
-                    typeOfClient = (clients) inFromClient.readObject();
+                    typeOfClient = (ClientType) inFromClient.readObject();
                     System.out.println(typeOfClient);
                     connectClient(typeOfClient, socket);
                 } catch (ClassNotFoundException | IOException e) {
@@ -42,25 +42,25 @@ public class SocketServer {
 
     }
 
-    public void connectClient(clients type, Socket socket){
-        if (type.equals(clients.CUSTOMER_CLIENT)) {
+    public void connectClient(ClientType type, Socket socket){
+        if (type.equals(ClientType.CUSTOMER_CLIENT)) {
             CustomerServerSocketHandler serverSocketHandler = new CustomerServerSocketHandler(model, socket);
             Thread thread = new Thread(serverSocketHandler);
             System.out.println("Customer client connected");
             thread.start();
         }
-//                   else if(typeOfClient.equals(clients.WAITER_CLIENT)){
-//                        WaiterServerSocketHandler serverSocketHandler= new WaiterServerSocketHandler(model, socket);
-//                        Thread thread=new Thread(serverSocketHandler);
-//                        System.out.println("Waiter client connected");
-//                        thread.start();
-//                   }
-                   else if(type == clients.CHEF_CLIENT){
-                        ChefServerSocketHandler serverSocketHandler= new ChefServerSocketHandler(model, socket);
-                        Thread thread = new Thread(serverSocketHandler);
-                        System.out.println("Chef client connected");
-                        thread.start();
-                    }
+        else if(type.equals(ClientType.WAITER_CLIENT)){
+            WaiterServerSocketHandler serverSocketHandler= new WaiterServerSocketHandler(model, socket);
+            Thread thread=new Thread(serverSocketHandler);
+            System.out.println("waiter client connected");
+            thread.start();
+        }
+        else if(type == ClientType.CHEF_CLIENT){
+            ChefServerSocketHandler serverSocketHandler= new ChefServerSocketHandler(model, socket);
+            Thread thread = new Thread(serverSocketHandler);
+            System.out.println("chef client connected");
+            thread.start();
+        }
 //                    else if(typeOfClient.equals(clients.MANAGER_CLIENT)){
 //                        ManagerServerSocketHandler serverSocketHandler= new ManagerServerSocketHandler(model, socket);
 //                        Thread thread=new Thread(serverSocketHandler);
