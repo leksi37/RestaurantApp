@@ -3,14 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="EVERYTHING WORKS">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/BasicClasses/ItemQuantity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/BasicClasses/ItemQuantity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/BasicClasses/ItemState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/BasicClasses/ItemState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/JDBC/JDBC.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/JDBC/JDBC.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/JDBC/OrderReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/JDBC/OrderReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/server/networking/SocketServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/server/networking/SocketServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BasicClasses/ItemQuantity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BasicClasses/ItemQuantity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BasicClasses/ItemState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BasicClasses/ItemState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/model/chef/ChefModelImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/model/chef/ChefModelImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/client/model/chef/ChefModelImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/client/model/chef/ChefModelImpl.class" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -82,7 +75,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/model/chef/ChefModelImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="243">
@@ -91,6 +84,30 @@
                 <element signature="imports" expanded="true" />
                 <element signature="e#4673#4674#0" expanded="true" />
                 <element signature="e#4715#4716#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/server/StartServer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/server/networking/SocketServer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="141">
+              <caret line="30" selection-start-line="30" selection-end-line="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -108,19 +125,6 @@
                 <element signature="e#4958#4959#0" expanded="true" />
                 <element signature="e#5008#5009#0" expanded="true" />
                 <element signature="e#5049#5050#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/startApplications/StartLogInApp.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="43" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
-              <folding>
-                <element signature="e#147#148#0" expanded="true" />
-                <element signature="e#199#200#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -217,19 +221,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
               <caret line="41" column="9" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/server/model/ServerModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="40" column="27" lean-forward="true" selection-start-line="40" selection-start-column="27" selection-end-line="40" selection-end-column="27" />
-              <folding>
-                <element signature="e#3701#3702#0" expanded="true" />
-                <element signature="e#3752#3753#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -333,7 +324,7 @@
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-10" />
     <option name="y" value="-10" />
     <option name="width" value="1370" />
@@ -500,7 +491,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559115516265" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559115584789" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -747,7 +738,7 @@
       <workItem from="1558974448739" duration="3722000" />
       <workItem from="1559027263275" duration="19448000" />
       <workItem from="1559053182181" duration="10957000" />
-      <workItem from="1559114274341" duration="1138000" />
+      <workItem from="1559114274341" duration="1381000" />
     </task>
     <task id="LOCAL-00001" summary="lalaaaa">
       <created>1556789701091</created>
@@ -812,7 +803,14 @@
       <option name="project" value="LOCAL" />
       <updated>1559064146979</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="EVERYTHING WORKS">
+      <created>1559115545123</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1559115545124</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -824,11 +822,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="183815000" />
+    <option name="totallyTimeSpent" value="184058000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.23825504" />
       <window_info id="Structure" order="1" weight="0.25" />
@@ -1150,16 +1147,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/networking/SocketServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="39" column="34" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/basicClasses/RequestType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -1217,16 +1204,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1938">
           <caret line="121" column="68" selection-start-line="121" selection-start-column="68" selection-end-line="121" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/StartServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1370,6 +1347,26 @@
             <element signature="imports" expanded="true" />
             <element signature="e#4673#4674#0" expanded="true" />
             <element signature="e#4715#4716#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/StartServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/networking/SocketServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
