@@ -9,7 +9,6 @@ import java.util.ArrayList;
 public interface CustomerClient {
 
     void addOrderToServer(Order order);
-
     void requestMenuCategory(String type);
 
     void gotMenuItems(ArrayList<MenuItem> mi);
@@ -21,6 +20,4 @@ public interface CustomerClient {
     void orderAdded();
 
     void requestWaiter(String tableId);
-
-    void notifyCustomer(String msg);
 }

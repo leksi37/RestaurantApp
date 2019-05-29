@@ -1,23 +1,15 @@
 package client.view.customer.orderItemsList;
 
-import basicClasses.ItemQuantity;
-import basicClasses.MenuItem;
-import basicClasses.Order;
+
 import basicClasses.Views;
 import client.view.ViewHandler;
-import client.viewModel.ViewModelProvider;
 import client.viewModel.customer.OrderItemsListViewModel;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 
-import javax.swing.text.View;
-import java.awt.image.VolatileImage;
 
 
 public class OrderItemList {
@@ -49,14 +41,13 @@ public class OrderItemList {
         orderItems.setItems(oilvm.getItems());
         note.textProperty().bindBidirectional(oilvm.noteProperty());
         priceLabel.setText("" + oilvm.getPriceOfOrder());
-
     }
+
+
 
     @FXML
     public void removeSelected(){
-        oilvm.remove(orderItems.getSelectionModel().getSelectedIndex(), (ItemQuantity) orderItems.getFocusModel().getFocusedItem());
-        priceLabel.setText("" + oilvm.getPriceOfOrder()); //change price when removed
-        System.out.println("Is price changing correctly???");
+        oilvm.remove(orderItems.getFocusModel().getFocusedItem());
     }
 
     public void backToMenu() {

@@ -73,10 +73,5 @@ public class CustomerSocketClient implements CustomerClient {
         customerClientSocketHandler.requestWaiter(tableId);
     }
 
-    @Override
-    public void notifyCustomer(String msg) {
-        model.notifyCustomer(msg);
-    }
-
 
 }

@@ -24,8 +24,8 @@ public class MenuFront {
         menuFrontViewModel.openCategoryList(viewHandler);
     }
 
-    public void setOrderStatus(String status){
-        orderStatus.setText(status);
+    public void orderPrepared(){
+        orderStatus.setText("Your order is being prepared");
     }
 
     @FXML

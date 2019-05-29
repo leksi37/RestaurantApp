@@ -69,7 +69,7 @@ public class LogInViewModel implements ViewModels {
         Platform.runLater(() ->{
             errorText.setValue("Wrong password");
             password.setValue("");
-                });
+        });
     }
 
     public StringProperty errorTextProperty() {

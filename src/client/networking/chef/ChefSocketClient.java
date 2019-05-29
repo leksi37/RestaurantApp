@@ -2,6 +2,7 @@ package client.networking.chef;
 
 import basicClasses.Order;
 import client.model.chef.ChefModel;
+import client.networking.customer.CustomerClientSocketHandler;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -19,7 +20,6 @@ public class ChefSocketClient implements ChefClient {
         this.model=model;
         try{
             this.socket=socket;
-            System.out.println("chef connected");
             chefClientSocketHandler = new ChefClientSocketHandler(this,
                     new ObjectOutputStream(socket.getOutputStream()),
                     new ObjectInputStream(socket.getInputStream()));
@@ -47,18 +47,12 @@ public class ChefSocketClient implements ChefClient {
     }
 
     @Override
-    public void sendNotification(String notification) {
-        chefClientSocketHandler.sendNotificationToWaiter(notification);
-    }
-
-    @Override
     public void gotOrder(Order order) {
         model.orderAdded(order);
     }
 
     @Override
     public void checkPassword(String value) {
-        System.out.println("client" + value);
         chefClientSocketHandler.checkPassword(value);
     }
 
@@ -69,25 +63,21 @@ public class ChefSocketClient implements ChefClient {
 
     @Override
     public void passwordDisapproved() {
-        System.out.println("password disapproved");
         model.passwordDisapproved();
     }
 
     @Override
     public void fetchOrders() {
-        System.out.println("chef client");
         chefClientSocketHandler.fetchOrders();
     }
 
     @Override
     public void gotOrders(ArrayList<Order> obj) {
-        System.out.println("chef client " + obj.size());
         model.gotOrders(obj);
     }
 
     @Override
     public void addedToOrder(Order obj) {
-        System.out.println(obj);
         model.addedToOrder(obj);
     }
 
@@ -99,5 +89,30 @@ public class ChefSocketClient implements ChefClient {
     @Override
     public void orderChanged(Order obj) {
         model.addedToOrder(obj);
+    }
+
+    @Override
+    public void sendPartial(Order order) {
+        chefClientSocketHandler.sendPartial(order);
+    }
+
+    @Override
+    public void orderFinished(String tableId) {
+        chefClientSocketHandler.orderFinished(tableId);
+    }
+
+    @Override
+    public void removeOrder(String obj) {
+        model.removeOrder(obj);
+    }
+
+    @Override
+    public void requestWaiter() {
+        chefClientSocketHandler.requestWaiter();
+    }
+
+    @Override
+    public void partialSent(Order obj) {
+        model.partialSent(obj);
     }
 }

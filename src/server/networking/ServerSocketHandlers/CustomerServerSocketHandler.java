@@ -4,7 +4,6 @@ import JDBC.OrderReader;
 import basicClasses.*;
 import JDBC.MenuItemsReader;
 import server.model.ServerModel;
-import server.networking.ServerSocketHandler;
 
 import java.beans.PropertyChangeEvent;
 import java.io.IOException;
@@ -22,10 +21,10 @@ import java.util.ArrayList;
         private ObjectOutputStream outToClient;
 
         private String connectionId;
-        private MenuItemsReader reader;
+//        private MenuItemsReader reader;
 
         public CustomerServerSocketHandler(ServerModel model, Socket socket){
-            reader = MenuItemsReader.getInstance();
+//            reader = MenuItemsReader.getInstance();
             this.model=model;
             try{
                 inFromClient=new ObjectInputStream(socket.getInputStream());
@@ -36,11 +35,6 @@ import java.util.ArrayList;
 
             model.addListener("AddedOrder", this::addOrder);
             model.addListener("AddedToOrder", this::addOrder);
-        }
-
-        private void setConnectionId(String id)
-        {
-            connectionId = id;
         }
 
         private void addOrder(PropertyChangeEvent propertyChangeEvent) {
@@ -59,10 +53,8 @@ import java.util.ArrayList;
                         System.out.println("REQUEST: "+ r.getType().toString());
 
                     if(r.getType() == RequestType.GET_MENU_ITEMS){
-                        ArrayList<MenuItem> menuItems = reader.getCategory(type.valueOf((String)r.getObj()));
                         try {
-                            System.out.println("got here ");
-                            outToClient.writeObject(new Request(RequestType.GET_MENU_ITEMS, menuItems));
+                            outToClient.writeObject(new Request(RequestType.GET_MENU_ITEMS, model.getMenuItems(CategoryType.valueOf((String)r.getObj()))));
 
                         }catch (IOException e){
                             e.printStackTrace();
@@ -70,31 +62,15 @@ import java.util.ArrayList;
                     }
                     else if(r.getType() == RequestType.GET_TABLE_ID)
                     {
-                        System.out.println(" requesting table id");
-                        String s = model.newId(this);
-                        System.out.println("table id: "+s);
-                        setConnectionId(s);
+                        connectionId = model.newId();
                         try {
-                            outToClient.writeObject(new Request(RequestType.GET_TABLE_ID, s));
-                        }catch (IOException e){
-                            e.printStackTrace();
-                        }
-                    }
-                    else if(r.getType() == RequestType.SEND_NOTIFICATION)
-                    {
-                        System.out.println(" requesting waiter's presence");
-                        Notification not = (Notification)r.getObj();
-                        System.out.println("table id: "+ not.getNotificationText());
-                        model.informWaiter(not);
-                        try {
-                            outToClient.writeObject(new Request(RequestType.SEND_NOTIFICATION, "The waiter is on his way.."));
+                            outToClient.writeObject(new Request(RequestType.GET_TABLE_ID, connectionId));
                         }catch (IOException e){
                             e.printStackTrace();
                         }
                     }
                     else if(r.getType() == RequestType.ADD_ORDER)
                     {
-                        System.out.println("customer ssh " + (Order) r.getObj());
                         model.addOrder((Order) r.getObj());
                     }
 
@@ -102,7 +78,7 @@ import java.util.ArrayList;
 
                 } catch (IOException e)
                 {
-                    model.removeConnection(connectionId);
+                    model.removeConnection();
                 }
             }
 

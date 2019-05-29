@@ -5,11 +5,9 @@ import basicClasses.ItemQuantity;
 import basicClasses.MenuItem;
 import basicClasses.Order;
 import client.model.logIn.modelFactory.ClientModel;
-
 import java.util.ArrayList;
 
 public interface CustomerModel extends ClientModel {
-
     void addOrderToServer(String note);
 
     void requestMenuCategory(String type);
@@ -29,7 +27,4 @@ public interface CustomerModel extends ClientModel {
     void orderAdded();
 
     void requestWaiter();
-
-    void notifyCustomer(String msg);
-
 }

@@ -1,4 +1,6 @@
-package client.viewModel;
+package client.model.customer;
+
+import basicClasses.MenuItem;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,5 +16,4 @@ public class MenuProxy {
     public void addCategory(String category, ArrayList list){
         checked.put(category, list);
     }
-
 }

@@ -15,32 +15,18 @@ import java.beans.PropertyChangeSupport;
 
 
 public class MenuFrontViewModel implements ViewModels {
-    private StringProperty label;
     private CustomerModel model;
-    private PropertyChangeSupport support;
 
     public MenuFrontViewModel(CustomerModel model)
     {
-        label = new SimpleStringProperty();
         this.model = model;
-        support = new PropertyChangeSupport(this);
-        support.addPropertyChangeListener("Waiter requested", this::notifiedWaiter);
     }
-
-    private void notifiedWaiter(PropertyChangeEvent changeEvent) {
-        label.setValue(changeEvent.getNewValue().toString());
-    }
-
 
     public void openCategoryList(ViewHandler viewHandler) {
         Platform.runLater(() -> viewHandler.openView(Views.CATEGORIES));
     }
 
     public void requestWaiter() {
-        Platform.runLater(() -> model.requestWaiter());
-    }
-
-    public Property<String> getLabel() {
-        return label;
+        model.requestWaiter();
     }
 }

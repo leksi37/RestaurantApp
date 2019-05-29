@@ -5,7 +5,6 @@ import basicClasses.Order;
 import java.util.ArrayList;
 
 public interface ChefClient {
-    void sendNotification(String notification);
     void gotOrder(Order order);
 
     void checkPassword(String value);
@@ -23,4 +22,14 @@ public interface ChefClient {
     void itemStateChanged(Order order);
 
     void orderChanged(Order obj);
+
+    void sendPartial(Order order);
+
+    void orderFinished(String tableId);
+
+    void removeOrder(String obj);
+
+    void requestWaiter();
+
+    void partialSent(Order obj);
 }

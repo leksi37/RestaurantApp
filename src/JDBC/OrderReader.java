@@ -33,6 +33,7 @@ public class OrderReader {
             ArrayList<String> orderItems = order.dbFormatItems();
             for(int i = 0; i < orderItems.size(); ++i)
             {
+                System.out.println(orderItems.get(i));
                 db.insert("OrderItem", orderItems.get(i));
             }
         }
@@ -49,11 +50,12 @@ public class OrderReader {
         String id;
         int quantity;
         ItemState state;
+        MenuItemsReader itemsReader = MenuItemsReader.getInstance();
         try {
             id = rs.getString("id");
             quantity = rs.getInt("quantity");
             state = ItemState.valueOf(rs.getString("state"));
-            iq = new ItemQuantity(id, quantity, state);
+            iq = new ItemQuantity(itemsReader.getById(id), quantity, state);
         } catch (SQLException e) {
             e.printStackTrace();
         }

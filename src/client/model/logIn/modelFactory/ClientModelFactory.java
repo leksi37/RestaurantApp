@@ -13,7 +13,7 @@ public class ClientModelFactory {
 
     public static ClientModel getModel(ClientType clientName){
         ClientModel model=null;
-           model=models.get(clientName);
+        model=models.get(clientName);
         if(model==null)
         {
             if(clientName.equals(ClientType.CUSTOMER_CLIENT)){
@@ -30,8 +30,8 @@ public class ClientModelFactory {
                 models.put(ClientType.WAITER_CLIENT, model);
             }
 
-                // ADD ONE FOR MANAGER
-            }
+            // ADD ONE FOR MANAGER
+        }
         return model;
     }
 }

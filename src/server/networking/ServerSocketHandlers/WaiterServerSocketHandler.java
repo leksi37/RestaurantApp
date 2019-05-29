@@ -5,7 +5,6 @@ import basicClasses.Passwords;
 import basicClasses.Request;
 import basicClasses.RequestType;
 import server.model.ServerModel;
-import server.networking.ServerSocketHandler;
 
 import java.beans.PropertyChangeEvent;
 import java.io.IOException;
@@ -21,19 +20,30 @@ public class WaiterServerSocketHandler implements ServerSocketHandler, Runnable 
     private ObjectOutputStream outToClient;
 
     private String connectionId;
-    private PasswordReader passwordReader;
 
     public WaiterServerSocketHandler(ServerModel model, Socket socket) {
         this.model = model;
-        passwordReader = PasswordReader.getInstance();
         try {
             inFromClient = new ObjectInputStream(socket.getInputStream());
             outToClient = new ObjectOutputStream(socket.getOutputStream());
         } catch (IOException e) {
             e.printStackTrace();
         }
+        model.addListener("passwordCheck", this::passwordCheck);
 
         model.addListener("Notification added", this::sendNotification);
+    }
+
+    private void passwordCheck(PropertyChangeEvent propertyChangeEvent) {
+        RequestType r;
+        if((boolean)propertyChangeEvent.getNewValue())
+            r = RequestType.WAITER_APPROVED;
+        else r = RequestType.WAITER_DISAPPROVED;
+        try{
+            outToClient.writeObject(new Request(r, null));
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void sendNotification(PropertyChangeEvent changeEvent) {
@@ -58,23 +68,13 @@ public class WaiterServerSocketHandler implements ServerSocketHandler, Runnable 
             try {
                 Request r = (Request) inFromClient.readObject();
                 System.out.println(r.getType());
-            switch (r.getType()){
-                case WAITER_PASSWORD_CHECK: {
-                    System.out.println("entered if statement");
-                    RequestType t;
-                    Passwords password = passwordReader.getPassword("waiter");
-                    System.out.println("waiter ssh, in db: " + password.getPassword() + "you typed: " + (String)r.getObj());
-                    if(password.getPassword().equals(r.getObj()))
-                        t = RequestType.WAITER_APPROVED;
-                    else
-                        t = RequestType.WAITER_DISAPPROVED;
-
-                    outToClient.writeObject(new Request(t, null));
-                    break;
+                switch (r.getType()){
+                    case WAITER_PASSWORD_CHECK: {
+                        model.checkPassword(new Passwords("waiter", (String)r.getObj()));
+                        break;
+                    }
                 }
-            }
             } catch (IOException | ClassNotFoundException e) {
-                model.removeConnection(connectionId);
 
             }
         }

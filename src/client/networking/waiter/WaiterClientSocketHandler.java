@@ -29,7 +29,7 @@ public class WaiterClientSocketHandler implements Runnable {
                         waiterClient.gotNotification((Notification) r.getObj());
                         break;
                     }
-                    case PRESENCE_REQUIRED: {
+                    case CUSTOMER_REQUESTS_WAITER: {
                         waiterClient.gotPresenceRequest((Notification) r.getObj());
                         break;
                     }

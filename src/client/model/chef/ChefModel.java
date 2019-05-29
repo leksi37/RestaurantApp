@@ -3,11 +3,11 @@ package client.model.chef;
 import basicClasses.Order;
 import client.model.logIn.modelFactory.ClientModel;
 
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 
 public interface ChefModel extends ClientModel {
     void orderAdded(Order order);
-    void sendNotification(String notification);
 
     void checkLogIn(String value);
 
@@ -23,11 +23,17 @@ public interface ChefModel extends ClientModel {
 
     void addedToOrder(Order obj);
 
-//    void itemAddedToPartialOrder(String id, int selectedIndex);
-
     void sendPartial(int i);
 
     void nextState(String id, int selectedIndex);
 
-    void orderChanged(Order order);
+    void orderFinished(int lastSelected);
+
+    void removeOrder(String obj);
+
+    void requestWaiter();
+
+    void partialSent(Order obj);
+
+    void sendFinishedItems(int lastSelected);
 }

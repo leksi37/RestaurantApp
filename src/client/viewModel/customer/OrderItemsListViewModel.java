@@ -57,6 +57,7 @@ public class OrderItemsListViewModel implements ViewModels {
         return items;
     }
 
+
     public void remove(int index, ItemQuantity focusedItem) {
         if(index != -1)
             model.removeItem(focusedItem);
@@ -72,4 +73,7 @@ public class OrderItemsListViewModel implements ViewModels {
         return "Price: " + price + " dkk";
     }
 
+    public void remove(Object focusedItem) {
+            model.removeItem((ItemQuantity) focusedItem);
+    }
 }

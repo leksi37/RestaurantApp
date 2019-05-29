@@ -4,8 +4,9 @@ import java.io.Serializable;
 
 public enum ItemState implements Serializable {
     delivered,
-    inProgress,
     done,
+    inProgress,
+    forWaiter,
     toWaiter,
-    notStarted;
+    notStarted
 }

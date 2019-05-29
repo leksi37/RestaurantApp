@@ -1,8 +1,8 @@
 package client.view;
 
+import basicClasses.CategoryType;
 import basicClasses.ClientType;
 import basicClasses.Views;
-import basicClasses.type;
 import client.model.logIn.LogInModel;
 import client.view.onOpen.OnOpen;
 import client.view.chef.Chef;
@@ -12,6 +12,7 @@ import client.view.customer.menuFront.MenuFront;
 import client.view.customer.orderItemsList.OrderItemList;
 import client.view.onOpen.logIn.LogIn;
 import client.view.waiter.WaiterView;
+import client.viewModel.chef.ChefLogInViewModel;
 import client.viewModel.chef.ChefViewModel;
 import client.viewModel.ViewModelProvider;
 import client.viewModel.customer.CategoryListItemsViewModel;
@@ -33,14 +34,14 @@ public class ViewHandler {
 
     private ViewModelProvider viewModelProvider;
     private Stage stage;
-    private type categoryToOpen;
+    private CategoryType categoryToOpen;
     private MenuFront menuFront;
     private CategoryList categoryList;
     private CategoryListItems categoryListItems;
     private OrderItemList orderItemList;
     private Chef chef;
     private OnOpen onOpen;
-    private WaiterView waiterView;
+    private WaiterView waiter;
     private LogIn logIn;
 
     public ViewHandler(Stage stage, LogInModel model){
@@ -91,7 +92,7 @@ public class ViewHandler {
 
                 menuFront= loader.getController();
                 menuFront.init((MenuFrontViewModel) viewModelProvider.getViewModel(viewToOpen),this);
-                menuFront.setOrderStatus("Your order is now being prepared.");
+                menuFront.orderPrepared();
                 break;
             }
             case CATEGORIES:
@@ -164,8 +165,8 @@ public class ViewHandler {
                 try{ root=loader.load();}
                 catch(IOException e){e.printStackTrace();}
 
-                waiterView= loader.getController();
-                waiterView.init((WaiterViewModel) viewModelProvider.getViewModel(viewToOpen),this);
+                waiter = loader.getController();
+                waiter.init((WaiterViewModel) viewModelProvider.getViewModel(viewToOpen),this);
                 break;
             }
         }
@@ -179,7 +180,7 @@ public class ViewHandler {
     }
 
 
-    public void setCategory(type category)
+    public void setCategory(CategoryType category)
     {
         categoryToOpen = category;
         openView(Views.ITEMS);

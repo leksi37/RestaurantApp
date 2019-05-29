@@ -1,5 +1,6 @@
 package client.startApplications;
 
+import basicClasses.ClientType;
 import basicClasses.Views;
 import client.model.logIn.LogInModel;
 import client.model.logIn.LogInModelImpl;
@@ -15,6 +16,7 @@ public class StartLogIn extends Application {
     public void start(Stage primaryStage) throws Exception {
         LogInModel model= new LogInModelImpl();
         System.out.println("Start");
+        String.valueOf(ClientType.CUSTOMER_CLIENT);
         LogInSocket socket = new LogInSocket(model);
         model.addSocket(socket);
         ViewHandler viewHandler= new ViewHandler(primaryStage, model);

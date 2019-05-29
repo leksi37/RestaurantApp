@@ -31,7 +31,7 @@ public class WaiterModelImpl implements WaiterModel {
 
     @Override
     public void notificationReceived(Notification notification) {
-         support.firePropertyChange("Notification received", null, notification);
+        support.firePropertyChange("Notification received", null, notification);
     }
 
     @Override

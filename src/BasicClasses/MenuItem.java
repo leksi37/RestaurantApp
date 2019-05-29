@@ -6,10 +6,10 @@ public class MenuItem implements Serializable {
     private String id;
     private String name;
     private String description;
-    private type type;
+    private CategoryType type;
     private double price;
 
-    public MenuItem(String id, String name, String description, type type, double price) {
+    public MenuItem(String id, String name, String description, CategoryType type, double price) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -25,7 +25,7 @@ public class MenuItem implements Serializable {
         this.name = name;
     }
 
-    public void setType(type type) {
+    public void setType(CategoryType type) {
         this.type = type;
     }
 
@@ -41,7 +41,7 @@ public class MenuItem implements Serializable {
         return description;
     }
 
-    public type getType() {
+    public CategoryType getType() {
         return type;
     }
 

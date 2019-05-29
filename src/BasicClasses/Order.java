@@ -27,7 +27,10 @@ public class Order implements Serializable {
             if(order.items != null)
             {
                 for(int i = 0; i < order.items.size(); ++i)
-                    items.add(new ItemQuantity(order.items.get(i).getId(), order.items.get(i).getQuantity()));
+                {
+                    items.add(new ItemQuantity(order.items.get(i).getItem(), order.items.get(i).getQuantity()));
+                    items.get(i).changeState(order.items.get(i).getState());
+                }
             }
         }
     }
@@ -41,30 +44,30 @@ public class Order implements Serializable {
         return -1;
     }
 
-    private int isInOrder(ItemQuantity item)
-    {
-        for(int i = 0; i < items.size(); ++i) {
-            if (items.get(i).equals(item))
-                return i;
-        }
-        return -1;
-    }
+//    private int isInOrder(ItemQuantity item)
+//    {
+//        for(int i = 0; i < items.size(); ++i) {
+//            if (items.get(i).equals(item))
+//                return i;
+//        }
+//        return -1;
+//    }
 
-    public void addItem(String itemId, int quantity)
-    {
-        int k = isInOrder(itemId);
-        if(k == -1)
-            items.add(new ItemQuantity(itemId, quantity));
-        else items.get(k).setQuantity(items.get(k).getQuantity() + quantity);
-    }
+//    public void addItem(String itemId, int quantity)
+//    {
+//        int k = isInOrder(itemId);
+//        if(k == -1)
+//            items.add(new ItemQuantity(itemId, quantity));
+//        else items.get(k).setQuantity(items.get(k).getQuantity() + quantity);
+//    }
 
-    public void addItem(String itemId)
-    {
-        int k = isInOrder(itemId);
-        if(k == -1)
-            items.add(new ItemQuantity(itemId, 1));
-        else items.get(k).setQuantity(items.get(k).getQuantity() + 1);
-    }
+//    public void addItem(String itemId)
+//    {
+//        int k = isInOrder(itemId);
+//        if(k == -1)
+//            items.add(new ItemQuantity(itemId, 1));
+//        else items.get(k).setQuantity(items.get(k).getQuantity() + 1);
+//    }
 
     public void addItem(ItemQuantity itemQ)
     {
@@ -116,7 +119,7 @@ public class Order implements Serializable {
             {
                 s += "item: " + items.get(i).orderDisplay() + "\n";
             }
-            s += "item: " + items.get(items.size()-1) + ")";
+            s += "item: " + items.get(items.size()-1).orderDisplay() + ")";
         }
         return s;
     }
@@ -141,6 +144,7 @@ public class Order implements Serializable {
     public void deliverItem(ItemQuantity focusedItem) {
         focusedItem.changeState(ItemState.delivered);
     }
+
     public void removeItem(String id, int quantity)
     {
         for(int i = 0; i < items.size(); ++i)
@@ -182,5 +186,19 @@ public class Order implements Serializable {
             addItem(order.items.get(i));
         }
         System.out.println("Order class " + this);
+    }
+
+    public boolean isReadyToBeClosed()
+    {
+        for(int i = 0; i < items.size(); ++i)
+        {
+            if(items.get(i).getState() != ItemState.toWaiter)
+                return false;
+        }
+        return true;
+    }
+
+    public void clearItems() {
+        items = new ArrayList<ItemQuantity>();
     }
 }

@@ -1,5 +1,6 @@
-package JDBC;
+package tests;
 
+import JDBC.PasswordReader;
 import basicClasses.Passwords;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,18 +10,6 @@ import static org.junit.Assert.assertTrue;
 
 public class PasswordReaderTest {
     private PasswordReader reader = PasswordReader.getInstance();
-
-//    @Before
-//    public void setup()
-//    {
-////        reader.deleteAll();
-//        Passwords p1 = new Passwords("manager", "1234");
-//        Passwords p2 = new Passwords("waiter", "7844");
-//        Passwords p3 = new Passwords("chef", "5434");
-//        reader.add(p1);
-//        reader.add(p2);
-//        reader.add(p3);
-//    }
 
     @Test
     public void testAdd()

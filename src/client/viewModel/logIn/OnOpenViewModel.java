@@ -31,7 +31,7 @@ public class OnOpenViewModel implements ViewModels {
     }
 
     public void openWaiter(){
-        viewHandler.openView(Views.WAITER_LOG_IN);
+        viewHandler.openView(Views.WAITER_LOG_IN); //for now
         model.connectWaiter();
     }
 
