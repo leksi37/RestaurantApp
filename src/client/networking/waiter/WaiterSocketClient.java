@@ -58,4 +58,14 @@ public class WaiterSocketClient implements WaiterClient{
     public void passwordDisapproved() {
         waiterModel.passwordDisapproved();
     }
+
+    @Override
+    public void partialToDeliver(Notification obj) {
+        waiterModel.partialToDeliver(obj);
+    }
+
+    @Override
+    public void chefRequest(Notification obj) {
+        waiterModel.chefRequest(obj);
+    }
 }

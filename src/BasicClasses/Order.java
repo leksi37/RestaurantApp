@@ -201,4 +201,13 @@ public class Order implements Serializable {
     public void clearItems() {
         items = new ArrayList<ItemQuantity>();
     }
+
+    public double getPrice() {
+        int price = 0;
+        for(int i = 0; i < items.size(); ++i)
+        {
+            price += items.get(i).getQuantity()*items.get(i).getItem().getPrice();
+        }
+        return price;
+    }
 }

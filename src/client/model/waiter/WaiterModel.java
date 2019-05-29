@@ -1,6 +1,7 @@
 package client.model.waiter;
 
 import basicClasses.Notification;
+import basicClasses.Order;
 import client.model.logIn.modelFactory.ClientModel;
 
 public interface WaiterModel extends ClientModel {
@@ -14,4 +15,8 @@ public interface WaiterModel extends ClientModel {
     void passwordDisapproved();
 
     void passwordApproved();
+
+    void chefRequest(Notification obj);
+
+    void partialToDeliver(Notification obj);
 }

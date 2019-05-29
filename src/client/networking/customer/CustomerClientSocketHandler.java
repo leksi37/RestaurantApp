@@ -86,7 +86,7 @@ public class CustomerClientSocketHandler implements Runnable {
 
     public void requestWaiter(String tableId) {
         try {
-            outToServer.writeObject(new Request(RequestType.SEND_NOTIFICATION,new Notification(tableId)));
+            outToServer.writeObject(new Request(RequestType.CUSTOMER_REQUESTS_WAITER, tableId));
         }
         catch (IOException e){
             e.printStackTrace();

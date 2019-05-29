@@ -20,5 +20,6 @@ public enum RequestType implements Serializable {
     WAITER_PASSWORD_CHECK,
     WAITER_APPROVED,
     WAITER_DISAPPROVED,
+    PARTIAL_FOR_WAITER,
     FETCH_ORDERS;
 }

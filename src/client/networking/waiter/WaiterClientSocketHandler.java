@@ -1,6 +1,7 @@
 package client.networking.waiter;
 
 import basicClasses.Notification;
+import basicClasses.Order;
 import basicClasses.Request;
 import basicClasses.RequestType;
 
@@ -40,6 +41,13 @@ public class WaiterClientSocketHandler implements Runnable {
                     case WAITER_DISAPPROVED: {
                         waiterClient.passwordDisapproved();
                         break;
+                    }
+                    case CHEF_REQUESTS_WAITER:{
+                        waiterClient.chefRequest((Notification)r.getObj());
+                        break;
+                    }
+                    case PARTIAL_FOR_WAITER:{
+                        waiterClient.partialToDeliver((Notification)r.getObj());
                     }
                 }
             } catch (IOException | ClassNotFoundException e) {

@@ -30,8 +30,33 @@ public class WaiterServerSocketHandler implements ServerSocketHandler, Runnable 
             e.printStackTrace();
         }
         model.addListener("passwordCheck", this::passwordCheck);
+        model.addListener("chefRequestsWaiter", this::chefRequestsWaiter);
+        model.addListener("partialForWaiter", this::partialToDeliver);
+        model.addListener("customerRequest", this::customerRequest);
+    }
 
-        model.addListener("Notification added", this::sendNotification);
+    private void customerRequest(PropertyChangeEvent propertyChangeEvent) {
+        try {
+            outToClient.writeObject(new Request(RequestType.CUSTOMER_REQUESTS_WAITER, propertyChangeEvent.getNewValue()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void chefRequestsWaiter(PropertyChangeEvent propertyChangeEvent) {
+        try {
+            outToClient.writeObject(new Request(RequestType.CHEF_REQUESTS_WAITER, propertyChangeEvent.getNewValue()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void partialToDeliver(PropertyChangeEvent propertyChangeEvent) {
+        try {
+            outToClient.writeObject(new Request(RequestType.PARTIAL_FOR_WAITER, propertyChangeEvent.getNewValue()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void passwordCheck(PropertyChangeEvent propertyChangeEvent) {

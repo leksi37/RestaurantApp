@@ -25,7 +25,11 @@ public class MenuFront {
     }
 
     public void orderPrepared(){
-        orderStatus.setText("Your order is being prepared");
+        orderStatus.setText("Your order is on the way");
+    }
+
+    public void newOrder(){
+        orderStatus.setText("");
     }
 
     @FXML

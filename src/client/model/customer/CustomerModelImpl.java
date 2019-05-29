@@ -113,4 +113,9 @@ public class CustomerModelImpl implements CustomerModel {
         customerClient.requestWaiter(tableId);
     }
 
+    @Override
+    public String getPrice() {
+        return "Price: " + order.getPrice() + "kr";
+    }
+
 }

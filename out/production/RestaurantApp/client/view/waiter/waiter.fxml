@@ -10,9 +10,10 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.waiter.WaiterView">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.waiter.WaiterView">
    <children>
       <SplitPane dividerPositions="0.6919191919191919" prefHeight="500.0" prefWidth="850.0">
         <items>
@@ -105,9 +106,17 @@
                         <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                      </opaqueInsets>
                   </GridPane>
-                  <ListView fx:id="displayPanel" disable="true" layoutX="358.0" layoutY="14.0" prefHeight="473.0" prefWidth="218.0" />
-                  <Button fx:id="closeTable" layoutX="39.0" layoutY="337.0" mnemonicParsing="false" onAction="#closeOrder" prefHeight="94.0" prefWidth="106.0" style="-fx-background-color: #ffe6e6;" text="Close table" />
-                  <Button layoutX="210.0" layoutY="337.0" mnemonicParsing="false" onAction="#takeOver" prefHeight="94.0" prefWidth="106.0" style="-fx-background-color: #ffe6e6;" text="Take over" />
+                  <Button fx:id="closeTable" layoutX="39.0" layoutY="337.0" mnemonicParsing="false" onAction="#closeOrder" prefHeight="55.0" prefWidth="106.0" style="-fx-background-color: #ffe6e6;" text="Close table" />
+                  <Button layoutX="210.0" layoutY="337.0" mnemonicParsing="false" onAction="#takeOver" prefHeight="55.0" prefWidth="106.0" style="-fx-background-color: #ffe6e6;" text="Take task" />
+                  <VBox layoutX="365.0" layoutY="22.0" prefHeight="459.0" prefWidth="215.0" style="-fx-background-color: red;">
+                     <children>
+                        <ListView fx:id="displayPanel" disable="true" prefHeight="421.0" prefWidth="215.0">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </ListView>
+                     </children>
+                  </VBox>
                </children>
                <cursor>
                   <Cursor fx:constant="HAND" />

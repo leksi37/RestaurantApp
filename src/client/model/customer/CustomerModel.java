@@ -27,4 +27,6 @@ public interface CustomerModel extends ClientModel {
     void orderAdded();
 
     void requestWaiter();
+
+    String getPrice();
 }

@@ -73,6 +73,10 @@ import java.util.ArrayList;
                     {
                         model.addOrder((Order) r.getObj());
                     }
+                    else if(r.getType() == RequestType.CUSTOMER_REQUESTS_WAITER)
+                    {
+                        model.customerRequest((String) r.getObj());
+                    }
 
                 } catch (ClassNotFoundException e) {
 

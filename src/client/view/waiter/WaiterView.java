@@ -16,7 +16,6 @@ import java.beans.PropertyChangeSupport;
 
 public class WaiterView {
     private WaiterViewModel viewModel;
-    private ObservableList<String> news = FXCollections.observableArrayList();
     private ViewHandler viewHandler;
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
     private String style = "-fx-background-color: rgb(112, 219, 112);";

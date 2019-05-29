@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class ServerModel {
     private ArrayList<Order> orders;
+    private ArrayList<Notification> notifications;
     private PropertyChangeSupport support= new PropertyChangeSupport(this);
     private int customerCounter;
     private DBHandler dbHandler;
@@ -16,6 +17,7 @@ public class ServerModel {
         customerCounter = 0;
         dbHandler = new DBHandler();
         orders = dbHandler.getAllOrders();
+        notifications = new ArrayList<Notification>();
     }
 
     public void addListener(String name, PropertyChangeListener listener) {
@@ -74,15 +76,16 @@ public class ServerModel {
 
     public void sendPartial(Order obj) {
         Order o = dbHandler.getOrder(obj.getTableId());
+        orders.remove(o);
         for(int i = 0; i < obj.getNumberOfItems(); ++i)
         {
             o.getItemWithQuantity(obj.getItemWithQuantity(i).getId()).changeState(ItemState.toWaiter);
         }
-        orders.remove(o);
         orders.add(o);
         dbHandler.addOrder(o);
-        System.out.println("waiter receives " + obj);
-        support.firePropertyChange("partialForWaiterSent", obj, o);
+        Notification n = new Notification("Order to deliver for table " + o.getTableId().charAt(5), o);
+        notifications.add(n);
+        support.firePropertyChange("partialForWaiter", null, n);
     }
 
     public void orderFinished(String obj) {
@@ -111,15 +114,14 @@ public class ServerModel {
     }
 
     public void chefRequestsWaiter() {
-        System.out.println("WAITEEEEEEER");
-        support.firePropertyChange("chefRequestsWaiter", null, null);
+        Notification n = new Notification("Chefs need waiter's assistance", null);
+        notifications.add(n);
+        support.firePropertyChange("chefRequestsWaiter", null, n);
     }
 
-    public void sendNotification(Notification notification){
-        support.firePropertyChange("Notification added", null, notification);
-    }
-
-    public void informWaiter(Notification tableId) {
-        sendNotification(tableId);
+    public void customerRequest(String obj) {
+        Notification n = new Notification("Customer at table " + obj.charAt(5) + " requests assistance.", obj);
+        notifications.add(n);
+        support.firePropertyChange("customerRequest", null, n);
     }
 }

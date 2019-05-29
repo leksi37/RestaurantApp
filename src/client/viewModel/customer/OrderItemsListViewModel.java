@@ -64,13 +64,7 @@ public class OrderItemsListViewModel implements ViewModels {
     }
 
     public String getPriceOfOrder() {
-        int price = 0;
-        for (int i = 0; i < model.getOrder().getNumberOfItems();i++){
-            for (int f = 0; f < model.getOrder().getItemsWithQuantity().get(i).getQuantity();f++){
-                price+=model.getOrder().getItems().get(i).getPrice();
-            }
-        }
-        return "Price: " + price + " dkk";
+        return model.getPrice();
     }
 
     public void remove(Object focusedItem) {

@@ -9,4 +9,8 @@ public interface WaiterClient {
   void checkPassword(String value);
   void passwordApproved();
   void passwordDisapproved();
+
+    void partialToDeliver(Notification obj);
+
+  void chefRequest(Notification obj);
 }
