@@ -210,4 +210,21 @@ public class Order implements Serializable {
         }
         return price;
     }
+
+    public boolean equals(Object obj)
+    {
+        if(obj == null || !(obj instanceof Order)) return false;
+        Order o = (Order)obj;
+        if(!(note.equals(o.note) && tableId.equals(o.tableId) && items.size() == o.items.size()))
+        {
+            return false;
+        }
+        for(int i = 0; i < items.size(); ++i)
+        {
+            if(!items.get(i).equals(o.items.get(i)))
+                return false;
+        }
+        return true;
+    }
+
 }
