@@ -75,7 +75,6 @@ public class Chef {
     }
 
     private void viewItems() {
-        System.out.println("clearing");
         vBox.getChildren().clear();
         Order order = viewModel.getOrder(lastSelected);
         note.setText(order.getNote());

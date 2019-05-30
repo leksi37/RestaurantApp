@@ -61,7 +61,6 @@ public class ServerModel {
         System.out.println(obj.getTableId());
         for(int i = 0; i < orders.size(); ++i)
         {
-            System.out.println(orders.get(i).getTableId());
             if(orders.get(i).getTableId().equals(obj.getTableId()))
             {
                 orders.remove(i);
@@ -76,6 +75,7 @@ public class ServerModel {
     public void sendPartial(Order obj) {
         Order o = dbHandler.getOrder(obj.getTableId());
         int k = orders.indexOf(o);
+        System.out.println("The order we send: " + o + ", k = " + k);
         for(int i = 0; i < obj.getNumberOfItems(); ++i)
         {
             o.getItemWithQuantity(obj.getItemWithQuantity(i).getId()).changeState(ItemState.toWaiter);
