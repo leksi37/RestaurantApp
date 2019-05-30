@@ -2,8 +2,6 @@ package client.view.waiter;
 
 import client.view.ViewHandler;
 import client.viewModel.waiter.WaiterViewModel;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -25,8 +23,9 @@ public class WaiterView {
         this.viewModel = viewModel;
         this.viewHandler = viewHandler;
         notifications.itemsProperty().bindBidirectional(viewModel.getNotifications());
-        support.addPropertyChangeListener("Notification for waiter", this::newNotification);
-
+        displayPanel.setItems(viewModel.getDetails());
+        viewModel.addListeners("Notification for waiter", this::newNotification);
+        closeTable.setDisable(true);
     }
 
     @FXML
@@ -41,12 +40,15 @@ public class WaiterView {
     private Label updateLabel;
 
     @FXML
+    public Button closeTable;
+
+    @FXML
     private ListView displayPanel;
 
     @FXML
     public void notificationSelected(){
         displayPanel.setItems(null);
-        displayPanel.setItems(notifications.getItems());
+        displayPanel.setItems(viewModel.getDetails());
     }
 
     //NOT WORKING
@@ -118,19 +120,59 @@ public class WaiterView {
 
     }
 
-
-
-
     public void one(ActionEvent actionEvent) {
-        tableOne.setStyle(normal);
+        viewModel.refreshDetails("table1");
+        if(viewModel.readyToClose("table1")) closeTable.setDisable(false);
     }
     public void two(ActionEvent actionEvent) {
-        tableTwo.setStyle(normal);
+        viewModel.refreshDetails("table2");
+        if(viewModel.readyToClose("table1")) closeTable.setDisable(false);
     }
     public void three(ActionEvent actionEvent) {
-        tableThree.setStyle(normal);
+        viewModel.refreshDetails("table3");
     }
     public void four(ActionEvent actionEvent) {
+        viewModel.refreshDetails("table4");
+    }
+    public void five(ActionEvent actionEvent) {
+        viewModel.refreshDetails("table5");
+    }
+    public void six(ActionEvent actionEvent) {
+        viewModel.refreshDetails("table6");
+    }
+    public void seven(ActionEvent actionEvent) {
+        viewModel.refreshDetails("table7");
+    }
+    public void eight(ActionEvent actionEvent) {
+        viewModel.refreshDetails("table8");
+    }
+    public void nine(ActionEvent actionEvent) {
+        viewModel.refreshDetails("table9");
+    }
+    public void ten(ActionEvent actionEvent) {
+        viewModel.refreshDetails("table10");
+    }
+    public void eleven(ActionEvent actionEvent) {
+        viewModel.refreshDetails("table11");
+    }
+    public void twelve(ActionEvent actionEvent) {
+        viewModel.refreshDetails("table12");
+    }
+    public void thirteen(ActionEvent actionEvent) {
+        viewModel.refreshDetails("table13");
+    }
+    public void fourteen(ActionEvent actionEvent) {
+        viewModel.refreshDetails("table14");
+    }
+    public void fifteen(ActionEvent actionEvent) {
+        viewModel.refreshDetails("table15");
+    }
+    public void sixteen(ActionEvent actionEvent){
+        viewModel.refreshDetails("table16");
+    }
+
+
+   /* public void four(ActionEvent actionEvent) {
         tableFour.setStyle(normal);
     }
     public void five(ActionEvent actionEvent) {
@@ -168,7 +210,7 @@ public class WaiterView {
     }
     public void sixteen(ActionEvent actionEvent){
         tableSixteen.setStyle(normal);
-    }
+    }*/
 
     public void closeOrder(ActionEvent actionEvent) {
         //viewModel.requestClose();
