@@ -125,6 +125,7 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
                         break;
                     }
                     case SEND_PARTIAL: {
+                        System.out.println("chef ssh " + r.getObj() == null);
                         model.sendPartial((Order) r.getObj());
                         break;
                     }

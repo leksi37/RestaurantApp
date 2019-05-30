@@ -53,7 +53,9 @@ public class WaiterViewModel implements ViewModels {
 
     public void notificationReceived(PropertyChangeEvent event){
         Notification n = (Notification)event.getNewValue();
-        notifications.add(n.getNotificationText());
+        Platform.runLater(() ->
+                        notifications.add(n.getNotificationText())
+                );
         int tableNum = Character.getNumericValue(((String)n.getObject()).charAt(5));
         support.firePropertyChange("Notification for waiter", null, tableNum);
     }

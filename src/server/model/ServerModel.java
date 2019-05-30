@@ -46,8 +46,7 @@ public class ServerModel {
     }
 
     public String newId() {
-        customerCounter++;
-        return "table" + (customerCounter-1);
+        return "table" + (customerCounter++);
     }
 
     public void removeConnection() {
@@ -76,12 +75,12 @@ public class ServerModel {
 
     public void sendPartial(Order obj) {
         Order o = dbHandler.getOrder(obj.getTableId());
-        orders.remove(o);
+        int k = orders.indexOf(o);
         for(int i = 0; i < obj.getNumberOfItems(); ++i)
         {
             o.getItemWithQuantity(obj.getItemWithQuantity(i).getId()).changeState(ItemState.toWaiter);
         }
-        orders.add(o);
+        orders.set(k, o);
         dbHandler.addOrder(o);
         Notification n = new Notification("Order to deliver for table " + o.getTableId().charAt(5), o);
         notifications.add(n);
@@ -120,7 +119,7 @@ public class ServerModel {
     }
 
     public void customerRequest(String obj) {
-        Notification n = new Notification("Customer at table " + Character.getNumericValue(obj.charAt(5))+1 + " requests assistance.", obj);
+        Notification n = new Notification("Customer at table " + obj.charAt(5) + " requests assistance.", obj);
         notifications.add(n);
         support.firePropertyChange("customerRequest", null, n);
     }
