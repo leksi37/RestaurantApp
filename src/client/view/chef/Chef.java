@@ -67,7 +67,6 @@ public class Chef {
         }
     }
 
-
     private void refresh(PropertyChangeEvent propertyChangeEvent) {
         Platform.runLater(() ->
                 viewItems()
@@ -81,8 +80,8 @@ public class Chef {
         System.out.println("num of itms " + order.getNumberOfItems());
         for (int i = 0; i < order.getNumberOfItems(); ++i) {
             ItemQuantity iq = order.getItemWithQuantity(i);
-            if(iq.getState() != ItemState.toWaiter)
-            {
+            if(iq.getState() == ItemState.toWaiter)
+            continue;
                 HBox oneItem = new HBox();
                 VBox itemDetails = new VBox();
                 HBox left = new HBox();
@@ -111,7 +110,6 @@ public class Chef {
                     vBox.getChildren().add(oneItem);
                     oneItem.setStyle("-fx-padding: 15px; -fx-border-width: 0 0 2px 0; -fx-border-color:  #ffcccc");
                 });
-            }
         }
     }
 

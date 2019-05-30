@@ -43,8 +43,6 @@ public class OrderItemList {
         priceLabel.setText("" + oilvm.getPriceOfOrder());
     }
 
-
-
     @FXML
     public void removeSelected(){
         oilvm.remove(orderItems.getFocusModel().getFocusedItem());

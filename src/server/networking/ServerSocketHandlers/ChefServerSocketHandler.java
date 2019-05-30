@@ -45,6 +45,7 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
     private void partialForWaiterSent(PropertyChangeEvent propertyChangeEvent) {
         try{
             outToClient.writeObject(new Request(RequestType.SEND_PARTIAL, (Order)propertyChangeEvent.getNewValue()));
+            System.out.println("*sent partial to socket");
         }catch (IOException e) {
             e.printStackTrace();
         }

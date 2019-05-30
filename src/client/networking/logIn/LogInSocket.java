@@ -34,17 +34,13 @@ public class LogInSocket {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("Trying to connect customer");
         startCustomer();
     }
 
     public void startCustomer(){
         CustomerModel customerModel= model.getCustomerModel();
-        System.out.println("customer model, socket: "+customerModel);
         CustomerSocketClient customerSocketClient= new CustomerSocketClient(customerModel, socket);
         customerModel.addClient(customerSocketClient);
-        System.out.println("Connected customer client");
-
     }
 
     public void connectChef(){
@@ -53,17 +49,14 @@ public class LogInSocket {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("Trying to connect first");
         startChef();
     }
 
     public void startChef(){
         ChefModel chefModel = model.getChefModel();
-        System.out.println("got the chef model");
         ChefSocketClient chefSocketChefClient = new ChefSocketClient(chefModel, socket);
 
         chefModel.addClient(chefSocketChefClient);
-
     }
 
     public void connectWaiter(){
@@ -72,16 +65,12 @@ public class LogInSocket {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("Trying to connect waiter");
         startWaiter();
     }
 
     public void startWaiter(){
         WaiterModel waiterModel = model.getWaiterModel();
-        System.out.println("Water model, socket: " + waiterModel);
         WaiterSocketClient waiterSocketClient= new WaiterSocketClient(waiterModel, socket);
         waiterModel.addClient(waiterSocketClient);
-        System.out.println("Connected waiter client");
-
     }
 }

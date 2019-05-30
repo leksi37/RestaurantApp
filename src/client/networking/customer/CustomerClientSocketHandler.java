@@ -45,6 +45,7 @@ public class CustomerClientSocketHandler implements Runnable {
                         case ADD_ORDER:
                         {
                             customerClient.orderAdded();
+                            break;
                         }
                     }
                 } catch (IOException | ClassNotFoundException e) {

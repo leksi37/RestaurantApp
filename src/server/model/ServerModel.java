@@ -81,6 +81,7 @@ public class ServerModel {
             o.getItemWithQuantity(obj.getItemWithQuantity(i).getId()).changeState(ItemState.toWaiter);
         }
         orders.set(k, o);
+        support.firePropertyChange("partialForWaiterSent",null, o);
         dbHandler.addOrder(o);
         Notification n = new Notification("Order to deliver for table " + o.getTableId().charAt(5), o);
         notifications.add(n);
