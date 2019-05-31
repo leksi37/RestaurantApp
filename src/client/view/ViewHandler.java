@@ -93,6 +93,7 @@ public class ViewHandler {
                 menuFront= loader.getController();
                 menuFront.init((MenuFrontViewModel) viewModelProvider.getViewModel(viewToOpen),this);
                 menuFront.orderPrepared();
+                menuFront.enableRequestReceipt();
                 break;
             }
             case CATEGORIES:

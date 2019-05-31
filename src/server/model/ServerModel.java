@@ -14,7 +14,7 @@ public class ServerModel {
 
     public ServerModel() {
         orders= new ArrayList<>();
-        customerCounter = 0;
+        customerCounter = 1;
         dbHandler = new DBHandler();
         orders = dbHandler.getAllOrders();
         notifications = new ArrayList<Notification>();
@@ -46,8 +46,7 @@ public class ServerModel {
     }
 
     public String newId() {
-        customerCounter++;
-        return "table" + (customerCounter-1);
+        return "table" + (customerCounter++);
     }
 
     public void removeConnection() {
@@ -62,7 +61,6 @@ public class ServerModel {
         System.out.println(obj.getTableId());
         for(int i = 0; i < orders.size(); ++i)
         {
-            System.out.println(orders.get(i).getTableId());
             if(orders.get(i).getTableId().equals(obj.getTableId()))
             {
                 orders.remove(i);
@@ -76,12 +74,14 @@ public class ServerModel {
 
     public void sendPartial(Order obj) {
         Order o = dbHandler.getOrder(obj.getTableId());
-        orders.remove(o);
+        int k = orders.indexOf(o);
+        System.out.println("The order we send: " + o + ", k = " + k);
         for(int i = 0; i < obj.getNumberOfItems(); ++i)
         {
             o.getItemWithQuantity(obj.getItemWithQuantity(i).getId()).changeState(ItemState.toWaiter);
         }
-        orders.add(o);
+        orders.set(k, o);
+        support.firePropertyChange("partialForWaiterSent",null, o);
         dbHandler.addOrder(o);
         Notification n = new Notification("Order to deliver for table " + o.getTableId().charAt(5), o);
         notifications.add(n);
@@ -104,9 +104,9 @@ public class ServerModel {
     public void checkPassword(Passwords password) {
         Passwords p = dbHandler.getPassword(password.getName());
         if(password.equals(p))
-            support.firePropertyChange("passwordCheck", null, true);
+            support.firePropertyChange("passwordCheck", password.getName(), true);
         else
-            support.firePropertyChange("passwordCheck", null, false);
+            support.firePropertyChange("passwordCheck", password.getName(), false);
     }
 
     public ArrayList<MenuItem> getMenuItems(CategoryType value) {
@@ -120,8 +120,14 @@ public class ServerModel {
     }
 
     public void customerRequest(String obj) {
-        Notification n = new Notification("Customer at table " + Character.getNumericValue(obj.charAt(5))+1 + " requests assistance.", obj);
+        Notification n = new Notification("Customer at table " + obj.charAt(5) + " requests assistance.", obj);
         notifications.add(n);
         support.firePropertyChange("customerRequest", null, n);
+    }
+
+    public void requestReceipt(String id) {
+        Notification n = new Notification("Receipt request at " + id, null);
+        notifications.add(n);
+        support.firePropertyChange("Receipt request", null, n);
     }
 }

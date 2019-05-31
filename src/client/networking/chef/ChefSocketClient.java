@@ -114,5 +114,6 @@ public class ChefSocketClient implements ChefClient {
     @Override
     public void partialSent(Order obj) {
         model.partialSent(obj);
+        System.out.println("***Got order form server "+obj);
     }
 }

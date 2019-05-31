@@ -45,6 +45,7 @@ public class CustomerClientSocketHandler implements Runnable {
                         case ADD_ORDER:
                         {
                             customerClient.orderAdded();
+                            break;
                         }
                     }
                 } catch (IOException | ClassNotFoundException e) {
@@ -89,6 +90,14 @@ public class CustomerClientSocketHandler implements Runnable {
             outToServer.writeObject(new Request(RequestType.CUSTOMER_REQUESTS_WAITER, tableId));
         }
         catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void requestReceipt(String tableId) {
+        try {
+            outToServer.writeObject(new Request(RequestType.RECEIPT, tableId));
+        } catch (IOException e){
             e.printStackTrace();
         }
     }

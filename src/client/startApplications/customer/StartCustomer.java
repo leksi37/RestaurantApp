@@ -1,11 +1,7 @@
 package client.startApplications.customer;
 
-import basicClasses.Views;
 import client.model.customer.CustomerModel;
 import client.model.customer.CustomerModelImpl;
-import client.networking.customer.CustomerClient;
-import client.networking.customer.CustomerSocketClient;
-import client.view.ViewHandler;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

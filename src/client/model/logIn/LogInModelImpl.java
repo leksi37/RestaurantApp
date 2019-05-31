@@ -9,14 +9,15 @@ import client.model.customer.CustomerModelImpl;
 import client.model.logIn.modelFactory.ClientModelFactory;
 import client.model.waiter.WaiterModel;
 import client.model.waiter.WaiterModelImpl;
+import client.networking.logIn.LogIn;
 import client.networking.logIn.LogInSocket;
 
 public class LogInModelImpl implements LogInModel {
 
-    private LogInSocket socket;
+    private LogIn socket;
 
     @Override
-    public void addSocket(LogInSocket socket) {
+    public void addSocket(LogIn socket) {
         this.socket=socket;
     }
 
@@ -39,16 +40,20 @@ public class LogInModelImpl implements LogInModel {
 
     @Override
     public void connectCustomer() {
-        socket.connectCustomer();
+        socket.setClientType(ClientType.CUSTOMER_CLIENT);
+        socket.connectClient();
     }
 
     @Override
     public void connectWaiter() {
-        socket.connectWaiter();
+        socket.setClientType(ClientType.WAITER_CLIENT);
+        socket.connectClient();
     }
 
     @Override
-    public void connectChef() {
-        socket.connectChef();
+    public void connectChef()
+    {
+        socket.setClientType(ClientType.CHEF_CLIENT);
+        socket.connectClient();
     }
 }

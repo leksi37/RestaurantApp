@@ -33,6 +33,15 @@ public class WaiterServerSocketHandler implements ServerSocketHandler, Runnable 
         model.addListener("chefRequestsWaiter", this::chefRequestsWaiter);
         model.addListener("partialForWaiter", this::partialToDeliver);
         model.addListener("customerRequest", this::customerRequest);
+        model.addListener("Receipt request", this::receiptRequest);
+    }
+
+    private void receiptRequest(PropertyChangeEvent changeEvent) {
+        try {
+            outToClient.writeObject(new Request(RequestType.RECEIPT, changeEvent.getNewValue()));
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     private void customerRequest(PropertyChangeEvent propertyChangeEvent) {

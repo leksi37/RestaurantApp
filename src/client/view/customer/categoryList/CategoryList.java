@@ -3,6 +3,7 @@ package client.view.customer.categoryList;
 import basicClasses.CategoryType;
 import client.view.ViewHandler;
 import client.viewModel.customer.CategoryListViewModel;
+import javafx.event.ActionEvent;
 
 public class CategoryList {
 
@@ -51,5 +52,9 @@ public class CategoryList {
     public void init(CategoryListViewModel vm, ViewHandler viewHandler){
         this.viewHandler = viewHandler;
         this.categoryListViewModel = vm;
+    }
+
+    public void back(ActionEvent actionEvent) {
+        categoryListViewModel.backToMenuFront();
     }
 }

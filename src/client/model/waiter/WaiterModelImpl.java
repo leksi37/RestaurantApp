@@ -6,10 +6,12 @@ import client.networking.waiter.WaiterClient;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.HashMap;
 
 public class WaiterModelImpl implements WaiterModel {
     private PropertyChangeSupport support;
     private WaiterClient waiterClient;
+    private HashMap<String,Order> orders= new HashMap<>();
 
     public WaiterModelImpl(){
         support = new PropertyChangeSupport(this);
@@ -62,6 +64,19 @@ public class WaiterModelImpl implements WaiterModel {
 
     @Override
     public void partialToDeliver(Notification obj) {
+        Order o= (Order) obj.getObject();
+        String id=o.getTableId();
+        orders.put(id, o);
         support.firePropertyChange("partial", null, obj);
+    }
+
+    @Override
+    public void receiptRequest(Notification notification){
+        support.firePropertyChange("Receipt request", null, notification);
+    }
+
+    @Override
+    public Order getOrder(String id) {
+        return orders.get(id);
     }
 }

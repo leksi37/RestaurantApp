@@ -30,6 +30,11 @@ public class WaiterClientSocketHandler implements Runnable {
                         waiterClient.gotNotification((Notification) r.getObj());
                         break;
                     }
+                    case RECEIPT:
+                    {
+                        waiterClient.gotReceiptRequest((Notification) r.getObj());
+                        break;
+                    }
                     case CUSTOMER_REQUESTS_WAITER: {
                         waiterClient.gotPresenceRequest((Notification) r.getObj());
                         break;

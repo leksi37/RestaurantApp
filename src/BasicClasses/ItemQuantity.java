@@ -57,6 +57,10 @@ public class ItemQuantity implements Serializable {
         return item.getName() + ", " + quantity + " pieces, " + item.getPrice() + "kr, state " + state;
     }
 
+    public String toStringWaiter(){
+        return item.getName() + " (" + quantity + ") " + " " + state;
+    }
+
     public String dbFormat() {
         return "'" + id + "', '" + quantity + "', '" + state.name() + "'";
     }

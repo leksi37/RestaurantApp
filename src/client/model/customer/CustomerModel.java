@@ -29,4 +29,6 @@ public interface CustomerModel extends ClientModel {
     void requestWaiter();
 
     String getPrice();
+
+    void requestReceipt();
 }

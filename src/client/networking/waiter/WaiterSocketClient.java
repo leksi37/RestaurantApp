@@ -68,4 +68,9 @@ public class WaiterSocketClient implements WaiterClient{
     public void chefRequest(Notification obj) {
         waiterModel.chefRequest(obj);
     }
+
+    @Override
+    public void gotReceiptRequest(Notification obj) {
+        waiterModel.receiptRequest(obj);
+    }
 }

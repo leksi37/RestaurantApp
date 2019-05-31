@@ -4,6 +4,7 @@ import basicClasses.ClientType;
 import server.model.ServerModel;
 import server.networking.ServerSocketHandlers.ChefServerSocketHandler;
 import server.networking.ServerSocketHandlers.CustomerServerSocketHandler;
+import server.networking.ServerSocketHandlers.LogInServerSocketHandler;
 import server.networking.ServerSocketHandlers.WaiterServerSocketHandler;
 
 import java.io.IOException;
@@ -14,7 +15,7 @@ import java.net.Socket;
 public class SocketServer {
 
     private ServerModel model;
-    private ObjectInputStream inFromClient;
+    //private ObjectInputStream inFromClient;
 
     public SocketServer(ServerModel model){this.model=model; }
 
@@ -23,9 +24,14 @@ public class SocketServer {
             ServerSocket welcomeSocket = new ServerSocket(2910);
             System.out.println("Server started...");
             while (true) {
-
+                System.out.println("Connected log in server socket ");
                 Socket socket = welcomeSocket.accept();
-                inFromClient = new ObjectInputStream(socket.getInputStream());
+                LogInServerSocketHandler handler= new LogInServerSocketHandler(model, socket);
+                Thread t= new Thread(handler);
+                t.start();
+
+
+                /*inFromClient = new ObjectInputStream(socket.getInputStream());
                 ClientType typeOfClient = null;
                 try {
                     typeOfClient = (ClientType) inFromClient.readObject();
@@ -33,7 +39,7 @@ public class SocketServer {
                     connectClient(typeOfClient, socket);
                 } catch (ClassNotFoundException | IOException e) {
                     e.printStackTrace();
-                }
+                }*/
             }
 
 

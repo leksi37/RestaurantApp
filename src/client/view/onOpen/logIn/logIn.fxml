@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" style="-fx-background-color: #ffcccc;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.onOpen.logIn.LogIn">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" style="-fx-background-color: #ffcccc;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.onOpen.logIn.LogIn">
    <children>
       <ImageView fitHeight="173.0" fitWidth="197.0" layoutX="627.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -21,9 +21,15 @@
          </font>
       </Label>
       <PasswordField fx:id="passwordField" layoutX="332.0" layoutY="250.0" />
-      <Label layoutX="225.0" layoutY="255.0" text="Password:" />
-      <Button layoutX="597.0" layoutY="330.0" mnemonicParsing="false" onAction="#logIn" text="Log in" />
-      <Label fx:id="oops" layoutX="470.0" layoutY="294.0" textFill="RED">
+      <Label layoutX="203.0" layoutY="245.0" prefHeight="34.0" prefWidth="112.0" text="Password:">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Label>
+      <Button layoutX="666.0" layoutY="330.0" mnemonicParsing="false" onAction="#logIn" prefHeight="53.0" prefWidth="93.0" style="-fx-background-color: #ffe6e6;" text="Log in">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font></Button>
+      <Label fx:id="oops" layoutX="470.0" layoutY="294.0" textFill="#242059">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Label>

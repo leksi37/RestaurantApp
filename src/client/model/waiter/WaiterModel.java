@@ -19,4 +19,8 @@ public interface WaiterModel extends ClientModel {
     void chefRequest(Notification obj);
 
     void partialToDeliver(Notification obj);
+
+    void receiptRequest(Notification notification);
+
+    Order getOrder(String id);
 }

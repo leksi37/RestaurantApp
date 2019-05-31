@@ -24,10 +24,8 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
     private ObjectOutputStream outToClient;
 
     private String connectionId;
-//    private PasswordReader passwordReader;
 
     public ChefServerSocketHandler(ServerModel model, Socket socket){
-//        passwordReader = PasswordReader.getInstance();
         this.model=model;
         try{
             inFromClient=new ObjectInputStream(socket.getInputStream());
@@ -45,6 +43,7 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
     private void partialForWaiterSent(PropertyChangeEvent propertyChangeEvent) {
         try{
             outToClient.writeObject(new Request(RequestType.SEND_PARTIAL, (Order)propertyChangeEvent.getNewValue()));
+            System.out.println("*sent partial to socket");
         }catch (IOException e) {
             e.printStackTrace();
         }
@@ -125,6 +124,7 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
                         break;
                     }
                     case SEND_PARTIAL: {
+                        System.out.println("chef ssh " + r.getObj() == null);
                         model.sendPartial((Order) r.getObj());
                         break;
                     }

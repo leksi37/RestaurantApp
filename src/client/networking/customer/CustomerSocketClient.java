@@ -73,5 +73,10 @@ public class CustomerSocketClient implements CustomerClient {
         customerClientSocketHandler.requestWaiter(tableId);
     }
 
+    @Override
+    public void requestReceipt(String tableId) {
+        customerClientSocketHandler.requestReceipt(tableId);
+    }
+
 
 }

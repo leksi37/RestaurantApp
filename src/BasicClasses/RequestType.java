@@ -10,6 +10,7 @@ public enum RequestType implements Serializable {
     CHEF_PASSWORD_CHECK,
     CHEF_APPROVED,
     CHEF_DISAPPROVED,
+    CONNECT_CLIENT,
     NEW_ORDER,
     ADDED_TO_ORDER,
     ITEM_STATE_CHANGED,
@@ -21,5 +22,6 @@ public enum RequestType implements Serializable {
     WAITER_APPROVED,
     WAITER_DISAPPROVED,
     PARTIAL_FOR_WAITER,
-    FETCH_ORDERS;
+    FETCH_ORDERS,
+    RECEIPT;
 }

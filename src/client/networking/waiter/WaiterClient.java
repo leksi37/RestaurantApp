@@ -13,4 +13,6 @@ public interface WaiterClient {
     void partialToDeliver(Notification obj);
 
   void chefRequest(Notification obj);
+
+    void gotReceiptRequest(Notification obj);
 }

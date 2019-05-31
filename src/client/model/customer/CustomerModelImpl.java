@@ -66,6 +66,7 @@ public class CustomerModelImpl implements CustomerModel {
     @Override
     public void gotMenuItems(ArrayList<MenuItem> mi) {
         support.firePropertyChange("MenuItems", null, mi);
+        if(mi.size()>0)
         proxy.addCategory(mi.get(0).getType().name(), mi);
     }
 
@@ -116,6 +117,11 @@ public class CustomerModelImpl implements CustomerModel {
     @Override
     public String getPrice() {
         return "Price: " + order.getPrice() + "kr";
+    }
+
+    @Override
+    public void requestReceipt() {
+        customerClient.requestReceipt(tableId);
     }
 
 }

@@ -69,6 +69,11 @@ import java.util.ArrayList;
                             e.printStackTrace();
                         }
                     }
+                    else if(r.getType() == RequestType.RECEIPT)
+                    {
+                        String id = (String) r.getObj();
+                        model.requestReceipt(id);
+                    }
                     else if(r.getType() == RequestType.ADD_ORDER)
                     {
                         model.addOrder((Order) r.getObj());

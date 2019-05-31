@@ -19,6 +19,8 @@ public class MenuFront {
     @FXML
     private Button waiterButton;
 
+    @FXML Button receiptButton;
+
     @FXML
     public void onClick(){
         menuFrontViewModel.openCategoryList(viewHandler);
@@ -30,6 +32,15 @@ public class MenuFront {
 
     public void newOrder(){
         orderStatus.setText("");
+    }
+
+    public void enableRequestReceipt(){
+        receiptButton.setDisable(false);
+    }
+
+    public void requestReceipt(){
+        menuFrontViewModel.requestReceipt();
+        receiptButton.setDisable(true);
     }
 
     @FXML

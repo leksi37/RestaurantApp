@@ -5,6 +5,7 @@ import basicClasses.Views;
 import client.model.customer.CustomerModel;
 import client.view.ViewHandler;
 import client.viewModel.ViewModels;
+import javafx.application.Platform;
 
 public class CategoryListViewModel implements ViewModels {
 
@@ -24,4 +25,9 @@ public class CategoryListViewModel implements ViewModels {
     }
 
 
+    public void backToMenuFront() {
+        Platform.runLater(() -> {
+            viewHandler.openView(Views.MENU_FRONT);
+        });
+    }
 }

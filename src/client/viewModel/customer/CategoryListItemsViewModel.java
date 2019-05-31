@@ -35,6 +35,7 @@ public class CategoryListItemsViewModel implements ViewModels {
 
     private void gotItems(PropertyChangeEvent propertyChangeEvent) {
         items = (ArrayList<MenuItem>) propertyChangeEvent.getNewValue();
+        if(items.size()>0)
         changeSupport.firePropertyChange("gotItems", null, items);
     }
 

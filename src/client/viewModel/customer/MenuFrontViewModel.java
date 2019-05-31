@@ -29,4 +29,8 @@ public class MenuFrontViewModel implements ViewModels {
     public void requestWaiter() {
         model.requestWaiter();
     }
+
+    public void requestReceipt() {
+        model.requestReceipt();
+    }
 }
