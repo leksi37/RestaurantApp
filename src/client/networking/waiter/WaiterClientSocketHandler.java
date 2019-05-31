@@ -53,6 +53,10 @@ public class WaiterClientSocketHandler implements Runnable {
                     }
                     case PARTIAL_FOR_WAITER:{
                         waiterClient.partialToDeliver((Notification)r.getObj());
+                        break;
+                    }
+                    case ORDER_CLOSED:{
+                        waiterClient.orderClosed((String)r.getObj());
                     }
                 }
             } catch (IOException | ClassNotFoundException e) {
@@ -66,6 +70,14 @@ public class WaiterClientSocketHandler implements Runnable {
         try {
             System.out.println("wsh: " + value);
             outToServer.writeObject(new Request(RequestType.WAITER_PASSWORD_CHECK, value));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void closeOrder(String tableId) {
+        try {
+            outToServer.writeObject(new Request(RequestType.WAITER_CLOSE_ORDER, tableId));
         } catch (IOException e) {
             e.printStackTrace();
         }

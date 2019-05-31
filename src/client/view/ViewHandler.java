@@ -81,7 +81,8 @@ public class ViewHandler {
                 catch(IOException e){e.printStackTrace();}
 
                 menuFront = loader.getController();
-                menuFront.init((MenuFrontViewModel) viewModelProvider.getViewModel(viewToOpen),this);
+                menuFront.init((MenuFrontViewModel) viewModelProvider.getViewModel(viewToOpen));
+                menuFront.clearLabel();
                 break;
             }
             case MENU_FRONT_LABEL:
@@ -91,7 +92,7 @@ public class ViewHandler {
                 catch(IOException e){e.printStackTrace();}
 
                 menuFront= loader.getController();
-                menuFront.init((MenuFrontViewModel) viewModelProvider.getViewModel(viewToOpen),this);
+                menuFront.init((MenuFrontViewModel) viewModelProvider.getViewModel(viewToOpen));
                 menuFront.orderPrepared();
                 menuFront.enableRequestReceipt();
                 break;

@@ -22,4 +22,6 @@ public interface CustomerClient {
     void requestWaiter(String tableId);
 
     void requestReceipt(String tableId);
+
+    void orderClosed(String obj);
 }

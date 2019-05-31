@@ -23,4 +23,8 @@ public interface WaiterModel extends ClientModel {
     void receiptRequest(Notification notification);
 
     Order getOrder(String id);
+
+    void closeOrder(int lastSelectedTable);
+
+    void orderClosed(String obj);
 }

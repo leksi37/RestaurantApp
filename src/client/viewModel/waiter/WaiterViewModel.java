@@ -36,6 +36,13 @@ public class WaiterViewModel implements ViewModels {
         waiterModel.addListeners("partial", this :: partial);
         waiterModel.addListeners("chefRequest", this :: chefRequest);
         waiterModel.addListeners("Receipt request", this::receiptRequest);
+        waiterModel.addListeners("orderClosed", this::orderClosed);
+    }
+
+    private void orderClosed(PropertyChangeEvent propertyChangeEvent) {
+        Platform.runLater(() ->
+                refreshDetails((String)propertyChangeEvent.getNewValue())
+        );
     }
 
     public void addListeners(String name, PropertyChangeListener listener) {
@@ -46,13 +53,13 @@ public class WaiterViewModel implements ViewModels {
 
     private void receiptRequest(PropertyChangeEvent changeEvent) {
         Platform.runLater(() ->
-            notifications.add(((Notification)changeEvent.getNewValue()).getNotificationText())
+            notifications.add(0, ((Notification)changeEvent.getNewValue()).getNotificationText())
                 );
     }
 
     private void chefRequest(PropertyChangeEvent propertyChangeEvent) {
         Platform.runLater(() ->
-                notifications.add(((Notification)propertyChangeEvent.getNewValue()).getNotificationText())
+                notifications.add(0, ((Notification)propertyChangeEvent.getNewValue()).getNotificationText())
         );
     }
 
@@ -61,10 +68,10 @@ public class WaiterViewModel implements ViewModels {
         int j = Character.getNumericValue(((Order)n.getObject()).getTableId().charAt(5));
         ArrayList<ItemQuantity> items= ((Order)n.getObject()).getItemsWithQuantity();
         Platform.runLater(() ->{
-                notifications.add(n.getNotificationText());
+                notifications.add(0, n.getNotificationText());
                 refreshDetails(((Order)n.getObject()).getTableId());
                  });
-        support.firePropertyChange("Notification for waiter", null, j);
+//        support.firePropertyChange("Notification for waiter", null, j);
     }
 
     public void refreshDetails(String id){
@@ -94,10 +101,10 @@ public class WaiterViewModel implements ViewModels {
     public void notificationReceived(PropertyChangeEvent event){
         Notification n = (Notification)event.getNewValue();
         Platform.runLater(() ->
-                        notifications.add(n.getNotificationText())
+                        notifications.add(0, n.getNotificationText())
                 );
         int tableNum = Character.getNumericValue(((String)n.getObject()).charAt(5));
-        support.firePropertyChange("Notification for waiter", null, tableNum);
+//        support.firePropertyChange("Notification for waiter", null, tableNum);
     }
 
     public ListProperty<String> getNotifications() {
@@ -110,5 +117,9 @@ public class WaiterViewModel implements ViewModels {
 
     public void requestCloseOrder(int num){
 
+    }
+
+    public void requestClose(int lastSelectedTable) {
+        waiterModel.closeOrder(lastSelectedTable);
     }
 }

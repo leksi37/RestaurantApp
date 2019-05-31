@@ -22,5 +22,7 @@ public enum RequestType implements Serializable {
     WAITER_DISAPPROVED,
     PARTIAL_FOR_WAITER,
     FETCH_ORDERS,
+    WAITER_CLOSE_ORDER,
+    ORDER_CLOSED,
     RECEIPT;
 }

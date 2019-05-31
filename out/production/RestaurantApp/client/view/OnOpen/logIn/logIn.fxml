@@ -15,7 +15,7 @@
             <Image url="@../../../../images/chefView.png" />
          </image>
       </ImageView>
-      <Label layoutX="187.0" layoutY="96.0" text="Hello, master chef!">
+      <Label layoutX="187.0" layoutY="96.0" text="Hello!">
          <font>
             <Font name="System Bold Italic" size="48.0" />
          </font>

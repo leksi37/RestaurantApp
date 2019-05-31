@@ -38,7 +38,7 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
         model.addListener("AddedToOrder", this::addToOrder);
         model.addListener("ChangedState", this::changedState);
         model.addListener("orderRemoved", this::orderRemoved);
-        model.addListener("passwordCheck", this::passwordCheck);
+        model.addListener("chefPasswordCheck", this::passwordCheck);
         model.addListener("partialForWaiterSent", this::partialForWaiterSent);
     }
 
@@ -112,7 +112,7 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
                 Request r = (Request) inFromClient.readObject();
                 switch (r.getType()){
                     case CHEF_PASSWORD_CHECK: {
-                        model.checkPassword(new Passwords("chef", (String)r.getObj()));
+                        model.chefCheckPassword(new Passwords("chef", (String)r.getObj()));
                         break;
                     }
                     case FETCH_ORDERS : {

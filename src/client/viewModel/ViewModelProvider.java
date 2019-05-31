@@ -57,7 +57,7 @@ public class ViewModelProvider {
         onOpenViewModel= new OnOpenViewModel(mainModel, viewHandler);
         logInViewModel = new LogInViewModel(viewHandler, mainModel);
 
-        menuFrontViewModel= new MenuFrontViewModel(customerModel);
+        menuFrontViewModel= new MenuFrontViewModel(customerModel, viewHandler);
         categoryListItemsViewModel = new CategoryListItemsViewModel(viewHandler, customerModel);
         categoryListViewModel = new CategoryListViewModel(viewHandler, customerModel);
         orderItemsListViewModel = new OrderItemsListViewModel(customerModel);

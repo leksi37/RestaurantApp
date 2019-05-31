@@ -16,13 +16,20 @@ import java.beans.PropertyChangeSupport;
 
 public class MenuFrontViewModel implements ViewModels {
     private CustomerModel model;
+    private ViewHandler viewHandler;
 
-    public MenuFrontViewModel(CustomerModel model)
+    public MenuFrontViewModel(CustomerModel model, ViewHandler vh)
     {
         this.model = model;
+        this.viewHandler = vh;
+        this.model.addListeners("orderClosed", this :: orderClosed);
     }
 
-    public void openCategoryList(ViewHandler viewHandler) {
+    private void orderClosed(PropertyChangeEvent propertyChangeEvent) {
+        viewHandler.openView(Views.MENU_FRONT);
+    }
+
+    public void openCategoryList() {
         Platform.runLater(() -> viewHandler.openView(Views.CATEGORIES));
     }
 

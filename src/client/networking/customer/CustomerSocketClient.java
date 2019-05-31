@@ -78,5 +78,10 @@ public class CustomerSocketClient implements CustomerClient {
         customerClientSocketHandler.requestReceipt(tableId);
     }
 
+    @Override
+    public void orderClosed(String obj) {
+        model.orderClosed(obj);
+    }
+
 
 }

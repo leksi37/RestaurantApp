@@ -10,7 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class MenuFront {
-    private ViewHandler viewHandler;
     private MenuFrontViewModel menuFrontViewModel;
 
     @FXML
@@ -23,7 +22,7 @@ public class MenuFront {
 
     @FXML
     public void onClick(){
-        menuFrontViewModel.openCategoryList(viewHandler);
+        menuFrontViewModel.openCategoryList();
     }
 
     public void orderPrepared(){
@@ -49,9 +48,12 @@ public class MenuFront {
         waiterButton.setDisable(true);
     }
 
-    public void init(MenuFrontViewModel vm, ViewHandler viewHandler) {
-        this.viewHandler = viewHandler;
+    public void init(MenuFrontViewModel vm) {
         menuFrontViewModel = vm;
 
+    }
+
+    public void clearLabel() {
+        orderStatus.setText("");
     }
 }

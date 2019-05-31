@@ -29,11 +29,20 @@ public class WaiterServerSocketHandler implements ServerSocketHandler, Runnable 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        model.addListener("passwordCheck", this::passwordCheck);
+        model.addListener("waiterPasswordCheck", this::passwordCheck);
         model.addListener("chefRequestsWaiter", this::chefRequestsWaiter);
         model.addListener("partialForWaiter", this::partialToDeliver);
         model.addListener("customerRequest", this::customerRequest);
         model.addListener("Receipt request", this::receiptRequest);
+        model.addListener("orderClosed", this::orderClosed);
+    }
+
+    private void orderClosed(PropertyChangeEvent propertyChangeEvent) {
+        try {
+            outToClient.writeObject(new Request(RequestType.ORDER_CLOSED, propertyChangeEvent.getNewValue()));
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     private void receiptRequest(PropertyChangeEvent changeEvent) {
@@ -104,8 +113,11 @@ public class WaiterServerSocketHandler implements ServerSocketHandler, Runnable 
                 System.out.println(r.getType());
                 switch (r.getType()){
                     case WAITER_PASSWORD_CHECK: {
-                        model.checkPassword(new Passwords("waiter", (String)r.getObj()));
+                        model.waiterCheckPassword(new Passwords("waiter", (String)r.getObj()));
                         break;
+                    }
+                    case WAITER_CLOSE_ORDER:{
+                        model.closeOrder((String)r.getObj());
                     }
                 }
             } catch (IOException | ClassNotFoundException e) {

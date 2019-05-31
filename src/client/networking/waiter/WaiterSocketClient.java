@@ -73,4 +73,14 @@ public class WaiterSocketClient implements WaiterClient{
     public void gotReceiptRequest(Notification obj) {
         waiterModel.receiptRequest(obj);
     }
+
+    @Override
+    public void closeOrder(String tableId) {
+        waiterClientSocketHandler.closeOrder(tableId);
+    }
+
+    @Override
+    public void orderClosed(String obj) {
+        waiterModel.orderClosed(obj);
+    }
 }

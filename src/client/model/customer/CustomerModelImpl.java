@@ -124,4 +124,10 @@ public class CustomerModelImpl implements CustomerModel {
         customerClient.requestReceipt(tableId);
     }
 
+    @Override
+    public void orderClosed(String obj) {
+        if(tableId.equals(obj))
+            support.firePropertyChange("orderClosed", null, null);
+    }
+
 }

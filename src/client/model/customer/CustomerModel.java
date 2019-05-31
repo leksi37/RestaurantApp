@@ -31,4 +31,6 @@ public interface CustomerModel extends ClientModel {
     String getPrice();
 
     void requestReceipt();
+
+    void orderClosed(String obj);
 }

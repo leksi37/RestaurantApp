@@ -79,4 +79,15 @@ public class WaiterModelImpl implements WaiterModel {
     public Order getOrder(String id) {
         return orders.get(id);
     }
+
+    @Override
+    public void closeOrder(int lastSelectedTable) {
+        waiterClient.closeOrder("table" + lastSelectedTable);
+    }
+
+    @Override
+    public void orderClosed(String obj) {
+        support.firePropertyChange("orderClosed", null, obj);
+        orders.put(obj, null);
+    }
 }

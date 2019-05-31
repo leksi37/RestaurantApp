@@ -15,4 +15,8 @@ public interface WaiterClient {
   void chefRequest(Notification obj);
 
     void gotReceiptRequest(Notification obj);
+
+  void closeOrder(String s);
+
+  void orderClosed(String obj);
 }

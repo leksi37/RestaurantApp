@@ -74,7 +74,12 @@ public class ServerModel {
 
     public void sendPartial(Order obj) {
         Order o = dbHandler.getOrder(obj.getTableId());
-        int k = orders.indexOf(o);
+        int k = -1;
+        for(int i = 0; i < orders.size(); ++i)
+        {
+            if(orders.get(i).getTableId().equals(obj.getTableId()))
+                k = i;
+        }
         System.out.println("The order we send: " + o + ", k = " + k);
         for(int i = 0; i < obj.getNumberOfItems(); ++i)
         {
@@ -101,12 +106,20 @@ public class ServerModel {
         support.firePropertyChange("orderRemoved", null, obj);
     }
 
-    public void checkPassword(Passwords password) {
+    public void chefCheckPassword(Passwords password) {
         Passwords p = dbHandler.getPassword(password.getName());
         if(password.equals(p))
-            support.firePropertyChange("passwordCheck", null, true);
+            support.firePropertyChange("chefPasswordCheck", null, true);
         else
-            support.firePropertyChange("passwordCheck", null, false);
+            support.firePropertyChange("chefPasswordCheck", null, false);
+    }
+
+    public void waiterCheckPassword(Passwords password) {
+        Passwords p = dbHandler.getPassword(password.getName());
+        if(password.equals(p))
+            support.firePropertyChange("waiterPasswordCheck", null, true);
+        else
+            support.firePropertyChange("waiterPasswordCheck", null, false);
     }
 
     public ArrayList<MenuItem> getMenuItems(CategoryType value) {
@@ -126,8 +139,19 @@ public class ServerModel {
     }
 
     public void requestReceipt(String id) {
-        Notification n = new Notification("Receipt request at " + id, null);
+        int i = 0;
+        for(i = 0; i < orders.size(); ++i)
+        {
+            if(orders.get(i).getTableId().equals(id))
+                break;
+        }
+        Notification n = new Notification("Receipt request at " + id, orders.get(i));
         notifications.add(n);
         support.firePropertyChange("Receipt request", null, n);
+    }
+
+    public void closeOrder(String obj) {
+        dbHandler.removeOrder(obj);
+        support.firePropertyChange("orderClosed", null, obj);
     }
 }

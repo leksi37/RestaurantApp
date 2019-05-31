@@ -47,6 +47,10 @@ public class CustomerClientSocketHandler implements Runnable {
                             customerClient.orderAdded();
                             break;
                         }
+                        case ORDER_CLOSED:{
+                            customerClient.orderClosed((String)r.getObj());
+                            break;
+                        }
                     }
                 } catch (IOException | ClassNotFoundException e) {
                     e.printStackTrace();

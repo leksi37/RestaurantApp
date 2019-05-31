@@ -23,6 +23,11 @@ public class CategoryListItemsViewModel implements ViewModels {
         changeSupport = new PropertyChangeSupport(this);
         this.model = model;
         this.model.addListeners("MenuItems", this :: gotItems);
+        this.model.addListeners("orderClosed", this :: orderClosed);
+    }
+
+    private void orderClosed(PropertyChangeEvent propertyChangeEvent) {
+        viewHandler.openView(Views.MENU_FRONT);
     }
 
     public void addListener(String name, PropertyChangeListener listener)

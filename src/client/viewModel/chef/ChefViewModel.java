@@ -82,10 +82,11 @@ public class ChefViewModel implements ViewModels {
 
     public void getOrderUpdate(PropertyChangeEvent changeEvent){
         ArrayList<Order> newOrders = (ArrayList) changeEvent.getNewValue();
-        for(int i = orders.size(); i < newOrders.size(); ++i)
-        {
-            orders.add(newOrders.get(i).getTableId());
-        }
+        Platform.runLater(() ->
+        { for(int i = orders.size(); i < newOrders.size(); ++i)
+            {
+                orders.add(newOrders.get(i).getTableId());
+            }});
     }
 
 //    public void addListener(String name, PropertyChangeListener listener)
