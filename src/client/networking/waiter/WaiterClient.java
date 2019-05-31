@@ -10,9 +10,9 @@ public interface WaiterClient {
   void passwordApproved();
   void passwordDisapproved();
 
-    void partialToDeliver(Notification obj);
+  void partialToDeliver(Notification obj);
 
   void chefRequest(Notification obj);
 
-    void gotReceiptRequest(Notification obj);
+  void gotReceiptRequest(Notification obj);
 }

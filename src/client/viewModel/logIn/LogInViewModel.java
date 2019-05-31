@@ -31,11 +31,6 @@ public class LogInViewModel implements ViewModels {
     }
 
     public void setModel(ClientType type){
-        if(type.equals(ClientType.WAITER_CLIENT))
-            model=mainModel.getWaiterModel();
-        else if(type.equals(ClientType.CHEF_CLIENT))
-            model=mainModel.getChefModel();
-
         this.type=type;
 
         model.addListeners("passwordDisapproved", this::wrongPassword);
@@ -44,7 +39,6 @@ public class LogInViewModel implements ViewModels {
 
     private void goodPassword(PropertyChangeEvent propertyChangeEvent) {
         password.setValue("");
-
         if(type.equals(ClientType.WAITER_CLIENT))
             viewHandler.openView(Views.WAITER);
         else if(type.equals(ClientType.CHEF_CLIENT))
@@ -56,12 +50,7 @@ public class LogInViewModel implements ViewModels {
     }
 
     public void logIn() {
-        System.out.println("log in view model");
-
-        if(type.equals(ClientType.WAITER_CLIENT)){
-            ((WaiterModel)model).checkLogIn(password.getValue());}
-        else if(type.equals(ClientType.CHEF_CLIENT))
-            ((ChefModel)model).checkLogIn(password.getValue());
+        mainModel.checkLogIn(password.getValue());
     }
 
     public void wrongPassword(PropertyChangeEvent evt)

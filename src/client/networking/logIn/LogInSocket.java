@@ -23,14 +23,11 @@ public class LogInSocket implements LogIn {
     private LogInSocketHandler handler;
     private ClientType type;
 
-    private ObjectOutputStream outToServer;
-
     public LogInSocket(LogInModel model) {
         try {
             this.model = model;
             this.socket = new Socket("localhost", 2910);
             handler= new LogInSocketHandler(this,new ObjectOutputStream(socket.getOutputStream()),new ObjectInputStream(socket.getInputStream()) );
-            outToServer= new ObjectOutputStream(socket.getOutputStream());
         }catch(IOException e){e.printStackTrace();}
         Thread t= new Thread(handler);
         t.start();
@@ -42,14 +39,11 @@ public class LogInSocket implements LogIn {
         customerModel.addClient(customerSocketClient);
     }
 
-
     private void startChef(){
         ChefModel chefModel = model.getChefModel();
         ChefSocketClient chefSocketChefClient = new ChefSocketClient(chefModel, socket);
-
         chefModel.addClient(chefSocketChefClient);
     }
-
 
     private void startWaiter(){
         WaiterModel waiterModel = model.getWaiterModel();
@@ -81,10 +75,22 @@ public class LogInSocket implements LogIn {
 
     @Override
     public void passwordCheckResult(RequestType type) {
-        if(type.equals(RequestType.CHEF_APPROVED))
+        if(type.equals(RequestType.CHEF_APPROVED)){
             startChef();
-        else if(type.equals(RequestType.WAITER_APPROVED))
+            handler.connectApprovedClient(this.type);
+            model.passwordApproved();
+        }
+        else if(type.equals(RequestType.WAITER_APPROVED)) {
             startWaiter();
+            handler.connectApprovedClient(this.type);
+            model.passwordApproved();
+        }
+        else if(type.equals(RequestType.WAITER_DISAPPROVED)){
+            model.passwordDisapproved();
+        }
+        else if(type.equals(RequestType.CHEF_DISAPPROVED)){
+            model.passwordDisapproved();
+        }
     }
 
 

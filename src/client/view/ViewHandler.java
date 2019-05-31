@@ -12,7 +12,6 @@ import client.view.customer.menuFront.MenuFront;
 import client.view.customer.orderItemsList.OrderItemList;
 import client.view.onOpen.logIn.LogIn;
 import client.view.waiter.WaiterView;
-import client.viewModel.chef.ChefLogInViewModel;
 import client.viewModel.chef.ChefViewModel;
 import client.viewModel.ViewModelProvider;
 import client.viewModel.customer.CategoryListItemsViewModel;
@@ -93,7 +92,7 @@ public class ViewHandler {
                 menuFront= loader.getController();
                 menuFront.init((MenuFrontViewModel) viewModelProvider.getViewModel(viewToOpen),this);
                 menuFront.orderPrepared();
-                menuFront.enableRequestReceipt();
+                //menuFront.enableRequestReceipt();
                 break;
             }
             case CATEGORIES:

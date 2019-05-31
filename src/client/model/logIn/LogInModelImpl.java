@@ -12,13 +12,28 @@ import client.model.waiter.WaiterModelImpl;
 import client.networking.logIn.LogIn;
 import client.networking.logIn.LogInSocket;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+
 public class LogInModelImpl implements LogInModel {
 
     private LogIn socket;
+    private PropertyChangeSupport support;
+
+    public LogInModelImpl() {
+        support= new PropertyChangeSupport(this);
+    }
 
     @Override
     public void addSocket(LogIn socket) {
         this.socket=socket;
+    }
+
+    @Override
+    public void addListeners(String name, PropertyChangeListener listener) {
+        if (name == null)
+            support.addPropertyChangeListener(listener);
+        else support.addPropertyChangeListener(name, listener);
     }
 
     @Override
@@ -37,7 +52,6 @@ public class LogInModelImpl implements LogInModel {
         return model;
     }
 
-
     @Override
     public void connectCustomer() {
         socket.setClientType(ClientType.CUSTOMER_CLIENT);
@@ -55,5 +69,20 @@ public class LogInModelImpl implements LogInModel {
     {
         socket.setClientType(ClientType.CHEF_CLIENT);
         socket.connectClient();
+    }
+
+    @Override
+    public void checkLogIn(String value) {
+         socket.checkPassword(value);
+    }
+
+    @Override
+    public void passwordDisapproved() {
+        support.firePropertyChange("passwordDisapproved", null, null);
+    }
+
+    @Override
+    public void passwordApproved() {
+        support.firePropertyChange("passwordApproved", null, null);
     }
 }

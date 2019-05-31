@@ -6,8 +6,6 @@ import client.model.customer.CustomerModel;
 import client.model.logIn.LogInModel;
 import client.model.waiter.WaiterModel;
 import client.view.ViewHandler;
-import client.view.waiter.WaiterView;
-import client.viewModel.chef.ChefLogInViewModel;
 import client.viewModel.chef.ChefViewModel;
 import client.viewModel.customer.CategoryListItemsViewModel;
 import client.viewModel.customer.CategoryListViewModel;
@@ -38,7 +36,6 @@ public class ViewModelProvider {
 
     private WaiterViewModel waiterViewModel;
 
-    private ChefLogInViewModel chefLogInViewModel;
     private ChefViewModel chefViewModel;
 
 
@@ -64,7 +61,6 @@ public class ViewModelProvider {
 
         waiterViewModel = new WaiterViewModel(waiterModel);
 
-        chefLogInViewModel = new ChefLogInViewModel(viewHandler, chefModel);
         chefViewModel = new ChefViewModel(chefModel);
     }
 
