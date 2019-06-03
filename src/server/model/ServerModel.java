@@ -74,7 +74,6 @@ public class ServerModel {
     public void sendPartial(Order obj) {
         Order o = dbHandler.getOrder(obj.getTableId());
         int k = -1;
-        System.out.println("before sending it " + o);
         for(int i = 0; i < orders.size(); ++i)
         {
             if(orders.get(i).getTableId().equals(obj.getTableId()))
@@ -95,15 +94,15 @@ public class ServerModel {
     }
 
     public void orderFinished(String obj) {
-        for(int i = 0; i < orders.size(); ++i)
-        {
-            if(orders.get(i).getTableId().equals(obj))
-            {
-                dbHandler.removeOrder(obj);
-                orders.remove(i);
-                break;
-            }
-        }
+//        for(int i = 0; i < orders.size(); ++i)
+//        {
+//            if(orders.get(i).getTableId().equals(obj))
+//            {
+//                dbHandler.removeOrder(obj);
+//                orders.remove(i);
+//                break;
+//            }
+//        }
         support.firePropertyChange("orderRemoved", null, obj);
     }
 
