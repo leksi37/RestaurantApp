@@ -110,7 +110,6 @@ public class WaiterServerSocketHandler implements ServerSocketHandler, Runnable 
         while (true) {
             try {
                 Request r = (Request) inFromClient.readObject();
-                System.out.println(r.getType());
                 switch (r.getType()){
                     case WAITER_PASSWORD_CHECK: {
                         model.waiterCheckPassword(new Passwords("waiter", (String)r.getObj()));

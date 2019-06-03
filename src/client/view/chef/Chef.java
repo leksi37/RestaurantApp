@@ -40,7 +40,6 @@ public class Chef {
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
                 if (orderList.getSelectionModel().getSelectedIndex() >= 0) {
                     lastSelected = orderList.getSelectionModel().getSelectedIndex();
-                    System.out.println("last selected " + lastSelected + " calling from the changing code ");
                     Platform.runLater(() ->
                             viewItems()
                     );
@@ -77,7 +76,6 @@ public class Chef {
         vBox.getChildren().clear();
         Order order = viewModel.getOrder(lastSelected);
         note.setText(order.getNote());
-        System.out.println("num of itms " + order.getNumberOfItems());
         for (int i = 0; i < order.getNumberOfItems(); ++i) {
             ItemQuantity iq = order.getItemWithQuantity(i);
             if(iq.getState() == ItemState.toWaiter)
@@ -87,15 +85,14 @@ public class Chef {
                 HBox left = new HBox();
                 HBox right = new HBox();
                 Label name = new Label(iq.getItem().getName() + " x " + iq.getQuantity());
-                ;
                 Label description = new Label(iq.getItem().getDescription());
                 Button button = new Button();
                 button.setId(iq.getId());
-                button.setText(viewModel.getButtonText(iq.getId(), lastSelected).getValue());
+                button.setText(viewModel.getButtonText(iq.getState()).getValue());
                 if(button.getText().equals("Selected for waiter"))
                     button.setDisable(true);
                 button.setOnAction(event -> {
-                    viewModel.nextState(button.getId(), lastSelected);
+                    viewModel.nextState(button.getId(), iq.getState(), lastSelected);
                 });
                 Platform.runLater(() -> {
                     itemDetails.getChildren().add(name);

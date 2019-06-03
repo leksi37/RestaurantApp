@@ -50,7 +50,7 @@ public class ChefModelImpl implements ChefModel {
 
     @Override
     public void passwordDisapproved() {
-        changeSupport.firePropertyChange("chefPasswordDisapproved", null, null);
+        changeSupport.firePropertyChange("passwordDisapproved", null, null);
     }
 
     @Override
@@ -103,7 +103,7 @@ public class ChefModelImpl implements ChefModel {
 
     @Override
     public void sendPartial(int i) {
-        if(sendToWaiter.get(i).getNumberOfItems() > 0)
+        if(sendToWaiter.size() != 0 && sendToWaiter.get(i).getNumberOfItems() > 0)
         {
             chefClient.sendPartial(sendToWaiter.get(i));
             sendToWaiter.get(i).clearItems();
@@ -112,32 +112,32 @@ public class ChefModelImpl implements ChefModel {
     }
 
     @Override
-    public void nextState(String id, int selectedIndex) {
+    public void nextState(String id, ItemState state, int selectedIndex) {
         Order o = orders.get(selectedIndex);
-        switch (o.getItemWithQuantity(id).getState())
+        switch (o.getItemWithQuantity(id, state).getState())
         {
             case notStarted:{
-                o.getItemWithQuantity(id).changeState(ItemState.inProgress);
+                o.getItemWithQuantity(id, state).changeState(ItemState.inProgress);
                 break;
             }
             case inProgress:{
-                o.getItemWithQuantity(id).changeState(ItemState.done);
+                o.getItemWithQuantity(id, state).changeState(ItemState.done);
                 break;
             }
             case done:{
-                o.getItemWithQuantity(id).changeState(ItemState.forWaiter);
-                sendToWaiter.get(selectedIndex).addItem(o.getItemWithQuantity(id));
+                o.getItemWithQuantity(id, state).changeState(ItemState.forWaiter);
+                sendToWaiter.get(selectedIndex).addItem(o.getItemWithQuantity(id, ItemState.forWaiter));
                 break;
             }
         }
-        System.out.println("model " + o);
+        o.checkStates();
         chefClient.itemStateChanged(o);
     }
 
 
     @Override
     public void orderFinished(int lastSelected) {
-        if(orders.get(lastSelected).isReadyToBeClosed())
+        if(orders.size() != 0 && orders.get(lastSelected).isReadyToBeClosed())
             chefClient.orderFinished(orders.get(lastSelected).getTableId());
 
     }
@@ -162,18 +162,20 @@ public class ChefModelImpl implements ChefModel {
 
     @Override
     public void partialSent(Order obj) {
-        System.out.println(obj);
         addedToOrder(obj);
     }
 
     @Override
     public void sendFinishedItems(int lastSelected) {
-        for(int i = 0; i < orders.get(lastSelected).getNumberOfItems(); ++i)
+        if(orders.size() != 0 && orders.get(lastSelected).canBeSent())
         {
-            if(orders.get(lastSelected).getItemWithQuantity(i).getState() == ItemState.forWaiter)
-                sendToWaiter.get(lastSelected).addItem(orders.get(lastSelected).getItemWithQuantity(i));
+            for(int i = 0; i < orders.get(lastSelected).getNumberOfItems(); ++i)
+            {
+                if(orders.get(lastSelected).getItemWithQuantity(i).getState() == ItemState.forWaiter)
+                    sendToWaiter.get(lastSelected).addItem(orders.get(lastSelected).getItemWithQuantity(i));
+            }
+            if(!orders.get(lastSelected).isReadyToBeClosed())
+                sendPartial(lastSelected);
         }
-        if(!orders.get(lastSelected).isReadyToBeClosed())
-            sendPartial(lastSelected);
     }
 }

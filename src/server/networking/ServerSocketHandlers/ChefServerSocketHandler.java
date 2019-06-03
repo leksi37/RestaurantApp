@@ -45,7 +45,6 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
     private void partialForWaiterSent(PropertyChangeEvent propertyChangeEvent) {
         try{
             outToClient.writeObject(new Request(RequestType.SEND_PARTIAL, (Order)propertyChangeEvent.getNewValue()));
-            System.out.println("*sent partial to socket");
         }catch (IOException e) {
             e.printStackTrace();
         }
@@ -74,7 +73,6 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
     private void changedState(PropertyChangeEvent propertyChangeEvent) {
         try{
             Order o = new Order((Order)propertyChangeEvent.getNewValue());
-            System.out.println("chef server socket handler " + o);
             outToClient.writeObject(new Request(RequestType.ITEM_STATE_CHANGED, o));
         }catch (IOException e) {
             e.printStackTrace();
@@ -84,7 +82,6 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
     private void addToOrder(PropertyChangeEvent propertyChangeEvent) {
         try{
             Order o = new Order((Order)propertyChangeEvent.getNewValue());
-            System.out.println("chef server socket handler " + o);
             outToClient.writeObject(new Request(RequestType.ADDED_TO_ORDER, o));
         }catch (IOException e) {
             e.printStackTrace();
@@ -121,12 +118,10 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
                     }
                     case ITEM_STATE_CHANGED: {
                         Order o = new Order((Order) r.getObj());
-                        System.out.println("chef ssh, run() " + o);
                         model.itemStateChanged(o);
                         break;
                     }
                     case SEND_PARTIAL: {
-                        System.out.println("chef ssh " + r.getObj() == null);
                         model.sendPartial((Order) r.getObj());
                         break;
                     }

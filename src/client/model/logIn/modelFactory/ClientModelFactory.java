@@ -18,7 +18,6 @@ public class ClientModelFactory {
         {
             if(clientName.equals(ClientType.CUSTOMER_CLIENT)){
                 model= new CustomerModelImpl();
-                System.out.println("customer model created");
                 models.put(ClientType.CUSTOMER_CLIENT, model);
             }
             else if(clientName.equals(ClientType.CHEF_CLIENT)){

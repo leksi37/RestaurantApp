@@ -39,7 +39,6 @@ public class CustomerClientSocketHandler implements Runnable {
                         {
                             String s=(String)r.getObj();
                             customerClient.returnTableId((String)r.getObj());
-                            System.out.println("reading table id  "+s);
                             break;
                         }
                         case ADD_ORDER:
@@ -61,7 +60,6 @@ public class CustomerClientSocketHandler implements Runnable {
 
     public void addOrderToServer(Order order){
         try{
-            System.out.println("csh " + order);
             Order o = new Order(order);
             outToServer.writeObject(new Request(RequestType.ADD_ORDER, o));
         } catch (IOException e) {
@@ -70,7 +68,6 @@ public class CustomerClientSocketHandler implements Runnable {
     }
 
     public void requestCategory(String type) {
-        System.out.println(" \n\n requested menu items   "+type);
         try {
             outToServer.writeObject(new Request(RequestType.GET_MENU_ITEMS, type));
         }
@@ -82,7 +79,6 @@ public class CustomerClientSocketHandler implements Runnable {
     public void getTableId() {
         try {
             outToServer.writeObject(new Request(RequestType.GET_TABLE_ID, null));
-            System.out.println("  requested id ");
         }
         catch (IOException e) {
             e.printStackTrace();

@@ -6,8 +6,6 @@ import client.model.customer.CustomerModel;
 import client.model.logIn.LogInModel;
 import client.model.waiter.WaiterModel;
 import client.view.ViewHandler;
-import client.view.waiter.WaiterView;
-import client.viewModel.chef.ChefLogInViewModel;
 import client.viewModel.chef.ChefViewModel;
 import client.viewModel.customer.CategoryListItemsViewModel;
 import client.viewModel.customer.CategoryListViewModel;
@@ -18,8 +16,6 @@ import client.viewModel.logIn.OnOpenViewModel;
 import client.viewModel.waiter.WaiterViewModel;
 
 public class ViewModelProvider {
-
-    private ViewHandler viewHandler;
 
     //models
     private LogInModel mainModel;
@@ -38,17 +34,15 @@ public class ViewModelProvider {
 
     private WaiterViewModel waiterViewModel;
 
-    private ChefLogInViewModel chefLogInViewModel;
     private ChefViewModel chefViewModel;
 
 
-    public ViewModelProvider(ViewHandler viewHandler, LogInModel model){
+    public ViewModelProvider(LogInModel model){
         this.mainModel=model;
-        this.viewHandler = viewHandler;
         //instantiateViewModels();
     }
 
-    public void instantiateViewModels()
+    public void instantiateViewModels(ViewHandler viewHandler)
     {
         customerModel= mainModel.getCustomerModel();
         chefModel = mainModel.getChefModel();
@@ -60,11 +54,10 @@ public class ViewModelProvider {
         menuFrontViewModel= new MenuFrontViewModel(customerModel, viewHandler);
         categoryListItemsViewModel = new CategoryListItemsViewModel(viewHandler, customerModel);
         categoryListViewModel = new CategoryListViewModel(viewHandler, customerModel);
-        orderItemsListViewModel = new OrderItemsListViewModel(customerModel);
+        orderItemsListViewModel = new OrderItemsListViewModel(customerModel, viewHandler);
 
-        waiterViewModel = new WaiterViewModel(waiterModel);
+        waiterViewModel = new WaiterViewModel(waiterModel, viewHandler);
 
-        chefLogInViewModel = new ChefLogInViewModel(viewHandler, chefModel);
         chefViewModel = new ChefViewModel(chefModel);
     }
 

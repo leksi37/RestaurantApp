@@ -29,7 +29,6 @@ public class SocketServer {
                 ClientType typeOfClient = null;
                 try {
                     typeOfClient = (ClientType) inFromClient.readObject();
-                    System.out.println(typeOfClient);
                     connectClient(typeOfClient, socket);
                 } catch (ClassNotFoundException | IOException e) {
                     e.printStackTrace();
@@ -68,7 +67,6 @@ public class SocketServer {
 //                        thread.start();
 //                    }
         else {
-            System.out.println("None of the above client was connected! !ERROR!");
         }
     }
 }

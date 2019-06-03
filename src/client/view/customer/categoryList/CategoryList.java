@@ -7,20 +7,19 @@ import javafx.event.ActionEvent;
 
 public class CategoryList {
 
-    private ViewHandler viewHandler;
     private CategoryListViewModel categoryListViewModel;
 
-    public void openAppetizers() {
-        categoryListViewModel.openCategory(CategoryType.appetizers);
-        viewHandler.setCategory(CategoryType.appetizers);
-    }
+
+    public void openAppetizers() { categoryListViewModel.openCategory(CategoryType.appetizers); }
 
     public void openDrinks() {
         categoryListViewModel.openCategory(CategoryType.nonAlcoholic);
     }
+
     public void openAlcohol() {
         categoryListViewModel.openCategory(CategoryType.alcohol);
     }
+
     public void openSalads() {
         categoryListViewModel.openCategory(CategoryType.salads);
     }
@@ -49,8 +48,8 @@ public class CategoryList {
         categoryListViewModel.openCategory(CategoryType.sideDish);
     }
 
-    public void init(CategoryListViewModel vm, ViewHandler viewHandler){
-        this.viewHandler = viewHandler;
+
+    public void init(CategoryListViewModel vm){
         this.categoryListViewModel = vm;
     }
 

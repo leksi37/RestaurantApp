@@ -32,6 +32,7 @@ public class ServerModel {
         {
             if(orders.get(i).getTableId().equals(order.getTableId())) {
                 orders.get(i).addToOrder(order);
+                orders.get(i).checkStates();
                 dbHandler.addOrder(orders.get(i));
                 support.firePropertyChange("AddedToOrder", null, orders.get(i));
                 break;
@@ -58,13 +59,11 @@ public class ServerModel {
     }
 
     public void itemStateChanged(Order obj) {
-        System.out.println(obj.getTableId());
         for(int i = 0; i < orders.size(); ++i)
         {
             if(orders.get(i).getTableId().equals(obj.getTableId()))
             {
-                orders.remove(i);
-                orders.add(i, obj);
+                orders.set(i, obj);
                 dbHandler.addOrder(obj);
                 support.firePropertyChange("ChangedState", null, obj);
                 break;
@@ -75,19 +74,21 @@ public class ServerModel {
     public void sendPartial(Order obj) {
         Order o = dbHandler.getOrder(obj.getTableId());
         int k = -1;
+        System.out.println("before sending it " + o);
         for(int i = 0; i < orders.size(); ++i)
         {
             if(orders.get(i).getTableId().equals(obj.getTableId()))
                 k = i;
         }
-        System.out.println("The order we send: " + o + ", k = " + k);
         for(int i = 0; i < obj.getNumberOfItems(); ++i)
         {
-            o.getItemWithQuantity(obj.getItemWithQuantity(i).getId()).changeState(ItemState.toWaiter);
+            o.getItemWithQuantity(obj.getItemWithQuantity(i).getId(), obj.getItemWithQuantity(i).getState()).changeState(ItemState.toWaiter);
         }
+        o.checkStates();
         orders.set(k, o);
         support.firePropertyChange("partialForWaiterSent",null, o);
         dbHandler.addOrder(o);
+        System.out.println("after ordering it" + o);
         Notification n = new Notification("Order to deliver for table " + o.getTableId().charAt(5), o);
         notifications.add(n);
         support.firePropertyChange("partialForWaiter", null, n);
@@ -109,9 +110,12 @@ public class ServerModel {
     public void chefCheckPassword(Passwords password) {
         Passwords p = dbHandler.getPassword(password.getName());
         if(password.equals(p))
+        {
             support.firePropertyChange("chefPasswordCheck", null, true);
-        else
+        }
+        else {
             support.firePropertyChange("chefPasswordCheck", null, false);
+        }
     }
 
     public void waiterCheckPassword(Passwords password) {

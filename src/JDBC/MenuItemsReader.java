@@ -7,21 +7,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class MenuItemsReader {
+public class MenuItemsReader implements MenuReader {
     private JDBC db;
-    private static MenuItemsReader instance;
+//    private static MenuItemsReader instance;
 
-    private MenuItemsReader() {
+    public MenuItemsReader() {
         db = JDBC.getInstance();
     }
 
-    public static MenuItemsReader getInstance()
-    {
-        if(instance == null) {
-            instance = new MenuItemsReader();
-        }
-        return instance;
-    }
+//    public static MenuItemsReader getInstance()
+//    {
+//        if(instance == null) {
+//            instance = new MenuItemsReader();
+//        }
+//        return instance;
+//    }
 
     public void add(MenuItem item)
     {
@@ -37,10 +37,10 @@ public class MenuItemsReader {
         db.remove("Menu", "id = '" + id + "'");
     }
 
-    public void deleteAll()
-    {
-        db.removeAll("Menu");
-    }
+//    public void deleteAll()
+//    {
+//        db.removeAll("Menu");
+//    }
 
     public MenuItem getById(String id)
     {

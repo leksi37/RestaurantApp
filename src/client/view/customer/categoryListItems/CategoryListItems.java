@@ -20,7 +20,6 @@ import java.util.ArrayList;
 
 public class CategoryListItems {
     private CategoryListItemsViewModel categoryListItemsViewModel;
-    private ViewHandler viewHandler;
 
     @FXML
     private VBox list;
@@ -28,8 +27,7 @@ public class CategoryListItems {
     private ScrollPane scrollPane;
 
 
-    public void init(CategoryListItemsViewModel vm, CategoryType category, ViewHandler viewHandler) {
-        this.viewHandler = viewHandler;
+    public void init(CategoryListItemsViewModel vm, CategoryType category) {
         categoryListItemsViewModel = vm;
         categoryListItemsViewModel.addListener("gotItems", this::setItems);
         scrollPane = new ScrollPane();
@@ -47,7 +45,6 @@ public class CategoryListItems {
         ArrayList<MenuItem> items = (ArrayList<MenuItem>) propertyChangeEvent.getNewValue();
         for(int i = 0; i < items.size(); ++i)
         {
-            System.out.println(items.get(i));
             HBox box = new HBox();
             box.setId(items.get(i).getId());
 

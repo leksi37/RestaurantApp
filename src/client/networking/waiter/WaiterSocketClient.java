@@ -18,7 +18,6 @@ public class WaiterSocketClient implements WaiterClient{
         this.waiterModel=waiterModel;
         try{
             this.socket=socket;
-            System.out.println("Client connected");
             waiterClientSocketHandler = new WaiterClientSocketHandler(this,
                     new ObjectOutputStream(socket.getOutputStream()),
                     new ObjectInputStream(socket.getInputStream()));
@@ -45,7 +44,6 @@ public class WaiterSocketClient implements WaiterClient{
 
     @Override
     public void checkPassword(String value) {
-        System.out.println("client inputs for waiter password: " + value);
         waiterClientSocketHandler.checkPassword(value);
     }
 

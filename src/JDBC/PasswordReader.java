@@ -10,20 +10,20 @@ import java.sql.SQLException;
 //needs testing
 
 
-public class PasswordReader {
+public class PasswordReader implements PasswordsReader{
     private JDBC db;
-    private static PasswordReader instance;
+//    private static PasswordReader instance;
 
-    private PasswordReader() {
+    public PasswordReader() {
         db = JDBC.getInstance();
     }
 
-    public static PasswordReader getInstance()
-    {
-        if(instance == null)
-            instance = new PasswordReader();
-        return instance;
-    }
+//    public static PasswordReader getInstance()
+//    {
+//        if(instance == null)
+//            instance = new PasswordReader();
+//        return instance;
+//    }
 
     public void add(Passwords p)
     {

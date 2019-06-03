@@ -35,10 +35,10 @@ public class Order implements Serializable {
         }
     }
 
-    private int isInOrder(String itemId)
+    private int isInOrder(ItemQuantity item)
     {
         for(int i = 0; i < items.size(); ++i) {
-            if (items.get(i).getId().equals(itemId))
+            if (items.get(i).getId().equals(item.getId()) && items.get(i).getState().equals(item.getState()))
                 return i;
         }
         return -1;
@@ -71,7 +71,7 @@ public class Order implements Serializable {
 
     public void addItem(ItemQuantity itemQ)
     {
-        int k = isInOrder(itemQ.getId());
+        int k = isInOrder(itemQ);
         if(k == -1)
             items.add(itemQ);
         else items.get(k).setQuantity(items.get(k).getQuantity() + itemQ.getQuantity());
@@ -86,16 +86,16 @@ public class Order implements Serializable {
     }
 
 
-    public ArrayList<MenuItem> getItems()
-    {
-        ArrayList<MenuItem> mi = new ArrayList<MenuItem>();
-        MenuItemsReader reader = MenuItemsReader.getInstance();
-        for(int i = 0; i < items.size(); ++i)
-        {
-            mi.add(reader.getById(items.get(i).getId()));
-        }
-        return mi;
-    }
+//    public ArrayList<MenuItem> getItems()
+//    {
+//        ArrayList<MenuItem> mi = new ArrayList<MenuItem>();
+//        MenuItemsReader reader = MenuItemsReader.getInstance();
+//        for(int i = 0; i < items.size(); ++i)
+//        {
+//            mi.add(reader.getById(items.get(i).getId()));
+//        }
+//        return mi;
+//    }
 
     public ArrayList<String> dbFormatItems()
     {
@@ -124,11 +124,11 @@ public class Order implements Serializable {
         return s;
     }
 
-    public ItemQuantity getItemWithQuantity(String id)
+    public ItemQuantity getItemWithQuantity(String id, ItemState state)
     {
         for(int i = 0; i < items.size(); ++i)
         {
-            if(items.get(i).getId().equals(id))
+            if(items.get(i).getId().equals(id) && items.get(i).getState() == state)
                 return items.get(i);
         }
         return null;
@@ -139,10 +139,6 @@ public class Order implements Serializable {
         if(index < items.size())
             return items.get(index);
         return null;
-    }
-
-    public void deliverItem(ItemQuantity focusedItem) {
-        focusedItem.changeState(ItemState.delivered);
     }
 
     public void removeItem(String id, int quantity)
@@ -173,10 +169,9 @@ public class Order implements Serializable {
     }
 
     public void addToOrder(Order order) {
-        System.out.println("Order class " + this);
 
         if(order.note != null)
-            if (note == null)
+            if (note == null || note.equals(""))
                 note = order.note;
             else
                 note = note + "\n" + order.note;
@@ -185,7 +180,7 @@ public class Order implements Serializable {
         {
             addItem(order.items.get(i));
         }
-        System.out.println("Order class " + this);
+        checkStates();
     }
 
     public boolean isReadyToBeClosed()
@@ -227,4 +222,25 @@ public class Order implements Serializable {
         return true;
     }
 
+    public void checkStates() {
+        for(int i = 0; i < items.size()-1; ++i)
+            for(int j = i+1; j < items.size(); ++j)
+            {
+                if(items.get(i).getId().equals(items.get(j).getId()) && items.get(i).getState() == items.get(j).getState())
+                {
+                    items.get(i).setQuantity(items.get(i).getQuantity() + items.get(j).getQuantity());
+                    items.remove(j);
+                }
+            }
+    }
+
+    public boolean canBeSent()
+    {
+        for(int i = 0; i < items.size(); ++i)
+        {
+            if(items.get(i).getState() == ItemState.forWaiter)
+                return true;
+        }
+        return false;
+    }
 }

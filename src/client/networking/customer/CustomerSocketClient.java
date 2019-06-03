@@ -20,7 +20,6 @@ public class CustomerSocketClient implements CustomerClient {
         this.model=model;
         try{
             this.socket=socket;
-            System.out.println("Client connected");
             customerClientSocketHandler = new CustomerClientSocketHandler(this,
                     new ObjectOutputStream(socket.getOutputStream()),
                     new ObjectInputStream(socket.getInputStream()));
@@ -37,13 +36,11 @@ public class CustomerSocketClient implements CustomerClient {
 
     @Override
     public void addOrderToServer(Order order) {
-        System.out.println("customer client " + order);
         customerClientSocketHandler.addOrderToServer(order);
     }
 
     @Override
     public void requestMenuCategory(String type) {
-        System.out.println("type = [" + type + "]");
         customerClientSocketHandler.requestCategory(type);
     }
 
@@ -60,7 +57,6 @@ public class CustomerSocketClient implements CustomerClient {
     @Override
     public void returnTableId(String str) {
         model.gotTableId(str);
-        System.out.println("sent id to model     -> "+str);
     }
 
     @Override

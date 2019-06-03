@@ -45,7 +45,6 @@ public class CustomerModelImpl implements CustomerModel {
     @Override
     public void addOrderToServer(String note) {
         order.setNote(note);
-        System.out.println("customer model, sending order " + order);
         customerClient.addOrderToServer(order);
     }
 
@@ -55,7 +54,6 @@ public class CustomerModelImpl implements CustomerModel {
         lastSelectedCategory = CategoryType.valueOf(type);
         if(menuCategory == null)
         {
-            System.out.println("entered in if");
             customerClient.requestMenuCategory(type);
         }
         else

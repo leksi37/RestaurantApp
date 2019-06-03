@@ -34,7 +34,6 @@ public class LogIn {
 
     public void logIn()
     {
-        System.out.println("log in view");
         viewModel.logIn();
     }
 }

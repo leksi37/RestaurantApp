@@ -5,6 +5,7 @@ import basicClasses.ItemState;
 import basicClasses.Notification;
 import basicClasses.Order;
 import client.model.waiter.WaiterModel;
+import client.view.ViewHandler;
 import client.viewModel.ViewModels;
 import javafx.application.Platform;
 import javafx.beans.property.ListProperty;
@@ -24,9 +25,11 @@ public class WaiterViewModel implements ViewModels {
     private ObservableList<String> details = FXCollections.observableArrayList();
     private WaiterModel waiterModel;
     PropertyChangeSupport support;
+    private ViewHandler viewHandler;
 
-    public WaiterViewModel(WaiterModel waiterModel){
+    public WaiterViewModel(WaiterModel waiterModel, ViewHandler vh){
         this.waiterModel = waiterModel;
+        this.viewHandler=vh;
         support = new PropertyChangeSupport(this);
         notifications = new SimpleListProperty<>();
         notifications.set(notificationList);

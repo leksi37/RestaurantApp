@@ -1,6 +1,7 @@
 package tests;
 
 import JDBC.PasswordReader;
+import JDBC.PasswordsReader;
 import basicClasses.Passwords;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,7 +10,7 @@ import org.postgresql.util.PSQLException;
 import static org.junit.Assert.assertTrue;
 
 public class PasswordReaderTest {
-    private PasswordReader reader = PasswordReader.getInstance();
+    private PasswordsReader reader = new PasswordReader();
 
     @Test
     public void testAdd()

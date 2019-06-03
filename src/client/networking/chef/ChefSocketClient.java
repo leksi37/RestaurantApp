@@ -34,7 +34,6 @@ public class ChefSocketClient implements ChefClient {
 //            chefClientSocketHandler = new ChefClientSocketHandler(this,
 //                    new ObjectOutputStream(socket.getOutputStream()),
 //                    new ObjectInputStream(socket.getInputStream()));
-//            System.out.println("Creating the socket handler");
 //        } catch (UnknownHostException e) {
 //            e.printStackTrace();
 //        } catch (IOException e) {
@@ -114,6 +113,5 @@ public class ChefSocketClient implements ChefClient {
     @Override
     public void partialSent(Order obj) {
         model.partialSent(obj);
-        System.out.println("***Got order form server "+obj);
     }
 }

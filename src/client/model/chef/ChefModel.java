@@ -1,5 +1,6 @@
 package client.model.chef;
 
+import basicClasses.ItemState;
 import basicClasses.Order;
 import client.model.logIn.modelFactory.ClientModel;
 
@@ -25,7 +26,7 @@ public interface ChefModel extends ClientModel {
 
     void sendPartial(int i);
 
-    void nextState(String id, int selectedIndex);
+    void nextState(String id, ItemState state, int selectedIndex);
 
     void orderFinished(int lastSelected);
 

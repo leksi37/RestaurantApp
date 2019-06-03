@@ -50,7 +50,6 @@ import java.util.ArrayList;
             while(true){
                 try{
                         Request r = (Request) inFromClient.readObject();
-                        System.out.println("REQUEST: "+ r.getType().toString());
 
                     if(r.getType() == RequestType.GET_MENU_ITEMS){
                         try {

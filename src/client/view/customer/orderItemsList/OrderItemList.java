@@ -14,7 +14,7 @@ import javafx.scene.control.TextArea;
 
 public class OrderItemList {
     private OrderItemsListViewModel oilvm;
-    private ViewHandler viewHandler;
+//    private ViewHandler viewHandler;
 
     @FXML
     ListView orderItems;
@@ -26,16 +26,12 @@ public class OrderItemList {
     TextArea note;
 
     public void placeOrder(){
-        Platform.runLater(() -> {
-            oilvm.sendOrder();
-            viewHandler.openView(Views.MENU_FRONT_LABEL);
-        });
+        oilvm.sendOrder();
 
     }
 
-    public void init(OrderItemsListViewModel o, ViewHandler viewHandler)
+    public void init(OrderItemsListViewModel o)
     {
-        this.viewHandler = viewHandler;
         oilvm = o;
         oilvm.setOrderItems();
         orderItems.setItems(oilvm.getItems());
@@ -50,8 +46,6 @@ public class OrderItemList {
     }
 
     public void backToMenu() {
-        Platform.runLater(() -> {
-            viewHandler.openView(Views.CATEGORIES);
-        });
+        oilvm.back();
     }
 }

@@ -68,7 +68,6 @@ public class WaiterClientSocketHandler implements Runnable {
 
     public void checkPassword(String value) {
         try {
-            System.out.println("wsh: " + value);
             outToServer.writeObject(new Request(RequestType.WAITER_PASSWORD_CHECK, value));
         } catch (IOException e) {
             e.printStackTrace();

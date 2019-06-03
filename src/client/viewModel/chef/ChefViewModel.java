@@ -1,5 +1,7 @@
 package client.viewModel.chef;
 
+import basicClasses.ItemQuantity;
+import basicClasses.ItemState;
 import basicClasses.Order;
 import client.model.chef.ChefModel;
 import client.viewModel.ViewModels;
@@ -40,6 +42,7 @@ public class ChefViewModel implements ViewModels {
         Platform.runLater(() ->
         orders.remove((int)propertyChangeEvent.getNewValue())
                 );
+//        changeSupport.firePropertyChange("removeNote", null, null);
     }
 
     public void addListener(String name, PropertyChangeListener listener) {
@@ -63,7 +66,6 @@ public class ChefViewModel implements ViewModels {
     private void gotOrders(PropertyChangeEvent propertyChangeEvent) {
         if(!initialized)
         {
-            System.out.println("The number of orders is : " + ((ArrayList<Order>)propertyChangeEvent.getNewValue()).size());
             Platform.runLater(() -> {
                 setOrders((ArrayList<Order>) propertyChangeEvent.getNewValue());
             });
@@ -125,10 +127,10 @@ public class ChefViewModel implements ViewModels {
         model.sendPartial(i);
     }
 
-    public StringProperty getButtonText(String id, int i)
+    public StringProperty getButtonText(ItemState state)
     {
         StringProperty text = new SimpleStringProperty();
-        switch(model.getOrder(i).getItemWithQuantity(id).getState())
+        switch(state)
         {
             case notStarted:{
                 text.setValue("Start");
@@ -150,8 +152,8 @@ public class ChefViewModel implements ViewModels {
         return text;
     }
 
-    public void nextState(String id, int selectedIndex) {
-        model.nextState(id, selectedIndex);
+    public void nextState(String id, ItemState state, int selectedIndex) {
+        model.nextState(id, state, selectedIndex);
     }
 
     public void orderFinished(int lastSelected) {

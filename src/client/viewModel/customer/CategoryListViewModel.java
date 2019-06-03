@@ -26,7 +26,6 @@ public class CategoryListViewModel implements ViewModels {
     }
 
     public void openCategory(CategoryType category) {
-        System.out.println("viewModel");
         viewHandler.setCategory(category);
         viewHandler.openView(Views.ITEMS);
     }

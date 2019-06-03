@@ -2,8 +2,11 @@ package client.viewModel.customer;
 
 import basicClasses.ItemQuantity;
 import basicClasses.Order;
+import basicClasses.Views;
 import client.model.customer.CustomerModel;
+import client.view.ViewHandler;
 import client.viewModel.ViewModels;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -17,9 +20,11 @@ public class OrderItemsListViewModel implements ViewModels {
     private StringProperty note;
     private ObservableList<ItemQuantity> items = FXCollections.observableArrayList();
     PropertyChangeSupport support;
+    private ViewHandler viewHandler;
 
-    public OrderItemsListViewModel(CustomerModel model) {
+    public OrderItemsListViewModel(CustomerModel model, ViewHandler viewHandler) {
         this.model = model;
+        this.viewHandler=viewHandler;
         support = new PropertyChangeSupport(this);
         note = new SimpleStringProperty();
         model.addListeners("orderChanged", this :: orderChanged);
@@ -51,6 +56,9 @@ public class OrderItemsListViewModel implements ViewModels {
     public void sendOrder() {
         model.addOrderToServer(note.getValue());
         items.clear();
+        Platform.runLater(() -> {
+            viewHandler.openView(Views.MENU_FRONT_LABEL);
+        });
     }
 
     public ObservableList<ItemQuantity> getItems() {
@@ -69,5 +77,11 @@ public class OrderItemsListViewModel implements ViewModels {
 
     public void remove(Object focusedItem) {
             model.removeItem((ItemQuantity) focusedItem);
+    }
+
+    public void back(){
+        Platform.runLater(() -> {
+            viewHandler.openView(Views.CATEGORIES);
+        });
     }
 }

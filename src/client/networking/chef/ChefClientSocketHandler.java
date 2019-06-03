@@ -91,7 +91,6 @@ public class ChefClientSocketHandler implements Runnable {
     }
 
     public void stateChanged(Order order) {
-        System.out.println("chef csh " + order);
         try {
             outToServer.writeObject(new Request(RequestType.ITEM_STATE_CHANGED, order));
         } catch (IOException e) {

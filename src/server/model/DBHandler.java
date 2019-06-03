@@ -1,8 +1,6 @@
 package server.model;
 
-import JDBC.MenuItemsReader;
-import JDBC.OrderReader;
-import JDBC.PasswordReader;
+import JDBC.*;
 import basicClasses.CategoryType;
 import basicClasses.MenuItem;
 import basicClasses.Order;
@@ -11,14 +9,14 @@ import basicClasses.Passwords;
 import java.util.ArrayList;
 
 public class DBHandler {
-    private PasswordReader passwordReader;
-    private OrderReader orderReader;
-    private MenuItemsReader itemsReader;
+    private PasswordsReader passwordReader;
+    private OrdersReader orderReader;
+    private MenuReader itemsReader;
 
     public DBHandler() {
-        passwordReader = PasswordReader.getInstance();
-        orderReader = OrderReader.getInstance();
-        itemsReader = MenuItemsReader.getInstance();
+        passwordReader = new PasswordReader();
+        orderReader = new OrderReader();
+        itemsReader = new MenuItemsReader();
     }
 
     public void addOrder(Order order)

@@ -1,6 +1,7 @@
 package tests;
 
 import JDBC.MenuItemsReader;
+import JDBC.MenuReader;
 import basicClasses.CategoryType;
 import basicClasses.MenuItem;
 import org.junit.Test;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 import static org.junit.Assert.assertTrue;
 
 public class MenuItemsReaderTest {
-    private MenuItemsReader reader = MenuItemsReader.getInstance();
+    private MenuReader reader = new MenuItemsReader();
 
 //    @Before
 //    public void setup()

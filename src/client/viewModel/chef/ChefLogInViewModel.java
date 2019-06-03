@@ -36,7 +36,6 @@ public class ChefLogInViewModel implements ViewModels {
     }
 
     public void logIn() {
-        System.out.println("log in view model");
         model.checkLogIn(password.getValue());
     }
 
