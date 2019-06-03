@@ -16,12 +16,12 @@ import java.beans.PropertyChangeEvent;
 
 public class LogInViewModel implements ViewModels {
     private StringProperty password;
+    private StringProperty hello;
     private ViewHandler viewHandler;
     private LogInModel mainModel;
     private ClientModel model;
     private ClientType type;
     private StringProperty errorText;
-
 
     public LogInViewModel(ViewHandler vh, LogInModel m) {
         password = new SimpleStringProperty();
@@ -32,9 +32,15 @@ public class LogInViewModel implements ViewModels {
 
     public void setModel(ClientType type){
         if(type.equals(ClientType.WAITER_CLIENT))
+        {
             model=mainModel.getWaiterModel();
+            hello = new SimpleStringProperty("Hello, dear waiter!");
+        }
         else if(type.equals(ClientType.CHEF_CLIENT))
+        {
             model=mainModel.getChefModel();
+            hello = new SimpleStringProperty("Hello, master chef!");
+        }
 
         this.type=type;
 
@@ -85,5 +91,9 @@ public class LogInViewModel implements ViewModels {
 
     public StringProperty errorTextProperty() {
         return errorText;
+    }
+
+    public StringProperty helloProperty() {
+        return hello;
     }
 }

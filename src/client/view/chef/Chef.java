@@ -35,6 +35,7 @@ public class Chef {
         viewModel.addListener("noItemsSelected", this::noItems);
         viewModel.fetchOrders();
         orderList.setItems(viewModel.getOrders());
+        note.setWrapText(true);
         orderList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {

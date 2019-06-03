@@ -13,6 +13,8 @@ public class LogIn {
     private PasswordField passwordField;
     @FXML
     private Label oops;
+    @FXML
+    private Label greetingLabel;
 
     private LogInViewModel viewModel;
 
@@ -21,6 +23,7 @@ public class LogIn {
         this.viewModel = viewModel;
         passwordField.textProperty().bindBidirectional(viewModel.passwordProperty());
         oops.textProperty().bindBidirectional(viewModel.errorTextProperty());
+        greetingLabel.textProperty().bindBidirectional(viewModel.helloProperty());
         passwordField.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
