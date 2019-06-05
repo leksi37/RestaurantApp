@@ -28,17 +28,6 @@ public class ChefSocketClient implements ChefClient {
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        this.model=model;
-//        try{
-//            socket=new Socket("localhost", 2910);
-//            chefClientSocketHandler = new ChefClientSocketHandler(this,
-//                    new ObjectOutputStream(socket.getOutputStream()),
-//                    new ObjectInputStream(socket.getInputStream()));
-//        } catch (UnknownHostException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
 
         Thread t= new Thread(chefClientSocketHandler);
         t.setDaemon(true);

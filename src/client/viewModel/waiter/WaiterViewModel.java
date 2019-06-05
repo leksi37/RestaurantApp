@@ -20,7 +20,6 @@ import java.util.ArrayList;
 
 public class WaiterViewModel implements ViewModels {
     private ListProperty<String> notifications;
-    //private ListProperty<String> details;
     private ObservableList<String> notificationList = FXCollections.observableArrayList();
     private ObservableList<String> details = FXCollections.observableArrayList();
     private WaiterModel waiterModel;
@@ -33,8 +32,6 @@ public class WaiterViewModel implements ViewModels {
         support = new PropertyChangeSupport(this);
         notifications = new SimpleListProperty<>();
         notifications.set(notificationList);
-        //details=new SimpleListProperty<>();
-        //details.set(detailsList);
         waiterModel.addListeners("customerRequest", this :: notificationReceived);
         waiterModel.addListeners("partial", this :: partial);
         waiterModel.addListeners("chefRequest", this :: chefRequest);
@@ -74,7 +71,6 @@ public class WaiterViewModel implements ViewModels {
                 notifications.add(0, n.getNotificationText());
                 refreshDetails(((Order)n.getObject()).getTableId());
                  });
-//        support.firePropertyChange("Notification for waiter", null, j);
     }
 
     public void refreshDetails(String id){
@@ -107,7 +103,6 @@ public class WaiterViewModel implements ViewModels {
                         notifications.add(0, n.getNotificationText())
                 );
         int tableNum = Character.getNumericValue(((String)n.getObject()).charAt(5));
-//        support.firePropertyChange("Notification for waiter", null, tableNum);
     }
 
     public ListProperty<String> getNotifications() {

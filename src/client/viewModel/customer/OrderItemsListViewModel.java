@@ -31,7 +31,6 @@ public class OrderItemsListViewModel implements ViewModels {
         model.addListeners("orderAdded", this :: orderAdded);
     }
 
-    //If we can call PropertyChangeSupport in the view then we can leave it if not this should be removed! and every submethod also
     private void orderAdded(PropertyChangeEvent propertyChangeEvent) {
         support.firePropertyChange("orderAddedForChange", null, null);
     }

@@ -21,10 +21,8 @@ import java.util.ArrayList;
         private ObjectOutputStream outToClient;
 
         private String connectionId;
-//        private MenuItemsReader reader;
 
         public CustomerServerSocketHandler(ServerModel model, Socket socket){
-//            reader = MenuItemsReader.getInstance();
             this.model=model;
             try{
                 inFromClient=new ObjectInputStream(socket.getInputStream());
@@ -92,7 +90,6 @@ import java.util.ArrayList;
 
         }
 
-        @Override
         public String getId() {
             return connectionId;
         }

@@ -19,13 +19,11 @@ import java.util.ArrayList;
 public class ChefViewModel implements ViewModels {
     private ChefModel model;
     private boolean initialized = false;
-//    private PropertyChangeSupport changeSupport;
     private ObservableList<String> orders = FXCollections.observableArrayList();
     private PropertyChangeSupport changeSupport;
 
     public ChefViewModel(ChefModel model){
         this.model = model;
-//        changeSupport = new PropertyChangeSupport(this);
         this.model.addListeners("OrderForChefAdded", this :: getOrderUpdate);
         this.model.addListeners("gotOrders", this :: gotOrders);
         this.model.addListeners("gotOrder", this :: gotOrder);
@@ -42,7 +40,6 @@ public class ChefViewModel implements ViewModels {
         Platform.runLater(() ->
         orders.remove((int)propertyChangeEvent.getNewValue())
                 );
-//        changeSupport.firePropertyChange("removeNote", null, null);
     }
 
     public void addListener(String name, PropertyChangeListener listener) {
@@ -91,14 +88,6 @@ public class ChefViewModel implements ViewModels {
             }});
     }
 
-//    public void addListener(String name, PropertyChangeListener listener)
-//    {
-//        if(name == null || name.equals(""))
-//            changeSupport.addPropertyChangeListener(listener);
-//        else
-//            changeSupport.addPropertyChangeListener(name, listener);
-//    }
-
     public ObservableList getOrders() {
         return orders;
     }
@@ -110,18 +99,6 @@ public class ChefViewModel implements ViewModels {
     public Order getOrder(int selectedIndex) {
         return model.getOrder(selectedIndex);
     }
-
-//    public void itemStarted(String id, int selectedIndex) {
-//        model.itemStarted(id, selectedIndex);
-//    }
-
-//    public void itemDone(String id, int selectedIndex) {
-//        model.itemDone(id, selectedIndex);
-//    }
-
-//    public void itemAddedToPartialOrder(String id, int selectedIndex) {
-//        model.itemAddedToPartialOrder(id, selectedIndex);
-//    }
 
     public void sendPartial(int i) {
         model.sendPartial(i);

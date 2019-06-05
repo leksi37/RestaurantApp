@@ -81,7 +81,10 @@ public class ServerModel {
         }
         for(int i = 0; i < obj.getNumberOfItems(); ++i)
         {
-            o.getItemWithQuantity(obj.getItemWithQuantity(i).getId(), obj.getItemWithQuantity(i).getState()).changeState(ItemState.toWaiter);
+            try {
+                o.getItemWithQuantity(obj.getItemWithQuantity(i).getId(), obj.getItemWithQuantity(i).getState()).changeState(ItemState.toWaiter);
+            }catch(NullPointerException e)
+            {}
         }
         o.checkStates();
         orders.set(k, o);
@@ -94,15 +97,6 @@ public class ServerModel {
     }
 
     public void orderFinished(String obj) {
-//        for(int i = 0; i < orders.size(); ++i)
-//        {
-//            if(orders.get(i).getTableId().equals(obj))
-//            {
-//                dbHandler.removeOrder(obj);
-//                orders.remove(i);
-//                break;
-//            }
-//        }
         support.firePropertyChange("orderRemoved", null, obj);
     }
 
@@ -155,6 +149,7 @@ public class ServerModel {
 
     public void closeOrder(String obj) {
         dbHandler.removeOrder(obj);
+        orders = new ArrayList<Order>(dbHandler.getAllOrders());
         support.firePropertyChange("orderClosed", null, obj);
     }
 }

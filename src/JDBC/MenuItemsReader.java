@@ -9,19 +9,10 @@ import java.util.ArrayList;
 
 public class MenuItemsReader implements MenuReader {
     private JDBC db;
-//    private static MenuItemsReader instance;
 
     public MenuItemsReader() {
         db = JDBC.getInstance();
     }
-
-//    public static MenuItemsReader getInstance()
-//    {
-//        if(instance == null) {
-//            instance = new MenuItemsReader();
-//        }
-//        return instance;
-//    }
 
     public void add(MenuItem item)
     {
@@ -36,11 +27,6 @@ public class MenuItemsReader implements MenuReader {
     {
         db.remove("Menu", "id = '" + id + "'");
     }
-
-//    public void deleteAll()
-//    {
-//        db.removeAll("Menu");
-//    }
 
     public MenuItem getById(String id)
     {

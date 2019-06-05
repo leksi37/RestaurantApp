@@ -14,7 +14,6 @@ import javafx.scene.control.TextArea;
 
 public class OrderItemList {
     private OrderItemsListViewModel oilvm;
-//    private ViewHandler viewHandler;
 
     @FXML
     ListView orderItems;

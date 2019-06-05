@@ -28,9 +28,7 @@ public class ClientModelFactory {
                 model = new WaiterModelImpl();
                 models.put(String.valueOf(ClientType.WAITER_CLIENT), model);
             }
-
-                // ADD ONE FOR MANAGER
-            }
+        }
         return model;
     }
 }

@@ -7,23 +7,12 @@ import java.sql.SQLException;
 
 
 
-//needs testing
-
-
 public class PasswordReader implements PasswordsReader{
     private JDBC db;
-//    private static PasswordReader instance;
 
     public PasswordReader() {
         db = JDBC.getInstance();
     }
-
-//    public static PasswordReader getInstance()
-//    {
-//        if(instance == null)
-//            instance = new PasswordReader();
-//        return instance;
-//    }
 
     public void add(Passwords p)
     {
@@ -41,7 +30,6 @@ public class PasswordReader implements PasswordsReader{
             if(rs.next())
                 p = new Passwords(rs.getString("name"), rs.getString("password"));
         } catch (SQLException e) {
-            //just return null
         }
         return p;
     }
@@ -63,9 +51,4 @@ public class PasswordReader implements PasswordsReader{
             e.printStackTrace();
         }
     }
-
-//    public void deleteAll()
-//    {
-//        db.removeAll("passwords");
-//    }
 }

@@ -104,9 +104,6 @@ public class WaiterServerSocketHandler implements ServerSocketHandler, Runnable 
 
     @Override
     public void run() {
-
-        // for now we are never sending anything to the server from waiter
-
         while (true) {
             try {
                 Request r = (Request) inFromClient.readObject();
@@ -123,11 +120,6 @@ public class WaiterServerSocketHandler implements ServerSocketHandler, Runnable 
 
             }
         }
-    }
-
-    @Override
-    public String getId() {
-        return connectionId;
     }
 }
 

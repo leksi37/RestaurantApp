@@ -24,10 +24,8 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
     private ObjectOutputStream outToClient;
 
     private String connectionId;
-//    private PasswordReader passwordReader;
 
     public ChefServerSocketHandler(ServerModel model, Socket socket){
-//        passwordReader = PasswordReader.getInstance();
         this.model=model;
         try{
             inFromClient=new ObjectInputStream(socket.getInputStream());
@@ -38,6 +36,7 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
         model.addListener("AddedToOrder", this::addToOrder);
         model.addListener("ChangedState", this::changedState);
         model.addListener("orderRemoved", this::orderRemoved);
+        model.addListener("orderClosed", this::orderRemoved);
         model.addListener("chefPasswordCheck", this::passwordCheck);
         model.addListener("partialForWaiterSent", this::partialForWaiterSent);
     }
@@ -58,7 +57,7 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
         try{
             outToClient.writeObject(new Request(r, null));
         }catch (IOException e) {
-            e.printStackTrace();
+
         }
     }
 
@@ -66,7 +65,7 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
         try{
             outToClient.writeObject(new Request(RequestType.ORDER_FINISHED, (String)propertyChangeEvent.getNewValue()));
         }catch (IOException e) {
-            e.printStackTrace();
+
         }
     }
 
@@ -142,8 +141,4 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
 
     }
 
-    @Override
-    public String getId() {
-        return connectionId;
-    }
 }

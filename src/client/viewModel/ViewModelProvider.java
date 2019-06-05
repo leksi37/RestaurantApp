@@ -39,7 +39,6 @@ public class ViewModelProvider {
 
     public ViewModelProvider(LogInModel model){
         this.mainModel=model;
-        //instantiateViewModels();
     }
 
     public void instantiateViewModels(ViewHandler viewHandler)

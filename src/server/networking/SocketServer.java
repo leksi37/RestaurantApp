@@ -60,12 +60,6 @@ public class SocketServer {
             System.out.println("chef client connected");
             thread.start();
         }
-//                    else if(typeOfClient.equals(clients.MANAGER_CLIENT)){
-//                        ManagerServerSocketHandler serverSocketHandler= new ManagerServerSocketHandler(model, socket);
-//                        Thread thread=new Thread(serverSocketHandler);
-//                        System.out.println("Manager client connected");
-//                        thread.start();
-//                    }
         else {
         }
     }

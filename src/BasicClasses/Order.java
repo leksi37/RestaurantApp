@@ -44,31 +44,6 @@ public class Order implements Serializable {
         return -1;
     }
 
-//    private int isInOrder(ItemQuantity item)
-//    {
-//        for(int i = 0; i < items.size(); ++i) {
-//            if (items.get(i).equals(item))
-//                return i;
-//        }
-//        return -1;
-//    }
-
-//    public void addItem(String itemId, int quantity)
-//    {
-//        int k = isInOrder(itemId);
-//        if(k == -1)
-//            items.add(new ItemQuantity(itemId, quantity));
-//        else items.get(k).setQuantity(items.get(k).getQuantity() + quantity);
-//    }
-
-//    public void addItem(String itemId)
-//    {
-//        int k = isInOrder(itemId);
-//        if(k == -1)
-//            items.add(new ItemQuantity(itemId, 1));
-//        else items.get(k).setQuantity(items.get(k).getQuantity() + 1);
-//    }
-
     public void addItem(ItemQuantity itemQ)
     {
         int k = isInOrder(itemQ);
@@ -84,18 +59,6 @@ public class Order implements Serializable {
     public ArrayList<ItemQuantity> getItemsWithQuantity() {
         return items;
     }
-
-
-//    public ArrayList<MenuItem> getItems()
-//    {
-//        ArrayList<MenuItem> mi = new ArrayList<MenuItem>();
-//        MenuItemsReader reader = MenuItemsReader.getInstance();
-//        for(int i = 0; i < items.size(); ++i)
-//        {
-//            mi.add(reader.getById(items.get(i).getId()));
-//        }
-//        return mi;
-//    }
 
     public ArrayList<String> dbFormatItems()
     {
@@ -175,7 +138,6 @@ public class Order implements Serializable {
                 note = order.note;
             else
                 note = note + "\n" + order.note;
-//        int k;
         for (int i = 0; i < order.items.size(); ++i)
         {
             addItem(order.items.get(i));

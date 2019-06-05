@@ -11,20 +11,10 @@ import java.util.ArrayList;
 
 public class OrderReader implements OrdersReader {
     private JDBC db;
-//    private static OrderReader instance;
 
     public OrderReader() {
         db = JDBC.getInstance();
     }
-
-//    public static OrderReader getInstance()
-//    {
-//        if(instance == null)
-//        {
-//            instance = new OrderReader();
-//        }
-//        return instance;
-//    }
 
     public void addOrder(Order order)
     {

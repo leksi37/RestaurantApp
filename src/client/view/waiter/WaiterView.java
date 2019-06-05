@@ -26,7 +26,6 @@ public class WaiterView {
         lastSelectedTable = 0;
         notifications.itemsProperty().bindBidirectional(viewModel.getNotifications());
         displayPanel.setItems(viewModel.getDetails());
-//        viewModel.addListeners("Notification for waiter", this::newNotification);
         closeTable.setDisable(true);
 
     }
@@ -60,68 +59,7 @@ public class WaiterView {
         notifications.getFocusModel().getFocusedItem().getClass().getName().toUpperCase();
         //notifications.placeholderProperty().setValue("Taken");
     }
-//
-//    public void newNotification(PropertyChangeEvent changeEvent){
-//        int newOne = (Integer)changeEvent.getNewValue();
-//        switch (newOne){
-//            case (0): {
-//                tableOne.setStyle(style);
-//                break;
-//            }
-//            case (2): {
-//                tableTwo.setStyle(style);
-//                break;
-//            }
-//            case (3): {
-//                tableThree.setStyle(style);
-//                break;
-//            }
-//            case (4): {
-//                tableFour.setStyle(style);
-//                break;
-//            }case (5): {
-//                tableFive.setStyle(style);
-//                break;
-//            }case (6): {
-//                tableSix.setStyle(style);
-//                break;
-//            }case (7): {
-//                tableSeven.setStyle(style);
-//                break;
-//            }case (8): {
-//                tableEight.setStyle(style);
-//                break;
-//            }case (9): {
-//                tableNine.setStyle(style);
-//                break;
-//            }
-//            case (10): {
-//                tableTen.setStyle(style);
-//                break;
-//            }
-//            case (11): {
-//                tableEleven.setStyle(style);
-//                break;
-//            }case (12): {
-//                tableTwelve.setStyle(style);
-//                break;
-//            }case (13): {
-//                tableThirteen.setStyle(style);
-//                break;
-//            }case (14): {
-//                tableFourteen.setStyle(style);
-//                break;
-//            }case (15): {
-//                tableFifteen.setStyle(style);
-//                break;
-//            }
-//            case (16): {
-//                tableSixteen.setStyle(style);
-//                break;
-//            }
-//        }
-//
-//    }
+
 
     public void one(ActionEvent actionEvent) {
         viewModel.refreshDetails("table1");
@@ -189,47 +127,6 @@ public class WaiterView {
         viewModel.refreshDetails("table16");
         lastSelectedTable = 16;
     }
-
-
-   /* public void four(ActionEvent actionEvent) {
-        tableFour.setStyle(normal);
-    }
-    public void five(ActionEvent actionEvent) {
-        tableFive.setStyle(normal);
-    }
-    public void six(ActionEvent actionEvent) {
-        tableSix.setStyle(normal);
-    }
-    public void seven(ActionEvent actionEvent) {
-        tableSeven.setStyle(normal);
-    }
-    public void eight(ActionEvent actionEvent) {
-        tableEight.setStyle(normal);
-    }
-    public void nine(ActionEvent actionEvent) {
-        tableNine.setStyle(normal);
-    }
-    public void ten(ActionEvent actionEvent) {
-        tableTen.setStyle(normal);
-    }
-    public void eleven(ActionEvent actionEvent) {
-        tableEleven.setStyle(normal);
-    }
-    public void twelve(ActionEvent actionEvent) {
-        tableTwelve.setStyle(normal);
-    }
-    public void thirteen(ActionEvent actionEvent) {
-        tableThirteen.setStyle(normal);
-    }
-    public void fourteen(ActionEvent actionEvent) {
-        tableFourteen.setStyle(normal);
-    }
-    public void fifteen(ActionEvent actionEvent) {
-        tableFifteen.setStyle(normal);
-    }
-    public void sixteen(ActionEvent actionEvent){
-        tableSixteen.setStyle(normal);
-    }*/
 
     public void closeOrder(ActionEvent actionEvent) {
         viewModel.requestClose(lastSelectedTable);
