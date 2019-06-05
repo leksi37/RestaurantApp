@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="final version fixed small things">
-      <change afterPath="$PROJECT_DIR$/src/tests/ItemQuantityTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tests/OrderTest.java" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="tests are good now">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/tests/MenuItemsReaderTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/tests/MenuItemsReaderTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantApp/tests/PasswordReaderTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantApp/tests/PasswordReaderTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/MenuItemsReaderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/MenuItemsReaderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/OrderReaderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/OrderReaderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/PasswordReaderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/PasswordReaderTest.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -69,7 +62,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/basicClasses/ItemQuantity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="629">
@@ -111,8 +104,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/tests/ItemQuantityTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="24" column="54" selection-start-line="24" selection-start-column="54" selection-end-line="24" selection-end-column="54" />
+            <state relative-caret-position="355">
+              <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -120,7 +113,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/tests/OrderReaderTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="4">
@@ -260,8 +253,8 @@
         <option value="$PROJECT_DIR$/src/tests/OrderReaderTest.java" />
         <option value="$PROJECT_DIR$/src/tests/PasswordReaderTest.java" />
         <option value="$PROJECT_DIR$/src/basicClasses/ItemQuantityTest.java" />
-        <option value="$PROJECT_DIR$/src/tests/ItemQuantityTest.java" />
         <option value="$PROJECT_DIR$/src/tests/OrderTest.java" />
+        <option value="$PROJECT_DIR$/src/tests/ItemQuantityTest.java" />
       </list>
     </option>
   </component>
@@ -337,7 +330,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559774924904" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559775500187" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -387,7 +380,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.OrderTest.testAddToOrderAndNumberOfItems">
+  <component name="RunManager" selected="JUnit.ItemQuantityTest.testConstructorAndEquals">
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -447,7 +440,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrderTest.addSame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ItemQuantityTest.testConstructorAndEquals" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="RestaurantApp" />
       <extension name="coverage">
         <pattern>
@@ -456,8 +449,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.OrderTest" />
-      <option name="METHOD_NAME" value="addSame" />
+      <option name="MAIN_CLASS_NAME" value="tests.ItemQuantityTest" />
+      <option name="METHOD_NAME" value="testConstructorAndEquals" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="TEST_SEARCH_SCOPE">
@@ -559,19 +552,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.OrderTest.addSame" />
       <item itemvalue="JUnit.OrderTest.addSameItemDifferentStates" />
       <item itemvalue="JUnit.ItemQuantityTest.testChangeState" />
       <item itemvalue="JUnit.OrderTest.testOtherConstructorAndEquals" />
       <item itemvalue="JUnit.OrderTest.testAddToOrderAndNumberOfItems" />
+      <item itemvalue="JUnit.ItemQuantityTest.testConstructorAndEquals" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ItemQuantityTest.testConstructorAndEquals" />
         <item itemvalue="JUnit.OrderTest.testAddToOrderAndNumberOfItems" />
         <item itemvalue="JUnit.OrderTest.testOtherConstructorAndEquals" />
         <item itemvalue="JUnit.ItemQuantityTest.testChangeState" />
         <item itemvalue="JUnit.OrderTest.addSameItemDifferentStates" />
-        <item itemvalue="JUnit.OrderTest.addSame" />
       </list>
     </recent_temporary>
   </component>
@@ -629,7 +622,7 @@
       <workItem from="1559640275690" duration="903000" />
       <workItem from="1559750787681" duration="2089000" />
       <workItem from="1559759544862" duration="4299000" />
-      <workItem from="1559768882025" duration="5658000" />
+      <workItem from="1559768882025" duration="6824000" />
     </task>
     <task id="LOCAL-00001" summary="lalaaaa">
       <created>1556789701091</created>
@@ -694,13 +687,17 @@
       <option name="project" value="LOCAL" />
       <updated>1559595500702</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="tests are good now">
+      <created>1559774948504</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1559774948505</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ItemQuantityTest_testEquals - 2019.06.06 at 00h 04m 55s.xml">
-      <configuration name="ItemQuantityTest.testEquals" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="OrderTest_addItems - 2019.06.06 at 00h 07m 39s.xml">
       <configuration name="OrderTest.addItems" configurationId="JUnit" />
     </history-entry>
@@ -728,9 +725,12 @@
     <history-entry file="OrderTest_testAddToOrderAndNumberOfItems - 2019.06.06 at 00h 41m 14s.xml">
       <configuration name="OrderTest.testAddToOrderAndNumberOfItems" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="ItemQuantityTest_testConstructorAndEquals - 2019.06.06 at 00h 54m 10s.xml">
+      <configuration name="ItemQuantityTest.testConstructorAndEquals" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="229022000" />
+    <option name="totallyTimeSpent" value="230188000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -786,7 +786,8 @@
     <MESSAGE value="deleting from db" />
     <MESSAGE value="final version" />
     <MESSAGE value="final version fixed small things" />
-    <option name="LAST_COMMIT_MESSAGE" value="final version fixed small things" />
+    <MESSAGE value="tests are good now" />
+    <option name="LAST_COMMIT_MESSAGE" value="tests are good now" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1109,33 +1110,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests/MenuItemTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests/OrderReaderTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4">
-          <caret line="25" column="28" lean-forward="true" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests/PasswordReaderTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="26" column="62" selection-start-line="26" selection-start-column="62" selection-end-line="26" selection-end-column="62" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/tests/OrderTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -1160,20 +1134,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/basicClasses/ItemQuantity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="54" column="23" lean-forward="true" selection-start-line="54" selection-start-column="23" selection-end-line="54" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/tests/ItemQuantityTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="24" column="54" selection-start-line="24" selection-start-column="54" selection-end-line="24" selection-end-column="54" />
+        <state relative-caret-position="355">
+          <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/basicClasses/ItemQuantity.java">
+    <entry file="file://$PROJECT_DIR$/src/tests/MenuItemTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="54" column="23" lean-forward="true" selection-start-line="54" selection-start-column="23" selection-end-line="54" selection-end-column="23" />
+        <state relative-caret-position="68">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tests/PasswordReaderTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="26" column="62" selection-start-line="26" selection-start-column="62" selection-end-line="26" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tests/OrderReaderTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4">
+          <caret line="25" column="28" lean-forward="true" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
