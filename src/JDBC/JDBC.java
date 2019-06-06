@@ -15,7 +15,7 @@ public class JDBC {
 
             c = DriverManager
                     .getConnection("jdbc:postgresql://localhost:5432/postgres",
-                            "postgres", "2791");
+                            "postgres", "JKarla2017");
         }
         catch (SQLException | ClassNotFoundException e)
         {
@@ -35,7 +35,6 @@ public class JDBC {
         String com = "insert into \"menu\"." + tableName + " values ( " + values + ");";
         st = c.createStatement();
         st.executeUpdate(com);
-        System.out.println(tableName);
 
     }
 

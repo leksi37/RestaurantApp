@@ -24,11 +24,9 @@ public class WaiterViewModel implements ViewModels {
     private ObservableList<String> details = FXCollections.observableArrayList();
     private WaiterModel waiterModel;
     PropertyChangeSupport support;
-    private ViewHandler viewHandler;
 
-    public WaiterViewModel(WaiterModel waiterModel, ViewHandler vh){
+    public WaiterViewModel(WaiterModel waiterModel){
         this.waiterModel = waiterModel;
-        this.viewHandler=vh;
         support = new PropertyChangeSupport(this);
         notifications = new SimpleListProperty<>();
         notifications.set(notificationList);
@@ -111,10 +109,6 @@ public class WaiterViewModel implements ViewModels {
 
     public ObservableList<String> getDetails() {
         return details;
-    }
-
-    public void requestCloseOrder(int num){
-
     }
 
     public void requestClose(int lastSelectedTable) {

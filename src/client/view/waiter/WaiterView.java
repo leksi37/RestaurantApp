@@ -14,32 +14,10 @@ import java.beans.PropertyChangeSupport;
 
 public class WaiterView {
     private WaiterViewModel viewModel;
-    private ViewHandler viewHandler;
-    private PropertyChangeSupport support = new PropertyChangeSupport(this);
-    private String style = "-fx-background-color: rgb(112, 219, 112);";
-    private String normal = "-fx-background-color: rgb(255, 230, 230);";
     private int lastSelectedTable;
-
-    public void init(WaiterViewModel viewModel, ViewHandler viewHandler) {
-        this.viewModel = viewModel;
-        this.viewHandler = viewHandler;
-        lastSelectedTable = 0;
-        notifications.itemsProperty().bindBidirectional(viewModel.getNotifications());
-        displayPanel.setItems(viewModel.getDetails());
-        closeTable.setDisable(true);
-
-    }
-
-    @FXML
-    private Button tableOne, tableTwo, tableThree, tableFour, tableFive,
-            tableSix, tableSeven, tableEight, tableNine, tableTen, tableEleven,
-            tableTwelve, tableThirteen, tableFourteen, tableFifteen, tableSixteen;
 
     @FXML
     private ListView notifications;
-
-    @FXML
-    private Label updateLabel;
 
     @FXML
     public Button closeTable;
@@ -53,11 +31,19 @@ public class WaiterView {
         displayPanel.setItems(viewModel.getDetails());
     }
 
+    public void init(WaiterViewModel viewModel) {
+        this.viewModel = viewModel;
+        lastSelectedTable = 0;
+        notifications.itemsProperty().bindBidirectional(viewModel.getNotifications());
+        displayPanel.setItems(viewModel.getDetails());
+        closeTable.setDisable(true);
+
+    }
+
     //NOT WORKING
     @FXML
     public void takeOver(){
         notifications.getFocusModel().getFocusedItem().getClass().getName().toUpperCase();
-        //notifications.placeholderProperty().setValue("Taken");
     }
 
 

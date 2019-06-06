@@ -16,7 +16,6 @@ public class StartLogIn extends Application {
     public void start(Stage primaryStage) throws Exception {
         LogInModel model= new LogInModelImpl();
         System.out.println("Start");
-        String.valueOf(ClientType.CUSTOMER_CLIENT);
         LogInSocket socket = new LogInSocket(model);
         model.addSocket(socket);
         ViewHandler viewHandler= new ViewHandler(primaryStage, model);

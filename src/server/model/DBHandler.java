@@ -44,18 +44,9 @@ public class DBHandler {
         return itemsReader.getCategory(category);
     }
 
-    public void addItem(MenuItem item)
-    {
-        itemsReader.add(item);
-    }
-
     public Passwords getPassword(String user)
     {
         return passwordReader.getPassword(user);
     }
 
-    public void changePasswords(Passwords password)
-    {
-        passwordReader.changePassword(password);
-    }
 }

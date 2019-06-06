@@ -160,12 +160,12 @@ public class ViewHandler {
                     catch(IOException e){e.printStackTrace();}
 
                     WaiterView waiter = loader.getController();
-                    waiter.init((WaiterViewModel) viewModelProvider.getViewModel(viewToOpen), this);
+                    waiter.init((WaiterViewModel) viewModelProvider.getViewModel(viewToOpen));
                     break;
                 }
             }
 
-            stage.setTitle("MLP");
+            stage.setTitle("My Little Restaurant");
             Scene scene= new Scene(root);
             stage.setScene(scene);
             stage.show();

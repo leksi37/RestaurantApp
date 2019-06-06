@@ -55,7 +55,7 @@ public class ViewModelProvider {
         categoryListViewModel = new CategoryListViewModel(viewHandler, customerModel);
         orderItemsListViewModel = new OrderItemsListViewModel(customerModel, viewHandler);
 
-        waiterViewModel = new WaiterViewModel(waiterModel, viewHandler);
+        waiterViewModel = new WaiterViewModel(waiterModel);
 
         chefViewModel = new ChefViewModel(chefModel);
     }

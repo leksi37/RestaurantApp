@@ -19,8 +19,6 @@ public class WaiterServerSocketHandler implements ServerSocketHandler, Runnable 
     private ObjectInputStream inFromClient;
     private ObjectOutputStream outToClient;
 
-    private String connectionId;
-
     public WaiterServerSocketHandler(ServerModel model, Socket socket) {
         this.model = model;
         try {
@@ -87,19 +85,6 @@ public class WaiterServerSocketHandler implements ServerSocketHandler, Runnable 
         }catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private void sendNotification(PropertyChangeEvent changeEvent) {
-        try {
-            outToClient.writeObject(new Request(RequestType.SEND_NOTIFICATION, changeEvent.getNewValue()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void setConnectionId(String id)
-    {
-        connectionId = id;
     }
 
     @Override

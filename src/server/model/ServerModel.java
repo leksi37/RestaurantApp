@@ -90,7 +90,6 @@ public class ServerModel {
         orders.set(k, o);
         support.firePropertyChange("partialForWaiterSent",null, o);
         dbHandler.addOrder(o);
-        System.out.println("after ordering it" + o);
         Notification n = new Notification("Order to deliver for table " + o.getTableId().charAt(5), o);
         notifications.add(n);
         support.firePropertyChange("partialForWaiter", null, n);

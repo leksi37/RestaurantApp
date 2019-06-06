@@ -20,12 +20,4 @@ public class Notification implements Serializable {
     public Object getObject(){
         return obj;
     }
-
-    public boolean isTaken() {
-        return taken;
-    }
-
-    public void setTaken(boolean taken) {
-        this.taken = taken;
-    }
 }

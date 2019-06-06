@@ -23,7 +23,6 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
     private ObjectInputStream inFromClient;
     private ObjectOutputStream outToClient;
 
-    private String connectionId;
 
     public ChefServerSocketHandler(ServerModel model, Socket socket){
         this.model=model;
@@ -85,11 +84,6 @@ public class ChefServerSocketHandler implements ServerSocketHandler, Runnable{
         }catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private void setConnectionId(String id)
-    {
-        connectionId = id;
     }
 
     private void addOrder(PropertyChangeEvent propertyChangeEvent) {
