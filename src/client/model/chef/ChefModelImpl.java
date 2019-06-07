@@ -88,19 +88,7 @@ public class ChefModelImpl implements ChefModel {
             }
         changeSupport.firePropertyChange("gotOrder", null, obj);
     }
-
-
-    private Order getPartial(int selectedIndex)
-    {
-        String tableId = orders.get(selectedIndex).getTableId();
-        for(int i = 0; i < sendToWaiter.size(); ++i)
-        {
-            if(sendToWaiter.get(i).getTableId().equals(tableId))
-                return sendToWaiter.get(i);
-        }
-        return null;
-    }
-
+    
     @Override
     public void sendPartial(int i) {
         if(sendToWaiter.size() != 0 && sendToWaiter.get(i).getNumberOfItems() > 0)
