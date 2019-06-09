@@ -88,7 +88,7 @@ public class ChefModelImpl implements ChefModel {
             }
         changeSupport.firePropertyChange("gotOrder", null, obj);
     }
-    
+
     @Override
     public void sendPartial(int i) {
         if(sendToWaiter.size() != 0 && sendToWaiter.get(i).getNumberOfItems() > 0)
